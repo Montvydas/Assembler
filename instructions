@@ -1,7 +1,63 @@
-load a 01
-load b 02
-*
+/*
+_store 01 a
 store 01 a
-store 02 b
 
- 
+_load b 02
+load b 02
+
+_breq 01
+breq 01
+
+_bgtq 02
+bgtq 02
+
+_bltq 03
+bltq 03
+
+_goto_idle
+goto_idle
+
+_goto 04
+goto 04
+
+_call
+call 05
+
+_return
+return
+
+_deref a
+deref a
+
+_deref b
+deref b
+
+_add a b
+add a b
+
+_sub b a
+sub b a
+
+_mult a b
+mult a b
+*/
+_s_l a
+s_l a
+
+_s_r b
+s_r b
+
+_incr a a
+incr a a
+
+_decr a a
+decr b a
+
+_equals a b
+equals a b
+
+_greater b a
+greater b a
+
+_less a b
+less a b

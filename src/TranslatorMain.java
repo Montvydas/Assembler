@@ -13,25 +13,41 @@ public class TranslatorMain {
      *
      * @param args      the filename
      */
+	static int lineNr = 0;
+	static String data = new String ();
     public static void main(String args[]) {
         try {
         	
             // get the user file
 //          Scanner sc = new Scanner (new File (args[0]));
           Scanner sc = new Scanner (new File ("instructions"));
-            
+          
             // output file
             File outputFile = new File("userProgram.txt");
             FileWriter fw = new FileWriter(outputFile);
             
+//            String tmp = new String ();
             while (sc.hasNextLine()){	
+            	lineNr ++;
+            	
                 String tmp = sc.nextLine();
-                String data = new String ();
+                
+                if (tmp.contains("/*")){
+                	while (!tmp.contains("*/")){
+                		tmp = sc.nextLine();
+                	}
+                	continue;
+                }
+                	
                 
                 //clean code from comments
-                if (tmp.contains(";"))
-                	tmp = tmp.substring(0, tmp.indexOf(";") );
+                if (tmp.contains("//"))
+                	tmp = tmp.substring(0, tmp.indexOf("//") );
 
+
+                
+                	
+                
 //                System.out.println(tmp);
                 
                 //just in case check for empty lines
@@ -129,16 +145,24 @@ public class TranslatorMain {
                     	valueToSend = checkWhichOperand (storedCode[1], "01000100", "01000101");
                     break;
                     
-                    //incr a
-                    //incr b
+                    //incr a a	//incremends a and stores in a
+                    //incr b a
                     case "INCR":
-                    	valueToSend = checkWhichOperand (storedCode[1], "01010100", "01100100");
+                    	if (storedCode[1].equalsIgnoreCase("A"))
+                    		valueToSend = checkWhichOperand (storedCode[2], "01010100", "01100100");
+                    	else if (storedCode[1].equalsIgnoreCase("B"))
+                    		valueToSend = checkWhichOperand (storedCode[2], "01010101", "01100101");
+                    	else printErrorLine();
                     break; 
                     
-                    //decr a
-                    //decr b
+                    //decr a b
+                    //decr b b
                     case "DECR":
-                    	valueToSend = checkWhichOperand (storedCode[1], "01110100", "10000100");
+                    	if (storedCode[1].equalsIgnoreCase("A"))
+                    		valueToSend = checkWhichOperand (storedCode[2], "01110100", "10000100");
+                    	else if (storedCode[1].equalsIgnoreCase("B"))
+                    		valueToSend = checkWhichOperand (storedCode[2], "01110101", "10000101");
+                    	else printErrorLine();
                     break;
                     
                     //equals a b
@@ -158,9 +182,8 @@ public class TranslatorMain {
                     	valueToSend = checkOperandOrder (storedCode[1], storedCode[2], "10110100", "10110101");
                     break;
                     
-                    case " ":
-                    	break;
-                    default: valueToSend = "sorry bro, smth is wrong with ur code...\n";
+                    default:  printErrorLine();
+//                    return;
                     break;
                 }
                 
@@ -181,7 +204,10 @@ public class TranslatorMain {
     		return code_1 + "\n";
     	else if (op_1.equalsIgnoreCase("B") && op_2.equalsIgnoreCase("A")){
     		return code_2 + "\n";
-    	} else return "Value is not A or B! (in checkOperandOrder)";
+    	} else {
+    		printErrorLine();
+    		return "Value is not A or B! (checkOperandOrder)";
+    	}
     	
     }
     
@@ -190,9 +216,16 @@ public class TranslatorMain {
     		return code_1 + "\n";
     	else if (op.equalsIgnoreCase("B")){
     		return code_2 + "\n";
-    	} else return "Value is not A or B! (in checkWhichOperand)";
+    	} else {
+    		printErrorLine();
+    		return "Value is not A or B! (checkWhichOperand)";
+    	}
     	
     }
+    
+   public static void printErrorLine(){
+	   System.out.printf("Error line number: " + lineNr + "\nLine says: " + data + "\n");
+   }
     /**
      * Translate a given hexadecimal number to a binary sequence.
      *
