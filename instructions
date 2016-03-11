@@ -40,24 +40,24 @@ sub b a
 
 _mult a b
 mult a b
-*/
+
 _s_l a
 s_l a
 
 _s_r b
 s_r b
-
+*/
 _incr a a
 incr a a
 
-_decr a a
+_decr b 3
 decr b a
 
 _equals a b
-equals a b
+equals a f
 
 _greater b a
 greater b a
 
 _less a b
-less a b
+ less a b

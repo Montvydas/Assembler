@@ -7,6 +7,8 @@ import java.util.*;
 
 public class TranslatorMain {
 
+	
+	
     /**
      * Entrance of decoder script.
      * Input the instructions_set.txt file as the argument.
@@ -15,6 +17,7 @@ public class TranslatorMain {
      */
 	static int lineNr = 0;
 	static String data = new String ();
+	static boolean containsErrors = false;
     public static void main(String args[]) {
         try {
         	
@@ -34,6 +37,13 @@ public class TranslatorMain {
                 
                 if (tmp.contains("/*")){
                 	while (!tmp.contains("*/")){
+                		if (!sc.hasNextLine()){
+                			System.err.println("Please close block comment!");
+                			sc.close();
+                			fw.close();
+                			return ;
+                		}
+                		lineNr ++;
                 		tmp = sc.nextLine();
                 	}
                 	continue;
@@ -44,16 +54,11 @@ public class TranslatorMain {
                 if (tmp.contains("//"))
                 	tmp = tmp.substring(0, tmp.indexOf("//") );
 
-
-                
-                	
-                
-//                System.out.println(tmp);
                 
                 //just in case check for empty lines
                 if ( tmp.replaceAll("\\s+","").isEmpty() )
                 	continue;
-                else data = tmp;
+                else data = tmp.trim();		//take away spaces at the beginning
                 	
                 String [] storedCode = data.split(" ");
                 
@@ -188,10 +193,20 @@ public class TranslatorMain {
                 }
                 
                 System.out.print(valueToSend);
+                fw.write(valueToSend);
+                if (containsErrors){
+                	fw.write("Please fix your errors firstly.");
+                	fw.close();
+                	sc.close();
+                	return;
+//                	System.err.println ("Please, fix your errors...");
+//                	return;
+                }
                 
             }
-//            
+//     close stuff
             fw.close();
+            sc.close();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -223,8 +238,9 @@ public class TranslatorMain {
     	
     }
     
-   public static void printErrorLine(){
-	   System.out.printf("Error line number: " + lineNr + "\nLine says: " + data + "\n");
+   public static void printErrorLine() {
+	   System.err.printf("Error line number: " + lineNr + "\nLine says: " + data + "\n");
+	   containsErrors = true;
    }
     /**
      * Translate a given hexadecimal number to a binary sequence.
