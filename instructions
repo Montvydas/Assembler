@@ -1,0 +1,7 @@
+load a 01
+load b 02
+*
+store 01 a
+store 02 b
+
+ 
