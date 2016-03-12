@@ -50,12 +50,20 @@ module ROM(
                 
                 
                 //first is to read data from memory 0 to register A
-                ROM[0]=8'b00000000;
-                ROM[1]=8'b00000000;
+//                ROM[0]=8'b00000000;
+//                ROM[1]=8'b00000000;
+                
+          //load a constant value of 01 to reg A
+                ROM[0] = 8'h0D;
+                ROM[1] = 8'h01;
                 
                 //then read data from memory 1 to register B
-                ROM[2]=8'b00000001;
-                ROM[3]=8'b00000001;
+//                ROM[2]=8'b00000001;
+//                ROM[3]=8'b00000001;
+                
+          //then load a constant value of 01 to reg B
+                ROM[2]=8'h0E;
+                ROM[3]=8'h01;
                 
                 //add two register A and B and store in A
                 ROM[4]=8'b00000100;

@@ -507,11 +507,12 @@ module MicroProcessor (
 //Loads a constant value defined in ROM to a specified reg A or reg B
 					LOAD_VAL_A: begin
 									NextState = LOAD_VAL_A_1;
-									NextRegA = ProgMemoryOut;
+									NextProgCounter = CurrProgCounter + 1;
 								end
 					LOAD_VAL_A_1: begin
 									NextState = LOAD_VAL_A_2;
-									NextProgCounter = CurrProgCounter + 2;
+									NextRegA = ProgMemoryOut;
+									NextProgCounter = CurrProgCounter + 1;
 								end
 					LOAD_VAL_A_2: begin
 									NextState = CHOOSE_OPP;
@@ -519,11 +520,12 @@ module MicroProcessor (
 //Here loads value to a reg B					
 					LOAD_VAL_B: begin
 									NextState = LOAD_VAL_B_1;
-									NextRegA = ProgMemoryOut;
+									NextProgCounter = CurrProgCounter + 1;
 								end
 					LOAD_VAL_B_1: begin
 									NextState = LOAD_VAL_B_2;
-									NextProgCounter = CurrProgCounter + 2;
+									NextRegB = ProgMemoryOut;
+									NextProgCounter = CurrProgCounter + 1;
 								end
 					LOAD_VAL_B_2: begin
 									NextState = CHOOSE_OPP;
