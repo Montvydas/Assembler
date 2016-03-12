@@ -22,33 +22,40 @@ public class TranslatorMain {
         try {
         	
             // get the user file
-//          Scanner sc = new Scanner (new File (args[0]));
-          Scanner sc = new Scanner (new File ("instructions"));
+          Scanner sc = new Scanner (new File (args[0]));
+//          Scanner sc = new Scanner (new File ("instructions"));
           
             // output file
-            File outputFile = new File("userProgram.txt");
+//          File outputFile = new File("results.txt");
+            File outputFile = new File(args[1]);
             FileWriter fw = new FileWriter(outputFile);
             
-//            String tmp = new String ();
+            boolean blockCommented = false;
             while (sc.hasNextLine()){	
             	lineNr ++;
             	
                 String tmp = sc.nextLine();
+                System.out.println(lineNr + " " + tmp);
                 
                 if (tmp.contains("/*")){
-                	while (!tmp.contains("*/")){
+                	blockCommented = true;
+                }
+                
+                if (blockCommented){
+                	if (tmp.contains("*/")){
+                		blockCommented = false;
+                		continue;
+                	}
+                	else {
                 		if (!sc.hasNextLine()){
                 			System.err.println("Please close block comment!");
                 			sc.close();
                 			fw.close();
                 			return ;
-                		}
-                		lineNr ++;
-                		tmp = sc.nextLine();
+                		} else
+                			continue;
                 	}
-                	continue;
                 }
-                	
                 
                 //clean code from comments
                 if (tmp.contains("//"))
@@ -192,15 +199,14 @@ public class TranslatorMain {
                     break;
                 }
                 
-                System.out.print(valueToSend);
                 fw.write(valueToSend);
+                System.out.print("\n" + valueToSend + "\n");
+                
                 if (containsErrors){
                 	fw.write("Please fix your errors firstly.");
                 	fw.close();
                 	sc.close();
                 	return;
-//                	System.err.println ("Please, fix your errors...");
-//                	return;
                 }
                 
             }

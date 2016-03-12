@@ -1,63 +1,63 @@
-/*
-_store 01 a
+/*  This is my wonderful test  */
+//_store 01 a
 store 01 a
 
-_load b 02
+//_load b 02
 load b 02
 
-_breq 01
+//_breq 01
 breq 01
 
-_bgtq 02
+//_bgtq 02
 bgtq 02
 
-_bltq 03
+//_bltq 03
 bltq 03
 
-_goto_idle
+//_goto_idle
 goto_idle
 
-_goto 04
+//_goto 04
 goto 04
 
-_call
+//_call
 call 05
 
-_return
+//_return
 return
 
-_deref a
+//_deref a
 deref a
 
-_deref b
+//_deref b
 deref b
 
-_add a b
+//_add a b
 add a b
 
-_sub b a
+//_sub b a
 sub b a
 
-_mult a b
+//_mult a b
 mult a b
 
-_s_l a
+//_s_l a
 s_l a
 
-_s_r b
+//_s_r b
 s_r b
-*/
-_incr a a
+
+//_incr a a
 incr a a
 
-_decr b 3
+//_decr b 3
 decr b a
 
-_equals a b
-equals a f
+//_equals a b
+equals a b
 
-_greater b a
+//_greater b a
 greater b a
 
-_less a b
+//_less a b
  less a b
