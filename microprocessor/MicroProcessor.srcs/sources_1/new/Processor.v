@@ -160,7 +160,16 @@ module MicroProcessor (
     DE_REFERENCE_A_2=8'h82,
     DE_REFERENCE_B=8'h83,
     DE_REFERENCE_B_1=8'h84,
-    DE_REFERENCE_B_2=8'h85;
+    DE_REFERENCE_B_2=8'h85,
+    	LOAD_VAL_A 		= 	8'h86,
+    	LOAD_VAL_A_1		= 	8'h87,
+    	LOAD_VAL_A_2		= 	8'h88,
+    	LOAD_VAL_B 		= 	8'h89,
+    	LOAD_VAL_B_1		= 	8'90,
+    	LOAD_VAL_B_2		=	8'91;
+    
+    
+    
     
     //===============================================write your code above================================================
     
@@ -262,6 +271,8 @@ module MicroProcessor (
                      4'hA: NextState = RETURN;
                      4'hB: NextState = DE_REFERENCE_A;
                      4'hC: NextState = DE_REFERENCE_B;
+                     4'hD: NextState = LOAD_VAL_A;
+                     4'hE: NextState = LOAD_VAL_B;
                      default:
                      NextState = CurrState;
                 endcase
@@ -492,7 +503,34 @@ module MicroProcessor (
                                      NextState = CHOOSE_OPP;
                                      NextRegB = BusDataIn;
                                  end
-                   
+
+//Loads a constant value defined in ROM to a specified reg A or reg B
+					LOAD_VAL_A: begin
+									NextState = LOAD_VAL_A_1;
+									NextRegA = ProgMemoryOut;
+								end
+					LOAD_VAL_A_1: begin
+									NextState = LOAD_VAL_A_2;
+									NextProgCounter = CurrProgCounter + 2;
+								end
+					LOAD_VAL_A_2: begin
+									NextState = CHOOSE_OPP;
+								end
+//Here loads value to a reg B					
+					LOAD_VAL_B: begin
+									NextState = LOAD_VAL_B_1;
+									NextRegA = ProgMemoryOut;
+								end
+					LOAD_VAL_B_1: begin
+									NextState = LOAD_VAL_B_2;
+									NextProgCounter = CurrProgCounter + 2;
+								end
+					LOAD_VAL_B_2: begin
+									NextState = CHOOSE_OPP;
+								end
+
+
+
                    
 
 //========================================Write your code above===============================

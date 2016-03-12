@@ -1,4 +1,8 @@
+
+
 //This is where the interrupt starts
+//store_val F3 00	//diable interrupts
+
 load a 00	//get value of 01
 load b 01	//get value of color
 
@@ -6,7 +10,15 @@ add a b		//add two to get incremented value
 
 store 01 a	//store addition back into the colour
 store B0 a	//store current colour into these addresses for vga
-store F0 a
+//store_val F3 01	//enable interrupts back
+store F0 a	//update the processor with a new timer value
+
+//interrupt timer has 32 bits, meaning ~50 days of working before reseting the timer
+//for F0: store F0 (anything)				//update the processor with a new timer value
+//for F1: store F1 (new interrupt rate in millis) 	//default should be 100, so need to set this in the Timer.v
+//for F2: store F2 01 					//to reset the timer in the processor
+//for F3: store F3 XX 					//01 - enable interrupts & 00 - disable interrupts
+
 
 goto_idle	//wait for another interrupt
 
