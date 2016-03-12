@@ -28,7 +28,7 @@ module Wrapper(
               output [7:0] ColorOut,
               output HS,
               output VS,
-              input BTN_R,
+              input BTN_R,                      
               input BTN_L,
               input BTN_B,
               input BTN_F,
@@ -124,6 +124,23 @@ module Wrapper(
                           .IR_LED(IR_LED)
                          );
                           
+        MouseWrapper
+            myMouse(
+                          .RESET(Reset),
+                          .CLK_100(CLK),
+                          .CLK_MOUSE(),
+                          .DATA_MOUSE(),
+                          .LED_OUT(),
+                          .MOUSE_STATUS(),
+                          .POSITION_OR_SPEED(),
+                          .ENABLE_X_Y(), 
+                          .SEG_SELECT(),
+                          .DEC_OUT(),
+                          .LED_X(),
+                          .LED_Y(),
+                          .SOUND_X(),
+                          .SOUND_Y()
+                         );
                          
         MicroProcessor 
             myMicroProcessor(

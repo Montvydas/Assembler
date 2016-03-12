@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="5" Path="/afs/inf.ed.ac.uk/user/s12/s1231174/Documents/dsl4/microprocessor/MicroProcessorVGA/MicroProcessor.xpr">
+<Project Version="7" Minor="5" Path="/afs/inf.ed.ac.uk/user/s12/s1231174/Documents/Assembler/microprocessor/MicroProcessor.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="4cf8582d5bde4f6d8a726dbc45002a02"/>
@@ -18,10 +18,55 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sources_1/imports/new/GenericCounter.v">
+      <File Path="$PSRCDIR/sources_1/imports/mouseCode/GenericCounter.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../IRTransmitter/IRTransmitter.srcs/sources_1/new/GenericCounter.v"/>
-          <Attr Name="ImportTime" Val="1457791614"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../mouseCode/GenericCounter.v"/>
+          <Attr Name="ImportTime" Val="1457798082"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/mouseCode/Multiplexer.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../mouseCode/Multiplexer.v"/>
+          <Attr Name="ImportTime" Val="1457798082"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/mouseCode/MouseTransmitter.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../mouseCode/MouseTransmitter.v"/>
+          <Attr Name="ImportTime" Val="1457798082"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/mouseCode/MouseReceiver.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../mouseCode/MouseReceiver.v"/>
+          <Attr Name="ImportTime" Val="1457798082"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/mouseCode/MouseMasterSM.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../mouseCode/MouseMasterSM.v"/>
+          <Attr Name="ImportTime" Val="1457798082"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/mouseCode/EasyDecode7Seg.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../mouseCode/EasyDecode7Seg.v"/>
+          <Attr Name="ImportTime" Val="1457798082"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
@@ -29,7 +74,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/new/BasicStateMachine.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../IRTransmitter/IRTransmitter.srcs/sources_1/new/BasicStateMachine.v"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../dsl4/IRTransmitter/IRTransmitter.srcs/sources_1/new/BasicStateMachine.v"/>
           <Attr Name="ImportTime" Val="1457791614"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -45,6 +90,42 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/imports/mouseCode/PWM.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../mouseCode/PWM.v"/>
+          <Attr Name="ImportTime" Val="1457798082"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/mouseCode/MouseTransceiver.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../mouseCode/MouseTransceiver.v"/>
+          <Attr Name="ImportTime" Val="1457798082"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/mouseCode/DecimelSeg.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../mouseCode/DecimelSeg.v"/>
+          <Attr Name="ImportTime" Val="1457798082"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/mouseCode/BinaryToBCD.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../mouseCode/BinaryToBCD.v"/>
+          <Attr Name="ImportTime" Val="1457798082"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/new/ALU.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -54,7 +135,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/new/Seg7Decoder.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../IRTransmitter/IRTransmitter.srcs/sources_1/new/Seg7Decoder.v"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../dsl4/IRTransmitter/IRTransmitter.srcs/sources_1/new/Seg7Decoder.v"/>
           <Attr Name="ImportTime" Val="1457791614"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -63,7 +144,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/new/Mux4Way.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../IRTransmitter/IRTransmitter.srcs/sources_1/new/Mux4Way.v"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../dsl4/IRTransmitter/IRTransmitter.srcs/sources_1/new/Mux4Way.v"/>
           <Attr Name="ImportTime" Val="1457791614"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -72,7 +153,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/new/IRTransmitterSM.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../IRTransmitter/IRTransmitter.srcs/sources_1/new/IRTransmitterSM.v"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../dsl4/IRTransmitter/IRTransmitter.srcs/sources_1/new/IRTransmitterSM.v"/>
           <Attr Name="ImportTime" Val="1457791614"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -97,6 +178,15 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
+      <File Path="$PSRCDIR/sources_1/imports/mouseCode/MouseWrapper.v">
+        <FileInfo>
+          <Attr Name="ImportPath" Val="$PPRDIR/../mouseCode/MouseWrapper.v"/>
+          <Attr Name="ImportTime" Val="1457798082"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
       <File Path="$PSRCDIR/sources_1/new/Processor.v">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -106,7 +196,7 @@
       </File>
       <File Path="$PSRCDIR/sources_1/imports/new/IRTransmitterWrapper.v">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../IRTransmitter/IRTransmitter.srcs/sources_1/new/IRTransmitterWrapper.v"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../dsl4/IRTransmitter/IRTransmitter.srcs/sources_1/new/IRTransmitterWrapper.v"/>
           <Attr Name="ImportTime" Val="1457791614"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -145,6 +235,16 @@
       </File>
       <File Path="$PSRCDIR/sources_1/new/Wrapper.v">
         <FileInfo>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
+      </File>
+      <File Path="$PSRCDIR/sources_1/imports/new/GenericCounter.v">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../dsl4/IRTransmitter/IRTransmitter.srcs/sources_1/new/GenericCounter.v"/>
+          <Attr Name="ImportTime" Val="1457791614"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
