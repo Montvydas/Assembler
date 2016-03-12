@@ -23,7 +23,7 @@ public class TranslatorMain {
         	
             // get the user file
           Scanner sc = new Scanner (new File (args[0]));
-//          Scanner sc = new Scanner (new File ("instructions"));
+//          Scanner sc = new Scanner (new File ("instructions.txt"));
           
             // output file
 //          File outputFile = new File("results.txt");
@@ -217,7 +217,8 @@ public class TranslatorMain {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        
+        return ;
     }
     
     public static String checkOperandOrder (String op_1, String op_2, String code_1, String code_2){
