@@ -1,11 +1,11 @@
-/*  This is my wonderful   */
+/*  This is an example on how to use the Translator */
 //Lower Case, upper case do not matter
 //If there are two registers in the operation 
 //the first reg is the register where the value will go after the operation
-
+//multiple spaces & tabs supported in between operands
 
 //stores value of reg A into 01 address
-store 01 a
+store 01 a //hello
 
 //loads value at address 02 to reg B
 load b 02
@@ -46,10 +46,10 @@ sub b a
 //a = a * b
 mult a b
 
-//a << 1
+//a = a << 1
 s_l a
 
-//b >> 1
+//b = b >> 1
 s_r b
 
 //increment reg A and store in reg A
@@ -58,11 +58,11 @@ incr a a
 //decrement reg A and store in reg B
 decr b a
 
-//store 
+//store 01 to reg A if A == B, else store 00
 equals a b
 
-//
+//store 01 to reg B if B > A, else store 00
 greater b a
 
-//
-less a b
+//store 01 to reg A if A < B, else store 00
+less a b 

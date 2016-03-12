@@ -1,0 +1,22 @@
+//This is where the interrupt starts
+load a 00	//get value of 01
+load b 01	//get value of color
+
+add a b		//add two to get incremented value
+
+store 01 a	//store addition back into the colour
+store B0 a	//store current colour into these addresses for vga
+store F0 a
+
+goto_idle	//wait for another interrupt
+
+
+//This is how the program could be changed 
+/*
+load a 00	//get the colour value
+incr a a	//increment a & store in a reg
+
+store 01 a
+store B0 a
+store F0 a
+*/
