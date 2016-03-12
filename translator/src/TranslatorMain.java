@@ -221,6 +221,15 @@ public class TranslatorMain {
                     	valueToSend = checkOperandOrder (storedCode[1], storedCode[2], "10110100", "10110101");
                     break;
                     
+                    //load_val a 32
+                    //load_val b 01
+                    //it is in the form of: to load into A reg - (xxxx1101 + value[7:0]), to B reg - (xxxx1101 + value[7:0])
+                    case "LOAD_VAL":
+                        checkNumberOfOperands (storedCode.length, 3);
+                        valueToSend = checkWhichOperand (storedCode[1], "00001101", "00001110");
+                        valueToSend += hexToBi(storedCode[2]);
+                    break;
+                    
                     default:  printErrorLine();
 //                    return;
                     break;
