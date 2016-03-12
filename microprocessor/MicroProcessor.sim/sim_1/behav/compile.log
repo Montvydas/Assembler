@@ -1,0 +1,26 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/s1469567/MicroProcessor/MicroProcessor.srcs/sources_1/imports/new/Counter.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module CounterModule
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/s1469567/MicroProcessor/MicroProcessor.srcs/sources_1/new/ALU.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ALU
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/s1469567/MicroProcessor/MicroProcessor.srcs/sources_1/imports/new/VGA_Sig_Gen.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module VGA_Sig_Gen
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/s1469567/MicroProcessor/MicroProcessor.srcs/sources_1/imports/new/Frame_Buffer.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Frame_Buffer
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/s1469567/MicroProcessor/MicroProcessor.srcs/sources_1/new/Timer.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Timer
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/s1469567/MicroProcessor/MicroProcessor.srcs/sources_1/new/ROM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ROM
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/s1469567/MicroProcessor/MicroProcessor.srcs/sources_1/new/RAM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module RAM
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/s1469567/MicroProcessor/MicroProcessor.srcs/sources_1/new/Processor.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module MicroProcessor
+WARNING: [VRFC 10-756] identifier CurrRegA is used before its declaration [/home/s1469567/MicroProcessor/MicroProcessor.srcs/sources_1/new/Processor.v:46]
+WARNING: [VRFC 10-756] identifier CurrRegB is used before its declaration [/home/s1469567/MicroProcessor/MicroProcessor.srcs/sources_1/new/Processor.v:47]
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/s1469567/MicroProcessor/MicroProcessor.srcs/sources_1/imports/new/TopModule.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module DSL_VGA
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/s1469567/MicroProcessor/MicroProcessor.srcs/sources_1/new/Wrapper.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Wrapper
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/s1469567/MicroProcessor/MicroProcessor.srcs/sim_1/new/Wrapper_TB.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Wrapper_TB
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/s1469567/MicroProcessor/MicroProcessor.sim/sim_1/behav/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl
