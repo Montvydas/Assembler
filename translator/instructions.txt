@@ -66,3 +66,6 @@ greater b a
 
 //store 01 to reg A if A < B, else store 00
 less a b 
+
+//loads a constant value to reg A
+load_val b 0F
