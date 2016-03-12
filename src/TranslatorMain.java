@@ -32,21 +32,25 @@ public class TranslatorMain {
             
             boolean blockCommented = false;
             while (sc.hasNextLine()){	
-            	lineNr ++;
+            	lineNr++;
             	
                 String tmp = sc.nextLine();
+                //print line with a line number
                 System.out.println(lineNr + " " + tmp);
                 
+                
+                //take away block comments... Detect a block comment
                 if (tmp.contains("/*")){
                 	blockCommented = true;
                 }
                 
+                //while not find another side of the comment, search through each line
                 if (blockCommented){
                 	if (tmp.contains("*/")){
                 		blockCommented = false;
                 		continue;
                 	}
-                	else {
+                	else { //make sure that if another side does not exist, print error
                 		if (!sc.hasNextLine()){
                 			System.err.println("Please close block comment!");
                 			sc.close();
@@ -57,24 +61,28 @@ public class TranslatorMain {
                 	}
                 }
                 
-                //clean code from comments
+                //clean code from line comments
                 if (tmp.contains("//"))
                 	tmp = tmp.substring(0, tmp.indexOf("//") );
-
+                
+                tmp = tmp.replaceAll("\\s+"," ");   //replace all possible tabs, spaces & new lines in series, etc. with a single space
                 
                 //just in case check for empty lines
                 if ( tmp.replaceAll("\\s+","").isEmpty() )
                 	continue;
-                else data = tmp.trim();		//take away spaces at the beginning
+                else data = tmp.trim();		//take away spaces at the beginning and ending
                 	
-                String [] storedCode = data.split(" ");
+                String [] storedCode = data.split(" "); //split at spaces
+                
+                // System.out.println ("Length is " + storedCode.length);  
                 
                 String valueToSend = new String();
-                switch (storedCode[0].toUpperCase()){
                 
+                switch (storedCode[0].toUpperCase()){
                 	//load a 43
                 	//load b 33
                     case "LOAD":
+                        checkNumberOfOperands (storedCode.length, 3);
                     	valueToSend = checkWhichOperand (storedCode[1], "00000000", "00000001");
                     	valueToSend += hexToBi(storedCode[2]) + "\n";
                     break;
@@ -82,84 +90,99 @@ public class TranslatorMain {
                     //store 32 a
                     //store 52 b
                     case "STORE":
+                        checkNumberOfOperands (storedCode.length, 3);
                     	valueToSend =  checkWhichOperand (storedCode[2], "00000010", "00000011");
                     	valueToSend += hexToBi(storedCode[1]) + "\n";
                     break;
                     
                     //breq 52
                     case "BREQ":
+                        checkNumberOfOperands (storedCode.length, 2);
                     	valueToSend = ("10010110" + '\n' + hexToBi(storedCode[1]) + '\n');
                     break;
                     
                     //bgtq 35
                     case "BGTQ":
+                        checkNumberOfOperands (storedCode.length, 2);
                     	valueToSend = ("10100110" + '\n' + hexToBi(storedCode[1]) + '\n');
                     break;
                     
                     //bltq 45
                     case "BLTQ":
+                        checkNumberOfOperands (storedCode.length, 2);
                     	valueToSend = ("10110110" + '\n' + hexToBi(storedCode[1]) + '\n');
                     break;  
                      
                     //goto_idle
                     case "GOTO_IDLE":
+                        checkNumberOfOperands (storedCode.length, 1);
                     	valueToSend = ("00001000" + '\n');
                     break;
                     
                     //goto 43
                     case "GOTO":
+                        checkNumberOfOperands (storedCode.length, 2);
                     	valueToSend = ("00000111" + '\n' + hexToBi(storedCode[1]) + '\n');
                     break;
                     
                     //call 35
                     case "CALL":
+                        checkNumberOfOperands (storedCode.length, 2);
                     	valueToSend = ("00001001" + '\n' + hexToBi(storedCode[1]) + '\n');
                     break;
                     
                     //return
                     case "RETURN":
+                        checkNumberOfOperands (storedCode.length, 1);
                     	valueToSend = ("00001010" + '\n');
                     break; 
                     
                     //deref a
                     //deref b
                     case "DEREF":
+                        checkNumberOfOperands (storedCode.length, 2);
                     	valueToSend = checkWhichOperand (storedCode[1], "00001011", "00001100");
                     break;
                     
                     //add a b	//adds both and stores in a...
                     //add b a
                     case "ADD":
+                        checkNumberOfOperands (storedCode.length, 3);
                     	valueToSend = checkOperandOrder (storedCode[1], storedCode[2], "00000100", "00000101");
                     break;
                     
                     //sub a b
                     //sub b a
                     case "SUB":
+                        checkNumberOfOperands (storedCode.length, 3);
                     	valueToSend = checkOperandOrder (storedCode[1], storedCode[2], "00010100", "00010101");
                     break; 
                     
                     //mult a b
                     //mult b a
                     case "MULT":
+                        checkNumberOfOperands (storedCode.length, 3);
                     	valueToSend = checkOperandOrder (storedCode[1], storedCode[2], "00100100", "00100101");
                     break;
                     
                     //s_l a
                     //s_l b
                     case "S_L":
+                        checkNumberOfOperands (storedCode.length, 2);
                     	valueToSend = checkWhichOperand (storedCode[1], "00110100", "00110101");
                     break;
                     
                     //s_r a
                     //s_r b
                     case "S_R":
+                        checkNumberOfOperands (storedCode.length, 2);
                     	valueToSend = checkWhichOperand (storedCode[1], "01000100", "01000101");
                     break;
                     
                     //incr a a	//incremends a and stores in a
                     //incr b a
                     case "INCR":
+                        checkNumberOfOperands (storedCode.length, 3);
                     	if (storedCode[1].equalsIgnoreCase("A"))
                     		valueToSend = checkWhichOperand (storedCode[2], "01010100", "01100100");
                     	else if (storedCode[1].equalsIgnoreCase("B"))
@@ -170,6 +193,7 @@ public class TranslatorMain {
                     //decr a b
                     //decr b b
                     case "DECR":
+                        checkNumberOfOperands (storedCode.length, 3);
                     	if (storedCode[1].equalsIgnoreCase("A"))
                     		valueToSend = checkWhichOperand (storedCode[2], "01110100", "10000100");
                     	else if (storedCode[1].equalsIgnoreCase("B"))
@@ -180,17 +204,20 @@ public class TranslatorMain {
                     //equals a b
                     //equals b a
                     case "EQUALS":
+                        checkNumberOfOperands (storedCode.length, 3);
                     	valueToSend = checkOperandOrder (storedCode[1], storedCode[2], "10010100", "10010101");
                     break;
                     //greater a b
                     //greater b a
                     case "GREATER":
+                        checkNumberOfOperands (storedCode.length, 3);
                     	valueToSend = checkOperandOrder (storedCode[1], storedCode[2], "10100100", "10100101");
                     break;
                     
                     //less a b
                     //less b a
                     case "LESS":
+                        checkNumberOfOperands (storedCode.length, 3);
                     	valueToSend = checkOperandOrder (storedCode[1], storedCode[2], "10110100", "10110101");
                     break;
                     
@@ -200,7 +227,6 @@ public class TranslatorMain {
                 }
                 
                 fw.write(valueToSend);
-                System.out.print("\n" + valueToSend + "\n");
                 
                 if (containsErrors){
                 	fw.write("Please fix your errors firstly.");
@@ -209,6 +235,7 @@ public class TranslatorMain {
                 	return;
                 }
                 
+                System.out.print("\n" + valueToSend + "\n");
             }
 //     close stuff
             fw.close();
@@ -218,6 +245,7 @@ public class TranslatorMain {
             e.printStackTrace();
         }
         
+        System.out.println("Finished without errors!");
         return ;
     }
     
@@ -228,7 +256,8 @@ public class TranslatorMain {
     		return code_2 + "\n";
     	} else {
     		printErrorLine();
-    		return "Value is not A or B! (checkOperandOrder)";
+    		System.err.print ("hint: cannot find A or B.\n");
+            return "";
     	}
     	
     }
@@ -240,14 +269,23 @@ public class TranslatorMain {
     		return code_2 + "\n";
     	} else {
     		printErrorLine();
-    		return "Value is not A or B! (checkWhichOperand)";
+    		System.err.print ("hint: cannot find A or B.\n");
+            return "";
     	}
     	
     }
     
    public static void printErrorLine() {
-	   System.err.printf("Error line number: " + lineNr + "\nLine says: " + data + "\n");
+	   System.err.print("Error line number: " + lineNr + "\nLine says: " + data + "\n");
 	   containsErrors = true;
+   }
+   
+   public static void checkNumberOfOperands (int length, int requiredLength){
+        if (length != requiredLength){
+            printErrorLine ();
+            System.err.print ("hint: wrong number of operands in a line.\n");
+            return;
+        }
    }
     /**
      * Translate a given hexadecimal number to a binary sequence.
