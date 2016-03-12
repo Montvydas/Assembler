@@ -1,0 +1,48 @@
+//This is gonna be the code for accessing the values in each of the mouse data busses
+//firstly need to specify that the interrupt for mouse will start from address 00
+//Do this inside the Verilog code for now
+
+//RAM contents will look like this
+/*
+Mem[0] = 8'h00;
+Mem[1] = 8'h01;
+Mem[2] = 8'h02;
+Mem[3] = 8'h03;
+*/
+
+//ROM also needs to have this
+/*
+ROM[8'hFF] = 8'h00;
+*/
+
+//To simulate the mouse without using memreadh
+/*
+//info about the interrupt location
+ROM[8'hFF] = 8'h00;
+//load a 01 
+ROM[0] = 8'b00000000;
+ROM[0] = 8'b00000001;
+store F2 a
+ROM[0] = 8'b00000010;
+ROM[0] = 8'b11110010;
+//load a A0
+ROM[0] = 8'b00000000;
+ROM[0] = 8'b10100000;
+//load a A1
+ROM[0] = 8'b00000000;
+ROM[0] = 8'b10100001;
+//load a A2
+ROM[0] = 8'b00000000;
+ROM[0] = 8'b10100010;
+*/
+
+//Disable insterrupts completely
+// 1 - load value of 01 from RAM
+// 2 - store this value to address F2
+load a 01
+store F2 a
+
+//Load values from Mouse data addresses
+load a A0
+load a A1
+load a A2
