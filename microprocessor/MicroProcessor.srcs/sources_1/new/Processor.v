@@ -165,8 +165,8 @@ module MicroProcessor (
     	LOAD_VAL_A_1		= 	8'h87,
     	LOAD_VAL_A_2		= 	8'h88,
     	LOAD_VAL_B 		= 	8'h89,
-    	LOAD_VAL_B_1		= 	8'90,
-    	LOAD_VAL_B_2		=	8'91;
+    	LOAD_VAL_B_1		= 	8'h90,
+    	LOAD_VAL_B_2		=	8'h91;
     
     
     
