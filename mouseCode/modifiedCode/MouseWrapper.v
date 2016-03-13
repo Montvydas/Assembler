@@ -40,6 +40,7 @@ module MouseWrapper(
     input 	[7:0] BUS_ADDR,
     output 	BUS_INTERRUPT_RAISE,
     input 	BUS_INTERRUPT_ACK,
+    input 	BUS_WE,
 //LEDs for the Extra Stuff
 	output 	LED_X,
 	output 	LED_Y,
@@ -172,17 +173,19 @@ module MouseWrapper(
 					
 // 1 - have all of the values to be transmitter ready
 // 2 - If base address is correct, pass the right value to the BUS_DATA
+// 3 - if BUS_WE, means the processor is writing data to the BUS, so we need to check for ~BUS_WE
+//which means the processor will read the data from the BUS
 		reg TransmitMouseValue[7:0];
 		reg TransmitNow;
 	
 		always@(posedge CLK) begin
 			if (RESET)
 				TransmitMouseValue <= 8'hZZ;
-            else if ( BUS_ADDR == MouseBaseAddr )				//base address is for status
+            else if ( (BUS_ADDR == MouseBaseAddr) & ~BUS_WE)				//base address is for status
                 TransmitMouseValue <= {4'h0, mouse_status[3:0]};
-            else if ( BUS_ADDR == MouseBaseAddr + 1'h1 )	//base address + 1 is for mouse x
+            else if ( (BUS_ADDR == MouseBaseAddr + 1'h1) & ~BUS_WE)	//base address + 1 is for mouse x
                 TransmitMouseValue <= mouse_x;
-            else if ( BUS_ADDR == MouseBaseAddr + 2'h2 )	//base address + 2 is for mouse y
+            else if ( (BUS_ADDR == MouseBaseAddr + 2'h2) & ~BUS_WE)	//base address + 2 is for mouse y
                 TransmitMouseValue <= mouse_y;
             else TransmitMouseValue <= 8'hZZ;
 		end
