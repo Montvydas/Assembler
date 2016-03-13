@@ -8,7 +8,7 @@
 store 01 a //hello
 
 //loads value at address 02 to reg B
-load b 02
+load b 02 
 
 //Branch to address ADDR i.e. load program counter with ADDR if register A’s content is equal to Register B’s
 breq 01
