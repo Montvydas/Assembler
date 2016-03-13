@@ -55,6 +55,8 @@ module Wrapper(
        wire [7:0] ROMAddress;
        wire [7:0] ROMData;
        wire [15:0] ColorConnect;
+       
+       wire [3:0] CAR_SELECT;
 
      
      assign Interrept={Int_1s,1'b0};
@@ -111,6 +113,8 @@ module Wrapper(
             myIR(
                           .CLK(CLK),
                           .RESET(Reset),
+                          .BUS_DATA(DataBus),
+                          .BUS_ADDR(DataAddress),
                           .BTN_R(BTN_R),
                           .BTN_L(BTN_L),
                           .BTN_B(BTN_B),
@@ -119,8 +123,7 @@ module Wrapper(
                           .SEL_YEL(SEL_YEL),
                           .SEL_GRN(SEL_GRN),
                           .SEL_RED(SEL_RED),
-                          .SEG_SELECT_OUT(SEG_SELECT_OUT),
-                          .DEC_OUT(DEC_OUT),
+                          .CAR_SELECT_OUT(CAR_SELECT),
                           .IR_LED(IR_LED)
                          );
                           
@@ -162,7 +165,19 @@ module Wrapper(
                           .registerB(registerB)
                          
                              );
-                             
+         
+        Seg7Wrapper
+            mySeg7(
+                        .CLK(CLK),
+                        .RESET(Reset),
+                        .CAR_SELECT(CAR_SELECT),
+                        .BUS_DATA(DataBus),
+                        .BUS_ADDR(DataAddr),
+                        .BUS_WE(BusWE),
+                        .SEG_SELECT_OUT(SEG_SELECT_OUT),
+                        .DEC_OUT(DEC_OUT)
+            
+                        );
          /*SevenSeg
             mySevenSeg(
                            . CLK(CLK),
