@@ -315,7 +315,7 @@ public class TranslatorMain {
             if (instructionAddress < 254){
                 while (instructionAddress < 254) {
                 	instructionAddress ++;  
-                    fw.write("\n");
+                    fw.write("00000000\n");
                 }
                 fw.write (addressOfTimerISR);
                 fw.write (addressOfMouseISR);

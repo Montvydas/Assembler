@@ -36,22 +36,24 @@ ROM[0] = 8'b00000000;
 ROM[0] = 8'b10100010;
 */
 
+
 //Disable insterrupts completely
 // 1 - load value of 01 from RAM
 // 2 - store this value to address F2
 
-timer_isr:
+//timer_isr:
 
 //when timer comes, loads these values back to regs
 //and store into 7seg & LEDs Base Addresses
-load a 01
-store D0 a
+//load a 01
+//store D0 a
 
 //load a 02
 //store C0 a
-
+/*
 load b E0
 store C0 b
+store D0 b
 
 goto_idle
 
@@ -67,3 +69,19 @@ load a A2
 store 02 a
 
 goto_idle
+*/
+
+//address == 00
+load a 01
+incr a a
+store 00 a
+store C0 a
+goto 00
+
+timer_isr:
+load a 01
+incr a a
+store 00 a
+load a F0
+goto_idle
+
