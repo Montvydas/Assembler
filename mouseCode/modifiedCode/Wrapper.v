@@ -25,7 +25,7 @@ module Wrapper(
             //the following is the VGA part
               input  CLK,                       //connect to the clock on the board,50Mhz only
               input  Reset,                     //connect to button to reset the whole project
-              output [7:0] ColorOut,
+ /*             output [7:0] ColorOut,
               output HS,
               output VS,
               input BTN_R,                      
@@ -36,9 +36,10 @@ module Wrapper(
               input SEL_YEL,
               input SEL_GRN,
               input SEL_RED,    
+  */
               output [3:0] SEG_SELECT_OUT,
               output [7:0] DEC_OUT,
-              output reg IR_LED,
+  //            output reg IR_LED,
               input [7:0] SlideSwitches,
               input [7:0] LED,
               inout CLK_MOUSE,
@@ -58,7 +59,7 @@ module Wrapper(
        wire [7:0] ROMAddress;
        wire [7:0] ROMData;
        wire [15:0] ColorConnect;
-
+/*
      DSL_VGA
         myVGA(
               .CLK(CLK),                      //connect to the clock on the board,50Mhz only
@@ -73,7 +74,7 @@ module Wrapper(
 
              );
 
-               
+  */             
      ROM
         myROM(
                .CLK(CLK),
@@ -106,7 +107,7 @@ module Wrapper(
                           .BUS_INTERRUPT_RAISE(Interrept[1]),
                           .BUS_INTERRUPT_ACK(Interrept_ACK[1])
                          );
-                         
+   /*                      
         IRTransmitterWrapper
             myIR(
                           .CLK(CLK),
@@ -123,7 +124,7 @@ module Wrapper(
                           .DEC_OUT(DEC_OUT),
                           .IR_LED(IR_LED)
                          );
-                          
+     */                     
         MouseWrapper
             myMouse(
                           .RESET(Reset),
