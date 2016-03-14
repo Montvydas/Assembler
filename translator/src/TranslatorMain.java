@@ -36,13 +36,7 @@ public class TranslatorMain {
             boolean blockCommented = false;
             int instructionAddress = 0;
             String instructionAddressInHex = "00";
-            
-            
-            
-            
-            
-            
-            
+           
       //Start line scanning
             while (sc.hasNextLine()){	
             	lineNr++;
@@ -286,11 +280,12 @@ public class TranslatorMain {
                     break;
                 }
                 
-                fw.write(valueToSend);
+                
                 instructionAddress += instructionLengthInBytes; //gets the address
-                instructionAddressInHex = Integer.toHexString( instructionAddress );    //good to know hex value
-                if (instructionAddressInHex.length() == 1){                             //but need to make sure that it has two values as hex, i.e. C -> 0C
-                    instructionAddressInHex = "0" + instructionAddressInHex;
+                if (instructionAddress > 253){
+                    printErrorLine();
+                    System.err.print("hint: you used more than allowed 253 Bytes of program ROM (254 is timer & 255 is mouse interrupt addr).\n");
+                    return;    
                 }
                 
                 if (containsErrors){
@@ -298,6 +293,13 @@ public class TranslatorMain {
                 	fw.close();
                 	sc.close();
                 	return;
+                }
+                
+                fw.write(valueToSend);
+                
+                instructionAddressInHex = Integer.toHexString( instructionAddress );    //good to know hex value
+                if (instructionAddressInHex.length() == 1){                             //but need to make sure that it has two values as hex, i.e. C -> 0C
+                    instructionAddressInHex = "0" + instructionAddressInHex;
                 }
                 
                 System.out.print( "\n" + valueToSend + "XXXXXXXX <- This Instruction address is " + instructionAddressInHex + "\n\n");
@@ -382,38 +384,45 @@ public class TranslatorMain {
            System.err.print ("hint: entered value is a not valid hex value.\n");
        }
    }
+   
+     public static String hexToBi (String hex){
+        int i = Integer.parseInt(hex, 16);
+        String bin = Integer.toBinaryString(i);
+        
+        if (bin.length() < 8)
+            bin = String.format("%0" + (8-bin.length()) + "d", 0).replace("0", "0") + bin; //add zeroes at the begining
+        
+        System.out.print ("In hexToBi: hex=" + hex + " bin=" + bin + "\n");
+        
+        checkLengthOfHexAndBin(bin.length(), hex.length());
+        return bin;
+     }
+    
+    
+    
+   
     /**
      * Translate a given hexadecimal number to a binary sequence.
      *
      * @param hex_str       the number to be translated
      * @return              the binary sequence
      */
-    public static String hexToBi(String hex_str) {
+    /*
+    public static String hexTo_Bi(String hex_str) {
         String bi = "";
         for (int i = 0; i < hex_str.length(); i++)
             bi = bi + hexToBi_per_char(hex_str.charAt(i));
         checkLengthOfHexAndBin(bi.length(), hex_str.length());
         return bi;
     }
-
+*/
     /**
      * Translate a single digit of hexadecimal number.
      *
      * @param hex       the digit
      * @return          the corresponding binary number
      */
-     
-     public static String hex_To_Bi (String hex){
-        int i = Integer.parseInt(hex, 16);
-        String bin = Integer.toBinaryString(i);
-        
-        System.out.print ("In hexToBi: hex=" + hex + " bin=" + bin + "\n");
-        
-        // checkLengthOfHexAndBin(bin.length(), hex.length());
-        return bin;
-     }
-    
-     
+     /*
     public static String hexToBi_per_char(char hex) {
         
         if (hex == '0')
@@ -451,4 +460,5 @@ public class TranslatorMain {
         else
             return "";
     }
+    */
 }
