@@ -38,7 +38,7 @@ module Wrapper(
               input SEL_RED,    
               output [3:0] SEG_SELECT_OUT,
               output [7:0] DEC_OUT,
-              output reg IR_LED
+              output IR_LED
             
     );
     
@@ -115,14 +115,6 @@ module Wrapper(
                           .RESET(Reset),
                           .BUS_DATA(DataBus),
                           .BUS_ADDR(DataAddress),
-                          .BTN_R(BTN_R),
-                          .BTN_L(BTN_L),
-                          .BTN_B(BTN_B),
-                          .BTN_F(BTN_F),
-                          .SEL_BLU(SEL_BLU),
-                          .SEL_YEL(SEL_YEL),
-                          .SEL_GRN(SEL_GRN),
-                          .SEL_RED(SEL_RED),
                           .CAR_SELECT_OUT(CAR_SELECT),
                           .IR_LED(IR_LED)
                          );

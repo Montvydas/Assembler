@@ -52,7 +52,7 @@ module BasicStateMachine(
 	 
 	 //Counter to hold number of pulses counted through for each segment of the packet
 	 GenericCounter #(.COUNTER_WIDTH(8), .COUNTER_MAX(192))
-	   PACKET_COUNT(.CLK(CLK), .RESET(PACKET_COUNT_RST), .ENABLE_IN(1), .TRIG_OUT(), .COUNT(PacketCount));
+	   PACKET_COUNT(.CLK(CLK), .RESET(PACKET_COUNT_RST), .ENABLE_IN(1), .TRIGG_OUT(), .COUNT(PacketCount));
 	 
 	 //Combinatorial logic to set CurrState values
 	 always@(posedge CLK or posedge ENABLE_IN or posedge RESET) begin

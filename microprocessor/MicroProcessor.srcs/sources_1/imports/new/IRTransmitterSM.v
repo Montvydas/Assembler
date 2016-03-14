@@ -59,7 +59,7 @@ i.e. for a pulse frequency signal with 50% duty cycle we need it to toggle every
     
     // outputs the clock trigger onto PULSE_CLK_TRIG when counter reaches MaxCount parameter for car
     GenericCounter #(.COUNTER_WIDTH(12), .COUNTER_MAX(MaxCount)) 
-        PULSE_CLK_COUNT(.CLK(CLK), .RESET(RESET), .ENABLE_IN(1), .TRIG_OUT(PULSE_CLK_TRIG), .COUNT());
+        PULSE_CLK_COUNT(.CLK(CLK), .RESET(RESET), .ENABLE_IN(1), .TRIGG_OUT(PULSE_CLK_TRIG), .COUNT());
     
     // logic which produces a pulse clock frequency as required for car:
     always@(posedge PULSE_CLK_TRIG)

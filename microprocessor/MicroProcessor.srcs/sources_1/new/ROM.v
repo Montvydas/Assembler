@@ -35,7 +35,7 @@ module ROM(
         
         initial
         begin
-         $readmemb("/home/s1469567/MicroProcessor/Complete_Demo_ROM.txt", ROM); 
+         $readmemb("/home/s1231174/Assembler/microprocessor/IRDemo.rom", ROM); 
          ROM[8'hFE]=8'b00000000;
          end
         // Load program

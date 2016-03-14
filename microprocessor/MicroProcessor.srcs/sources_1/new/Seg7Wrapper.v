@@ -41,7 +41,7 @@ module Seg7Wrapper(
     // Divider to output 200Hz clock on StrobeTrig
     wire StrobeTrig;
     GenericCounter #(.COUNTER_WIDTH(24), .COUNTER_MAX(500000))
-        mySeg7Divider(.CLK(CLK), .RESET(RESET), .ENABLE_IN(1), .TRIG_OUT(StrobeTrig), .COUNT());
+        mySeg7Divider(.CLK(CLK), .RESET(RESET), .ENABLE_IN(1), .TRIGG_OUT(StrobeTrig), .COUNT());
     
     // Strobes between 4 sections of display giving 50Hz refresh per section
     GenericCounter #(.COUNTER_WIDTH(2), .COUNTER_MAX(3)) 

@@ -46,7 +46,6 @@ module IRTransmitterWrapper(
     reg [3:0] COMMAND;
     reg [3:0] CAR_SELECT;
     //Output car selection for 7 seg display
-    assign CAR_SELECT_OUT = CAR_SELECT;
     
 //Connections to bus
     //IR transmitter base address defined on course doc
@@ -58,10 +57,13 @@ module IRTransmitterWrapper(
     always@(posedge CLK) begin
         if(ADDR_ENABLE) begin
             CAR_SELECT = BUS_DATA[3:0];
+            CAR_SELECT_OUT <= BUS_DATA[3:0];
             COMMAND = BUS_DATA[7:4];
         end
         else begin
             COMMAND = 4'b0;
+            CAR_SELECT = 4'b0;
+            CAR_SELECT_OUT <= 4'b0;
         end
     end
     
@@ -71,22 +73,22 @@ module IRTransmitterWrapper(
     //generic counter configured to trigger packet sending for blue-coded car at 10Hz
     wire SEND_PACKET_BLU;
     GenericCounter #(.COUNTER_WIDTH(24), .COUNTER_MAX(10000000)) 
-        TEN_CLK_COUNT_BLU(.CLK(CLK), .RESET(RESET), .ENABLE_IN(CAR_SELECT[0]), .TRIG_OUT(SEND_PACKET_BLU), .COUNT());
+        TEN_CLK_COUNT_BLU(.CLK(CLK), .RESET(RESET), .ENABLE_IN(CAR_SELECT[0]), .TRIGG_OUT(SEND_PACKET_BLU), .COUNT());
    
     //generic counter configured to trigger packet sending for yellow-coded car at 10Hz
     wire SEND_PACKET_YEL;
     GenericCounter #(.COUNTER_WIDTH(24), .COUNTER_MAX(10000000)) 
-        TEN_CLK_COUNT_YEL(.CLK(CLK), .RESET(RESET), .ENABLE_IN(CAR_SELECT[1]), .TRIG_OUT(SEND_PACKET_YEL), .COUNT());
+        TEN_CLK_COUNT_YEL(.CLK(CLK), .RESET(RESET), .ENABLE_IN(CAR_SELECT[1]), .TRIGG_OUT(SEND_PACKET_YEL), .COUNT());
    
     //generic counter configured to trigger packet sending for green-coded car at 10Hz
     wire SEND_PACKET_GRN;
     GenericCounter #(.COUNTER_WIDTH(24), .COUNTER_MAX(10000000)) 
-        TEN_CLK_COUNT_GRN(.CLK(CLK), .RESET(RESET), .ENABLE_IN(CAR_SELECT[2]), .TRIG_OUT(SEND_PACKET_GRN), .COUNT());
+        TEN_CLK_COUNT_GRN(.CLK(CLK), .RESET(RESET), .ENABLE_IN(CAR_SELECT[2]), .TRIGG_OUT(SEND_PACKET_GRN), .COUNT());
    
     //generic counter configured to trigger packet sending for red-coded car at 10Hz
     wire SEND_PACKET_RED;
     GenericCounter #(.COUNTER_WIDTH(24), .COUNTER_MAX(10000000)) 
-        TEN_CLK_COUNT_RED(.CLK(CLK), .RESET(RESET), .ENABLE_IN(CAR_SELECT[3]), .TRIG_OUT(SEND_PACKET_RED), .COUNT());
+        TEN_CLK_COUNT_RED(.CLK(CLK), .RESET(RESET), .ENABLE_IN(CAR_SELECT[3]), .TRIGG_OUT(SEND_PACKET_RED), .COUNT());
 
  //Instantiations of each colour code of car
     
