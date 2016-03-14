@@ -28,25 +28,17 @@ module IRTransmitterWrapper(
     input RESET,
     inout [7:0] BUS_DATA,
     input [7:0] BUS_ADDR,
-    input BTN_R,
-    input BTN_L,
-    input BTN_B,
-    input BTN_F,
-    input SEL_BLU,
-    input SEL_YEL,
-    input SEL_GRN,
-    input SEL_RED,  
     output reg [3:0] CAR_SELECT_OUT,  
-    output [3:0] SEG_SELECT_OUT,
-    output [7:0] DEC_OUT,
     output reg IR_LED
     );
 
 //Current command and car selection
     reg [3:0] COMMAND;
     reg [3:0] CAR_SELECT;
-    //Output car selection for 7 seg display
-    
+    always@(RESET) begin
+        COMMAND = 4'b0101; 
+        CAR_SELECT = 4'b0100; //YELLOW init
+    end
 //Connections to bus
     //IR transmitter base address defined on course doc
     parameter BASE_ADDR = 8'h90;
@@ -54,18 +46,19 @@ module IRTransmitterWrapper(
     wire ADDR_ENABLE;
     assign ADDR_ENABLE = (BUS_ADDR == BASE_ADDR) ? 1'b1 : 1'b0;
     //read in new command if ADDR_ENABLE true, else stop car
-    always@(posedge CLK) begin
-        if(ADDR_ENABLE) begin
-            CAR_SELECT = BUS_DATA[3:0];
-            CAR_SELECT_OUT <= BUS_DATA[3:0];
-            COMMAND = BUS_DATA[7:4];
-        end
-        else begin
-            COMMAND = 4'b0;
-            CAR_SELECT = 4'b0;
-            CAR_SELECT_OUT <= 4'b0;
-        end
-    end
+//    always@(posedge CLK) begin
+        
+//        if(ADDR_ENABLE) begin
+//            CAR_SELECT = 4'b0100;
+//            CAR_SELECT_OUT <= CAR_SELECT;
+//            COMMAND = BUS_DATA[7:4];
+//        end
+//        else begin
+//            COMMAND = 4'b0000;
+//            CAR_SELECT = 4'b0000;
+//            CAR_SELECT_OUT <= 4'b0000;
+//        end
+//    end
     
     
 //Instantiations of counters to generate 10Hz trigger for each colour code of car    

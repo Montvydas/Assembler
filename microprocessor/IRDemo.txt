@@ -1,0 +1,76 @@
+/*  This is an example on how to use the Translator */
+//Lower Case, upper case do not matter
+//If there are two registers in the operation 
+//the first reg is the register where the value will go after the operation
+//multiple spaces & tabs supported in between operands
+
+//define the timer interrupt to start from here
+timer_isr:
+//define the mouse interrupt to start from here
+mouse_isr:
+
+//stores value of reg A into 01 address
+store 1e a //hello
+
+//loads value at address 02 to reg B
+load b 02 
+
+//Branch to address ADDR i.e. load program counter with ADDR if register A’s content is equal to Register B’s
+breq 01
+
+//Branch to address ADDR i.e. load program counter with ADDR if register A’s content is greater than Register B’s
+bgtq 02
+
+//Branch to address ADDR i.e. load program counter with ADDR if register A’s content is less than Register B’s
+bltq 03
+
+//goes to idle state, where it looks for interrupt
+goto_idle
+
+//goes to specified address
+goto 04
+
+//call will store last address in stack
+call 05
+
+//pops out of stack the address into the program counter
+return
+
+//Read memory address given by the value of register B and set the result as the new register B value B <- [B]
+deref b
+
+//looks into what is stored into mem[A] & then stores contents to reg A 
+deref a
+
+//a = a + b
+add a b
+
+//b = b - a
+sub b a
+
+//a = a * b
+mult a b
+
+//a = a << 1
+s_l a
+
+//b = b >> 1
+s_r b
+
+//increment reg A and store in reg A
+incr a a
+
+//decrement reg A and store in reg B
+decr b a
+
+//store 01 to reg A if A == B, else store 00
+equals a b
+
+//store 01 to reg B if B > A, else store 00
+greater b a
+
+//store 01 to reg A if A < B, else store 00
+less a b 
+
+//loads a constant value to reg A
+load_val b 0F

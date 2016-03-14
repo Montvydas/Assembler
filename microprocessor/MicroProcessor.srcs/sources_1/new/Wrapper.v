@@ -61,19 +61,19 @@ module Wrapper(
      
      assign Interrept={Int_1s,1'b0};
 
-     DSL_VGA
-        myVGA(
-              .CLK(CLK),                      //connect to the clock on the board,50Mhz only
-              .Reset(Reset),                  //connect to button to reset the whole project
-              .ColorOut(ColorOut),            //cout the color. Connect to the VGA part
-              .HS(HS),                        //syn signal,connect to VGA HS
-              .VS(VS),                        //syn signal,connect to VGA VS
-              .BusData(DataBus),
-              .DataAddr(DataAddress),
-              .ColorConnect(ColorConnect)
-              //.BUS_WE(BusWE)
+//     DSL_VGA
+//        myVGA(
+//              .CLK(CLK),                      //connect to the clock on the board,50Mhz only
+//              .Reset(Reset),                  //connect to button to reset the whole project
+//              .ColorOut(ColorOut),            //cout the color. Connect to the VGA part
+//              .HS(HS),                        //syn signal,connect to VGA HS
+//              .VS(VS),                        //syn signal,connect to VGA VS
+//              .BusData(DataBus),
+//              .DataAddr(DataAddress),
+//              .ColorConnect(ColorConnect)
+//              //.BUS_WE(BusWE)
 
-             );
+//             );
 
                
      ROM
@@ -119,23 +119,23 @@ module Wrapper(
                           .IR_LED(IR_LED)
                          );
                           
-        MouseWrapper
-            myMouse(
-                          .RESET(Reset),
-                          .CLK_100(CLK),
-                          .CLK_MOUSE(),
-                          .DATA_MOUSE(),
-                          .LED_OUT(),
-                          .MOUSE_STATUS(),
-                          .POSITION_OR_SPEED(),
-                          .ENABLE_X_Y(), 
-                          .SEG_SELECT(),
-                          .DEC_OUT(),
-                          .LED_X(),
-                          .LED_Y(),
-                          .SOUND_X(),
-                          .SOUND_Y()
-                         );
+//        MouseWrapper
+//            myMouse(
+//                          .RESET(Reset),
+//                          .CLK_100(CLK),
+//                          .CLK_MOUSE(),
+//                          .DATA_MOUSE(),
+//                          .LED_OUT(),
+//                          .MOUSE_STATUS(),
+//                          .POSITION_OR_SPEED(),
+//                          .ENABLE_X_Y(), 
+//                          .SEG_SELECT(),
+//                          .DEC_OUT(),
+//                          .LED_X(),
+//                          .LED_Y(),
+//                          .SOUND_X(),
+//                          .SOUND_Y()
+//                         );
                          
         MicroProcessor 
             myMicroProcessor(

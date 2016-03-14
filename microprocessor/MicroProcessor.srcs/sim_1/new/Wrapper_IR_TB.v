@@ -43,8 +43,8 @@ module Wrapper_IR_TB;
         end
                 
         initial begin
-        #50 Reset=0;
-        #50 Reset=1;
+        #150 Reset=0;
+        #5 Reset=1;
         #50 Reset=0;
         end        
 

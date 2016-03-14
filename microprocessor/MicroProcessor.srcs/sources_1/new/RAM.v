@@ -52,23 +52,9 @@ module RAM(
     
     
     
-   // initial $readmemh(" Complete_Demo_RAM.txt", Mem);
+   initial $readmemh("/home/s1231174/Assembler/microprocessor/Complete_Demo_RAM.txt", Mem);
     
-    
-    //initialise the memory fo data preloading-the following part is for test
-    initial
-    begin //
-        Mem[0]=8'h05;  //to be added every time
-        Mem[1]=8'h00;  //color, every 1s can be read from this block and then add 1 
-        
-        //in order to change the interrupt rate
-        Mem[2]=8'd10;
-        Mem[3]=8'd100;
-        Mem[4]=8'd1000;
-        //Mem[2]=8'hFF;
-        //Mem[3]=8'hFE;
-        end
-    
+       
     //single port ram
     
     always@(posedge CLK)
