@@ -199,6 +199,7 @@ module MouseWrapper(
                     Interrupt <= 1'b1;      
                 else if(BUS_INTERRUPT_ACK)
                 	Interrupt <= 1'b0;
+                end
          end
          assign BUS_INTERRUPT_RAISE = Interrupt;
 endmodule
