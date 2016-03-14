@@ -313,7 +313,7 @@ public class TranslatorMain {
             
             
             if (instructionAddress < 254){
-                while (instructionAddress < 254) {
+                while (instructionAddress < 253) {
                 	instructionAddress ++;  
                     fw.write("\n");
                 }

@@ -44,15 +44,14 @@ timer_isr:
 
 //when timer comes, loads these values back to regs
 //and store into 7seg & LEDs Base Addresses
-//load a 01
-//store D0 a
+load a 01
+store D0 a
 
 //load a 02
 //store C0 a
 
 load b E0
 store C0 b
-store D0 b
 
 goto_idle
 
