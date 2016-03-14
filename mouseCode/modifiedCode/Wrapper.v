@@ -40,8 +40,13 @@ module Wrapper(
               output [3:0] SEG_SELECT_OUT,
               output [7:0] DEC_OUT,
   //            output reg IR_LED,
-              input [7:0] SlideSwitches,
-              input [7:0] LED,
+  			//slide switches
+              input [7:0] SLIDE_SWITCHES,
+              //digital led
+              output [7:0] LED,
+              //pwm generated LED
+              output [3:0] PWM_LED,
+              //mouse connection
               inout CLK_MOUSE,
               inout DATA_MOUSE
             
@@ -58,7 +63,7 @@ module Wrapper(
        wire [7:0] DataAddress;
        wire [7:0] ROMAddress;
        wire [7:0] ROMData;
-       wire [15:0] ColorConnect;
+//       wire [15:0] ColorConnect;
 /*
      DSL_VGA
         myVGA(
@@ -178,14 +183,38 @@ module Wrapper(
                           .CLK(CLK),
                           .RESET(Reset),
                          //LED wiring
-                          .SLIDE_SWITCHES (SlideSwitches),
+                          .SLIDE_SWITCHES (SLIDE_SWITCHES),
                          //BUS Signals
                           .BUS_DATA(DataBus),
                           .BUS_ADDR(DataAddress),
                           .BUS_WE(BusWE)
                           
                           	);
-                             
+//Seven segment module in here          
+         DecimalSeg
+            mySevenSeg(
+                           . CLK(CLK),
+                           . RESET(Reset),
+                           . BUS_ADDR(DataAddress),
+                           . BUS_DATA(DataBus),
+                           . BUS_WE (BusWE),
+                           . DEC_OUT(DEC_OUT),
+                           . SEG_SELECT(SEG_SELECT)
+                                 
+                                 );   
+//PWM LED in here                                 
+        PWM_Wrapper                     #(
+                                        .COUNTER_LEN(8),
+                                        .PWM_BASE_ADDR(8'hC1)
+                                        )
+                        pwm_module_for_4_LEDs (
+                                        .CLK (CLK),
+                                        .RESET(Reset),
+                                        .PWM_LED(PWM_LED),
+                                        .BUS_DATA(DataBus),
+                                        .BUS_ADDR(DataAddress),
+                                        .BUS_WE(BusWE)
+                                        );    
          /*SevenSeg
             mySevenSeg(
                            . CLK(CLK),
@@ -193,8 +222,8 @@ module Wrapper(
                            . BUS_ADDR(DataAddress),
                            . BUS_DATA(DataBus),
                            . BUS_WE (BusWE),
-                           . DecOut(DecOut),
-                           . Seg_Selcet(Seg_Selcet)
+                           . DecOut(DEC_OUT),
+                           . Seg_Selcet(SEG_SELECT)
                                  );*/
                
     

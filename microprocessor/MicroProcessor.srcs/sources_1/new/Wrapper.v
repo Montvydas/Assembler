@@ -39,8 +39,9 @@ module Wrapper(
               output [3:0] SEG_SELECT_OUT,
               output [7:0] DEC_OUT,
               output reg IR_LED,
-              input [7:0] SlideSwitches,
-              input [7:0] LED,
+              input [7:0] SLIDE_SWITCHES,
+              output [7:0] LED,
+              output [3:0] PWM_LED,
               inout CLK_MOUSE,
               inout DATA_MOUSE
             
@@ -157,7 +158,7 @@ module Wrapper(
                           .registerB(registerB)
                          
                              );
-        //LEDs with their bus  
+//Digital LEDs with their bus  
         LED myLED (
                          
                          //Standard Signals
@@ -171,19 +172,33 @@ module Wrapper(
                           .BUS_WE(BusWE)
                           
                           	);
+//Slide swtiches connected to the bus                          	
         SlideSwitches mySlideSwitches (
                          
                          //Standard Signals
                           .CLK(CLK),
                           .RESET(Reset),
                          //LED wiring
-                          .SLIDE_SWITCHES (SlideSwitches),
+                          .SLIDE_SWITCHES (SLIDE_SWITCHES),
                          //BUS Signals
                           .BUS_DATA(DataBus),
                           .BUS_ADDR(DataAddress),
                           .BUS_WE(BusWE)
                           
                           	);
+//PWM LEDs in here                                 
+        PWM_Wrapper                     #(
+                                        .COUNTER_LEN(8),
+                                        .PWM_BASE_ADDR(8'hC1)
+                                        )
+                        pwm_module_for_4_LEDs (
+                                        .CLK (CLK),
+                                        .RESET(Reset),
+                                        .PWM_LED(PWM_LED),
+                                        .BUS_DATA(DataBus),
+                                        .BUS_ADDR(DataAddress),
+                                        .BUS_WE(BusWE)
+                                        ); 
                              
          /*SevenSeg
             mySevenSeg(
