@@ -25,7 +25,7 @@ module Wrapper(
             //the following is the VGA part
               input  CLK,                       //connect to the clock on the board,50Mhz only
               input  Reset,                     //connect to button to reset the whole project
-              output [7:0] ColorOut,
+ /*             output [7:0] ColorOut,
               output HS,
               output VS,
               input BTN_R,                      
@@ -36,12 +36,17 @@ module Wrapper(
               input SEL_YEL,
               input SEL_GRN,
               input SEL_RED,    
+  */
               output [3:0] SEG_SELECT_OUT,
               output [7:0] DEC_OUT,
-              output reg IR_LED,
+  //            output reg IR_LED,
+  			//slide switches
               input [7:0] SLIDE_SWITCHES,
+              //digital led
               output [7:0] LED,
+              //pwm generated LED
               output [3:0] PWM_LED,
+              //mouse connection
               inout CLK_MOUSE,
               inout DATA_MOUSE
             
@@ -58,10 +63,8 @@ module Wrapper(
        wire [7:0] DataAddress;
        wire [7:0] ROMAddress;
        wire [7:0] ROMData;
-       wire [15:0] ColorConnect;
-       
-       wire [3:0] CAR_SELECT;
-
+//       wire [15:0] ColorConnect;
+/*
      DSL_VGA
         myVGA(
               .CLK(CLK),                      //connect to the clock on the board,50Mhz only
@@ -76,7 +79,7 @@ module Wrapper(
 
              );
 
-               
+  */             
      ROM
         myROM(
                .CLK(CLK),
@@ -109,13 +112,11 @@ module Wrapper(
                           .BUS_INTERRUPT_RAISE(Interrept[1]),
                           .BUS_INTERRUPT_ACK(Interrept_ACK[1])
                          );
-                         
+   /*                      
         IRTransmitterWrapper
             myIR(
                           .CLK(CLK),
                           .RESET(Reset),
-                          .BUS_DATA(DataBus),
-                          .BUS_ADDR(DataAddress),
                           .BTN_R(BTN_R),
                           .BTN_L(BTN_L),
                           .BTN_B(BTN_B),
@@ -124,10 +125,11 @@ module Wrapper(
                           .SEL_YEL(SEL_YEL),
                           .SEL_GRN(SEL_GRN),
                           .SEL_RED(SEL_RED),
-                          .CAR_SELECT_OUT(CAR_SELECT),
+                          .SEG_SELECT_OUT(SEG_SELECT_OUT),
+                          .DEC_OUT(DEC_OUT),
                           .IR_LED(IR_LED)
                          );
-                          
+     */                     
         MouseWrapper
             myMouse(
                           .RESET(Reset),
@@ -161,21 +163,7 @@ module Wrapper(
                           .registerB(registerB)
                          
                              );
-         
-        Seg7Wrapper
-            mySeg7(
-                        .CLK(CLK),
-                        .RESET(Reset),
-                        .CAR_SELECT(CAR_SELECT),
-                        .BUS_DATA(DataBus),
-                        .BUS_ADDR(DataAddr),
-                        .BUS_WE(BusWE),
-                        .SEG_SELECT_OUT(SEG_SELECT_OUT),
-                        .DEC_OUT(DEC_OUT)
-            
-                        );
-
-//Digital LEDs with their bus  
+        //LEDs with their bus  
         LED myLED (
                          
                          //Standard Signals
@@ -189,7 +177,6 @@ module Wrapper(
                           .BUS_WE(BusWE)
                           
                           	);
-//Slide swtiches connected to the bus                          	
         SlideSwitches mySlideSwitches (
                          
                          //Standard Signals
@@ -203,7 +190,19 @@ module Wrapper(
                           .BUS_WE(BusWE)
                           
                           	);
-//PWM LEDs in here                                 
+//Seven segment module in here          
+         DecimalSeg
+            mySevenSeg(
+                           . CLK(CLK),
+                           . RESET(Reset),
+                           . BUS_ADDR(DataAddress),
+                           . BUS_DATA(DataBus),
+                           . BUS_WE (BusWE),
+                           . DEC_OUT(DEC_OUT),
+                           . SEG_SELECT(SEG_SELECT)
+                                 
+                                 );   
+//PWM LED in here                                 
         PWM_Wrapper                     #(
                                         .COUNTER_LEN(8),
                                         .PWM_BASE_ADDR(8'hC1)
@@ -215,9 +214,7 @@ module Wrapper(
                                         .BUS_DATA(DataBus),
                                         .BUS_ADDR(DataAddress),
                                         .BUS_WE(BusWE)
-                                        ); 
-                             
-
+                                        );    
          /*SevenSeg
             mySevenSeg(
                            . CLK(CLK),
@@ -225,8 +222,8 @@ module Wrapper(
                            . BUS_ADDR(DataAddress),
                            . BUS_DATA(DataBus),
                            . BUS_WE (BusWE),
-                           . DecOut(DecOut),
-                           . Seg_Selcet(Seg_Selcet)
+                           . DecOut(DEC_OUT),
+                           . Seg_Selcet(SEG_SELECT)
                                  );*/
                
     

@@ -1,14 +1,14 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: The University Of Edinburgh
+// Engineer: Montvydas Klumbys
 // 
-// Create Date: 12.02.2016 10:17:25
-// Design Name: 
+// Create Date: 13.02.2016 19:40:35
+// Design Name: IR_MOUSE_CONTROLLED_CAR
 // Module Name: MouseWrapper
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
+// Project Name: IR_MOUSE_CONTROLLED_CAR
+// Target Devices: BASYS3 Board
+// Tool Versions:  Vivado
 // Description: 
 // 
 // Dependencies: 
@@ -28,13 +28,13 @@ module MouseWrapper(
 	inout 	CLK_MOUSE,
 	inout 	DATA_MOUSE,
 // Mouse data information
-	output 	[7:0] LED_OUT,
-	output 	[3:0] MOUSE_STATUS,
+//	output 	[7:0] LED_OUT,
+//	output 	[3:0] MOUSE_STATUS,
 //7Seg Display
-	input 	POSITION_OR_SPEED,
-	input 	ENABLE_X_Y,			//used to decide if enable x or enable y
-    output 	[3:0] SEG_SELECT,	//chooses one out of 4 transistor drivers
-    output 	[7:0] DEC_OUT,		//Turns ON diodes in 7SegDisplay
+//	input 	POSITION_OR_SPEED,
+//	input 	ENABLE_X_Y,			//used to decide if enable x or enable y
+//    output 	[3:0] SEG_SELECT,	//chooses one out of 4 transistor drivers
+//    output 	[7:0] DEC_OUT,		//Turns ON diodes in 7SegDisplay
 //For MicroProcessor
     inout 	[7:0] BUS_DATA,
     input 	[7:0] BUS_ADDR,
@@ -42,11 +42,11 @@ module MouseWrapper(
     input 	BUS_INTERRUPT_ACK,
     input 	BUS_WE,
 //LEDs for the Extra Stuff
-	output 	LED_X,
-	output 	LED_Y,
+//	output 	LED_X,
+//	output 	LED_Y,
 	
-	output 	SOUND_X,
-	output 	SOUND_Y
+//	output 	SOUND_X,
+//	output 	SOUND_Y
  	);
 
     parameter [7:0] MouseBaseAddr = 8'hA0; // Timer Base Address in the Memory Map
@@ -76,6 +76,8 @@ module MouseWrapper(
 					.MOUSE_MOVE_Y(mouse_move_y),
 					.SEND_INTERRUPT(send_interrupt)
 					);
+
+/*
 	assign MOUSE_STATUS = mouse_status;	
 
 	assign LED_OUT = ENABLE_X_Y ? mouse_y : mouse_x;	//show either Horizontal or Vertical position on LEDs
@@ -94,7 +96,7 @@ module MouseWrapper(
 					.TENS(bcd_wire[7:4]),
 					.ONES(bcd_wire[3:0])
 					);
-	
+
 //place X or Y values on 7seg
 	DecimalSeg decimal_num_to_seg(
 					.CLK(CLK_50),
@@ -103,7 +105,8 @@ module MouseWrapper(
 					.DEC_OUT(DEC_OUT),
 					.BCD_IN(bcd_wire)
 					);
-/*
+
+
 //100kHz clock for PWM outputs
 	wire pwm_clk;	//PWM clock connected to all PWMs
 	GenericCounter #(
@@ -163,14 +166,7 @@ module MouseWrapper(
 					);
 					
 */					
-					
-					
-					
-					
-					
-					
-					
-					
+
 // 1 - have all of the values to be transmitter ready
 // 2 - If base address is correct, pass the right value to the BUS_DATA
 // 3 - if BUS_WE, means the processor is writing data to the BUS, so we need to check for ~BUS_WE

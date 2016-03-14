@@ -4,8 +4,13 @@
 //the first reg is the register where the value will go after the operation
 //multiple spaces & tabs supported in between operands
 
+//define the timer interrupt to start from here
+timer_isr:
+//define the mouse interrupt to start from here
+mouse_isr:
+
 //stores value of reg A into 01 address
-store 01 a //hello
+store 1e a //hello
 
 //loads value at address 02 to reg B
 load b 02 
