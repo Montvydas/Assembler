@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="5" Path="/home/s1231174/Assembler/microprocessor/MicroProcessor.xpr">
+<Project Version="7" Minor="5" Path="/afs/inf.ed.ac.uk/user/s12/s1231174/Documents/Assembler/microprocessor/MicroProcessor.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="4cf8582d5bde4f6d8a726dbc45002a02"/>
