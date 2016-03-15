@@ -24,16 +24,12 @@ module Wrapper_IR_TB;
 
         reg CLK;
         reg Reset;
-        wire [3:0] SEG_SELECT_OUT;
-        wire [7:0] DEC_OUT;
         wire IR_LED;
 
     
         Wrapper uut(
                    .CLK(CLK),             
                    .Reset(Reset),
-                   .SEG_SELECT_OUT(SEG_SELECT_OUT),
-                   .DEC_OUT(DEC_OUT),
                    .IR_LED(IR_LED)
                   );
     
