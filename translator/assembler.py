@@ -5,7 +5,11 @@ src_file = sys.argv[1]
 out_file = sys.argv[2]
 
 default_fill = "F"
+
+end_check_addr = "end_check"
 timer_interrupt_addr = "timer_interrupt"
+ten_interrupts_addr = "ten_interrupts"
+end_addr = "end"
 
 line_count = -1 # account for line nos starting at 1, not 0
 labels = {}
@@ -187,5 +191,11 @@ with open(src_file, 'r') as src:
             empty(default_fill, default_fill)
             line_count += 1
 
+        if end_check_addr in labels:
+            labelAddr(labels[end_check_addr])
         if timer_interrupt_addr in labels:
             labelAddr(labels[timer_interrupt_addr])
+        if ten_interrupts_addr in labels:
+            labelAddr(labels[ten_interrupts_addr])
+        if end_addr in labels:
+            labelAddr(labels[end_addr])
