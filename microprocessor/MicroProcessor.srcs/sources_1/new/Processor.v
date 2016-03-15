@@ -22,29 +22,18 @@
 
 module MicroProcessor (
 
-                //Standard Signals
                 input CLK,
                 input RESET,
-                //BUS Signals
                 inout [7:0] BUS_DATA,
                 output [7:0] BUS_ADDR,
                 output BUS_WE,
-                // ROM signals
                 output [7:0] ROM_ADDRESS,
                 input [7:0] ROM_DATA,
-                // INTERRUPT signals
                 input [1:0] BUS_INTERRUPTS_RAISE,
-                output [1:0] BUS_INTERRUPTS_ACK,
-                //signal just for test, you can delete it
-                output [7:0] registerA,
-                output [7:0] registerB
+                output [1:0] BUS_INTERRUPTS_ACK
                
 
     );
-    
-                //the following sentence is just for test
-                assign registerA=CurrRegA;
-                assign registerB=CurrRegB;
     
                 //The main data bus is treated as tristate, so we need a mechanism to handle this.
                 //Tristate signals that interface with the main state machine
@@ -205,7 +194,7 @@ module MicroProcessor (
                 CurrFunctionCall=NextFunctionCall;
           end
     end
-    //Combinatorial section – large!
+    //Combinatorial section - large!
    
     always@* begin
     //Generic assignment to reduce the complexity of the rest of the S/M

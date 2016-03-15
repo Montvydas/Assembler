@@ -42,12 +42,14 @@ module IRTransmitterWrapper(
     parameter BASE_ADDR = 8'h90;
    
     always@(posedge CLK) begin
-        if(RESET)
+        if(RESET) begin
             COMMAND <= 4'b0000;
-        else if((BUS_ADDR == BASE_ADDR) & BUS_WE)
+            CAR_SELECT <= 4'b0000;
+        end
+        else if(BUS_ADDR == BASE_ADDR) begin
             CAR_SELECT <= 4'b0010; //hard code to YEL car for now
-//            CAR_SELECT_OUT <= CAR_SELECT;
             COMMAND <= {BUS_DATA[0],BUS_DATA[1],BUS_DATA[2],BUS_DATA[3]}; //need to reverse command digits
+        end
     end
     
     
@@ -61,7 +63,7 @@ module IRTransmitterWrapper(
     //generic counter configured to trigger packet sending for yellow-coded car at 10Hz
     wire SEND_PACKET_YEL;
     GenericCounter #(.COUNTER_WIDTH(24), .COUNTER_MAX(10000000)) 
-        TEN_CLK_COUNT_YEL(.CLK(CLK), .RESET(RESET), .ENABLE_IN(CAR_SELECT[1]), .TRIGG_OUT(SEND_PACKET_YEL), .COUNT());
+        TEN_CLK_COUNT_YEL(.CLK(CLK), .RESET(RESET), .ENABLE_IN(1), .TRIGG_OUT(SEND_PACKET_YEL), .COUNT());
    
 //    //generic counter configured to trigger packet sending for green-coded car at 10Hz
 //    wire SEND_PACKET_GRN;

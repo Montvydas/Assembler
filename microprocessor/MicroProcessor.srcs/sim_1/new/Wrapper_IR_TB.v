@@ -23,13 +23,13 @@
 module Wrapper_IR_TB;
 
         reg CLK;
-        reg Reset;
+        reg RESET;
         wire IR_LED;
 
     
         Wrapper uut(
                    .CLK(CLK),             
-                   .Reset(Reset),
+                   .RESET(RESET),
                    .IR_LED(IR_LED)
                   );
     
@@ -39,9 +39,9 @@ module Wrapper_IR_TB;
         end
                 
         initial begin
-        #150 Reset=0;
-        #5 Reset=1;
-        #50 Reset=0;
+        #150 RESET=0;
+        #5 RESET=1;
+        #50 RESET=0;
         end        
 
 
