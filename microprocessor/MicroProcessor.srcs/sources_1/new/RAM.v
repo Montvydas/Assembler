@@ -52,7 +52,8 @@ module RAM(
     
     
     
-   initial $readmemh("/afs/inf.ed.ac.uk/user/s12/s1231174/Documents/Assembler/microprocessor/Complete_Demo_RAM.txt", Mem);
+//   initial $readmemh("/afs/inf.ed.ac.uk/user/s12/s1231174/Documents/Assembler/microprocessor/Complete_Demo_RAM.txt", Mem);
+   initial $readmemh("/afs/inf.ed.ac.uk/user/s12/s1231174/Documents/Assembler/translator/script.ram", Mem);
     
        
     //single port ram

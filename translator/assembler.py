@@ -39,19 +39,13 @@ with open(src_file, 'r') as src:
             # first check for comments, i.e. starting '#'
             if "#" in tokens: # if comment in line, delete it and following tokens
                 idx = tokens.index("#")
-                # print str(-1*(len(tokens)-idx))
                 del tokens[-1*(len(tokens)-idx):]
                 line_count -= 1
-            # check for blank lines or comment lines after deletion
-            # print tokens
-            if len(tokens) == 0:
-                inst = ""
-            else:
-                inst = tokens[0]
+            inst = tokens[0]
             # next check if line is a label
             if(':' in line and '#' not in line):
                 label = tokens[0][:-1] # label is token without colon
-                labels[label] = hex(line_count)[2:] # value of label is its line in hex without '0h'
+                labels[label] = hex(line_count)[2:] # value of label is its line in hex
                 line_count -= 1 # don't count label as an instruction
             elif inst == "LOAD":
                 line_count += 1 # LD/ST need extra byte
@@ -151,17 +145,17 @@ with open(src_file, 'r') as src:
             elif inst == "AND":
                 alu("C", tokens[1])
             elif inst == "OR":
-                alu("D", tokens[1])
-            elif inst == "XOR":
                 alu("E", tokens[1])
+            elif inst == "XOR":
+                alu("D", tokens[1])
             elif inst == "BREQ":
                 line_count += 1
                 label = tokens[1]
-                memLine("B", 6, labels[label])
+                memLine("9", 6, labels[label])
             elif inst == "BGTE":
                 line_count += 1
                 label = tokens[1]
-                memLine("B", 6, labels[label])
+                memLine("A", 6, labels[label])
             elif inst == "BLTE":
                 line_count += 1
                 label = tokens[1]
@@ -177,13 +171,10 @@ with open(src_file, 'r') as src:
                 label = tokens[1]
                 memLine(default_fill, 9, labels[label])
             elif inst == "RETURN":
-                empty(default_fill)
+                empty(default_fill, "A")
             elif inst == "DEREF":
                 deref = "B" if tokens[1] == "A" else "C"
-            elif inst == "":
-                pass
-            elif inst == "#":
-                pass
+                empty(default_fill, deref)
             else:
                 print "INVALID COMMAND: [" + str(line_count) + "] " + line
 
@@ -199,3 +190,5 @@ with open(src_file, 'r') as src:
             labelAddr(labels[ten_interrupts_addr])
         if end_addr in labels:
             labelAddr(labels[end_addr])
+
+print labels
