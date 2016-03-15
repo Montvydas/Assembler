@@ -1,15 +1,16 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: University of Edinburgh
+// Engineer: Montvydas Klumbys
 // 
 // Create Date: 26.01.2016 14:37:12
-// Design Name: 
+// Design Name: PS2_mouse_control in verilog
 // Module Name: MouseMasterSM
 // Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
+// Target Devices: Basys3 Board
+// Tool Versions: Vivado 16
+// Description: Master state machine goes through all the sttes required to initilaise
+// and to received values for X, Y & status.
 // 
 // Dependencies: 
 // 

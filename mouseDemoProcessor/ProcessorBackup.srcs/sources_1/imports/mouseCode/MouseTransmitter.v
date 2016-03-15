@@ -1,15 +1,15 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: University of Edinburgh
+// Engineer: Montvydas Klumbys
 // 
 // Create Date: 26.01.2016 10:35:09
 // Design Name: 
 // Module Name: MouseTransmitter
 // Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
+// Target Devices: Basys3 board
+// Tool Versions: Vivado 16
+// Description: Used to transmit information to the mouse as binary 
 // 
 // Dependencies: 
 // 

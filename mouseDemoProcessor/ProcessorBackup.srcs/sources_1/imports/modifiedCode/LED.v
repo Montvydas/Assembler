@@ -8,7 +8,7 @@
 // Module Name: LED 
 // Project Name: IR_MOUSE_CONTROLLED_CAR
 // Target Devices: BASYS3 Board
-// Tool Versions:  Vivado
+// Tool Versions:  Vivado 16
 // Description: 	 This is a code for the LED module to be connected to the processor
 // 
 // Dependencies: Depends on the wrapper top module
@@ -33,7 +33,7 @@ module LED (
 	wire [7:0] BusDataIn;
 	
 	assign BusDataIn = BUS_DATA;
-	
+	//assign led to be the value of a bus if bus addr is the same as base addr and processor is writing
 	assign LED = ( (BUS_ADDR == LEDBaseAddr)  & BUS_WE) ? BusDataIn : LED;
 	
 endmodule

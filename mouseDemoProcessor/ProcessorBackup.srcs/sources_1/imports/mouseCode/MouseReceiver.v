@@ -1,15 +1,15 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: University of Edinburgh
+// Engineer: Montvydas Klumbys
 // 
 // Create Date: 25.01.2016 16:29:21
 // Design Name: 
 // Module Name: MouseReceiver
 // Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
+// Target Devices: Basys3 board
+// Tool Versions: Vivado 16
+// Description: Used to receive info from mosue
 // 
 // Dependencies: 
 // 

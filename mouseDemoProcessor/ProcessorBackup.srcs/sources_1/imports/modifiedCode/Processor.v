@@ -1,14 +1,14 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company:        The University of Edinburgh
-// Engineer:	Montvydas Klumbys
+// Company: The University of Edinburgh
+// Engineer: Montvydas Klumbys
 // 
-// Create Date:    
-// Design Name:    
+// Create Date: 13.02.2016 19:40:10
+// Design Name:    IR_MOUSE_CONTROLLED_CAR
 // Module Name:    MicroProcessor 
-// Project Name:   
-// Target Devices: 
-// Tool versions:  vivado
+// Project Name: IR_MOUSE_CONTROLLED_CAR
+// Target Devices: basys3 board
+// Tool versions:  vivado 16
 // Description:    This is the code file of Microprocessor
 //
 // Dependencies:   Subroutine of top level file
@@ -137,38 +137,30 @@ parameter [7:0] DO_MATHS_OPP_SAVE_IN_A  = 8'h30; //The result of maths op. is av
 parameter [7:0] DO_MATHS_OPP_SAVE_IN_B  = 8'h31; //The result of maths op. is available, save it to Reg B.
 parameter [7:0] DO_MATHS_OPP_0 			 = 8'h32; //wait for new op address to settle. end op.
 
-//////////////////////////////////////////////////////////////////////////////////
-/*
-Complete the above parameter list for In/Equality, Goto Address, Goto Idle,
-function start, Return from function, and Dereference operations.
-*/
+//deref A or B
+parameter [7:0] DE_REFERENCE_A    = 8'h90;  //used for different steps while performing 
+parameter [7:0] DE_REFERENCE_B     = 8'h91; //dereference operatio
+parameter [7:0] DE_REFERENCE_0     = 8'h92; 
+parameter [7:0] DE_REFERENCE_1     = 8'h93; 
+parameter [7:0] DE_REFERENCE_2     = 8'h94; 
 
-//Jump Operations
-parameter [7:0] IF_A_EQUALITY_B_GOTO    = 8'h40; //Compare Register A/B, equal/bigger/smaller
-parameter [7:0] GOTO_ADDR               = 8'h50; //Branch to ADDR
-parameter [7:0] GOTO_IDLE               = 8'h60; //Go to IDLE state, refresh
 
 //Function call and return
-parameter [7:0] FUNCTION_START          = 8'h70; //Call the function
-parameter [7:0] RETURN                  = 8'h80; //Return from the function
-
-//Dereference
-parameter [7:0] DE_REFERENCE_A          = 8'h90; //Wait to find what address to read, save reg select.
-parameter [7:0] DE_REFERENCE_B          = 8'h91; //Wait to find what address to read, save reg select.
-parameter [7:0] DE_REFERENCE_0          = 8'h92; //Set BUS_ADDR to designated address.
-parameter [7:0] DE_REFERENCE_1          = 8'h93; //wait - Increments program counter by 1. Reset offset.
-parameter [7:0] DE_REFERENCE_2          = 8'h94; //Writes memory output to chosen register, end op.
+parameter [7:0] FUNCTION_START      = 8'h70; //call instruction performed using this step
+parameter [7:0] RETURN              = 8'h80; //return instr using step this
 
 
-  parameter  	LOAD_VAL_A 			= 	8'h86;
-  parameter 	LOAD_VAL_A_1		= 	8'h87;
-  parameter 	LOAD_VAL_A_2		= 	8'h88;
-  parameter 	LOAD_VAL_B 			= 	8'h89;
-  parameter		LOAD_VAL_B_1		= 	8'h90;
-  parameter 	LOAD_VAL_B_2		=	8'h91;
+parameter  	LOAD_VAL_A 			= 	8'h86;	//load val instruction is performed using this
+parameter 	LOAD_VAL_A_1		= 	8'h87;
+parameter 	LOAD_VAL_A_2		= 	8'h88;
+parameter 	LOAD_VAL_B 			= 	8'h89;
+parameter 	LOAD_VAL_B_2		=	8'h91;
+parameter		LOAD_VAL_B_1		= 	8'h90;
 
-
-//////////////////////////////////////////////////////////////////////////////////
+//Jump Operations
+parameter [7:0] IF_A_EQUALITY_B_GOTO    = 8'h40; //	goto a specific address
+parameter [7:0] GOTO_ADDR             = 8'h50; //	also bransh equal
+parameter [7:0] GOTO_IDLE          = 8'h60; 
 
 //Sequential part of the State Machine.
 reg [7:0] CurrState, NextState;
@@ -388,36 +380,38 @@ case (CurrState)
 	DO_MATHS_OPP_0:
 					NextState = CHOOSE_OPP;
 
-//////////////////////////////////////////////////////////////////////////////////
+
 /*
 Complete the above case statement for In/Equality, Goto Address, Goto Idle, function start, Return from
 function, and Dereference operations.
 */
-
-//Branch to address ADDR, load program counter with ADDR
-//if registerA's content is equal/bigger/smaller than register B's
+//branch if equal in here BREQ
+//Check for equality
 	IF_A_EQUALITY_B_GOTO:
 			begin
-//Check for equality
+	//check ALU command
 				if(AluOut == 8'h01)
 					NextProgCounter = ProgMemoryOut;
 				else
-					NextProgCounter = CurrProgCounter + 2;
+					NextProgCounter = CurrProgCounter + 2;	//this is 2 byte command
 
-				NextState   = CHOOSE_OPP;
+				NextState   = CHOOSE_OPP;	//choose operation
 			end
-
-//Branch to address ADDR, load program counter with ADDR
+//check the equality
 	GOTO_ADDR:
 			begin
+					NextState       = CHOOSE_OPP;//choose the opeartion from ALU
 					NextProgCounter = ProgMemoryOut;
-					NextState       = CHOOSE_OPP;
+
+					
 			end
 
-//Go to IDLE state and wait for interrupt
+
+//go back to idle
 	GOTO_IDLE:
 			begin
-					NextState = IDLE;
+			
+					NextState = IDLE;	//go to idle
 			end
 
 //Branch to memory address ADDR. Save the next program address
@@ -425,34 +419,36 @@ function, and Dereference operations.
 	FUNCTION_START:
 			begin
 					NextProgCounter = ProgMemoryOut;
+					
+					
 					NextProgContext = CurrProgCounter +2;
 					NextState       = CHOOSE_OPP;
 			end
 
-//Returns from a function call i.e. loads program context to the program counter
-//for next instruction execution
+//return operation from call instruction
 	RETURN:
 			begin
 					NextProgCounter = CurrProgContext;
-					NextState       = CHOOSE_OPP;
+					NextState       = CHOOSE_OPP;//choose ALU operation
 			end
 
-//Read memory address given by the value of register A and set the result as the new
-//register A value A <- [A]
+// DEREFERENCE operation A<-[A]
+//get the value stored in the address of the value stored in A
 	DE_REFERENCE_A:
 			begin
 					NextState     = DE_REFERENCE_0;
 					NextRegSelect = 1'b0;
 			end
 
-//Read memory address given by the value of register B and set the result as the new
-//register B value B <- [B]
+//dereference for B reg
+//B <- [B]
 	DE_REFERENCE_B:
 			begin
 					NextState     = DE_REFERENCE_0;
 					NextRegSelect = 1'b1;
 			end
 
+//next step for dere
 	DE_REFERENCE_0:
 			begin
 					NextState   = DE_REFERENCE_1;
@@ -478,15 +474,15 @@ function, and Dereference operations.
 			end
 			
 //Loads a constant value defined in ROM to a specified reg A or reg B
-					LOAD_VAL_A: begin
-									NextState = LOAD_VAL_A_1;
-									NextProgCounter = CurrProgCounter + 2;
-								end
-					LOAD_VAL_A_1: begin
-									NextState = LOAD_VAL_A_2;
-									NextRegA = ProgMemoryOut;
-									//NextProgCounter = CurrProgCounter + 1;
-								end
+	LOAD_VAL_A: begin
+		NextState = LOAD_VAL_A_1;
+		NextProgCounter = CurrProgCounter + 2;
+		end
+	LOAD_VAL_A_1: begin
+		NextState = LOAD_VAL_A_2;
+		NextRegA = ProgMemoryOut;
+	end
+					
 					LOAD_VAL_A_2: begin
 									NextState = CHOOSE_OPP;
 								end
@@ -506,17 +502,18 @@ function, and Dereference operations.
 
 	default:
 			begin
-					NextState 				 = 8'h00;
-					NextProgCounter 		 = 8'h00;
-					NextProgCounterOffset = 2'h0;
-					NextBusAddr 			 = 8'hFF;
-					NextBusDataOut 		 = 8'h00;
-					NextBusDataOutWE 		 = 1'b0;
-					NextRegA 			 	 = 8'h00;
+					NextRegA 			 	 = 8'h00;//Specify default values for all the regs
 					NextRegB 			 	 = 8'h00;
-					NextRegSelect 			 = 1'b0;
 					NextProgContext 		 = 8'h00;
 					NextInterruptAck 		 = 2'b00;
+					NextState 				 = 8'h00;
+					NextRegSelect 			 = 1'b0;
+					NextProgCounter 		 = 8'h00;
+					NextProgCounterOffset = 2'h0;
+					NextBusDataOut 		 = 8'h00;
+					NextBusAddr 			 = 8'hFF;
+					NextBusDataOutWE 		 = 1'b0;
+
 			end
 
 //////////////////////////////////////////////////////////////////////////////////

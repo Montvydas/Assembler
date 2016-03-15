@@ -1,15 +1,15 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: University of Edinburgh
+// Engineer: Montvydas Klumbys
 // 
 // Create Date: 26.01.2016 14:55:36
 // Design Name: 
 // Module Name: MouseTransceiver
 // Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
+// Target Devices: Basys3 board
+// Tool Versions: Vivado 16
+// Description: used to connect receiver and transmitter
 // 
 // Dependencies: 
 // 

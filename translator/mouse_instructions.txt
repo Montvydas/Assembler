@@ -1,0 +1,65 @@
+//This is gonna be the code for accessing the values in each of the mouse data busses
+//firstly need to specify that the interrupt for mouse will start from address 00
+//Do this inside the Verilog code for now
+
+//RAM contents will look like this
+/*
+Mem[0] = 8'h00;
+Mem[1] = 8'h01;
+Mem[2] = 8'h02;
+Mem[3] = 8'h03;
+*/
+
+//ROM also needs to have this
+/*
+ROM[8'hFF] = 8'h00;
+*/
+
+//To simulate the mouse without using memreadb
+/*
+//info about the interrupt location
+ROM[8'hFF] = 8'h00;
+//load a 01 
+ROM[0] = 8'b00000000;
+ROM[0] = 8'b00000001;
+store F2 a
+ROM[0] = 8'b00000010;
+ROM[0] = 8'b11110010;
+//load a A0
+ROM[0] = 8'b00000000;
+ROM[0] = 8'b10100000;
+//load a A1
+ROM[0] = 8'b00000000;
+ROM[0] = 8'b10100001;
+//load a A2
+ROM[0] = 8'b00000000;
+ROM[0] = 8'b10100010;
+*/
+
+//idle starts in here:
+//address == 00:
+
+goto FF			//in the idle do nothing, just go back to the beginning
+
+//Timer ISR starts here
+timer_isr:
+	load a E0		//E0 - slide switches address
+	store C4 a		//C4 - address of PWM 4 LED
+
+	load_val a FF	//load_val function loads defined value to a reg
+	store C3 a		//C3 - address of PWM 3 LED
+goto_idle
+
+//Mouse ISR starts here
+mouse_isr:
+	load b A1	//A1 - address of mouseX values
+	store C1 b	//C1 - addr of 1 PWM LED
+	store C0 b	//C0 - addr of 8 digital LEDs 
+
+
+	load b A2	//A2 - adress of mouseY values
+	store C2 b	//C2 - addr of 1 PWM LED
+	store D0 b	//D0 - address of 7seg Display
+goto_idle
+
+

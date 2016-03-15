@@ -8,10 +8,11 @@
 // Module Name: MouseWrapper
 // Project Name: IR_MOUSE_CONTROLLED_CAR
 // Target Devices: BASYS3 Board
-// Tool Versions:  Vivado
-// Description: 
+// Tool Versions:  Vivado 16
+// Description: mouse wrapper is used to connect the processor to 
+//the mouse module through bus and addresses
 // 
-// Dependencies: 
+// Dependencies: Processor Wrapper
 // 
 // Revision:
 // Revision 0.01 - File Created
@@ -27,26 +28,12 @@ module MouseWrapper(
 //IO - Mouse side
 	inout 	CLK_MOUSE,
 	inout 	DATA_MOUSE,
-// Mouse data information
-//	output 	[7:0] LED_OUT,
-//	output 	[3:0] MOUSE_STATUS,
-//7Seg Display
-//	input 	POSITION_OR_SPEED,
-//	input 	ENABLE_X_Y,			//used to decide if enable x or enable y
-//    output 	[3:0] SEG_SELECT,	//chooses one out of 4 transistor drivers
-//    output 	[7:0] DEC_OUT,		//Turns ON diodes in 7SegDisplay
 //For MicroProcessor
     inout 	[7:0] BUS_DATA,
     input 	[7:0] BUS_ADDR,
     output 	BUS_INTERRUPT_RAISE,
     input 	BUS_INTERRUPT_ACK,
     input 	BUS_WE
-//LEDs for the Extra Stuff
-//	output 	LED_X,
-//	output 	LED_Y,
-	
-//	output 	SOUND_X,
-//	output 	SOUND_Y
  	);
 
     parameter [7:0] MouseBaseAddr = 8'hA0; // Timer Base Address in the Memory Map
@@ -76,118 +63,15 @@ module MouseWrapper(
 					.MOUSE_MOVE_Y(mouse_move_y),
 					.SEND_INTERRUPT(send_interrupt)
 					);
-
-/*
-	assign MOUSE_STATUS = mouse_status;	
-
-	assign LED_OUT = ENABLE_X_Y ? mouse_y : mouse_x;	//show either Horizontal or Vertical position on LEDs
-
-	wire [15:0] bcd_wire;									//binary codded decimal wire connected to segment display
-	wire [7:0] binary_x_y;									//wire connectingto mouse_x or mouse_y
-	assign bcd_wire[15:12] = 4'h0;							//thousands always 0
-
-//decide if show position or speed and if show for x or for y coordinates 	
-	assign binary_x_y = POSITION_OR_SPEED ? (ENABLE_X_Y ? mouse_move_y : mouse_move_x) : (ENABLE_X_Y ? mouse_y : mouse_x);	
-
-//Module to translate from binary to BCD in hundreds, tens & ones
-	BinaryToBCD binary_to_BCD (
-					.BINARY(binary_x_y),
-					.HUNDREDS(bcd_wire[11:8]),
-					.TENS(bcd_wire[7:4]),
-					.ONES(bcd_wire[3:0])
-					);
-
-//place X or Y values on 7seg
-	DecimalSeg decimal_num_to_seg(
-					.CLK(CLK_50),
-					.RESET(RESET),
-					.SEG_SELECT(SEG_SELECT),
-					.DEC_OUT(DEC_OUT),
-					.BCD_IN(bcd_wire)
-					);
-
-
-//100kHz clock for PWM outputs
-	wire pwm_clk;	//PWM clock connected to all PWMs
-	GenericCounter #(
-					.COUNTER_WIDTH(9),		//9bits of width
-					.COUNTER_MAX(499)		//Counts to max value of 499 starting from 0
-					)
-				pwm_clk_counter (
-					.CLK(CLK_50),				//Clock input
-					.RESET(1'b0),				//No Reset
-					.ENABLE_IN(1'b1),			//Always Enable
-					.TRIGG_OUT(pwm_clk)			//get 100kHz trigger
-					);			
-					
-//Regulate LED brightness depending on the position of the mouse in Y direction
-	PWM  			#(
-					.COUNTER_LEN(8)
-					)
-			pwm_module_led_x (
-					.CLK (CLK_50),
-					.RESET(RESET),
-					.ENABLE (pwm_clk),
-					.PWM(LED_X),
-					.COMPARE(mouse_x)
-					);
-//Regulate LED brightness depending on the position of the mouse in Y direction
-	PWM  			#(
-					.COUNTER_LEN(8)
-					)
-			pwm_module_led_y (
-					.CLK (CLK_50),
-					.RESET(RESET),
-					.ENABLE (pwm_clk),
-					.PWM(LED_Y),
-					.COMPARE(mouse_y)
-					);
-//produce sound using PWM from how fast the mouse is moving in X direction
-	PWM  			#(
-					.COUNTER_LEN(8)
-					)
-			pwm_module_sound_x (
-					.CLK (CLK_50),
-					.RESET(RESET),
-					.ENABLE (pwm_clk),
-					.PWM(SOUND_X),
-					.COMPARE(mouse_move_x)
-					);
-//produce sound using PWM from how fast the mouse is moving in Y direction
-	PWM  			#(
-					.COUNTER_LEN(8)
-					)
-			pwm_module_sound_y (
-					.CLK (CLK_50),
-					.RESET(RESET),
-					.ENABLE (pwm_clk),
-					.PWM(SOUND_Y),
-					.COMPARE(mouse_move_y)
-					);
-					
-*/					
+				
 
 // 1 - have all of the values to be transmitter ready
 // 2 - If base address is correct, pass the right value to the BUS_DATA
 // 3 - if BUS_WE, means the processor is writing data to the BUS, so we need to check for ~BUS_WE
 //which means the processor will read the data from the BUS
-		reg TransmitMouseValue[7:0];
 		reg TransmitStatus;
 		reg TransmitMouseX;
 		reg TransmitMouseY;
-/*	
-		always@(posedge CLK) begin
-			if (RESET)
-				TransmitMouseValue <= 8'h00;
-            else if ( (BUS_ADDR == MouseBaseAddr) & ~BUS_WE)				//base address is for status
-                TransmitMouseValue <= {4'h0, mouse_status};
-            else if ( (BUS_ADDR == MouseBaseAddr + 1'h1) & ~BUS_WE)	//base address + 1 is for mouse x
-                TransmitMouseValue <= mouse_x;
-            else if ( (BUS_ADDR == MouseBaseAddr + 2'h2) & ~BUS_WE)	//base address + 2 is for mouse y
-                TransmitMouseValue <= mouse_y;
-            else TransmitMouseValue <= 8'h00;
-		end
-*/
 
 		always@(posedge CLK) begin
 			if ( (BUS_ADDR == MouseBaseAddr) & ~BUS_WE)				//base address is for status
@@ -202,6 +86,8 @@ module MouseWrapper(
 				TransmitMouseY <= 1'b1;
 			else TransmitMouseY <= 1'b0;
 		end
+		
+		//specify for each x, y & status. Only one will be on at the same time
 		assign BUS_DATA = (TransmitStatus) ? {4'h0, mouse_status} : 8'hZZ;
 		assign BUS_DATA = (TransmitMouseX) ? mouse_x : 8'hZZ;
 		assign BUS_DATA = (TransmitMouseY) ? mouse_y : 8'hZZ;
@@ -218,9 +104,9 @@ module MouseWrapper(
         always@(posedge CLK) begin
                 if(RESET)
                     Interrupt <= 1'b0;
-                else if(send_interrupt)		//
+                else if(send_interrupt)		//interrupt coming from the mouse
                     Interrupt <= 1'b1;      
-                else if(BUS_INTERRUPT_ACK)
+                else if(BUS_INTERRUPT_ACK)	//send ack signal
                 	Interrupt <= 1'b0;
         end
         assign BUS_INTERRUPT_RAISE = Interrupt;

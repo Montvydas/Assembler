@@ -8,10 +8,10 @@
 // Module Name: SlideSwitches
 // Project Name: IR_MOUSE_CONTROLLED_CAR
 // Target Devices: BASYS3 Board
-// Tool Versions:  Vivado
-// Description: 
+// Tool Versions:  Vivado 16
+// Description: slide switch, just works with processor
 // 
-// Dependencies: 
+// Dependencies: Processor wrapper
 // 
 // Revision:
 // Revision 0.01 - File Created
@@ -35,10 +35,10 @@ module SlideSwitches (
 	
 	reg TransmitData;
 	always@ (posedge CLK)begin
-		if ( (BUS_ADDR == SlideSwitchesBaseAddr) & ~BUS_WE)
-			TransmitData <= 1;
+		if ( (BUS_ADDR == SlideSwitchesBaseAddr) & ~BUS_WE)	//need to use regs to store data
+			TransmitData <= 1;					//for one clock cycle after the data appears on the bus
 		else
 			TransmitData <= 0;
 	end
-	assign BUS_DATA = (TransmitData) ? BusDataIn : 8'hZZ;
+	assign BUS_DATA = (TransmitData) ? BusDataIn : 8'hZZ;	//tristate send & high impedance
 endmodule

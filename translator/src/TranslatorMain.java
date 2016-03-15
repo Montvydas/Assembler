@@ -1,5 +1,6 @@
 /**
- * Created by Monte on 11/3/16.
+ * Created by Monte (Montvydas Klumbys) on 11/3/16, The University of Edinburgh
+ * This is an Assembler code for 8 bit microprocessor 
  */
 
 import java.io.*;
@@ -7,24 +8,16 @@ import java.util.*;
 
 public class TranslatorMain {
 
-	
-	
-    /**
-     * Entrance of decoder script.
-     * Input the instructions_set.txt file as the argument.
-     *
-     * @param args      the filename
-     */
-	static int lineNr = 0;
-	static String data = new String ();
-	static boolean containsErrors = false;
+	static int lineNr = 0;                  
+	static String data = new String ();     //data line to be read from the file
+	static boolean containsErrors = false;  //error flag
     static String addressOfTimerISR = "11111110";
     static String addressOfMouseISR = "11111111";
     
     public static void main(String args[]) {
         try {
-        	
-            // get the user file
+            
+          // get the user file
           Scanner sc = new Scanner (new File (args[0]));
 //          Scanner sc = new Scanner (new File ("instructions.txt"));
           
@@ -33,12 +26,15 @@ public class TranslatorMain {
             File outputFile = new File(args[1]);
             FileWriter fw = new FileWriter(outputFile);
             
-            boolean blockCommented = false;
-            int instructionAddress = 0;
-            String instructionAddressInHex = "00";
+            boolean blockCommented = false;         //for detecting block comments
+            int instructionAddress = 0;             //store the instruction address to be performed
+            String instructionAddressInHex = "00";  //same just in hex
+           
+            boolean timerIntUsed = false;
+            boolean mouseIntUsed = false;   //to make sure they were only used once
            
       //Start line scanning
-            while (sc.hasNextLine()){	
+            while (sc.hasNextLine()){	            //scan all of the file
             	lineNr++;
             	
                 String tmp = sc.nextLine();
@@ -83,17 +79,17 @@ public class TranslatorMain {
                 
                 // System.out.println ("Length is " + storedCode.length);  
                 
-                String valueToSend = new String();
-                int instructionLengthInBytes = 0;
+                String valueToSend = new String();  //value to be written to file
+                int instructionLengthInBytes = 0;   //instructions have different lengths, update that
                
-                switch (storedCode[0].toUpperCase()){
+                switch (storedCode[0].toUpperCase()){   //allow both upper and lower cases
                 	//load a 43
                 	//load b 33
                     case "LOAD":
-                        checkNumberOfOperands (storedCode.length, 3);
-                    	valueToSend = checkWhichOperand (storedCode[1], "00000000", "00000001");
-                    	valueToSend += hexToBi(storedCode[2]) + "\n";
-                        instructionLengthInBytes = 2;
+                        checkNumberOfOperands (storedCode.length, 3);                  //check that only 3 arguments entered
+                    	valueToSend = checkWhichOperand (storedCode[1], "00000000", "00000001");    //check if reg A or reg B is used 
+                    	valueToSend += hexToBi(storedCode[2]) + "\n";                   //address to hex value
+                        instructionLengthInBytes = 2;                                   //update instruc length
                     break;
                     
                     //store 32 a
@@ -165,7 +161,7 @@ public class TranslatorMain {
                     //add a b	//adds both and stores in a...
                     //add b a
                     case "ADD":
-                        checkNumberOfOperands (storedCode.length, 3);
+                        checkNumberOfOperands (storedCode.length, 3);   //check where the result will go to
                     	valueToSend = checkOperandOrder (storedCode[1], storedCode[2], "00000100", "00000101");
                         instructionLengthInBytes = 1;
                     break;
@@ -262,47 +258,57 @@ public class TranslatorMain {
                     //also check if it was used only once in our program
                     //timer_isr:
                     case "TIMER_ISR:":
+                        if (timerIntUsed){
+                            printErrorLine();
+                            System.err.print ("hint: You can't you timer interrupts at multiple places");
+                        }
                         checkNumberOfOperands (storedCode.length, 1);
                         // System.out.print ("\n" + instructionAddressInHex + "\n");
                         addressOfTimerISR = hexToBi( instructionAddressInHex ) + "\n";
                         instructionLengthInBytes = 0;
+                        timerIntUsed = true;
                     break;
                     
                     //mouse_isr:
                     case "MOUSE_ISR:":
+                        if (mouseIntUsed){
+                            printErrorLine();
+                            System.err.print ("hint: You can't you mouse interrupts at multiple places");
+                        }
                         checkNumberOfOperands (storedCode.length, 1);
                         addressOfMouseISR = hexToBi( instructionAddressInHex ) + "\n";
                         instructionLengthInBytes = 0;
+                        mouseIntUsed = true;
                     break;
                     
-                    default:  printErrorLine();
+                    default:  printErrorLine(); //if smth different entered, print error
 //                    return;
                     break;
                 }
                 
                 
                 instructionAddress += instructionLengthInBytes; //gets the address
-                if (instructionAddress > 253){
+                if (instructionAddress > 253){  //make sure there is enough memory left for instructions
                     printErrorLine();
                     System.err.print("hint: you used more than allowed 253 Bytes of program ROM (254 is timer & 255 is mouse interrupt addr).\n");
                     return;    
                 }
                 
-                if (containsErrors){
+                if (containsErrors){    //if contains errors, end program
                 	fw.write("Please fix your errors firstly.");
                 	fw.close();
                 	sc.close();
                 	return;
                 }
                 
-                fw.write(valueToSend);
+                fw.write(valueToSend);  //else print binary value to file
                 
                 instructionAddressInHex = Integer.toHexString( instructionAddress );    //good to know hex value
                 if (instructionAddressInHex.length() == 1){                             //but need to make sure that it has two values as hex, i.e. C -> 0C
                     instructionAddressInHex = "0" + instructionAddressInHex;
                 }
                 
-                System.out.print( "\n" + valueToSend + "XXXXXXXX <- This Instruction address is " + instructionAddressInHex + "\n\n");
+                System.out.print( "\n" + valueToSend + "XXXXXXXX <- This Instruction address is " + instructionAddressInHex + "\n\n");//tells the location of instruction
             }
             
             if (addressOfTimerISR == "11111110"){ //0xFE
@@ -312,12 +318,12 @@ public class TranslatorMain {
             }   
             
             
-            if (instructionAddress < 254){
+            if (instructionAddress < 254){  //fill in with zeroes places where no data exists
                 while (instructionAddress < 254) {
                 	instructionAddress ++;  
                     fw.write("00000000\n");
                 }
-                fw.write (addressOfTimerISR);
+                fw.write (addressOfTimerISR);   //specify timer & mouse ISR addresses
                 fw.write (addressOfMouseISR);
             } else {
                 printErrorLine();
@@ -339,6 +345,7 @@ public class TranslatorMain {
         return ;
     }
     
+    //to check which operand, regA or regB stores the resultant value 
     public static String checkOperandOrder (String op_1, String op_2, String code_1, String code_2){
     	if (op_1.equalsIgnoreCase("A") && op_2.equalsIgnoreCase("B"))
     		return code_1 + "\n";
@@ -351,7 +358,7 @@ public class TranslatorMain {
     	}
     	
     }
-    
+    //to check if regA or regB is used to storing & loading values
     public static String checkWhichOperand (String op, String code_1, String code_2){
     	if (op.equalsIgnoreCase("A"))
     		return code_1 + "\n";
@@ -365,11 +372,13 @@ public class TranslatorMain {
     	
     }
     
+    //prints error if one exists
    public static void printErrorLine() {
 	   System.err.print("Error line number: " + lineNr + "\nLine says: " + data + "\n");
 	   containsErrors = true;
    }
    
+   //checks the number of operands used for the instruction
    public static void checkNumberOfOperands (int length, int requiredLength){
         if (length != requiredLength){
             printErrorLine ();
@@ -378,6 +387,7 @@ public class TranslatorMain {
         }
    }
    
+   //checks length of hex and binary just in case
    public static void checkLengthOfHexAndBin (int binLength, int hexLength){
        if (binLength != 8 || hexLength != 2){
            printErrorLine();
@@ -385,6 +395,7 @@ public class TranslatorMain {
        }
    }
    
+   //hext to binary function for strings
      public static String hexToBi (String hex){
         int i = Integer.parseInt(hex, 16);
         String bin = Integer.toBinaryString(i);
@@ -392,73 +403,9 @@ public class TranslatorMain {
         if (bin.length() < 8)
             bin = String.format("%0" + (8-bin.length()) + "d", 0).replace("0", "0") + bin; //add zeroes at the begining
         
-        System.out.print ("In hexToBi: hex=" + hex + " bin=" + bin + "\n");
+        // System.out.print ("In hexToBi: hex=" + hex + " bin=" + bin + "\n");
         
         checkLengthOfHexAndBin(bin.length(), hex.length());
         return bin;
      }
-    
-    
-    
-   
-    /**
-     * Translate a given hexadecimal number to a binary sequence.
-     *
-     * @param hex_str       the number to be translated
-     * @return              the binary sequence
-     */
-    /*
-    public static String hexTo_Bi(String hex_str) {
-        String bi = "";
-        for (int i = 0; i < hex_str.length(); i++)
-            bi = bi + hexToBi_per_char(hex_str.charAt(i));
-        checkLengthOfHexAndBin(bi.length(), hex_str.length());
-        return bi;
-    }
-*/
-    /**
-     * Translate a single digit of hexadecimal number.
-     *
-     * @param hex       the digit
-     * @return          the corresponding binary number
-     */
-     /*
-    public static String hexToBi_per_char(char hex) {
-        
-        if (hex == '0')
-            return "0000";
-        else if (hex == '1')
-            return "0001";
-        else if (hex == '2')
-            return "0010";
-        else if (hex == '3')
-            return "0011";
-        else if (hex == '4')
-            return "0100";
-        else if (hex == '5')
-            return "0101";
-        else if (hex == '6')
-            return "0110";
-        else if (hex == '7')
-            return "0111";
-        else if (hex == '8')
-            return "1000";
-        else if (hex == '9')
-            return "1001";
-        else if (hex == 'A' || hex == 'a')
-            return "1010";
-        else if (hex == 'B' || hex == 'b')
-            return "1011";
-        else if (hex == 'C' || hex == 'c')
-            return "1100";
-        else if (hex == 'D' || hex == 'd')
-            return "1101";
-        else if (hex == 'E' || hex == 'e')
-            return "1110";
-        else if (hex == 'F' || hex == 'f')
-            return "1111";
-        else
-            return "";
-    }
-    */
 }
