@@ -1,0 +1,10 @@
+#-----------------------------------------------------------
+# Vivado v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Tue Mar 15 03:07:09 2016
+# Process ID: 13509
+# Log file: /home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.runs/impl_1/WrapperMouseAndProcessor.vdi
+# Journal file: /home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.runs/impl_1/vivado.jou
+#-----------------------------------------------------------
+source WrapperMouseAndProcessor.tcl -notrace

@@ -72,16 +72,26 @@ goto_idle
 */
 
 //address == 00
-load a 01
-incr a a
-store 00 a
-store C0 a
-goto 00
+
+goto FF
 
 timer_isr:
-load a 01
-incr a a
-store 00 a
-load a F0
+load a E0
+store C4 a
+
+load_val a FF	//light up PWM full on
+store C3 a
+
 goto_idle
+
+mouse_isr:
+load b A1
+store C0 b
+store C1 b
+
+load b A2
+store C2 b
+store D0 b
+goto_idle
+
 
