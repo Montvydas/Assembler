@@ -36,7 +36,7 @@ module ROM(
         initial
         begin
 //         $readmemh("/afs/inf.ed.ac.uk/user/s12/s1231174/Documents/Assembler/microprocessor/Complete_Demo_ROM.txt", ROM); 
-         $readmemh("/afs/inf.ed.ac.uk/user/s12/s1231174/Documents/Assembler/translator/script.rom", ROM); 
+         $readmemh("/home/s1231174/Assembler/translator/script.rom", ROM); 
          ROM[8'hFE]=8'b00000000;
          end
         // Load program

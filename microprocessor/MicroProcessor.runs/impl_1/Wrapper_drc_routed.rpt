@@ -1,8 +1,8 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2015.2 (lin64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date         : Thu Mar  3 14:10:38 2016
-| Host         : tlf65.see.ed.ac.uk running 64-bit Scientific Linux release 7.1 (Nitrogen)
+| Date         : Tue Mar 15 09:19:06 2016
+| Host         : tla18.see.ed.ac.uk running 64-bit Scientific Linux release 7.1 (Nitrogen)
 | Command      : report_drc
 -------------------------------------------------------------------------------------------
 
@@ -20,7 +20,7 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 1
+             Violations found: 5
 
 2. REPORT DETAILS
 -----------------
@@ -35,6 +35,26 @@ Neither the CFGBVS nor CONFIG_VOLTAGE voltage property is set in the current_des
  #where value2 is the voltage provided to configuration bank 0
 
 Refer to the device configuration user guide for more information.
+Related violations: <none>
+
+PDRC-153#1 Warning
+Gated clock check  
+Net myIR/TEN_CLK_COUNT_YEL/Command_reg[0]_P is a gated clock net sourced by a combinational pin myIR/TEN_CLK_COUNT_YEL/Command_reg[0]_LDC_i_1/O, cell myIR/TEN_CLK_COUNT_YEL/Command_reg[0]_LDC_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#2 Warning
+Gated clock check  
+Net myIR/TEN_CLK_COUNT_YEL/Command_reg[1]_P is a gated clock net sourced by a combinational pin myIR/TEN_CLK_COUNT_YEL/Command_reg[1]_LDC_i_1/O, cell myIR/TEN_CLK_COUNT_YEL/Command_reg[1]_LDC_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#3 Warning
+Gated clock check  
+Net myIR/TEN_CLK_COUNT_YEL/Command_reg[2]_P is a gated clock net sourced by a combinational pin myIR/TEN_CLK_COUNT_YEL/Command_reg[2]_LDC_i_1/O, cell myIR/TEN_CLK_COUNT_YEL/Command_reg[2]_LDC_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+PDRC-153#4 Warning
+Gated clock check  
+Net myIR/TEN_CLK_COUNT_YEL/Command_reg[3]_P is a gated clock net sourced by a combinational pin myIR/TEN_CLK_COUNT_YEL/Command_reg[3]_LDC_i_1/O, cell myIR/TEN_CLK_COUNT_YEL/Command_reg[3]_LDC_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 

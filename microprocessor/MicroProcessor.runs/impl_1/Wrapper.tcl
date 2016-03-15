@@ -48,15 +48,14 @@ set_msg_config -id {HDL 9-1654} -limit 100000
 start_step init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param xicom.use_bs_reader 1
   debug::add_scope template.lib 1
   set_property design_mode GateLvl [current_fileset]
-  set_property webtalk.parent_dir /home/s1469567/MicroProcessor/MicroProcessor.cache/wt [current_project]
-  set_property parent.project_path /home/s1469567/MicroProcessor/MicroProcessor.xpr [current_project]
-  set_property ip_repo_paths /home/s1469567/MicroProcessor/MicroProcessor.cache/ip [current_project]
-  set_property ip_output_repo /home/s1469567/MicroProcessor/MicroProcessor.cache/ip [current_project]
-  add_files -quiet /home/s1469567/MicroProcessor/MicroProcessor.runs/synth_1/Wrapper.dcp
-  read_xdc /home/s1469567/MicroProcessor/MicroProcessor.srcs/constrs_1/imports/new/DSL_VGA.xdc
+  set_property webtalk.parent_dir /home/s1231174/Assembler/microprocessor/MicroProcessor.cache/wt [current_project]
+  set_property parent.project_path /home/s1231174/Assembler/microprocessor/MicroProcessor.xpr [current_project]
+  set_property ip_repo_paths /home/s1231174/Assembler/microprocessor/MicroProcessor.cache/ip [current_project]
+  set_property ip_output_repo /home/s1231174/Assembler/microprocessor/MicroProcessor.cache/ip [current_project]
+  add_files -quiet /home/s1231174/Assembler/microprocessor/MicroProcessor.runs/synth_1/Wrapper.dcp
+  read_xdc /home/s1231174/Assembler/microprocessor/MicroProcessor.srcs/constrs_1/imports/new/DSL_VGA.xdc
   link_design -top Wrapper -part xc7a35tcpg236-1
   close_msg_db -file init_design.pb
 } RESULT]

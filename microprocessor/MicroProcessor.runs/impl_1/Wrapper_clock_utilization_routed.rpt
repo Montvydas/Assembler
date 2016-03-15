@@ -1,8 +1,8 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------
 | Tool Version      : Vivado v.2015.2 (lin64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date              : Thu Mar  3 14:10:43 2016
-| Host              : tlf65.see.ed.ac.uk running 64-bit Scientific Linux release 7.1 (Nitrogen)
+| Date              : Tue Mar 15 09:19:11 2016
+| Host              : tla18.see.ed.ac.uk running 64-bit Scientific Linux release 7.1 (Nitrogen)
 | Command           : report_clock_utilization -file Wrapper_clock_utilization_routed.rpt
 | Design            : Wrapper
 | Device            : 7a35t-cpg236
@@ -29,7 +29,7 @@ Table of Contents
 +-------+------+-----------+-----------+
 | Type  | Used | Available | Num Fixed |
 +-------+------+-----------+-----------+
-| BUFG  |    2 |        32 |         0 |
+| BUFG  |    1 |        32 |         0 |
 | BUFH  |    0 |        72 |         0 |
 | BUFIO |    0 |        20 |         0 |
 | MMCM  |    0 |         5 |         0 |
@@ -47,8 +47,7 @@ Table of Contents
 +-------+--------------------+---------------+------+-------+-------+
 | Index | BUFG Cell          | Net Name      | BELs | Sites | Fixed |
 +-------+--------------------+---------------+------+-------+-------+
-|     1 | Counter_reg[9]_i_2 | Trigger       |   45 |    16 |    no |
-|     2 | CLK_IBUF_BUFG_inst | CLK_IBUF_BUFG |  204 |    77 |    no |
+|     1 | CLK_IBUF_BUFG_inst | CLK_IBUF_BUFG |  227 |    96 |    no |
 +-------+--------------------+---------------+------+-------+-------+
 
 
@@ -64,13 +63,18 @@ Table of Contents
 6. Details of Local Clocks
 --------------------------
 
-+-------+-------------------------------------+------------------------------+--------------+-------+
-|       |                                     |                              |   Num Loads  |       |
-+-------+-------------------------------------+------------------------------+------+-------+-------+
-| Index | Local Clk Src                       | Net Name                     | BELs | Sites | Fixed |
-+-------+-------------------------------------+------------------------------+------+-------+-------+
-|     1 | myVGA/VGA/BisicHCounter/Trigger_reg | myVGA/VGA/BisicHCounter/E[0] |   11 |     3 |    no |
-+-------+-------------------------------------+------------------------------+------+-------+-------+
++-------+-----------------------------------------------+----------------------------------------------+--------------+-------+
+|       |                                               |                                              |   Num Loads  |       |
++-------+-----------------------------------------------+----------------------------------------------+------+-------+-------+
+| Index | Local Clk Src                                 | Net Name                                     | BELs | Sites | Fixed |
++-------+-----------------------------------------------+----------------------------------------------+------+-------+-------+
+|     1 | myIR/YellowCar/PULSE_CLK_COUNT/TRIGG_OUT_reg  | myIR/YellowCar/PULSE_CLK_COUNT/PULSE_CLK_reg |    1 |     1 |    no |
+|     2 | myIR/TEN_CLK_COUNT_YEL/Command_reg[0]_LDC_i_1 | myIR/TEN_CLK_COUNT_YEL/Command_reg[0]_P      |    2 |     2 |    no |
+|     3 | myIR/TEN_CLK_COUNT_YEL/Command_reg[1]_LDC_i_1 | myIR/TEN_CLK_COUNT_YEL/Command_reg[1]_P      |    2 |     2 |    no |
+|     4 | myIR/TEN_CLK_COUNT_YEL/Command_reg[2]_LDC_i_1 | myIR/TEN_CLK_COUNT_YEL/Command_reg[2]_P      |    2 |     2 |    no |
+|     5 | myIR/TEN_CLK_COUNT_YEL/Command_reg[3]_LDC_i_1 | myIR/TEN_CLK_COUNT_YEL/Command_reg[3]_P      |    2 |     2 |    no |
+|     6 | myIR/YellowCar/PULSE_CLK_reg                  | myIR/YellowCar/PULSE_CLK                     |   24 |    16 |    no |
++-------+-----------------------------------------------+----------------------------------------------+------+-------+-------+
 
 
 7. Clock Regions : Key Resource Utilization
@@ -81,7 +85,7 @@ Table of Contents
 +-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
 | Clock Region Name | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail | Used | Avail |
 +-------------------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+------+-------+
-| X0Y0              |    2 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  248 |  9600 |    0 |  1600 |    1 |    20 |    1 |    10 |    0 |    20 |
+| X0Y0              |    1 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |  253 |  9600 |    0 |  1600 |    1 |    20 |    0 |    10 |    0 |    20 |
 | X1Y0              |    0 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 | 12000 |    0 |  1800 |    0 |    40 |    0 |    20 |    0 |    20 |
 | X0Y1              |    0 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 |  9600 |    0 |  1600 |    0 |    20 |    0 |    10 |    0 |    20 |
 | X1Y1              |    0 |    12 |    0 |     4 |    0 |     2 |    0 |     4 |    0 |     1 |    0 |     1 |    0 |     0 |    0 |     0 |    0 |    50 |    0 |    50 |    0 | 12000 |    0 |  1800 |    0 |    40 |    0 |    20 |    0 |    20 |
@@ -97,15 +101,13 @@ Table of Contents
 +-------------+-------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+----------------+
 | Source Type | BUFHCE Site | Fixed | MMCM Pins | PLL Pins | GT Pins | BRAM Pins | ILOGICs | OLOGICs | FFs | LUTMs | DSP48E1s | Clock Net Name |
 +-------------+-------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+----------------+
-| BUFG        | BUFHCE_X0Y9 |   no  |         0 |        0 |       0 |         0 |       0 |       0 |  45 |     0 |        0 | Trigger        |
-| BUFG        | BUFHCE_X0Y8 |   no  |         0 |        0 |       0 |         3 |       0 |       0 | 202 |     0 |        0 | CLK_IBUF_BUFG  |
+| BUFG        | BUFHCE_X0Y8 |   no  |         0 |        0 |       0 |         1 |       0 |       0 | 226 |     0 |        0 | CLK_IBUF_BUFG  |
 +-------------+-------------+-------+-----------+----------+---------+-----------+---------+---------+-----+-------+----------+----------------+
 
 
 
 # Location of BUFG Primitives 
 set_property LOC BUFGCTRL_X0Y0 [get_cells CLK_IBUF_BUFG_inst]
-set_property LOC BUFGCTRL_X0Y1 [get_cells Counter_reg[9]_i_2]
 
 # Location of IO Clock Primitives
 
@@ -131,16 +133,44 @@ add_cells_to_pblock [get_pblocks  {CLKAG_CLK_IBUF_BUFG}] [get_cells -filter { PR
 resize_pblock [get_pblocks {CLKAG_CLK_IBUF_BUFG}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0}
 #endgroup
 
-# Clock net "Trigger" driven by instance "Counter_reg[9]_i_2" located at site "BUFGCTRL_X0Y1"
+# Clock net "myIR/TEN_CLK_COUNT_YEL/Command_reg[0]_P" driven by instance "myIR/TEN_CLK_COUNT_YEL/Command_reg[0]_LDC_i_1" located at site "SLICE_X2Y4"
 #startgroup
-create_pblock {CLKAG_Trigger}
-add_cells_to_pblock [get_pblocks  {CLKAG_Trigger}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="Trigger"}]]]
-resize_pblock [get_pblocks {CLKAG_Trigger}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0}
+create_pblock {CLKAG_myIR/TEN_CLK_COUNT_YEL/Command_reg[0]_P}
+add_cells_to_pblock [get_pblocks  {CLKAG_myIR/TEN_CLK_COUNT_YEL/Command_reg[0]_P}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="myIR/TEN_CLK_COUNT_YEL/Command_reg[0]_P"}]]]
+resize_pblock [get_pblocks {CLKAG_myIR/TEN_CLK_COUNT_YEL/Command_reg[0]_P}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0}
 #endgroup
 
-# Clock net "myVGA/VGA/BisicHCounter/E[0]" driven by instance "myVGA/VGA/BisicHCounter/Trigger_reg" located at site "SLICE_X6Y21"
+# Clock net "myIR/TEN_CLK_COUNT_YEL/Command_reg[1]_P" driven by instance "myIR/TEN_CLK_COUNT_YEL/Command_reg[1]_LDC_i_1" located at site "SLICE_X2Y5"
 #startgroup
-create_pblock {CLKAG_myVGA/VGA/BisicHCounter/E[0]}
-add_cells_to_pblock [get_pblocks  {CLKAG_myVGA/VGA/BisicHCounter/E[0]}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="myVGA/VGA/BisicHCounter/E[0]"}]]]
-resize_pblock [get_pblocks {CLKAG_myVGA/VGA/BisicHCounter/E[0]}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0}
+create_pblock {CLKAG_myIR/TEN_CLK_COUNT_YEL/Command_reg[1]_P}
+add_cells_to_pblock [get_pblocks  {CLKAG_myIR/TEN_CLK_COUNT_YEL/Command_reg[1]_P}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="myIR/TEN_CLK_COUNT_YEL/Command_reg[1]_P"}]]]
+resize_pblock [get_pblocks {CLKAG_myIR/TEN_CLK_COUNT_YEL/Command_reg[1]_P}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0}
+#endgroup
+
+# Clock net "myIR/TEN_CLK_COUNT_YEL/Command_reg[2]_P" driven by instance "myIR/TEN_CLK_COUNT_YEL/Command_reg[2]_LDC_i_1" located at site "SLICE_X2Y4"
+#startgroup
+create_pblock {CLKAG_myIR/TEN_CLK_COUNT_YEL/Command_reg[2]_P}
+add_cells_to_pblock [get_pblocks  {CLKAG_myIR/TEN_CLK_COUNT_YEL/Command_reg[2]_P}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="myIR/TEN_CLK_COUNT_YEL/Command_reg[2]_P"}]]]
+resize_pblock [get_pblocks {CLKAG_myIR/TEN_CLK_COUNT_YEL/Command_reg[2]_P}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0}
+#endgroup
+
+# Clock net "myIR/TEN_CLK_COUNT_YEL/Command_reg[3]_P" driven by instance "myIR/TEN_CLK_COUNT_YEL/Command_reg[3]_LDC_i_1" located at site "SLICE_X2Y5"
+#startgroup
+create_pblock {CLKAG_myIR/TEN_CLK_COUNT_YEL/Command_reg[3]_P}
+add_cells_to_pblock [get_pblocks  {CLKAG_myIR/TEN_CLK_COUNT_YEL/Command_reg[3]_P}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="myIR/TEN_CLK_COUNT_YEL/Command_reg[3]_P"}]]]
+resize_pblock [get_pblocks {CLKAG_myIR/TEN_CLK_COUNT_YEL/Command_reg[3]_P}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0}
+#endgroup
+
+# Clock net "myIR/YellowCar/PULSE_CLK" driven by instance "myIR/YellowCar/PULSE_CLK_reg" located at site "SLICE_X0Y6"
+#startgroup
+create_pblock {CLKAG_myIR/YellowCar/PULSE_CLK}
+add_cells_to_pblock [get_pblocks  {CLKAG_myIR/YellowCar/PULSE_CLK}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="myIR/YellowCar/PULSE_CLK"}]]]
+resize_pblock [get_pblocks {CLKAG_myIR/YellowCar/PULSE_CLK}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0}
+#endgroup
+
+# Clock net "myIR/YellowCar/PULSE_CLK_COUNT/PULSE_CLK_reg" driven by instance "myIR/YellowCar/PULSE_CLK_COUNT/TRIGG_OUT_reg" located at site "SLICE_X1Y8"
+#startgroup
+create_pblock {CLKAG_myIR/YellowCar/PULSE_CLK_COUNT/PULSE_CLK_reg}
+add_cells_to_pblock [get_pblocks  {CLKAG_myIR/YellowCar/PULSE_CLK_COUNT/PULSE_CLK_reg}] [get_cells -filter { PRIMITIVE_GROUP != I/O && IS_PRIMITIVE==1 && PRIMITIVE_LEVEL !=INTERNAL } -of_object [get_pins -filter {DIRECTION==IN} -of_objects [get_nets -hierarchical -filter {PARENT=="myIR/YellowCar/PULSE_CLK_COUNT/PULSE_CLK_reg"}]]]
+resize_pblock [get_pblocks {CLKAG_myIR/YellowCar/PULSE_CLK_COUNT/PULSE_CLK_reg}] -add {CLOCKREGION_X0Y0:CLOCKREGION_X0Y0}
 #endgroup

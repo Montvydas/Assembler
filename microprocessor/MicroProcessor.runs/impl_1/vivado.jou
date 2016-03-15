@@ -2,9 +2,9 @@
 # Vivado v2015.2 (64-bit)
 # SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
 # IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
-# Start of session at: Thu Mar  3 14:09:53 2016
-# Process ID: 20567
-# Log file: /home/s1469567/MicroProcessor/MicroProcessor.runs/impl_1/Wrapper.vdi
-# Journal file: /home/s1469567/MicroProcessor/MicroProcessor.runs/impl_1/vivado.jou
+# Start of session at: Tue Mar 15 09:18:35 2016
+# Process ID: 15440
+# Log file: /home/s1231174/Assembler/microprocessor/MicroProcessor.runs/impl_1/Wrapper.vdi
+# Journal file: /home/s1231174/Assembler/microprocessor/MicroProcessor.runs/impl_1/vivado.jou
 #-----------------------------------------------------------
 source Wrapper.tcl -notrace

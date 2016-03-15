@@ -1,8 +1,8 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2015.2 (lin64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date         : Thu Mar  3 14:10:38 2016
-| Host         : tlf65.see.ed.ac.uk running 64-bit Scientific Linux release 7.1 (Nitrogen)
+| Date         : Tue Mar 15 09:19:06 2016
+| Host         : tla18.see.ed.ac.uk running 64-bit Scientific Linux release 7.1 (Nitrogen)
 | Command      : report_timing_summary -warn_on_violation -max_paths 10 -file Wrapper_timing_summary_routed.rpt -rpx Wrapper_timing_summary_routed.rpx
 | Design       : Wrapper
 | Device       : 7a35t-cpg236
@@ -50,11 +50,23 @@ Table of Contents
 
 1. checking no_clock
 --------------------
- There are 205 register/latch pins with no clock driven by root clock pin: CLK (HIGH)
+ There are 227 register/latch pins with no clock driven by root clock pin: CLK (HIGH)
 
- There are 45 register/latch pins with no clock driven by root clock pin: myVGA/DownCounter/Trigger_reg/C (HIGH)
+ There are 4 register/latch pins with no clock driven by root clock pin: RESET (HIGH)
 
- There is 1 register/latch pin with no clock driven by root clock pin: myVGA/VGA/BisicHCounter/Trigger_reg/C (HIGH)
+ There is 1 register/latch pin with no clock driven by root clock pin: myIR/COMMAND_reg[0]/C (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: myIR/COMMAND_reg[1]/C (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: myIR/COMMAND_reg[2]/C (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: myIR/COMMAND_reg[3]/C (HIGH)
+
+ There are 4 register/latch pins with no clock driven by root clock pin: myIR/TEN_CLK_COUNT_YEL/TRIGG_OUT_reg/C (HIGH)
+
+ There is 1 register/latch pin with no clock driven by root clock pin: myIR/YellowCar/PULSE_CLK_COUNT/TRIGG_OUT_reg/C (HIGH)
+
+ There are 22 register/latch pins with no clock driven by root clock pin: myIR/YellowCar/PULSE_CLK_reg/C (HIGH)
 
 
 2. checking constant_clock
@@ -69,7 +81,7 @@ Table of Contents
 
 4. checking unconstrained_internal_endpoints
 --------------------------------------------
- There are 653 pins that are not constrained for maximum delay. (HIGH)
+ There are 631 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
@@ -83,7 +95,7 @@ Table of Contents
 
 6. checking no_output_delay
 ---------------------------
- There are 10 ports with no output delay specified. (HIGH)
+ There is 1 port with no output delay specified. (HIGH)
 
  There are 0 ports with no output delay but user has a false path constraint
 

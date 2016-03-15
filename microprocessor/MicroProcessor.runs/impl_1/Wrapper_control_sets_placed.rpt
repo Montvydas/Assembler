@@ -1,8 +1,8 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2015.2 (lin64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date         : Thu Mar  3 14:10:26 2016
-| Host         : tlf65.see.ed.ac.uk running 64-bit Scientific Linux release 7.1 (Nitrogen)
+| Date         : Tue Mar 15 09:18:55 2016
+| Host         : tla18.see.ed.ac.uk running 64-bit Scientific Linux release 7.1 (Nitrogen)
 | Command      : report_control_sets -verbose -file Wrapper_control_sets_placed.rpt
 | Design       : Wrapper
 | Device       : xc7a35t
@@ -22,8 +22,8 @@ Table of Contents
 +-------------------------------------------------------------------+-------+
 |                               Status                              | Count |
 +-------------------------------------------------------------------+-------+
-| Number of unique control sets                                     |    17 |
-| Minimum Number of register sites lost to control set restrictions |    32 |
+| Number of unique control sets                                     |    29 |
+| Minimum Number of register sites lost to control set restrictions |   131 |
 +-------------------------------------------------------------------+-------+
 
 
@@ -33,38 +33,50 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              19 |           10 |
-| No           | No                    | Yes                    |              16 |            6 |
-| No           | Yes                   | No                     |              68 |           26 |
-| Yes          | No                    | No                     |              16 |            3 |
-| Yes          | No                    | Yes                    |              10 |            2 |
-| Yes          | Yes                   | No                     |             119 |           44 |
+| No           | No                    | No                     |              14 |            9 |
+| No           | No                    | Yes                    |              55 |           23 |
+| No           | Yes                   | No                     |              57 |           28 |
+| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | Yes                    |               4 |            2 |
+| Yes          | Yes                   | No                     |             123 |           53 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 3. Detailed Control Set Information
 -----------------------------------
 
-+-------------------------------+------------------------------------------------------+-------------------------------------------+------------------+----------------+
-|          Clock Signal         |                     Enable Signal                    |              Set/Reset Signal             | Slice Load Count | Bel Load Count |
-+-------------------------------+------------------------------------------------------+-------------------------------------------+------------------+----------------+
-|  myVGA/VGA/BisicHCounter/E[0] |                                                      | Reset_IBUF                                |                1 |              1 |
-|  CLK_IBUF_BUFG                | myMicroProcessor/FSM_sequential_CurrState[5]_i_1_n_0 | Reset_IBUF                                |                5 |              6 |
-|  Trigger                      |                                                      |                                           |                3 |              8 |
-|  CLK_IBUF_BUFG                | myMicroProcessor/CurrProgCounter[7]_i_1_n_0          | Reset_IBUF                                |                6 |              8 |
-|  CLK_IBUF_BUFG                | myMicroProcessor/CurrRegA[7]_i_1_n_0                 | Reset_IBUF                                |                3 |              8 |
-|  CLK_IBUF_BUFG                | myMicroProcessor/CurrRegB[7]_i_1_n_0                 | Reset_IBUF                                |                3 |              8 |
-|  CLK_IBUF_BUFG                | myMicroProcessor/CurrFunctionCall[7]_i_1_n_0         | Reset_IBUF                                |                3 |              8 |
-|  CLK_IBUF_BUFG                | myMicroProcessor/CurrBusDataOutWE_i_1_n_0            | Reset_IBUF                                |                3 |              8 |
-|  CLK_IBUF_BUFG                | myMicroProcessor/E[0]                                | Reset_IBUF                                |                4 |              9 |
-|  Trigger                      | myVGA/VGA/BisicHCounter/E[0]                         | Reset_IBUF                                |                2 |             10 |
-|  CLK_IBUF_BUFG                |                                                      |                                           |                7 |             11 |
-|  Trigger                      |                                                      | Reset_IBUF                                |                4 |             12 |
-|  Trigger                      |                                                      | myVGA/VGA/BisicHCounter/AddressVer_reg[2] |                7 |             15 |
-|  CLK_IBUF_BUFG                | myMicroProcessor/ColorConnect_reg[15][0]             |                                           |                3 |             16 |
-|  CLK_IBUF_BUFG                | myTimer/Timer[0]_i_2_n_0                             | myMicroProcessor/Timer_reg[31]            |                8 |             32 |
-|  CLK_IBUF_BUFG                | myTimer/TargetReached1                               | Reset_IBUF                                |                9 |             32 |
-|  CLK_IBUF_BUFG                |                                                      | Reset_IBUF                                |               20 |             56 |
-+-------------------------------+------------------------------------------------------+-------------------------------------------+------------------+----------------+
++-----------------------------------------------+------------------------------------------------------+-------------------------------------------+------------------+----------------+
+|                  Clock Signal                 |                     Enable Signal                    |              Set/Reset Signal             | Slice Load Count | Bel Load Count |
++-----------------------------------------------+------------------------------------------------------+-------------------------------------------+------------------+----------------+
+|  myIR/YellowCar/PULSE_CLK                     |                                                      | myIR/TEN_CLK_COUNT_YEL/Command_reg[0]_P   |                1 |              1 |
+|  myIR/YellowCar/PULSE_CLK_COUNT/PULSE_CLK_reg |                                                      |                                           |                1 |              1 |
+|  myIR/TEN_CLK_COUNT_YEL/Command_reg[3]_P      |                                                      | myIR/TEN_CLK_COUNT_YEL/Command_reg[3]_C   |                1 |              1 |
+|  myIR/TEN_CLK_COUNT_YEL/Command_reg[2]_P      |                                                      | myIR/TEN_CLK_COUNT_YEL/Command_reg[2]_C   |                1 |              1 |
+|  myIR/TEN_CLK_COUNT_YEL/Command_reg[1]_P      |                                                      | myIR/TEN_CLK_COUNT_YEL/Command_reg[1]_C   |                1 |              1 |
+|  myIR/TEN_CLK_COUNT_YEL/Command_reg[0]_P      |                                                      | myIR/TEN_CLK_COUNT_YEL/Command_reg[0]_C   |                1 |              1 |
+|  myIR/YellowCar/PULSE_CLK                     |                                                      | myIR/TEN_CLK_COUNT_YEL/AR[0]              |                1 |              1 |
+|  myIR/YellowCar/PULSE_CLK                     |                                                      | myIR/TEN_CLK_COUNT_YEL/Command_reg[3]_P   |                1 |              1 |
+|  myIR/YellowCar/PULSE_CLK                     |                                                      | myIR/TEN_CLK_COUNT_YEL/Command_reg[3]_C   |                1 |              1 |
+|  myIR/YellowCar/PULSE_CLK                     |                                                      | myIR/TEN_CLK_COUNT_YEL/Command_reg[2]_P   |                1 |              1 |
+|  myIR/YellowCar/PULSE_CLK                     |                                                      | myIR/TEN_CLK_COUNT_YEL/Command_reg[2]_C   |                1 |              1 |
+|  myIR/YellowCar/PULSE_CLK                     |                                                      | myIR/TEN_CLK_COUNT_YEL/Command_reg[1]_P   |                1 |              1 |
+|  myIR/YellowCar/PULSE_CLK                     |                                                      | myIR/TEN_CLK_COUNT_YEL/Command_reg[1]_C   |                1 |              1 |
+|  myIR/YellowCar/PULSE_CLK                     |                                                      | myIR/TEN_CLK_COUNT_YEL/Command_reg[0]_C   |                1 |              1 |
+|  myIR/YellowCar/PULSE_CLK                     |                                                      |                                           |                1 |              1 |
+|  myIR/YellowCar/PULSE_CLK                     | myIR/YellowCar/PACKET_SM/PACKET_COUNT/E[0]           | myIR/TEN_CLK_COUNT_YEL/AR[0]              |                2 |              4 |
+|  CLK_IBUF_BUFG                                | myMicroProcessor/E[0]                                | RESET_IBUF                                |                2 |              4 |
+|  CLK_IBUF_BUFG                                | myMicroProcessor/FSM_sequential_CurrState[5]_i_1_n_0 | RESET_IBUF                                |                6 |              6 |
+|  CLK_IBUF_BUFG                                | myMicroProcessor/CurrRegB[7]_i_1_n_0                 | RESET_IBUF                                |                6 |              8 |
+|  CLK_IBUF_BUFG                                | myMicroProcessor/CurrRegA[7]_i_1_n_0                 | RESET_IBUF                                |                6 |              8 |
+|  CLK_IBUF_BUFG                                | myMicroProcessor/CurrProgCounter[7]_i_1_n_0          | RESET_IBUF                                |                5 |              8 |
+|  CLK_IBUF_BUFG                                | myMicroProcessor/CurrFunctionCall[7]_i_1_n_0         | RESET_IBUF                                |                5 |              8 |
+|  CLK_IBUF_BUFG                                | myMicroProcessor/CurrBusDataOutWE_i_1_n_0            | RESET_IBUF                                |                2 |              8 |
+|  myIR/YellowCar/PULSE_CLK                     |                                                      | myIR/YellowCar/PACKET_SM/PACKET_COUNT_RST |                3 |              8 |
+|  CLK_IBUF_BUFG                                | myMicroProcessor/InterruptRate_reg[9][0]             | RESET_IBUF                                |                3 |              9 |
+|  CLK_IBUF_BUFG                                |                                                      |                                           |                7 |             12 |
+|  CLK_IBUF_BUFG                                | myTimer/Timer[0]_i_2_n_0                             | myMicroProcessor/Timer_reg[31]            |                8 |             32 |
+|  CLK_IBUF_BUFG                                | myTimer/TargetReached1                               | RESET_IBUF                                |               10 |             32 |
+|  CLK_IBUF_BUFG                                |                                                      | RESET_IBUF                                |               35 |             91 |
++-----------------------------------------------+------------------------------------------------------+-------------------------------------------+------------------+----------------+
 
 

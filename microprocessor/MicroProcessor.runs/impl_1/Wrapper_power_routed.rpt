@@ -1,8 +1,8 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2015.2 (lin64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date             : Thu Mar  3 14:10:41 2016
-| Host             : tlf65.see.ed.ac.uk running 64-bit Scientific Linux release 7.1 (Nitrogen)
+| Date             : Tue Mar 15 09:19:09 2016
+| Host             : tla18.see.ed.ac.uk running 64-bit Scientific Linux release 7.1 (Nitrogen)
 | Command          : 
 | Design           : Wrapper
 | Device           : xc7a35tcpg236-1
@@ -29,18 +29,18 @@ Table of Contents
 1. Summary
 ----------
 
-+--------------------------+----------------------------------+
-| Total On-Chip Power (W)  | 15.078 (Junction temp exceeded!) |
-| Dynamic (W)              | 14.819                           |
-| Device Static (W)        | 0.259                            |
-| Effective TJA (C/W)      | 5.0                              |
-| Max Ambient (C)          | 9.6                              |
-| Junction Temperature (C) | 100.4                            |
-| Confidence Level         | Low                              |
-| Setting File             | ---                              |
-| Simulation Activity File | ---                              |
-| Design Nets Matched      | NA                               |
-+--------------------------+----------------------------------+
++--------------------------+-------+
+| Total On-Chip Power (W)  | 7.030 |
+| Dynamic (W)              | 6.925 |
+| Device Static (W)        | 0.105 |
+| Effective TJA (C/W)      | 5.0   |
+| Max Ambient (C)          | 49.9  |
+| Junction Temperature (C) | 60.1  |
+| Confidence Level         | Low   |
+| Setting File             | ---   |
+| Simulation Activity File | ---   |
+| Design Nets Matched      | NA    |
++--------------------------+-------+
 
 
 1.1 On-Chip Components
@@ -49,18 +49,18 @@ Table of Contents
 +----------------+-----------+----------+-----------+-----------------+
 | On-Chip        | Power (W) | Used     | Available | Utilization (%) |
 +----------------+-----------+----------+-----------+-----------------+
-| Slice Logic    |     1.755 |      656 |       --- |             --- |
-|   LUT as Logic |     1.595 |      279 |     20800 |            1.34 |
-|   CARRY4       |     0.070 |       31 |      8150 |            0.38 |
-|   Register     |     0.055 |      248 |     41600 |            0.60 |
-|   BUFG         |     0.029 |        2 |        32 |            6.25 |
-|   F7/F8 Muxes  |     0.005 |        6 |     32600 |            0.02 |
-|   Others       |     0.000 |       20 |       --- |             --- |
-| Signals        |     1.517 |      522 |       --- |             --- |
-| Block RAM      |     0.362 |      1.5 |        50 |            3.00 |
-| I/O            |    11.185 |       12 |       106 |           11.32 |
-| Static Power   |     0.259 |          |           |                 |
-| Total          |    15.078 |          |           |                 |
+| Slice Logic    |     2.151 |      800 |       --- |             --- |
+|   LUT as Logic |     1.962 |      391 |     20800 |            1.88 |
+|   CARRY4       |     0.114 |       46 |      8150 |            0.56 |
+|   Register     |     0.064 |      253 |     41600 |            0.61 |
+|   BUFG         |     0.006 |        1 |        32 |            3.13 |
+|   F7/F8 Muxes  |     0.005 |       14 |     32600 |            0.04 |
+|   Others       |     0.000 |       21 |       --- |             --- |
+| Signals        |     1.959 |      658 |       --- |             --- |
+| Block RAM      |     0.067 |      0.5 |        50 |            1.00 |
+| I/O            |     2.749 |        3 |       106 |            2.83 |
+| Static Power   |     0.105 |          |           |                 |
+| Total          |     7.030 |          |           |                 |
 +----------------+-----------+----------+-----------+-----------------+
 
 
@@ -70,16 +70,16 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     3.773 |       3.613 |      0.160 |
-| Vccaux    |       1.800 |     0.440 |       0.410 |      0.030 |
-| Vcco33    |       3.300 |     3.166 |       3.165 |      0.001 |
+| Vccint    |       1.000 |     4.213 |       4.176 |      0.037 |
+| Vccaux    |       1.800 |     0.116 |       0.101 |      0.015 |
+| Vcco33    |       3.300 |     0.778 |       0.777 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
 | Vcco18    |       1.800 |     0.000 |       0.000 |      0.000 |
 | Vcco15    |       1.500 |     0.000 |       0.000 |      0.000 |
 | Vcco135   |       1.350 |     0.000 |       0.000 |      0.000 |
 | Vcco12    |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccaux_io |       1.800 |     0.000 |       0.000 |      0.000 |
-| Vccbram   |       1.000 |     0.030 |       0.025 |      0.005 |
+| Vccbram   |       1.000 |     0.005 |       0.005 |      0.001 |
 | MGTAVcc   |       1.000 |     0.000 |       0.000 |      0.000 |
 | MGTAVtt   |       1.200 |     0.000 |       0.000 |      0.000 |
 | Vccadc    |       1.800 |     0.020 |       0.000 |      0.020 |
@@ -134,21 +134,21 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+---------------------+-----------+
-| Name                | Power (W) |
-+---------------------+-----------+
-| Wrapper             |    14.819 |
-|   myMicroProcessor  |     2.122 |
-|     ALU0            |     0.318 |
-|   myRAM             |     0.127 |
-|   myROM             |     0.162 |
-|   myTimer           |     0.466 |
-|   myVGA             |     0.696 |
-|     DownCounter     |     0.070 |
-|     MyFrame         |     0.315 |
-|     VGA             |     0.303 |
-|       BisicHCounter |     0.219 |
-|       BisicVCounter |    <0.001 |
-+---------------------+-----------+
++-----------------------+-----------+
+| Name                  | Power (W) |
++-----------------------+-----------+
+| Wrapper               |     6.925 |
+|   myIR                |     1.215 |
+|     TEN_CLK_COUNT_YEL |     0.436 |
+|     YellowCar         |     0.779 |
+|       PACKET_SM       |     0.429 |
+|         PACKET_COUNT  |     0.362 |
+|       PULSE_CLK_COUNT |     0.268 |
+|   myMicroProcessor    |     1.917 |
+|     ALU0              |     0.248 |
+|   myRAM               |     0.122 |
+|   myROM               |     0.402 |
+|   myTimer             |     0.478 |
++-----------------------+-----------+
 
 
