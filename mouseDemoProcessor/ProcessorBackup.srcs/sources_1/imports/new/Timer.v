@@ -32,7 +32,7 @@ module Timer(
         input BUS_INTERRUPT_ACK
         );
     parameter [7:0] TimerBaseAddr = 8'hF0; // Timer Base Address in the Memory Map
-    parameter InitialIterruptRate = 100; // Default interrupt rate leading to 1 interrupt every 100 ms
+    parameter InitialIterruptRate = 1000; // Default interrupt rate leading to 1 interrupt every 100 ms
     parameter InitialIterruptEnable = 1'b1; // By default the Interrupt is Enabled
     //////////////////////
     //BaseAddr + 0 -> reports current timer value
@@ -64,13 +64,13 @@ module Timer(
         end
         
         
-//First we must lower the clock speed from 50MHz to 1 KHz (1ms period)
+//First we must lower the clock speed from 100MHz to 1 KHz (1ms period)
         reg [31:0] DownCounter;
         always@(posedge CLK) begin
         if(RESET)
             DownCounter <= 0;
         else begin
-            if(DownCounter == 32'd49999)
+            if(DownCounter == 32'd99999)
                 DownCounter <= 0;
             else
                 DownCounter <= DownCounter + 1'b1;
