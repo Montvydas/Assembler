@@ -560,7 +560,7 @@ function, and Dereference operations.
 					NextRegB 			 	= 8'h00;
 					NextProgContext 		 	= 8'h00;
 					NextInterruptAck 		= 2'b00;
-					NextState 				= 8'h00;
+					NextState 				= IDLE;
 					NextRegSelect 			= 1'b0;
 					NextProgCounter 		 	= 8'h00;
 					NextProgCounterOffset 	= 2'h0;
