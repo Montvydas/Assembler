@@ -6,6 +6,8 @@
 import java.io.*;
 import java.util.*;
 
+import javax.sound.midi.SysexMessage;
+
 public class TranslatorMain {
 
 	static int lineNr = 0;                  
@@ -15,27 +17,29 @@ public class TranslatorMain {
     static String addressOfTimerISR = "11111110";
     static String addressOfMouseISR = "11111111";
     
-    boolean timerIntUsed = false;
-    boolean mouseIntUsed = false;   //to make sure they were only used once
+    static boolean timerIntUsed = false;
+    static boolean mouseIntUsed = false;   //to make sure they were only used once
     
-    String instructionAddressInHex = "00";  //instruction addr in hex
+    static String instructionAddressInHex = "00";  //instruction addr in hex
+    
+    static Map<String, String> functionTag = new HashMap<String, String>();
     
     public static void main(String args[]) {
         try {
             
           // get the user file
-//          Scanner sc = new Scanner (new File (args[0]));
-          Scanner sc = new Scanner (new File ("jump_instructions.txt"));
+          Scanner sc = new Scanner (new File (args[0]));
+//          Scanner sc = new Scanner (new File ("jump_instructions.txt"));
           
             // output file
-            File outputFile = new File("jump_results.txt");
-//            File outputFile = new File(args[1]);
+//            File outputFile = new File("jump_results.txt");
+            File outputFile = new File(args[1]);
             FileWriter fw = new FileWriter(outputFile);
             
             boolean blockCommented = false;         //for detecting block comments
             int instructionAddress = 0;             //store the instruction address to be performed
             
-            Map<String, String> functionTagMap = new HashMap<String, String>();
+            
             
       //Start line scanning
             while (sc.hasNextLine()){	            //scan all of the file
@@ -262,8 +266,9 @@ public class TranslatorMain {
                     default:  {
                         instructionLengthInBytes = 0;
                         checkNumberOfOperands (storedCode.length, 1);
-                        if (!containsErrors && !addFunctionToMap(storedCode[0])){
-                            
+                        if (containsErrors || !addFunctionToMap(storedCode[0])){
+                        	printErrorLine();
+                        	System.err.println("hint: use single word as a function name AND define functions only once");
                         }
 //                    return;
                     }
@@ -275,7 +280,6 @@ public class TranslatorMain {
                 if (instructionAddress > 253){  //make sure there is enough memory left for instructions
                     printErrorLine();
                     System.err.print("hint: you used more than allowed 253 Bytes of program ROM (254 is timer & 255 is mouse interrupt addr).\n");
-                    return;    
                 }
                 
                 if (containsErrors){    //if contains errors, end program
@@ -298,6 +302,8 @@ public class TranslatorMain {
             if (addressOfTimerISR == "11111110"){ //0xFE
                 // printErrorLine();
                 System.err.print ("Error: You didn't specify where your timer interrupt begins.\n");
+            	fw.close();
+            	sc.close();
                 return;
             }   
             
@@ -312,6 +318,8 @@ public class TranslatorMain {
             } else {
                 printErrorLine();
                 System.err.print("hint: you used more than allowed 253 Bytes of program ROM.\n");
+            	fw.close();
+            	sc.close();
                 return;
             }
             
@@ -423,9 +431,14 @@ public class TranslatorMain {
                         break;
                     
                         default: {
-                            functionTagMap.put( storedCode[0], hexToBi(instructionAddressInHex) );
+                        	System.out.println("Found: " + functionName + " at addr: " + instructionAddressInHex);
+                            if (!functionTag.containsKey(functionName))
+                        		functionTag.put( functionName, hexToBi(instructionAddressInHex) );
+                            else
+                            	return false;
                         }
                     }
         }
+         return true;
      }
 }
