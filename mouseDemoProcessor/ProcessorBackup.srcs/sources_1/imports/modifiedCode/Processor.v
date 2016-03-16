@@ -141,9 +141,10 @@ parameter [7:0] DO_MATHS_OPP_0 			= 8'h32; //wait for new op address to settle. 
 
 //Jump Operations
 parameter [7:0] IF_A_EQUALITY_B_GOTO    			= 8'h40; //	goto a specific address
-parameter [7:0] IF_A_EQUALITY_B_GOTO_EQUALS    	= 8'h41;
-parameter [7:0] IF_A_EQUALITY_B_GOTO_GREATER    	= 8'h42;
-parameter [7:0] IF_A_EQUALITY_B_GOTO_LESS  		= 8'h43;
+parameter [7:0] IF_A_EQUALITY_B_GOTO_0 		   	= 8'h41;
+//parameter [7:0] IF_A_EQUALITY_B_GOTO_EQUALS   = 8'h41;
+//parameter [7:0] IF_A_EQUALITY_B_GOTO_GREATER  = 8'h42;
+//parameter [7:0] IF_A_EQUALITY_B_GOTO_LESS  	= 8'h43;
 parameter [7:0] IF_A_EQUALITY_B_GOTO_FINISH 	   	= 8'h44;
 
 //goto to a spec addr
@@ -404,6 +405,7 @@ function, and Dereference operations.
                 //IF_A_EQUALITY_B_GOTO: here start the jump operation, the following achieve the function 
                 //that when A==B or A>B, then jump to the address stored in the memory
                 //the first state of this operation is to wait a clk time unitl the address can be read from the memory
+                /*
                         IF_A_EQUALITY_B_GOTO:begin
                             if(ProgMemoryOut[7:4]==4'b1001)
                                 NextState=IF_A_EQUALITY_B_GOTO_EQUALS;
@@ -448,11 +450,29 @@ function, and Dereference operations.
                                 
                             NextState=IF_A_EQUALITY_B_GOTO_FINISH;
                          end
+                     */
+	IF_A_EQUALITY_B_GOTO:
+			begin
+			NextState = IF_A_EQUALITY_B_GOTO_0;
+            end			
+            			      
+	IF_A_EQUALITY_B_GOTO_0:
+	     begin
+	     NextState = IF_A_EQUALITY_B_GOTO_FINISH;
+	     	if(AluOut==8'h01)
+	        		NextProgCounter = ProgMemoryOut;
+	        	else
+	            NextProgCounter = CurrProgCounter + 2;
+	        end
                         
                         
-                        IF_A_EQUALITY_B_GOTO_FINISH:begin
-                             NextState = CHOOSE_OPP;
-                        end                
+    	IF_A_EQUALITY_B_GOTO_FINISH:begin
+     	NextState = CHOOSE_OPP;
+    end                
+                  
+                  
+                  
+                  
                   
                   //Jump op in here
                         GOTO_ADDR: begin

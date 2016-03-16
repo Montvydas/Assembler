@@ -11,28 +11,32 @@ public class TranslatorMain {
 	static int lineNr = 0;                  
 	static String data = new String ();     //data line to be read from the file
 	static boolean containsErrors = false;  //error flag
+    
     static String addressOfTimerISR = "11111110";
     static String addressOfMouseISR = "11111111";
+    
+    boolean timerIntUsed = false;
+    boolean mouseIntUsed = false;   //to make sure they were only used once
+    
+    String instructionAddressInHex = "00";  //instruction addr in hex
     
     public static void main(String args[]) {
         try {
             
           // get the user file
-          Scanner sc = new Scanner (new File (args[0]));
-//          Scanner sc = new Scanner (new File ("instructions.txt"));
+//          Scanner sc = new Scanner (new File (args[0]));
+          Scanner sc = new Scanner (new File ("jump_instructions.txt"));
           
             // output file
-//          File outputFile = new File("results.txt");
-            File outputFile = new File(args[1]);
+            File outputFile = new File("jump_results.txt");
+//            File outputFile = new File(args[1]);
             FileWriter fw = new FileWriter(outputFile);
             
             boolean blockCommented = false;         //for detecting block comments
             int instructionAddress = 0;             //store the instruction address to be performed
-            String instructionAddressInHex = "00";  //same just in hex
-           
-            boolean timerIntUsed = false;
-            boolean mouseIntUsed = false;   //to make sure they were only used once
-           
+            
+            Map<String, String> functionTagMap = new HashMap<String, String>();
+            
       //Start line scanning
             while (sc.hasNextLine()){	            //scan all of the file
             	lineNr++;
@@ -255,34 +259,14 @@ public class TranslatorMain {
                         instructionLengthInBytes = 2;
                     break;
                     
-                    //also check if it was used only once in our program
-                    //timer_isr:
-                    case "TIMER_ISR:":
-                        if (timerIntUsed){
-                            printErrorLine();
-                            System.err.print ("hint: You can't you timer interrupts at multiple places");
-                        }
-                        checkNumberOfOperands (storedCode.length, 1);
-                        // System.out.print ("\n" + instructionAddressInHex + "\n");
-                        addressOfTimerISR = hexToBi( instructionAddressInHex ) + "\n";
+                    default:  {
                         instructionLengthInBytes = 0;
-                        timerIntUsed = true;
-                    break;
-                    
-                    //mouse_isr:
-                    case "MOUSE_ISR:":
-                        if (mouseIntUsed){
-                            printErrorLine();
-                            System.err.print ("hint: You can't you mouse interrupts at multiple places");
-                        }
                         checkNumberOfOperands (storedCode.length, 1);
-                        addressOfMouseISR = hexToBi( instructionAddressInHex ) + "\n";
-                        instructionLengthInBytes = 0;
-                        mouseIntUsed = true;
-                    break;
-                    
-                    default:  printErrorLine(); //if smth different entered, print error
+                        if (!containsErrors && !addFunctionToMap(storedCode[0])){
+                            
+                        }
 //                    return;
+                    }
                     break;
                 }
                 
@@ -407,5 +391,41 @@ public class TranslatorMain {
         
         checkLengthOfHexAndBin(bin.length(), hex.length());
         return bin;
+     }
+     
+     public static boolean addFunctionToMap (String functionName){
+         if ( functionName.endsWith(":")) {
+                 //String str = storedCode[0];
+                 //str = str.substring(0, str.length()-1);
+                 functionName = functionName.substring (0, functionName.length()-1);    
+                    
+                 switch (functionName.toUpperCase()) { 
+                        //also check if it was used only once in our program
+                        //timer_isr:
+                        case "TIMER_ISR":
+                            if (timerIntUsed){
+                                printErrorLine();
+                                System.err.print ("hint: You can't you timer interrupts at multiple places");
+                            }
+                            // System.out.print ("\n" + instructionAddressInHex + "\n");
+                            addressOfTimerISR = hexToBi( instructionAddressInHex ) + "\n";
+                            timerIntUsed = true;
+                        break;
+                    
+                        //mouse_isr:
+                        case "MOUSE_ISR":
+                            if (mouseIntUsed){
+                                printErrorLine();
+                                System.err.print ("hint: You can't you mouse interrupts at multiple places");
+                            }
+                            addressOfMouseISR = hexToBi( instructionAddressInHex ) + "\n";
+                            mouseIntUsed = true;
+                        break;
+                    
+                        default: {
+                            functionTagMap.put( storedCode[0], hexToBi(instructionAddressInHex) );
+                        }
+                    }
+        }
      }
 }
