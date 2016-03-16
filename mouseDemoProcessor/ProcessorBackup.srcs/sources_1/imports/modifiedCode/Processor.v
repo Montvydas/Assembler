@@ -128,6 +128,8 @@ parameter [7:0] READ_FROM_MEM_TO_B      = 8'h11; //Wait to find what address to 
 parameter [7:0] READ_FROM_MEM_0         = 8'h12; //Set BUS_ADDR to designated address.
 parameter [7:0] READ_FROM_MEM_1         = 8'h13; //wait - Increments program counter by 2. Reset offset.
 parameter [7:0] READ_FROM_MEM_2 			= 8'h14; //Writes memory output to chosen register, end op.
+
+//writing to memory
 parameter [7:0] WRITE_TO_MEM_FROM_A 	 	= 8'h20; //Reads Op+1 to find what address to Write to.
 parameter [7:0] WRITE_TO_MEM_FROM_B 	 	= 8'h21; //Reads Op+1 to find what address to Write to.
 parameter [7:0] WRITE_TO_MEM_0 			= 8'h22; //wait - Increments program counter by 2. Reset offset.
@@ -137,13 +139,19 @@ parameter [7:0] DO_MATHS_OPP_SAVE_IN_A  	= 8'h30; //The result of maths op. is a
 parameter [7:0] DO_MATHS_OPP_SAVE_IN_B  	= 8'h31; //The result of maths op. is available, save it to Reg B.
 parameter [7:0] DO_MATHS_OPP_0 			= 8'h32; //wait for new op address to settle. end op.
 
-//deref A or B
-parameter [7:0] DE_REFERENCE_A  = 8'h90;  //used for different steps while performing 
-parameter [7:0] DE_REFERENCE_B  = 8'h91; //dereference operatio
-parameter [7:0] DE_REFERENCE_0  = 8'h92; 
-parameter [7:0] DE_REFERENCE_1  = 8'h93; 
-parameter [7:0] DE_REFERENCE_2  = 8'h94; 
+//Jump Operations
+parameter [7:0] IF_A_EQUALITY_B_GOTO    			= 8'h40; //	goto a specific address
+parameter [7:0] IF_A_EQUALITY_B_GOTO_EQUALS    	= 8'h41;
+parameter [7:0] IF_A_EQUALITY_B_GOTO_GREATER    	= 8'h42;
+parameter [7:0] IF_A_EQUALITY_B_GOTO_LESS  		= 8'h43;
+parameter [7:0] IF_A_EQUALITY_B_GOTO_FINISH 	   	= 8'h44;
 
+//goto to a spec addr
+parameter [7:0] GOTO_ADDR             	= 8'h50; //	also branch equal
+parameter [7:0] GOTO_ADDR_0             	= 8'h51;
+parameter [7:0] GOTO_ADDR_FINISH        	= 8'h52;
+
+parameter [7:0] GOTO_IDLE          		= 8'h60;
 
 //Function call and return
 parameter [7:0] FUNCTION_START  			= 8'h70; //call instruction performed using this step
@@ -153,21 +161,18 @@ parameter [7:0] FUNCTION_START_FINISH  	= 8'h72;
 parameter [7:0] RETURN          			= 8'h80; //return instr using step this
 parameter [7:0] RETURN_FINISH   			= 8'h80;
 
+//deref A or B
+parameter [7:0] DE_REFERENCE_A  = 8'h90;  //used for different steps while performing 
+parameter [7:0] DE_REFERENCE_B  = 8'h91; //dereference operatio
+parameter [7:0] DE_REFERENCE_0  = 8'h92; 
+parameter [7:0] DE_REFERENCE_1  = 8'h93; 
+parameter [7:0] DE_REFERENCE_2  = 8'h94;
 
-parameter  	LOAD_VAL_A 			= 	8'h86;	//load val instruction is performed using this
-parameter 	LOAD_VAL_A_0			= 	8'h87;
-parameter 	LOAD_VAL_B 			= 	8'h89;
-parameter 	LOAD_VAL_B_0			=	8'h91;
-parameter	LOAD_VAL_FINISH		= 	8'h90;
-
-//Jump Operations
-parameter [7:0] IF_A_EQUALITY_B_GOTO    = 8'h40; //	goto a specific address
-
-parameter [7:0] GOTO_ADDR             	= 8'h50; //	also bransh equal
-parameter [7:0] GOTO_ADDR_0             	= 8'h51;
-parameter [7:0] GOTO_ADDR_FINISH        	= 8'h52;
-
-parameter [7:0] GOTO_IDLE          		= 8'h60;
+parameter  	LOAD_VAL_A 			= 	8'hA0;	//load val instruction is performed using this
+parameter 	LOAD_VAL_A_0			= 	8'hA1;
+parameter 	LOAD_VAL_B 			= 	8'hA2;
+parameter 	LOAD_VAL_B_0			=	8'hA3;
+parameter	LOAD_VAL_FINISH		= 	8'hA4;
 
 //Sequential part of the State Machine.
 reg [7:0] CurrState, NextState;
@@ -399,52 +404,53 @@ function, and Dereference operations.
                 //the first state of this operation is to wait a clk time unitl the address can be read from the memory
                         IF_A_EQUALITY_B_GOTO:begin
                             if(ProgMemoryOut[7:4]==4'b1001)
-                                NextState=IF_A_EQUALITY_B_GOTO_E;
+                                NextState=IF_A_EQUALITY_B_GOTO_EQUALS;
                             
                             if(ProgMemoryOut[7:4]==4'b1010)
-                                NextState=IF_A_EQUALITY_B_GOTO_LA;
+                                NextState=IF_A_EQUALITY_B_GOTO_GREATER;
   
                            
                             if(ProgMemoryOut[7:4]==4'b1011)
-                                NextState=IF_A_EQUALITY_B_GOTO_LE; 
+                                NextState=IF_A_EQUALITY_B_GOTO_LESSS; 
 
                             
                         end
-
-                        IF_A_EQUALITY_B_GOTO_E:begin
+                      
+                //then the next state is according to the address read from the memory, jump to it, that is, next program counter value is that
+                
+                        IF_A_EQUALITY_B_GOTO_EQUALS:begin
                             if(CurrRegA==CurrRegB)
                                 NextProgCounter=ProgMemoryOut;
                             else
                                 NextProgCounter=CurrProgCounter+2;
                             
-                            NextState=IF_A_EQUALITY_B_GOTO_0;
+                            NextState=IF_A_EQUALITY_B_GOTO_FINISH;
                         end
                         
                         
-                         IF_A_EQUALITY_B_GOTO_LA:begin
+                         IF_A_EQUALITY_B_GOTO_GREATER:begin
                            if(CurrRegA>CurrRegB)
                                NextProgCounter=ProgMemoryOut;
                            else
                                NextProgCounter=CurrProgCounter+2;
                                
-                           NextState=IF_A_EQUALITY_B_GOTO_0;
+                           NextState=IF_A_EQUALITY_B_GOTO_FINISH;
                          end
                         
                         
-                         IF_A_EQUALITY_B_GOTO_LE:begin
+                         IF_A_EQUALITY_B_GOTO_LESS:begin
                             if(CurrRegA<CurrRegB)
                                 NextProgCounter=ProgMemoryOut;
                             else
                                 NextProgCounter=CurrProgCounter+2;
                                 
-                            NextState=IF_A_EQUALITY_B_GOTO_0;
+                            NextState=IF_A_EQUALITY_B_GOTO_FINISH;
                          end
                         
                         
-                        IF_A_EQUALITY_B_GOTO_0:begin
+                        IF_A_EQUALITY_B_GOTO_FINISH:begin
                              NextState = CHOOSE_OPP;
-                        end
-                  
+                        end                
                   
                   //Jump op in here
                         GOTO_ADDR: begin
