@@ -35,12 +35,8 @@ ROM[0] = 8'b10100001;
 ROM[0] = 8'b00000000;
 ROM[0] = 8'b10100010;
 */
-
-//idle starts in here:
+//FF: IDLE
 //address == 00:
-
-goto FF			//in the idle do nothing, just go back to the beginning
-
 //Timer ISR starts here
 timer_isr:
 	load a E0		//E0 - slide switches address

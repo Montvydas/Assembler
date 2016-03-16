@@ -127,87 +127,94 @@ parameter [7:0] READ_FROM_MEM_TO_A      = 8'h10; //Wait to find what address to 
 parameter [7:0] READ_FROM_MEM_TO_B      = 8'h11; //Wait to find what address to read, save reg select.
 parameter [7:0] READ_FROM_MEM_0         = 8'h12; //Set BUS_ADDR to designated address.
 parameter [7:0] READ_FROM_MEM_1         = 8'h13; //wait - Increments program counter by 2. Reset offset.
-parameter [7:0] READ_FROM_MEM_2 			 = 8'h14; //Writes memory output to chosen register, end op.
-parameter [7:0] WRITE_TO_MEM_FROM_A 	 = 8'h20; //Reads Op+1 to find what address to Write to.
-parameter [7:0] WRITE_TO_MEM_FROM_B 	 = 8'h21; //Reads Op+1 to find what address to Write to.
-parameter [7:0] WRITE_TO_MEM_0 			 = 8'h22; //wait - Increments program counter by 2. Reset offset.
+parameter [7:0] READ_FROM_MEM_2 			= 8'h14; //Writes memory output to chosen register, end op.
+parameter [7:0] WRITE_TO_MEM_FROM_A 	 	= 8'h20; //Reads Op+1 to find what address to Write to.
+parameter [7:0] WRITE_TO_MEM_FROM_B 	 	= 8'h21; //Reads Op+1 to find what address to Write to.
+parameter [7:0] WRITE_TO_MEM_0 			= 8'h22; //wait - Increments program counter by 2. Reset offset.
 
 //Data Manipulation
-parameter [7:0] DO_MATHS_OPP_SAVE_IN_A  = 8'h30; //The result of maths op. is available, save it to Reg A.
-parameter [7:0] DO_MATHS_OPP_SAVE_IN_B  = 8'h31; //The result of maths op. is available, save it to Reg B.
-parameter [7:0] DO_MATHS_OPP_0 			 = 8'h32; //wait for new op address to settle. end op.
+parameter [7:0] DO_MATHS_OPP_SAVE_IN_A  	= 8'h30; //The result of maths op. is available, save it to Reg A.
+parameter [7:0] DO_MATHS_OPP_SAVE_IN_B  	= 8'h31; //The result of maths op. is available, save it to Reg B.
+parameter [7:0] DO_MATHS_OPP_0 			= 8'h32; //wait for new op address to settle. end op.
 
 //deref A or B
-parameter [7:0] DE_REFERENCE_A    = 8'h90;  //used for different steps while performing 
-parameter [7:0] DE_REFERENCE_B     = 8'h91; //dereference operatio
-parameter [7:0] DE_REFERENCE_0     = 8'h92; 
-parameter [7:0] DE_REFERENCE_1     = 8'h93; 
-parameter [7:0] DE_REFERENCE_2     = 8'h94; 
+parameter [7:0] DE_REFERENCE_A  = 8'h90;  //used for different steps while performing 
+parameter [7:0] DE_REFERENCE_B  = 8'h91; //dereference operatio
+parameter [7:0] DE_REFERENCE_0  = 8'h92; 
+parameter [7:0] DE_REFERENCE_1  = 8'h93; 
+parameter [7:0] DE_REFERENCE_2  = 8'h94; 
 
 
 //Function call and return
-parameter [7:0] FUNCTION_START      = 8'h70; //call instruction performed using this step
-parameter [7:0] RETURN              = 8'h80; //return instr using step this
+parameter [7:0] FUNCTION_START  			= 8'h70; //call instruction performed using this step
+parameter [7:0] FUNCTION_START_0  		= 8'h71;
+parameter [7:0] FUNCTION_START_FINISH  	= 8'h72;
+
+parameter [7:0] RETURN          			= 8'h80; //return instr using step this
+parameter [7:0] RETURN_FINISH   			= 8'h80;
 
 
 parameter  	LOAD_VAL_A 			= 	8'h86;	//load val instruction is performed using this
-parameter 	LOAD_VAL_A_1		= 	8'h87;
-parameter 	LOAD_VAL_A_2		= 	8'h88;
+parameter 	LOAD_VAL_A_0			= 	8'h87;
 parameter 	LOAD_VAL_B 			= 	8'h89;
-parameter 	LOAD_VAL_B_2		=	8'h91;
-parameter		LOAD_VAL_B_1		= 	8'h90;
+parameter 	LOAD_VAL_B_0			=	8'h91;
+parameter	LOAD_VAL_FINISH		= 	8'h90;
 
 //Jump Operations
 parameter [7:0] IF_A_EQUALITY_B_GOTO    = 8'h40; //	goto a specific address
-parameter [7:0] GOTO_ADDR             = 8'h50; //	also bransh equal
-parameter [7:0] GOTO_IDLE          = 8'h60; 
+
+parameter [7:0] GOTO_ADDR             	= 8'h50; //	also bransh equal
+parameter [7:0] GOTO_ADDR_0             	= 8'h51;
+parameter [7:0] GOTO_ADDR_FINISH        	= 8'h52;
+
+parameter [7:0] GOTO_IDLE          		= 8'h60;
 
 //Sequential part of the State Machine.
 reg [7:0] CurrState, NextState;
 
 always @(posedge CLK) begin
 	if(RESET) begin
-		CurrState 				 = 8'h00;
-		CurrProgCounter 		 = 8'h00;
-		CurrProgCounterOffset = 2'h0;
-		CurrBusAddr 			 = 8'hFF; //Initial instruction after reset.
-		CurrBusDataOut 		 = 8'h00;
-		CurrBusDataOutWE 		 = 1'b0;
-		CurrRegA 			 	 = 8'h00;
-		CurrRegB 			 	 = 8'h00;
-		CurrRegSelect 			 = 1'b0;
-		CurrProgContext 		 = 8'h00;
-		CurrInterruptAck 		 = 2'b00;
+		CurrState 				= 8'h00;
+		CurrProgCounter 		 	= 8'h00;
+		CurrProgCounterOffset 	= 2'h0;
+		CurrBusAddr 			 	= 8'hFF; //Initial instruction after reset.
+		CurrBusDataOut 		 	= 8'h00;
+		CurrBusDataOutWE 		= 1'b0;
+		CurrRegA 			 	= 8'h00;
+		CurrRegB 			 	= 8'h00;
+		CurrRegSelect 			= 1'b0;
+		CurrProgContext 		 	= 8'h00;
+		CurrInterruptAck 		= 2'b00;
 	end
 	else begin
-		CurrState 				 = NextState;
-		CurrProgCounter 		 = NextProgCounter;
-		CurrProgCounterOffset = NextProgCounterOffset;
-		CurrBusAddr 			 = NextBusAddr;
-		CurrBusDataOut 		 = NextBusDataOut;
-		CurrBusDataOutWE 		 = NextBusDataOutWE;
-		CurrRegA 				 = NextRegA;
-		CurrRegB 				 = NextRegB;
-		CurrRegSelect 			 = NextRegSelect;
-		CurrProgContext 		 = NextProgContext;
-		CurrInterruptAck 		 = NextInterruptAck;
+		CurrState 				= NextState;
+		CurrProgCounter 		 	= NextProgCounter;
+		CurrProgCounterOffset 	= NextProgCounterOffset;
+		CurrBusAddr 			 	= NextBusAddr;
+		CurrBusDataOut 		 	= NextBusDataOut;
+		CurrBusDataOutWE 		= NextBusDataOutWE;
+		CurrRegA 				= NextRegA;
+		CurrRegB 				= NextRegB;
+		CurrRegSelect 			= NextRegSelect;
+		CurrProgContext 		 	= NextProgContext;
+		CurrInterruptAck 		= NextInterruptAck;
 	end
 end
 
 //Combinatorial section
 always @* begin
 //Generic assignment to reduce the complexity of the rest of the S/M
-		NextState 				 = CurrState;
-		NextProgCounter 		 = CurrProgCounter;
-		NextProgCounterOffset = 2'h0;
-		NextBusAddr 			 = 8'hFF;
-		NextBusDataOut 		 = CurrBusDataOut;
-		NextBusDataOutWE 		 = 1'b0;
-		NextRegA 				 = CurrRegA;
-		NextRegB					 = CurrRegB;
-		NextRegSelect 			 = CurrRegSelect;
-		NextProgContext 		 = CurrProgContext;
-		NextInterruptAck		 = 2'b00;
+		NextState 				= CurrState;
+		NextProgCounter 		 	= CurrProgCounter;
+		NextProgCounterOffset 	= 2'h0;
+		NextBusAddr 			 	= 8'hFF;
+		NextBusDataOut 		 	= CurrBusDataOut;
+		NextBusDataOutWE 		= 1'b0;
+		NextRegA 				= CurrRegA;
+		NextRegB					= CurrRegB;
+		NextRegSelect 			= CurrRegSelect;
+		NextProgContext 		 	= CurrProgContext;
+		NextInterruptAck		 	= 2'b00;
 
 //Case statement to describe each state
 case (CurrState)
@@ -387,24 +394,69 @@ function, and Dereference operations.
 */
 //branch if equal in here BREQ
 //Check for equality
-	IF_A_EQUALITY_B_GOTO:
-			begin
-	//check ALU command
-				if(AluOut == 8'h01)
-					NextProgCounter = ProgMemoryOut;
-				else
-					NextProgCounter = CurrProgCounter + 2;	//this is 2 byte command
+                //IF_A_EQUALITY_B_GOTO: here start the jump operation, the following achieve the function 
+                //that when A==B or A>B, then jump to the address stored in the memory
+                //the first state of this operation is to wait a clk time unitl the address can be read from the memory
+                        IF_A_EQUALITY_B_GOTO:begin
+                            if(ProgMemoryOut[7:4]==4'b1001)
+                                NextState=IF_A_EQUALITY_B_GOTO_E;
+                            
+                            if(ProgMemoryOut[7:4]==4'b1010)
+                                NextState=IF_A_EQUALITY_B_GOTO_LA;
+  
+                           
+                            if(ProgMemoryOut[7:4]==4'b1011)
+                                NextState=IF_A_EQUALITY_B_GOTO_LE; 
 
-				NextState   = CHOOSE_OPP;	//choose operation
-			end
-//check the equality
-	GOTO_ADDR:
-			begin
-					NextState       = CHOOSE_OPP;//choose the opeartion from ALU
-					NextProgCounter = ProgMemoryOut;
+                            
+                        end
 
-					
-			end
+                        IF_A_EQUALITY_B_GOTO_E:begin
+                            if(CurrRegA==CurrRegB)
+                                NextProgCounter=ProgMemoryOut;
+                            else
+                                NextProgCounter=CurrProgCounter+2;
+                            
+                            NextState=IF_A_EQUALITY_B_GOTO_0;
+                        end
+                        
+                        
+                         IF_A_EQUALITY_B_GOTO_LA:begin
+                           if(CurrRegA>CurrRegB)
+                               NextProgCounter=ProgMemoryOut;
+                           else
+                               NextProgCounter=CurrProgCounter+2;
+                               
+                           NextState=IF_A_EQUALITY_B_GOTO_0;
+                         end
+                        
+                        
+                         IF_A_EQUALITY_B_GOTO_LE:begin
+                            if(CurrRegA<CurrRegB)
+                                NextProgCounter=ProgMemoryOut;
+                            else
+                                NextProgCounter=CurrProgCounter+2;
+                                
+                            NextState=IF_A_EQUALITY_B_GOTO_0;
+                         end
+                        
+                        
+                        IF_A_EQUALITY_B_GOTO_0:begin
+                             NextState = CHOOSE_OPP;
+                        end
+                  
+                  
+                  //Jump op in here
+                        GOTO_ADDR: begin
+                            NextState=GOTO_ADDR_0;
+                        end
+                        
+                        GOTO_ADDR_0:begin
+                            NextProgCounter=ProgMemoryOut;
+                            NextState=GOTO_ADDR_FINISH;
+                        end
+                        
+                        GOTO_ADDR_FINISH:NextState = CHOOSE_OPP;
 
 
 //go back to idle
@@ -414,24 +466,30 @@ function, and Dereference operations.
 					NextState = IDLE;	//go to idle
 			end
 
-//Branch to memory address ADDR. Save the next program address
-//to execute from after returning from the function (program context)
-	FUNCTION_START:
-			begin
-					NextProgCounter = ProgMemoryOut;
-					
-					
-					NextProgContext = CurrProgCounter +2;
-					NextState       = CHOOSE_OPP;
-			end
-
-//return operation from call instruction
-	RETURN:
-			begin
-					NextProgCounter = CurrProgContext;
-					NextState       = CHOOSE_OPP;//choose ALU operation
-			end
-
+                  //the next module is to achieve the function_call, it has the similiar function with the jump, but a difference
+                  //is that I need to store the next program address so that when function return I can go on from this address
+                  //first step is to wait unitl the address is read from the ROM
+                  
+                         FUNCTION_START: begin
+                            NextState=FUNCTION_START_0;
+                         end
+                         
+                         FUNCTION_START_0:begin
+                            NextProgCounter=ProgMemoryOut;
+                            NextFunctionCall=CurrProgCounter+2;
+                            NextState=FUNCTION_START_FINISH;
+                         end
+                         
+                         FUNCTION_START_FINISH:NextState = CHOOSE_OPP;
+                         
+                  //the next module is to achieve the function return, it has the similiar function with the jump
+                  //no wait status, but just let the program counter to be the stored vale
+                         RETURN:begin
+                             NextState=RETURN_FINISH;
+                             NextProgCounter=CurrFunctionCall;
+                         end
+                         
+                         RETURN_FINISH:NextState = CHOOSE_OPP;
 // DEREFERENCE operation A<-[A]
 //get the value stored in the address of the value stored in A
 	DE_REFERENCE_A:
@@ -475,44 +533,40 @@ function, and Dereference operations.
 			
 //Loads a constant value defined in ROM to a specified reg A or reg B
 	LOAD_VAL_A: begin
-		NextState = LOAD_VAL_A_1;
-		NextProgCounter = CurrProgCounter + 2;
+		NextState = LOAD_VAL_A_0;
 		end
-	LOAD_VAL_A_1: begin
-		NextState = LOAD_VAL_A_2;
+	LOAD_VAL_A_0: begin
+		NextState = LOAD_VAL_FINISH;
+		NextProgCounter = CurrProgCounter + 2;
 		NextRegA = ProgMemoryOut;
 	end
 					
-					LOAD_VAL_A_2: begin
-									NextState = CHOOSE_OPP;
-								end
 //Here loads value to a reg B					
-					LOAD_VAL_B: begin
-									NextState = LOAD_VAL_B_1;
-									NextProgCounter = CurrProgCounter + 2;
-								end
-					LOAD_VAL_B_1: begin
-									NextState = LOAD_VAL_B_2;
-									NextRegB = ProgMemoryOut;
-								//	NextProgCounter = CurrProgCounter + 1;
-								end
-					LOAD_VAL_B_2: begin
-									NextState = CHOOSE_OPP;
-								end
+	LOAD_VAL_B: begin
+		NextState = LOAD_VAL_B_0;
+	end
+	LOAD_VAL_B_0: begin
+		NextState = LOAD_VAL_FINISH;
+		NextProgCounter = CurrProgCounter + 2;
+		NextRegB = ProgMemoryOut;
+	end
+	LOAD_VAL_FINISH: begin
+		NextState = CHOOSE_OPP;
+	end
 
 	default:
 			begin
-					NextRegA 			 	 = 8'h00;//Specify default values for all the regs
-					NextRegB 			 	 = 8'h00;
-					NextProgContext 		 = 8'h00;
-					NextInterruptAck 		 = 2'b00;
-					NextState 				 = 8'h00;
-					NextRegSelect 			 = 1'b0;
-					NextProgCounter 		 = 8'h00;
-					NextProgCounterOffset = 2'h0;
-					NextBusDataOut 		 = 8'h00;
-					NextBusAddr 			 = 8'hFF;
-					NextBusDataOutWE 		 = 1'b0;
+					NextRegA 			 	= 8'h00;//Specify default values for all the regs
+					NextRegB 			 	= 8'h00;
+					NextProgContext 		 	= 8'h00;
+					NextInterruptAck 		= 2'b00;
+					NextState 				= 8'h00;
+					NextRegSelect 			= 1'b0;
+					NextProgCounter 		 	= 8'h00;
+					NextProgCounterOffset 	= 2'h0;
+					NextBusDataOut 		 	= 8'h00;
+					NextBusAddr 			 	= 8'hFF;
+					NextBusDataOutWE 		= 1'b0;
 
 			end
 
