@@ -1,0 +1,22 @@
+	load_val a 00	//reset Mem[0]
+	store 00 a
+goto_idle
+
+//do updates in here
+	load a 00
+	store C0 a
+goto_idle
+
+timer_isr:
+	load a 00
+	incr a a	//incr val at Mem[0] addr
+	store 00 a
+	
+	goto 05		//go to do an update
+goto_idle
+
+mouse_isr:
+
+goto_idle
+
+
