@@ -374,15 +374,17 @@ case (CurrState)
 	// ready to be collected from the ALU.
 	DO_MATHS_OPP_SAVE_IN_A:
 			begin
+					NextProgCounterOffset = 2'h0;
 					NextState       = DO_MATHS_OPP_0;
 					NextRegA        = AluOut;
-					NextProgCounter = CurrProgCounter + 1;
+					NextProgCounter =  CurrProgCounter + 1;
 			end
 
 	//DO_MATHS_OPP_SAVE_IN_B : here starts the DoMaths operational pipeline
 	//when the result will go into reg B.
 	DO_MATHS_OPP_SAVE_IN_B:
 			begin
+					NextProgCounterOffset = 2'h0;
 					NextState       = DO_MATHS_OPP_0;
 					NextRegB        = AluOut;
 					NextProgCounter = CurrProgCounter + 1;
@@ -468,7 +470,7 @@ function, and Dereference operations.
 //go back to idle
 	GOTO_IDLE:
 			begin
-			
+					NextProgCounterOffset = 2'h0;
 					NextState = IDLE;	//go to idle
 			end
 
@@ -491,8 +493,9 @@ function, and Dereference operations.
                   //the next module is to achieve the function return, it has the similiar function with the jump
                   //no wait status, but just let the program counter to be the stored vale
                          RETURN:begin
-                             NextState=RETURN_FINISH;
-                             NextProgCounter=CurrProgContext;
+                         	NextProgCounterOffset = 2'h0;
+                            NextState=RETURN_FINISH;
+                            NextProgCounter=CurrProgContext;
                          end
                          
                          RETURN_FINISH:NextState = CHOOSE_OPP;
@@ -500,6 +503,7 @@ function, and Dereference operations.
 //get the value stored in the address of the value stored in A
 	DE_REFERENCE_A:
 			begin
+					NextProgCounterOffset = 2'h0;
 					NextState     = DE_REFERENCE_0;
 					NextRegSelect = 1'b0;
 			end
@@ -508,6 +512,7 @@ function, and Dereference operations.
 //B <- [B]
 	DE_REFERENCE_B:
 			begin
+					NextProgCounterOffset = 2'h0;
 					NextState     = DE_REFERENCE_0;
 					NextRegSelect = 1'b1;
 			end
@@ -564,14 +569,14 @@ function, and Dereference operations.
 			begin
 					NextRegA 			 	= 8'h00;//Specify default values for all the regs
 					NextRegB 			 	= 8'h00;
-					NextProgContext 		 	= 8'h00;
+					NextProgContext 		= 8'h00;
 					NextInterruptAck 		= 2'b00;
 					NextState 				= IDLE;
 					NextRegSelect 			= 1'b0;
-					NextProgCounter 		 	= 8'h00;
+					NextProgCounter 		= 8'h00;
 					NextProgCounterOffset 	= 2'h0;
 					NextBusDataOut 		 	= 8'h00;
-					NextBusAddr 			 	= 8'hFF;
+					NextBusAddr 			= 8'hFF;
 					NextBusDataOutWE 		= 1'b0;
 
 			end

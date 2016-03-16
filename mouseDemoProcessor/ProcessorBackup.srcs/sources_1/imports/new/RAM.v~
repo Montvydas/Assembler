@@ -53,7 +53,7 @@ module RAM(
     
     
  //   initial $readmemb("/home/s1349598/DSL4/MicroProcessor/Assembler/translator/ram.txt", Mem);
-   //  initial $readmemb("/home/s1349598/DSL4/MicroProcessor/Assembler/translator/results_rom.txt", Mem); 
+     initial $readmemb("/home/s1349598/DSL4/MicroProcessor/Assembler/translator/results_rom.txt", Mem); 
     
 //    //initialise the memory fo data preloading-the following part is for test
     initial

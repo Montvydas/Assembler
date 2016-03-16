@@ -35,15 +35,27 @@ ROM[0] = 8'b10100001;
 ROM[0] = 8'b00000000;
 ROM[0] = 8'b10100010;
 */
-//FF: IDLE
-//address == 00:
+
+//START
+	load_val a 00	//get value of 00
+	store 00 a	//Reset RAM	
+goto_idle
+
 //Timer ISR starts here
 timer_isr:
+	load a 00		//get counter val from reg
+	incr a a
+	store 00 a
+
+	load_val b 14		//load_val function loads defined value of 20dec  to a reg
+	breq 0F	
+goto_idle
+	//go here
+	load_val a 00		//load val of 00
+	store 00 a		//reset counter
+
 	load a E0		//E0 - slide switches address
 	store C4 a		//C4 - address of PWM 4 LED
-
-	load_val a FF	//load_val function loads defined value to a reg
-	store C3 a		//C3 - address of PWM 3 LED
 goto_idle
 
 //Mouse ISR starts here
