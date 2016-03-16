@@ -411,7 +411,7 @@ function, and Dereference operations.
   
                            
                             if(ProgMemoryOut[7:4]==4'b1011)
-                                NextState=IF_A_EQUALITY_B_GOTO_LESSS; 
+                                NextState=IF_A_EQUALITY_B_GOTO_LESS; 
 
                             
                         end
@@ -482,7 +482,7 @@ function, and Dereference operations.
                          
                          FUNCTION_START_0:begin
                             NextProgCounter=ProgMemoryOut;
-                            NextFunctionCall=CurrProgCounter+2;
+                            NextProgContext=CurrProgCounter+2;
                             NextState=FUNCTION_START_FINISH;
                          end
                          
@@ -492,7 +492,7 @@ function, and Dereference operations.
                   //no wait status, but just let the program counter to be the stored vale
                          RETURN:begin
                              NextState=RETURN_FINISH;
-                             NextProgCounter=CurrFunctionCall;
+                             NextProgCounter=CurrProgContext;
                          end
                          
                          RETURN_FINISH:NextState = CHOOSE_OPP;

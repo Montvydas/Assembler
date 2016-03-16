@@ -2,49 +2,49 @@
 # Vivado v2015.2 (64-bit)
 # SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
 # IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
-# Start of session at: Tue Mar 15 04:06:49 2016
-# Process ID: 28878
-# Log file: /home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.runs/synth_1/WrapperMouseAndProcessor.vds
-# Journal file: /home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.runs/synth_1/vivado.jou
+# Start of session at: Wed Mar 16 16:34:09 2016
+# Process ID: 8414
+# Log file: /home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.runs/synth_1/WrapperMouseAndProcessor.vds
+# Journal file: /home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.runs/synth_1/vivado.jou
 #-----------------------------------------------------------
 source WrapperMouseAndProcessor.tcl -notrace
 Command: synth_design -top WrapperMouseAndProcessor -part xc7a35tcpg236-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
-INFO: [Common 17-1223] The version limit for your license is '2015.12' and will expire in -75 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
+INFO: [Common 17-1223] The version limit for your license is '2015.12' and will expire in -76 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1060.891 ; gain = 154.520 ; free physical = 1479 ; free virtual = 90515
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:06 . Memory (MB): peak = 1058.883 ; gain = 154.520 ; free physical = 22404 ; free virtual = 91402
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'WrapperMouseAndProcessor' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/modifiedCode/WrapperMouseAndProcessor.v:23]
-INFO: [Synth 8-638] synthesizing module 'ROM' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/new/ROM.v:23]
+INFO: [Synth 8-638] synthesizing module 'WrapperMouseAndProcessor' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/WrapperMouseAndProcessor.v:23]
+INFO: [Synth 8-638] synthesizing module 'ROM' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/ROM.v:23]
 	Parameter RAMAddrWidth bound to: 8 - type: integer 
-INFO: [Synth 8-3876] $readmem data file '/home/s1349598/DSL4/MicroProcessor/Assembler/translator/results_rom.txt' is read successfully [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/new/ROM.v:36]
-INFO: [Synth 8-256] done synthesizing module 'ROM' (1#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/new/ROM.v:23]
-INFO: [Synth 8-638] synthesizing module 'RAM' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/new/RAM.v:23]
+INFO: [Synth 8-3876] $readmem data file '/home/s1349598/DSL4/MicroProcessor/Assembler/translator/results_rom.txt' is read successfully [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/ROM.v:36]
+INFO: [Synth 8-256] done synthesizing module 'ROM' (1#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/ROM.v:23]
+INFO: [Synth 8-638] synthesizing module 'RAM' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/RAM.v:23]
 	Parameter RAMBaseAddr bound to: 0 - type: integer 
 	Parameter RAMAddrWidth bound to: 7 - type: integer 
-INFO: [Synth 8-3876] $readmem data file '/home/s1349598/DSL4/MicroProcessor/Assembler/translator/results_rom.txt' is read successfully [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/new/RAM.v:56]
-INFO: [Synth 8-256] done synthesizing module 'RAM' (2#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/new/RAM.v:23]
-INFO: [Synth 8-638] synthesizing module 'Timer' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/new/Timer.v:23]
+INFO: [Synth 8-3876] $readmem data file '/home/s1349598/DSL4/MicroProcessor/Assembler/translator/results_rom.txt' is read successfully [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/RAM.v:56]
+INFO: [Synth 8-256] done synthesizing module 'RAM' (2#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/RAM.v:23]
+INFO: [Synth 8-638] synthesizing module 'Timer' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/Timer.v:23]
 	Parameter TimerBaseAddr bound to: 8'b11110000 
 	Parameter InitialIterruptRate bound to: 100 - type: integer 
 	Parameter InitialIterruptEnable bound to: 1'b1 
-INFO: [Synth 8-256] done synthesizing module 'Timer' (3#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/new/Timer.v:23]
-INFO: [Synth 8-638] synthesizing module 'MouseWrapper' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/modifiedCode/MouseWrapper.v:23]
+INFO: [Synth 8-256] done synthesizing module 'Timer' (3#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/Timer.v:23]
+INFO: [Synth 8-638] synthesizing module 'MouseWrapper' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/MouseWrapper.v:24]
 	Parameter MouseBaseAddr bound to: 8'b10100000 
-INFO: [Synth 8-638] synthesizing module 'MouseTransceiver' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseTransceiver.v:22]
+INFO: [Synth 8-638] synthesizing module 'MouseTransceiver' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseTransceiver.v:22]
 	Parameter MouseLimitX bound to: 8'b10100000 
 	Parameter MouseLimitY bound to: 8'b01111000 
-INFO: [Synth 8-638] synthesizing module 'MouseTransmitter' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseTransmitter.v:23]
-INFO: [Synth 8-256] done synthesizing module 'MouseTransmitter' (4#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseTransmitter.v:23]
-INFO: [Synth 8-638] synthesizing module 'MouseReceiver' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseReceiver.v:23]
-INFO: [Synth 8-256] done synthesizing module 'MouseReceiver' (5#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseReceiver.v:23]
-INFO: [Synth 8-638] synthesizing module 'MouseMasterSM' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseMasterSM.v:23]
-INFO: [Synth 8-256] done synthesizing module 'MouseMasterSM' (6#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseMasterSM.v:23]
-INFO: [Synth 8-256] done synthesizing module 'MouseTransceiver' (7#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseTransceiver.v:22]
-INFO: [Synth 8-256] done synthesizing module 'MouseWrapper' (8#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/modifiedCode/MouseWrapper.v:23]
-INFO: [Synth 8-638] synthesizing module 'MicroProcessor' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/modifiedCode/Processor.v:21]
+INFO: [Synth 8-638] synthesizing module 'MouseTransmitter' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseTransmitter.v:23]
+INFO: [Synth 8-256] done synthesizing module 'MouseTransmitter' (4#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseTransmitter.v:23]
+INFO: [Synth 8-638] synthesizing module 'MouseReceiver' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseReceiver.v:23]
+INFO: [Synth 8-256] done synthesizing module 'MouseReceiver' (5#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseReceiver.v:23]
+INFO: [Synth 8-638] synthesizing module 'MouseMasterSM' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseMasterSM.v:24]
+INFO: [Synth 8-256] done synthesizing module 'MouseMasterSM' (6#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseMasterSM.v:24]
+INFO: [Synth 8-256] done synthesizing module 'MouseTransceiver' (7#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseTransceiver.v:22]
+INFO: [Synth 8-256] done synthesizing module 'MouseWrapper' (8#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/MouseWrapper.v:24]
+INFO: [Synth 8-638] synthesizing module 'MicroProcessor' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/Processor.v:21]
 	Parameter IDLE bound to: 8'b11110000 
 	Parameter GET_THREAD_START_ADDR_0 bound to: 8'b11110001 
 	Parameter GET_THREAD_START_ADDR_1 bound to: 8'b11110010 
@@ -62,72 +62,79 @@ INFO: [Synth 8-638] synthesizing module 'MicroProcessor' [/home/s1349598/DSL4/Pr
 	Parameter DO_MATHS_OPP_SAVE_IN_B bound to: 8'b00110001 
 	Parameter DO_MATHS_OPP_0 bound to: 8'b00110010 
 	Parameter IF_A_EQUALITY_B_GOTO bound to: 8'b01000000 
+	Parameter IF_A_EQUALITY_B_GOTO_EQUALS bound to: 8'b01000001 
+	Parameter IF_A_EQUALITY_B_GOTO_GREATER bound to: 8'b01000010 
+	Parameter IF_A_EQUALITY_B_GOTO_LESS bound to: 8'b01000011 
+	Parameter IF_A_EQUALITY_B_GOTO_FINISH bound to: 8'b01000100 
 	Parameter GOTO_ADDR bound to: 8'b01010000 
+	Parameter GOTO_ADDR_0 bound to: 8'b01010001 
+	Parameter GOTO_ADDR_FINISH bound to: 8'b01010010 
 	Parameter GOTO_IDLE bound to: 8'b01100000 
 	Parameter FUNCTION_START bound to: 8'b01110000 
+	Parameter FUNCTION_START_0 bound to: 8'b01110001 
+	Parameter FUNCTION_START_FINISH bound to: 8'b01110010 
 	Parameter RETURN bound to: 8'b10000000 
+	Parameter RETURN_FINISH bound to: 8'b10000000 
 	Parameter DE_REFERENCE_A bound to: 8'b10010000 
 	Parameter DE_REFERENCE_B bound to: 8'b10010001 
 	Parameter DE_REFERENCE_0 bound to: 8'b10010010 
 	Parameter DE_REFERENCE_1 bound to: 8'b10010011 
 	Parameter DE_REFERENCE_2 bound to: 8'b10010100 
-	Parameter LOAD_VAL_A bound to: 8'b10000110 
-	Parameter LOAD_VAL_A_1 bound to: 8'b10000111 
-	Parameter LOAD_VAL_A_2 bound to: 8'b10001000 
-	Parameter LOAD_VAL_B bound to: 8'b10001001 
-	Parameter LOAD_VAL_B_1 bound to: 8'b10010000 
-	Parameter LOAD_VAL_B_2 bound to: 8'b10010001 
-INFO: [Synth 8-638] synthesizing module 'ALU' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/new/ALU.v:23]
-INFO: [Synth 8-256] done synthesizing module 'ALU' (9#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/new/ALU.v:23]
-WARNING: [Synth 8-151] case item 8'b10010000 is unreachable [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/modifiedCode/Processor.v:221]
-WARNING: [Synth 8-151] case item 8'b10010001 is unreachable [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/modifiedCode/Processor.v:221]
-INFO: [Synth 8-256] done synthesizing module 'MicroProcessor' (10#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/modifiedCode/Processor.v:21]
-WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/modifiedCode/WrapperMouseAndProcessor.v:197]
-INFO: [Synth 8-638] synthesizing module 'ila_2' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.runs/synth_1/.Xil/Vivado-28878-tlf43.see.ed.ac.uk/realtime/ila_2_stub.v:7]
-INFO: [Synth 8-256] done synthesizing module 'ila_2' (11#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.runs/synth_1/.Xil/Vivado-28878-tlf43.see.ed.ac.uk/realtime/ila_2_stub.v:7]
-INFO: [Synth 8-638] synthesizing module 'LED' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/modifiedCode/LED.v:21]
+	Parameter LOAD_VAL_A bound to: 8'b10100000 
+	Parameter LOAD_VAL_A_0 bound to: 8'b10100001 
+	Parameter LOAD_VAL_B bound to: 8'b10100010 
+	Parameter LOAD_VAL_B_0 bound to: 8'b10100011 
+	Parameter LOAD_VAL_FINISH bound to: 8'b10100100 
+INFO: [Synth 8-638] synthesizing module 'ALU' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/ALU.v:23]
+INFO: [Synth 8-256] done synthesizing module 'ALU' (9#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/ALU.v:23]
+WARNING: [Synth 8-151] case item 8'b10000000 is unreachable [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/Processor.v:225]
+INFO: [Synth 8-256] done synthesizing module 'MicroProcessor' (10#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/Processor.v:21]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/WrapperMouseAndProcessor.v:153]
+INFO: [Synth 8-638] synthesizing module 'ila_2' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.runs/synth_1/.Xil/Vivado-8414-tlf64.see.ed.ac.uk/realtime/ila_2_stub.v:7]
+INFO: [Synth 8-256] done synthesizing module 'ila_2' (11#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.runs/synth_1/.Xil/Vivado-8414-tlf64.see.ed.ac.uk/realtime/ila_2_stub.v:7]
+INFO: [Synth 8-638] synthesizing module 'LED' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/LED.v:21]
 	Parameter LEDBaseAddr bound to: 8'b11000000 
-INFO: [Synth 8-256] done synthesizing module 'LED' (12#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/modifiedCode/LED.v:21]
-INFO: [Synth 8-638] synthesizing module 'SlideSwitches' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/modifiedCode/SlideSwitches.v:21]
+INFO: [Synth 8-256] done synthesizing module 'LED' (12#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/LED.v:21]
+INFO: [Synth 8-638] synthesizing module 'SlideSwitches' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/SlideSwitches.v:21]
 	Parameter SlideSwitchesBaseAddr bound to: 8'b11100000 
-INFO: [Synth 8-256] done synthesizing module 'SlideSwitches' (13#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/modifiedCode/SlideSwitches.v:21]
-INFO: [Synth 8-638] synthesizing module 'DecimalSeg' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:23]
+INFO: [Synth 8-256] done synthesizing module 'SlideSwitches' (13#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/SlideSwitches.v:21]
+INFO: [Synth 8-638] synthesizing module 'DecimalSeg' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:23]
 	Parameter SevenSegBaseAddr bound to: 8'b11010000 
-INFO: [Synth 8-638] synthesizing module 'GenericCounter' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+INFO: [Synth 8-638] synthesizing module 'GenericCounter' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
 	Parameter COUNTER_WIDTH bound to: 16 - type: integer 
 	Parameter COUNTER_MAX bound to: 49999 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'GenericCounter' (14#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
-WARNING: [Synth 8-350] instance 'Bit16DownCounter' of module 'GenericCounter' requires 5 connections, but only 4 given [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:74]
-INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized0' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter' (14#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+WARNING: [Synth 8-350] instance 'Bit16DownCounter' of module 'GenericCounter' requires 5 connections, but only 4 given [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:74]
+INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized0' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
 	Parameter COUNTER_WIDTH bound to: 2 - type: integer 
 	Parameter COUNTER_MAX bound to: 3 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized0' (14#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
-WARNING: [Synth 8-350] instance 'Bit2DownCounter' of module 'GenericCounter' requires 5 connections, but only 4 given [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:87]
-INFO: [Synth 8-638] synthesizing module 'BinaryToBCD' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/BinaryToBCD.v:23]
-INFO: [Synth 8-256] done synthesizing module 'BinaryToBCD' (15#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/BinaryToBCD.v:23]
-INFO: [Synth 8-638] synthesizing module 'Multiplexer' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/Multiplexer.v:21]
-INFO: [Synth 8-226] default block is never used [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/Multiplexer.v:31]
-INFO: [Synth 8-256] done synthesizing module 'Multiplexer' (16#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/Multiplexer.v:21]
-INFO: [Synth 8-638] synthesizing module 'EasyDecode7Seg' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/EasyDecode7Seg.v:21]
-INFO: [Synth 8-226] default block is never used [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/EasyDecode7Seg.v:30]
-INFO: [Synth 8-226] default block is never used [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/EasyDecode7Seg.v:43]
-INFO: [Synth 8-256] done synthesizing module 'EasyDecode7Seg' (17#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/EasyDecode7Seg.v:21]
-INFO: [Synth 8-256] done synthesizing module 'DecimalSeg' (18#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:23]
-INFO: [Synth 8-638] synthesizing module 'PWM_Wrapper' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/PWM_Wrapper.v:23]
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized0' (14#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+WARNING: [Synth 8-350] instance 'Bit2DownCounter' of module 'GenericCounter' requires 5 connections, but only 4 given [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:87]
+INFO: [Synth 8-638] synthesizing module 'BinaryToBCD' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/BinaryToBCD.v:23]
+INFO: [Synth 8-256] done synthesizing module 'BinaryToBCD' (15#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/BinaryToBCD.v:23]
+INFO: [Synth 8-638] synthesizing module 'Multiplexer' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/Multiplexer.v:21]
+INFO: [Synth 8-226] default block is never used [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/Multiplexer.v:31]
+INFO: [Synth 8-256] done synthesizing module 'Multiplexer' (16#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/Multiplexer.v:21]
+INFO: [Synth 8-638] synthesizing module 'EasyDecode7Seg' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/EasyDecode7Seg.v:21]
+INFO: [Synth 8-226] default block is never used [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/EasyDecode7Seg.v:30]
+INFO: [Synth 8-226] default block is never used [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/EasyDecode7Seg.v:43]
+INFO: [Synth 8-256] done synthesizing module 'EasyDecode7Seg' (17#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/EasyDecode7Seg.v:21]
+INFO: [Synth 8-256] done synthesizing module 'DecimalSeg' (18#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:23]
+INFO: [Synth 8-638] synthesizing module 'PWM_Wrapper' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/PWM_Wrapper.v:23]
 	Parameter PWM_BASE_ADDR bound to: 8'b11000001 
 	Parameter COUNTER_LEN bound to: 8 - type: integer 
-INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized1' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized1' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
 	Parameter COUNTER_WIDTH bound to: 9 - type: integer 
 	Parameter COUNTER_MAX bound to: 499 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized1' (18#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
-WARNING: [Synth 8-350] instance 'pwm_clk_counter' of module 'GenericCounter' requires 5 connections, but only 4 given [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/PWM_Wrapper.v:65]
-INFO: [Synth 8-638] synthesizing module 'PWM' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/PWM.v:23]
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized1' (18#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+WARNING: [Synth 8-350] instance 'pwm_clk_counter' of module 'GenericCounter' requires 5 connections, but only 4 given [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/PWM_Wrapper.v:65]
+INFO: [Synth 8-638] synthesizing module 'PWM' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/PWM.v:23]
 	Parameter COUNTER_LEN bound to: 8 - type: integer 
-INFO: [Synth 8-256] done synthesizing module 'PWM' (19#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/PWM.v:23]
-INFO: [Synth 8-256] done synthesizing module 'PWM_Wrapper' (20#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/PWM_Wrapper.v:23]
-INFO: [Synth 8-256] done synthesizing module 'WrapperMouseAndProcessor' (21#1) [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/modifiedCode/WrapperMouseAndProcessor.v:23]
+INFO: [Synth 8-256] done synthesizing module 'PWM' (19#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/PWM.v:23]
+INFO: [Synth 8-256] done synthesizing module 'PWM_Wrapper' (20#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/PWM_Wrapper.v:23]
+INFO: [Synth 8-256] done synthesizing module 'WrapperMouseAndProcessor' (21#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/WrapperMouseAndProcessor.v:23]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1100.172 ; gain = 193.801 ; free physical = 1442 ; free virtual = 90478
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 1099.164 ; gain = 194.801 ; free physical = 22365 ; free virtual = 91363
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -136,41 +143,41 @@ Report Check Netlist:
 +------+------------------+-------+---------+-------+------------------+
 |1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
 +------+------------------+-------+---------+-------+------------------+
-WARNING: [Synth 8-3295] tying undriven pin Mux4:IN3[3] to constant 0 [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:109]
-WARNING: [Synth 8-3295] tying undriven pin Mux4:IN3[2] to constant 0 [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:109]
-WARNING: [Synth 8-3295] tying undriven pin Mux4:IN3[1] to constant 0 [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:109]
-WARNING: [Synth 8-3295] tying undriven pin Mux4:IN3[0] to constant 0 [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:109]
+WARNING: [Synth 8-3295] tying undriven pin Mux4:IN3[3] to constant 0 [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:109]
+WARNING: [Synth 8-3295] tying undriven pin Mux4:IN3[2] to constant 0 [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:109]
+WARNING: [Synth 8-3295] tying undriven pin Mux4:IN3[1] to constant 0 [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:109]
+WARNING: [Synth 8-3295] tying undriven pin Mux4:IN3[0] to constant 0 [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:109]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 1100.172 ; gain = 193.801 ; free physical = 1442 ; free virtual = 90478
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 1099.164 ; gain = 194.801 ; free physical = 22366 ; free virtual = 91363
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/constrs_1/new/ProcessorConstrains.xdc]
-Finished Parsing XDC File [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/constrs_1/new/ProcessorConstrains.xdc]
+Parsing XDC File [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/constrs_1/new/ProcessorConstrains.xdc]
+Finished Parsing XDC File [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/constrs_1/new/ProcessorConstrains.xdc]
 Completed Processing XDC Constraints
 
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1425.211 ; gain = 0.000 ; free physical = 1181 ; free virtual = 90217
+Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1424.219 ; gain = 0.000 ; free physical = 22103 ; free virtual = 91101
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1182 ; free virtual = 90218
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:15 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22102 ; free virtual = 91100
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1182 ; free virtual = 90218
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:15 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22102 ; free virtual = 91100
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1182 ; free virtual = 90218
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:15 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22102 ; free virtual = 91100
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "ROM" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "DownCounter" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
@@ -203,16 +210,15 @@ INFO: [Synth 8-5546] ROM "Next_State" won't be mapped to RAM because it is too s
 INFO: [Synth 8-5544] ROM "Next_State" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "Next_State" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "Next_State" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
-INFO: [Synth 8-3537] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the inputs of the operator [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseTransceiver.v:241]
-INFO: [Synth 8-3537] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the inputs of the operator [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseTransceiver.v:245]
-INFO: [Synth 8-3537] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the inputs of the operator [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/new/ALU.v:40]
+INFO: [Synth 8-3537] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the inputs of the operator [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseTransceiver.v:241]
+INFO: [Synth 8-3537] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the inputs of the operator [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseTransceiver.v:245]
+INFO: [Synth 8-3537] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the inputs of the operator [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/ALU.v:40]
 INFO: [Synth 8-802] inferred FSM for state register 'CurrState_reg' in module 'MicroProcessor'
 INFO: [Synth 8-5546] ROM "NextProgContext" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "NextRegSelect" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "NextBusDataOutWE" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "NextBusDataOut" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "NextProgCounterOffset" won't be mapped to RAM because it is too sparse
-ROM size is below threshold of ROM address width. It will be mapped to LUTs
 INFO: [Synth 8-5544] ROM "NextState" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "NextState" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
 INFO: [Synth 8-5562] The signal Mem_reg is implemented as block RAM but is better mapped onto distributed LUT RAM for the following reason(s): The *depth (7 address bits)* is shallow. Please use attribute (* ram_style = "distributed" *) to instruct Vivado to infer distributed LUT RAM.
@@ -263,41 +269,50 @@ INFO: [Synth 8-3354] encoded FSM with state register 'Curr_State_reg' using enco
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                     Old Encoding 
 ---------------------------------------------------------------------------------------------------
-              CHOOSE_OPP |                            00000 |                         00000000
-      READ_FROM_MEM_TO_A |                            00001 |                         00010000
-      READ_FROM_MEM_TO_B |                            00010 |                         00010001
-         READ_FROM_MEM_0 |                            00011 |                         00010010
-         READ_FROM_MEM_1 |                            00100 |                         00010011
-         READ_FROM_MEM_2 |                            00101 |                         00010100
-     WRITE_TO_MEM_FROM_A |                            00110 |                         00100000
-     WRITE_TO_MEM_FROM_B |                            00111 |                         00100001
-          WRITE_TO_MEM_0 |                            01000 |                         00100010
-  DO_MATHS_OPP_SAVE_IN_A |                            01001 |                         00110000
-  DO_MATHS_OPP_SAVE_IN_B |                            01010 |                         00110001
-          DO_MATHS_OPP_0 |                            01011 |                         00110010
-    IF_A_EQUALITY_B_GOTO |                            01100 |                         01000000
-               GOTO_ADDR |                            01101 |                         01010000
-               GOTO_IDLE |                            01110 |                         01100000
-                    IDLE |                            01111 |                         11110000
- GET_THREAD_START_ADDR_0 |                            10000 |                         11110001
- GET_THREAD_START_ADDR_1 |                            10001 |                         11110010
- GET_THREAD_START_ADDR_2 |                            10010 |                         11110011
-          FUNCTION_START |                            10011 |                         01110000
-                  RETURN |                            10100 |                         10000000
-          DE_REFERENCE_B |                            10101 |                         10010001
-              LOAD_VAL_A |                            10110 |                         10000110
-            LOAD_VAL_A_1 |                            10111 |                         10000111
-            LOAD_VAL_A_2 |                            11000 |                         10001000
-              LOAD_VAL_B |                            11001 |                         10001001
-          DE_REFERENCE_A |                            11010 |                         10010000
-          DE_REFERENCE_0 |                            11011 |                         10010010
-          DE_REFERENCE_1 |                            11100 |                         10010011
-          DE_REFERENCE_2 |                            11101 |                         10010100
+              CHOOSE_OPP |                           000000 |                         00000000
+      READ_FROM_MEM_TO_A |                           000001 |                         00010000
+      READ_FROM_MEM_TO_B |                           000010 |                         00010001
+         READ_FROM_MEM_0 |                           000011 |                         00010010
+         READ_FROM_MEM_1 |                           000100 |                         00010011
+         READ_FROM_MEM_2 |                           000101 |                         00010100
+     WRITE_TO_MEM_FROM_A |                           000110 |                         00100000
+     WRITE_TO_MEM_FROM_B |                           000111 |                         00100001
+          WRITE_TO_MEM_0 |                           001000 |                         00100010
+  DO_MATHS_OPP_SAVE_IN_A |                           001001 |                         00110000
+  DO_MATHS_OPP_SAVE_IN_B |                           001010 |                         00110001
+          DO_MATHS_OPP_0 |                           001011 |                         00110010
+    IF_A_EQUALITY_B_GOTO |                           001100 |                         01000000
+IF_A_EQUALITY_B_GOTO_LESS |                           001101 |                         01000011
+IF_A_EQUALITY_B_GOTO_GREATER |                           001110 |                         01000010
+IF_A_EQUALITY_B_GOTO_EQUALS |                           001111 |                         01000001
+IF_A_EQUALITY_B_GOTO_FINISH |                           010000 |                         01000100
+               GOTO_ADDR |                           010001 |                         01010000
+             GOTO_ADDR_0 |                           010010 |                         01010001
+        GOTO_ADDR_FINISH |                           010011 |                         01010010
+               GOTO_IDLE |                           010100 |                         01100000
+                    IDLE |                           010101 |                         11110000
+ GET_THREAD_START_ADDR_0 |                           010110 |                         11110001
+ GET_THREAD_START_ADDR_1 |                           010111 |                         11110010
+ GET_THREAD_START_ADDR_2 |                           011000 |                         11110011
+          FUNCTION_START |                           011001 |                         01110000
+        FUNCTION_START_0 |                           011010 |                         01110001
+   FUNCTION_START_FINISH |                           011011 |                         01110010
+                  RETURN |                           011100 |                         10000000
+          DE_REFERENCE_A |                           011101 |                         10010000
+          DE_REFERENCE_B |                           011110 |                         10010001
+          DE_REFERENCE_0 |                           011111 |                         10010010
+          DE_REFERENCE_1 |                           100000 |                         10010011
+          DE_REFERENCE_2 |                           100001 |                         10010100
+              LOAD_VAL_A |                           100010 |                         10100000
+            LOAD_VAL_A_0 |                           100011 |                         10100001
+              LOAD_VAL_B |                           100100 |                         10100010
+            LOAD_VAL_B_0 |                           100101 |                         10100011
+         LOAD_VAL_FINISH |                           100110 |                         10100100
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'CurrState_reg' using encoding 'sequential' in module 'MicroProcessor'
-WARNING: [Synth 8-327] inferring latch for variable 'LED' [/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.srcs/sources_1/imports/modifiedCode/LED.v:37]
+WARNING: [Synth 8-327] inferring latch for variable 'LED' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/LED.v:37]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1183 ; free virtual = 90219
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:16 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22104 ; free virtual = 91102
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -344,12 +359,12 @@ Detailed RTL Component Info :
 	   6 Input      8 Bit        Muxes := 1     
 	  13 Input      8 Bit        Muxes := 7     
 	   5 Input      8 Bit        Muxes := 2     
-	   2 Input      8 Bit        Muxes := 3     
+	   2 Input      8 Bit        Muxes := 6     
 	   8 Input      8 Bit        Muxes := 1     
 	   3 Input      8 Bit        Muxes := 1     
-	  30 Input      8 Bit        Muxes := 6     
+	  39 Input      8 Bit        Muxes := 6     
 	  16 Input      7 Bit        Muxes := 1     
-	  47 Input      5 Bit        Muxes := 1     
+	  58 Input      6 Bit        Muxes := 1     
 	   4 Input      5 Bit        Muxes := 1     
 	  10 Input      4 Bit        Muxes := 2     
 	   2 Input      4 Bit        Muxes := 8     
@@ -362,13 +377,14 @@ Detailed RTL Component Info :
 	  13 Input      3 Bit        Muxes := 1     
 	   6 Input      2 Bit        Muxes := 2     
 	   3 Input      2 Bit        Muxes := 1     
-	  30 Input      2 Bit        Muxes := 1     
+	  39 Input      2 Bit        Muxes := 1     
 	   2 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 12    
+	   2 Input      1 Bit        Muxes := 13    
 	  10 Input      1 Bit        Muxes := 8     
 	   6 Input      1 Bit        Muxes := 4     
 	  13 Input      1 Bit        Muxes := 9     
-	  30 Input      1 Bit        Muxes := 9     
+	   4 Input      1 Bit        Muxes := 1     
+	  39 Input      1 Bit        Muxes := 10    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -493,13 +509,15 @@ Detailed RTL Component Info :
 	                2 Bit    Registers := 2     
 	                1 Bit    Registers := 2     
 +---Muxes : 
-	   2 Input      8 Bit        Muxes := 1     
+	   2 Input      8 Bit        Muxes := 4     
 	   3 Input      8 Bit        Muxes := 1     
-	  30 Input      8 Bit        Muxes := 6     
-	  47 Input      5 Bit        Muxes := 1     
+	  39 Input      8 Bit        Muxes := 6     
+	  58 Input      6 Bit        Muxes := 1     
 	   3 Input      2 Bit        Muxes := 1     
-	  30 Input      2 Bit        Muxes := 1     
-	  30 Input      1 Bit        Muxes := 9     
+	  39 Input      2 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+	   4 Input      1 Bit        Muxes := 1     
+	  39 Input      1 Bit        Muxes := 10    
 Module SlideSwitches 
 Detailed RTL Component Info : 
 +---Registers : 
@@ -571,7 +589,7 @@ BRAMs: 150 (col length: RAMB18 60 RAMB36 30)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
-Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1183 ; free virtual = 90219
+Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:11 ; elapsed = 00:00:16 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22104 ; free virtual = 91102
 ---------------------------------------------------------------------------------
 Start Cross Boundary Optimization
 ---------------------------------------------------------------------------------
@@ -583,9 +601,9 @@ INFO: [Synth 8-5546] ROM "Next_State" won't be mapped to RAM because it is too s
 INFO: [Synth 8-5546] ROM "Next_State" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "Next_State" won't be mapped to RAM because address size (23) is larger than maximum supported(18)
 ---------------------------------------------------------------------------------
-Finished Cross Boundary Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1183 ; free virtual = 90219
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:11 ; elapsed = 00:00:17 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22104 ; free virtual = 91102
 ---------------------------------------------------------------------------------
-Finished Parallel Reinference  : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1183 ; free virtual = 90219
+Finished Parallel Reinference  : Time (s): cpu = 00:00:11 ; elapsed = 00:00:17 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22104 ; free virtual = 91102
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -627,16 +645,16 @@ WARNING: [Synth 8-3332] Sequential element (\CurrProgCounterOffset_reg[1] ) is u
 Start Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1182 ; free virtual = 90218
+Finished Area Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:19 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22104 ; free virtual = 91102
 ---------------------------------------------------------------------------------
-Finished Parallel Area Optimization  : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1182 ; free virtual = 90218
+Finished Parallel Area Optimization  : Time (s): cpu = 00:00:14 ; elapsed = 00:00:19 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22104 ; free virtual = 91102
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
 | |RTL Partition |Replication |Instances |
 +-+--------------+------------+----------+
 +-+--------------+------------+----------+
-Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1182 ; free virtual = 90218
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:14 ; elapsed = 00:00:19 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22104 ; free virtual = 91102
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
@@ -644,10 +662,10 @@ Start Timing Optimization
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1179 ; free virtual = 90215
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:26 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22101 ; free virtual = 91100
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1179 ; free virtual = 90215
+Finished Timing Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:26 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22101 ; free virtual = 91100
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -661,7 +679,7 @@ Start Technology Mapping
 WARNING: [Synth 8-3332] Sequential element (\myMouse/usb_mouse/MouseY_reg[7] ) is unused and will be removed from module WrapperMouseAndProcessor.
 INFO: [Synth 8-4480] The timing for the instance \myRAM/Mem_reg  (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1151 ; free virtual = 90187
+Finished Technology Mapping : Time (s): cpu = 00:00:21 ; elapsed = 00:00:27 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22073 ; free virtual = 91071
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -679,7 +697,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:22 ; elapsed = 00:00:26 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1150 ; free virtual = 90186
+Finished IO Insertion : Time (s): cpu = 00:00:22 ; elapsed = 00:00:27 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22073 ; free virtual = 91071
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -692,7 +710,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:22 ; elapsed = 00:00:26 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1150 ; free virtual = 90186
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:22 ; elapsed = 00:00:27 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22073 ; free virtual = 91071
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -704,13 +722,13 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1150 ; free virtual = 90186
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:22 ; elapsed = 00:00:27 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22073 ; free virtual = 91071
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Start Renaming Generated Ports : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1150 ; free virtual = 90186
+Start Renaming Generated Ports : Time (s): cpu = 00:00:22 ; elapsed = 00:00:27 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22073 ; free virtual = 91071
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1150 ; free virtual = 90186
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:22 ; elapsed = 00:00:27 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22073 ; free virtual = 91071
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -730,14 +748,14 @@ Report Cell Usage:
 |1     |ila_2    |     1|
 |2     |BUFG     |     2|
 |3     |CARRY4   |    70|
-|4     |LUT1     |   168|
-|5     |LUT2     |    75|
-|6     |LUT3     |    67|
-|7     |LUT4     |   157|
-|8     |LUT5     |   116|
-|9     |LUT6     |   350|
+|4     |LUT1     |   169|
+|5     |LUT2     |    81|
+|6     |LUT3     |    84|
+|7     |LUT4     |   143|
+|8     |LUT5     |    92|
+|9     |LUT6     |   394|
 |10    |RAMB18E1 |     1|
-|11    |FDRE     |   423|
+|11    |FDRE     |   424|
 |12    |FDSE     |    14|
 |13    |LD       |     8|
 |14    |IBUF     |    11|
@@ -749,22 +767,22 @@ Report Instance Areas:
 +------+------------------------+-------------------------------+------+
 |      |Instance                |Module                         |Cells |
 +------+------------------------+-------------------------------+------+
-|1     |top                     |                               |  1489|
+|1     |top                     |                               |  1520|
 |2     |  myLED                 |LED                            |     8|
-|3     |  myMicroProcessor      |MicroProcessor                 |   290|
-|4     |    ALU0                |ALU                            |    67|
+|3     |  myMicroProcessor      |MicroProcessor                 |   319|
+|4     |    ALU0                |ALU                            |    58|
 |5     |  myMouse               |MouseWrapper                   |   574|
 |6     |    usb_mouse           |MouseTransceiver               |   552|
 |7     |      MSM               |MouseMasterSM                  |   188|
 |8     |      R                 |MouseReceiver                  |   150|
 |9     |      T                 |MouseTransmitter               |    88|
 |10    |  myRAM                 |RAM                            |    18|
-|11    |  myROM                 |ROM                            |    65|
+|11    |  myROM                 |ROM                            |    68|
 |12    |  mySevenSeg            |DecimalSeg                     |    83|
 |13    |    Bit16DownCounter    |GenericCounter                 |    40|
 |14    |    Bit2DownCounter     |GenericCounter__parameterized0 |    21|
 |15    |  mySlideSwitches       |SlideSwitches                  |     1|
-|16    |  myTimer               |Timer                          |   288|
+|16    |  myTimer               |Timer                          |   287|
 |17    |  pwm_module_for_4_LEDs |PWM_Wrapper                    |   117|
 |18    |    pwm_clk_counter     |GenericCounter__parameterized1 |    26|
 |19    |    pwm_led_0           |PWM                            |    54|
@@ -773,11 +791,11 @@ Report Instance Areas:
 |22    |    pwm_led_3           |PWM_2                          |     1|
 +------+------------------------+-------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1150 ; free virtual = 90186
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:22 ; elapsed = 00:00:27 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22073 ; free virtual = 91071
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 16 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1425.211 ; gain = 76.281 ; free physical = 1150 ; free virtual = 90186
-Synthesis Optimization Complete : Time (s): cpu = 00:00:23 ; elapsed = 00:00:26 . Memory (MB): peak = 1425.211 ; gain = 518.840 ; free physical = 1150 ; free virtual = 90186
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1424.219 ; gain = 77.281 ; free physical = 22073 ; free virtual = 91071
+Synthesis Optimization Complete : Time (s): cpu = 00:00:22 ; elapsed = 00:00:27 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 22073 ; free virtual = 91071
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Netlist 29-17] Analyzing 92 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
@@ -789,8 +807,8 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   LD => LDCE: 8 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-120 Infos, 26 Warnings, 0 Critical Warnings and 0 Errors encountered.
+120 Infos, 25 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 1451.227 ; gain = 435.340 ; free physical = 1150 ; free virtual = 90186
-report_utilization: Time (s): cpu = 00:00:00.73 ; elapsed = 00:00:00.78 . Memory (MB): peak = 1484.242 ; gain = 0.000 ; free physical = 1149 ; free virtual = 90185
-INFO: [Common 17-206] Exiting Vivado at Tue Mar 15 04:07:20 2016...
+synth_design: Time (s): cpu = 00:00:20 ; elapsed = 00:00:24 . Memory (MB): peak = 1451.234 ; gain = 437.355 ; free physical = 22073 ; free virtual = 91071
+report_utilization: Time (s): cpu = 00:00:00.67 ; elapsed = 00:00:00.73 . Memory (MB): peak = 1484.250 ; gain = 0.000 ; free physical = 22071 ; free virtual = 91069
+INFO: [Common 17-206] Exiting Vivado at Wed Mar 16 16:34:41 2016...

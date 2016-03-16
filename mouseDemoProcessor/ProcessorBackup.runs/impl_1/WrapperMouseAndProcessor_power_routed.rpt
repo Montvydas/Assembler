@@ -1,8 +1,8 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2015.2 (lin64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date             : Tue Mar 15 04:08:29 2016
-| Host             : tlf43.see.ed.ac.uk running 64-bit Scientific Linux release 7.1 (Nitrogen)
+| Date             : Wed Mar 16 16:35:51 2016
+| Host             : tlf64.see.ed.ac.uk running 64-bit Scientific Linux release 7.1 (Nitrogen)
 | Command          : report_power -file WrapperMouseAndProcessor_power_routed.rpt -pb WrapperMouseAndProcessor_power_summary_routed.pb
 | Design           : WrapperMouseAndProcessor
 | Device           : xc7a35tcpg236-1
@@ -50,18 +50,18 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |    <0.001 |        4 |       --- |             --- |
-| Slice Logic              |     0.001 |     4578 |       --- |             --- |
-|   LUT as Logic           |     0.001 |     1618 |     20800 |            7.78 |
-|   Register               |    <0.001 |     2088 |     41600 |            5.02 |
+| Slice Logic              |     0.001 |     4609 |       --- |             --- |
+|   LUT as Logic           |     0.001 |     1635 |     20800 |            7.86 |
+|   Register               |    <0.001 |     2089 |     41600 |            5.02 |
 |   CARRY4                 |    <0.001 |      112 |      8150 |            1.37 |
-|   LUT as Shift Register  |    <0.001 |      104 |      9600 |            1.08 |
 |   BUFG                   |    <0.001 |        2 |        32 |            6.25 |
+|   LUT as Shift Register  |    <0.001 |      104 |      9600 |            1.08 |
 |   LUT as Distributed RAM |    <0.001 |       24 |      9600 |            0.25 |
 |   F7/F8 Muxes            |    <0.001 |       31 |     32600 |            0.10 |
 |   Others                 |     0.000 |      264 |       --- |             --- |
-| Signals                  |     0.002 |     3366 |       --- |             --- |
+| Signals                  |     0.002 |     3409 |       --- |             --- |
 | Block RAM                |    <0.001 |      4.5 |        50 |            9.00 |
-| I/O                      |     0.001 |       38 |       106 |           35.85 |
+| I/O                      |    <0.001 |       38 |       106 |           35.85 |
 | Static Power             |     0.072 |          |           |                 |
 | Total                    |     0.077 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
