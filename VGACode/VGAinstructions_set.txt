@@ -1,0 +1,19 @@
+timer_isr:
+//first to clear the last position of mouse 
+load a 08
+store B0 a
+load a 09
+store B1 a
+load_val a 00
+store B2 a  	 
+
+//then set the current mouse address to foreground
+load a 02   	//mouse X address	
+store B0 a	
+store 08 a
+load a 03	//mouse Y address		
+store B1 a	
+store 09 a	
+load_val b 01   	
+store B2 b	
+GOTO_IDLE	
