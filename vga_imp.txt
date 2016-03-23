@@ -1,0 +1,58 @@
+	load_val a 00	
+
+	store 00 a	// Reset LED
+	store 01 a 	// Reset X
+	store 02 a	// Reset Y 	
+goto_idle
+
+timer_isr:
+	//LED stuff
+	load a 00
+	incr a a	//incr LED
+	store 00 a
+	store C0 a	//Light up LED
+
+	//reseting everything
+	load_val a 00	//tell that Y == 0
+	store 01 a	//X Counter
+	store 02 a	//Y Counter
+START:
+	load a 01	//load X counter
+	store B1 a	//upload to frame buffer X
+
+	load b 02	//load Y counter
+	store B2 b	//upload to frame buffer Y
+
+	mult b a
+	load a 00
+	add b a
+//	load_val b 00
+	store B0 b	//display foreground or background depending on X
+
+	load a 01
+	incr a a	//incr X counter
+	load_val b 9F	//159dec
+	bgtq RESET_X	//if  a > 159, then go to reset x
+	
+	store 01 a	//store back to X counter incremented value
+	goto START	//repeat
+RESET_X:
+	load_val a 00
+	store 01 a	//reset X counter
+
+	load a 02	//load Y counter
+
+	incr a a	//incr Y counter
+	load_val b 77	//119dec
+	bgtq RESET_Y	//if  a > 119, then go to reset Y
+	
+	store 02 a	//else store counterY ++;
+	goto START	//repeat with new Y value
+RESET_Y:
+	load_val a 00
+	store 01 a
+goto_idle
+
+
+mouse_isr:
+goto_idle
