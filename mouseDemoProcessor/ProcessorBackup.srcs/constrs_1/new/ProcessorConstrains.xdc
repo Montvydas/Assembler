@@ -92,3 +92,28 @@ set_property PACKAGE_PIN L1 [get_ports LED_TEST]
     set_property IOSTANDARD LVCMOS33 [get_ports LED_TEST]
 set_property PACKAGE_PIN R2 [get_ports SLIDE_TEST]
     set_property IOSTANDARD LVCMOS33 [get_ports SLIDE_TEST]
+    
+set_property PACKAGE_PIN P19 [get_ports HS]
+        set_property IOSTANDARD LVCMOS33 [get_ports HS]
+               
+#VGA part
+set_property PACKAGE_PIN R19 [get_ports VS]
+        set_property IOSTANDARD LVCMOS33 [get_ports VS]
+                                           
+set_property PACKAGE_PIN G19 [get_ports ColorOut[0]]
+        set_property IOSTANDARD LVCMOS33 [get_ports ColorOut[0]]
+set_property PACKAGE_PIN H19 [get_ports ColorOut[1]]
+        set_property IOSTANDARD LVCMOS33 [get_ports ColorOut[1]]
+set_property PACKAGE_PIN J19 [get_ports ColorOut[2]]
+        set_property IOSTANDARD LVCMOS33 [get_ports ColorOut[2]]
+set_property PACKAGE_PIN J17 [get_ports ColorOut[3]]
+        set_property IOSTANDARD LVCMOS33 [get_ports ColorOut[3]]
+set_property PACKAGE_PIN H17 [get_ports ColorOut[4]]
+        set_property IOSTANDARD LVCMOS33 [get_ports ColorOut[4]]
+set_property PACKAGE_PIN G17 [get_ports ColorOut[5]]
+        set_property IOSTANDARD LVCMOS33 [get_ports ColorOut[5]]
+set_property PACKAGE_PIN N18 [get_ports ColorOut[6]]
+        set_property IOSTANDARD LVCMOS33 [get_ports ColorOut[6]]
+set_property PACKAGE_PIN L18 [get_ports ColorOut[7]]
+        set_property IOSTANDARD LVCMOS33 [get_ports ColorOut[7]]    
+
