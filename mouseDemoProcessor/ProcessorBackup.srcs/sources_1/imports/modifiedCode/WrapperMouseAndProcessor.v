@@ -40,7 +40,11 @@ module WrapperMouseAndProcessor(
               inout DATA_MOUSE,
            	
             output LED_TEST,
-            input SLIDE_TEST
+            input SLIDE_TEST,
+            
+            output HS,
+            output VS,
+            output [7:0] ColorOut
     );
     
     assign LED_TEST = SLIDE_TEST;
@@ -123,6 +127,22 @@ module WrapperMouseAndProcessor(
                           .registerB(registerB)
                          
                              );
+                             
+		DSL_VGA myVGA (
+						.CLK(CLK),
+						.Reset(Reset),
+                        .BusData(DataBus),
+                        .DataAddr(DataAddress),
+                        .BUS_WE(BUS_WE),
+                        .HS(HS),
+                        .VS(VS),
+                        .ColorOut(ColorOut)
+                        
+                        );
+                       
+                        
+                             
+                             
 //used as when connected directly, vivado doesn't like
 wire int_ack;
 wire int;

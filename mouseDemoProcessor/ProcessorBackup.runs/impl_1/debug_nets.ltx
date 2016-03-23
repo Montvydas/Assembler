@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<probeData version="1" minor="1">
+  <probeset name="EDA_PROBESET" active="true">
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bX"/>
+        <Option Id="CORE_LOCATION" value="1:0"/>
+        <Option Id="HW_ILA" value="your_instance_name"/>
+        <Option Id="PROBE_PORT" value="0"/>
+        <Option Id="PROBE_PORT_BITS" value="0"/>
+        <Option Id="PROBE_PORT_BIT_COUNT" value="1"/>
+      </probeOptions>
+      <nets>
+        <net name="int"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="net" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="COMPARE_VALUE.0" value="eq1&apos;bX"/>
+        <Option Id="CORE_LOCATION" value="1:0"/>
+        <Option Id="HW_ILA" value="your_instance_name"/>
+        <Option Id="PROBE_PORT" value="1"/>
+        <Option Id="PROBE_PORT_BITS" value="0"/>
+        <Option Id="PROBE_PORT_BIT_COUNT" value="1"/>
+      </probeOptions>
+      <nets>
+        <net name="int_ack"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="COMPARE_VALUE.0" value="eq8&apos;hXX"/>
+        <Option Id="CORE_LOCATION" value="1:0"/>
+        <Option Id="HW_ILA" value="your_instance_name"/>
+        <Option Id="PROBE_PORT" value="2"/>
+        <Option Id="PROBE_PORT_BITS" value="0"/>
+        <Option Id="PROBE_PORT_BIT_COUNT" value="8"/>
+      </probeOptions>
+      <nets>
+        <net name="rom_addr_wire[7]"/>
+        <net name="rom_addr_wire[6]"/>
+        <net name="rom_addr_wire[5]"/>
+        <net name="rom_addr_wire[4]"/>
+        <net name="rom_addr_wire[3]"/>
+        <net name="rom_addr_wire[2]"/>
+        <net name="rom_addr_wire[1]"/>
+        <net name="rom_addr_wire[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="COMPARE_VALUE.0" value="eq8&apos;hXX"/>
+        <Option Id="CORE_LOCATION" value="1:0"/>
+        <Option Id="HW_ILA" value="your_instance_name"/>
+        <Option Id="PROBE_PORT" value="3"/>
+        <Option Id="PROBE_PORT_BITS" value="0"/>
+        <Option Id="PROBE_PORT_BIT_COUNT" value="8"/>
+      </probeOptions>
+      <nets>
+        <net name="reg_a_wire[7]"/>
+        <net name="reg_a_wire[6]"/>
+        <net name="reg_a_wire[5]"/>
+        <net name="reg_a_wire[4]"/>
+        <net name="reg_a_wire[3]"/>
+        <net name="reg_a_wire[2]"/>
+        <net name="reg_a_wire[1]"/>
+        <net name="reg_a_wire[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="COMPARE_VALUE.0" value="eq8&apos;hXX"/>
+        <Option Id="CORE_LOCATION" value="1:0"/>
+        <Option Id="HW_ILA" value="your_instance_name"/>
+        <Option Id="PROBE_PORT" value="4"/>
+        <Option Id="PROBE_PORT_BITS" value="0"/>
+        <Option Id="PROBE_PORT_BIT_COUNT" value="8"/>
+      </probeOptions>
+      <nets>
+        <net name="data_bus_wire[7]"/>
+        <net name="data_bus_wire[6]"/>
+        <net name="data_bus_wire[5]"/>
+        <net name="data_bus_wire[4]"/>
+        <net name="data_bus_wire[3]"/>
+        <net name="data_bus_wire[2]"/>
+        <net name="data_bus_wire[1]"/>
+        <net name="data_bus_wire[0]"/>
+      </nets>
+    </probe>
+    <probe type="ila" busType="bus" source="netlist" spec="ILA_V2_RT">
+      <probeOptions Id="DebugProbeParams">
+        <Option Id="COMPARE_VALUE.0" value="eq8&apos;hXX"/>
+        <Option Id="CORE_LOCATION" value="1:0"/>
+        <Option Id="HW_ILA" value="your_instance_name"/>
+        <Option Id="PROBE_PORT" value="5"/>
+        <Option Id="PROBE_PORT_BITS" value="0"/>
+        <Option Id="PROBE_PORT_BIT_COUNT" value="8"/>
+      </probeOptions>
+      <nets>
+        <net name="data_addr_wire[7]"/>
+        <net name="data_addr_wire[6]"/>
+        <net name="data_addr_wire[5]"/>
+        <net name="data_addr_wire[4]"/>
+        <net name="data_addr_wire[3]"/>
+        <net name="data_addr_wire[2]"/>
+        <net name="data_addr_wire[1]"/>
+        <net name="data_addr_wire[0]"/>
+      </nets>
+    </probe>
+  </probeset>
+</probeData>

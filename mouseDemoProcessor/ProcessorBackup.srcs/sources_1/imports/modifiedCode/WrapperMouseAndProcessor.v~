@@ -1,15 +1,15 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: The University Of Edinburgh
+// Engineer: Montvydas Klumbys
 // 
 // Create Date: 01.03.2016 11:01:52
-// Design Name: 
+// Design Name: Mouse and processor together
 // Module Name: WrapperMouseAndProcessor
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
+// Project Name: IR_MOUSE_CONTROLLED_CAR
+// Target Devices: basys3 board
+// Tool Versions: vivado 16
+// Description: wrapper used to connect mosue to a processor
 // 
 // Dependencies: 
 // 
@@ -34,13 +34,17 @@ module WrapperMouseAndProcessor(
               //digital led
               output [7:0] LED,
               //pwm generated LED
-//              output [3:0] PWM_LED,
+              output [3:0] PWM_LED,
               //mouse connection
               inout CLK_MOUSE,
               inout DATA_MOUSE,
            	
             output LED_TEST,
-            input SLIDE_TEST
+            input SLIDE_TEST,
+            
+            output HS,
+            output VS,
+            output ColorOut
     );
     
     assign LED_TEST = SLIDE_TEST;
@@ -54,26 +58,7 @@ module WrapperMouseAndProcessor(
        wire [7:0] DataBus;
        wire [7:0] DataAddress;
        wire [7:0] ROMAddress;
-       wire [7:0] ROMData;
-       
-       
-//       wire [15:0] ColorConnect;
-/*
-     DSL_VGA
-        myVGA(
-              .CLK(CLK),                      //connect to the clock on the board,50Mhz only
-              .Reset(Reset),                  //connect to button to reset the whole project
-              .ColorOut(ColorOut),            //cout the color. Connect to the VGA part
-              .HS(HS),                        //syn signal,connect to VGA HS
-              .VS(VS),                        //syn signal,connect to VGA VS
-              .BusData(DataBus),
-              .DataAddr(DataAddress),
-              .ColorConnect(ColorConnect)
-              //.BUS_WE(BusWE)
-
-             );
-
-  */    
+       wire [7:0] ROMData;   
            
      ROM
         myROM(
@@ -107,25 +92,7 @@ module WrapperMouseAndProcessor(
                           .BUS_INTERRUPT_RAISE(Interrept[1]),
                           .BUS_INTERRUPT_ACK(Interrept_ACK[1])
                          );
-                         
-   /*                      
-        IRTransmitterWrapper
-            myIR(
-                          .CLK(CLK),
-                          .RESET(Reset),
-                          .BTN_R(BTN_R),
-                          .BTN_L(BTN_L),
-                          .BTN_B(BTN_B),
-                          .BTN_F(BTN_F),
-                          .SEL_BLU(SEL_BLU),
-                          .SEL_YEL(SEL_YEL),
-                          .SEL_GRN(SEL_GRN),
-                          .SEL_RED(SEL_RED),
-                          .SEG_SELECT_OUT(SEG_SELECT_OUT),
-                          .DEC_OUT(DEC_OUT),
-                          .IR_LED(IR_LED)
-                         );
-     */             
+                                     
              
         MouseWrapper
             myMouse(
@@ -160,15 +127,23 @@ module WrapperMouseAndProcessor(
                           .registerB(registerB)
                          
                              );
-                            
-                            
-                            
-                            //[7:0]ROMAddress
-                            //[7:0]RegA
-                            //[7:0]BUS_DATA
-                            //[7:0]BUS_ADDR
-                            //int_ack
-                            //int
+                             
+		DSL_VGA myVGA (
+						.CLK(CLK),
+						.Reset(Reset),
+                        .BusData(DataBus),
+                        .DataAddr(DataAddress),
+                        .BUS_WE(BUS_WE),
+                        .HS(HS),
+                        .VS(VS),
+                        .ColorOut(ColorOut)
+                        
+                        );
+                       
+                        
+                             
+                             
+//used as when connected directly, vivado doesn't like
 wire int_ack;
 wire int;
 
@@ -185,6 +160,7 @@ ila_0 your_instance_name (
 );
 */
 
+//again can't connect directly, as vivado doesn't like
 wire [7:0] data_bus_wire;
 wire [7:0] rom_addr_wire;
 wire [7:0] reg_a_wire;
@@ -220,7 +196,7 @@ ila_2 your_instance_name (
                           .BUS_WE(BusWE)
                           
                           	);
-                          
+       //slide witch module                   
         SlideSwitches mySlideSwitches (
                          
                          //Standard Signals
@@ -263,19 +239,5 @@ ila_2 your_instance_name (
                                         .BUS_ADDR(DataAddress),
                                         .BUS_WE(BusWE)
                                         );   
-                                       
-         /*SevenSeg
-            mySevenSeg(
-                           . CLK(CLK),
-                           . Reset(Reset),
-                           . BUS_ADDR(DataAddress),
-                           . BUS_DATA(DataBus),
-                           . BUS_WE (BusWE),
-                           . DecOut(DEC_OUT),
-                           . Seg_Selcet(SEG_SELECT)
-                                 );*/
-               
-    
-    
     
 endmodule
