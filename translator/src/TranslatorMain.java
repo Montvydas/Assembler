@@ -6,8 +6,6 @@
 import java.io.*;
 import java.util.*;
 
-import javax.sound.midi.SysexMessage;
-
 public class TranslatorMain {
 
 	static int lineNr = 0;                  
@@ -19,27 +17,53 @@ public class TranslatorMain {
     
     static boolean timerIntUsed = false;
     static boolean mouseIntUsed = false;   //to make sure they were only used once
+    static boolean useBinNotHex = true;
     
     static String instructionAddressInHex = "00";  //instruction addr in hex
     
-    static Map<String, String> functionTag = new HashMap<String, String>();
+    static Map<String, String> functionTag = new HashMap<String, String>();	//Dictionary to store functions and their addresses
+    static List<String> storedValues = new ArrayList<String>();				//list to store bin values to send to the file
     
     public static void main(String args[]) {
         try {
-            
-          // get the user file
-          Scanner sc = new Scanner (new File (args[0]));
-//          Scanner sc = new Scanner (new File ("jump_instructions.txt"));
+        
+        	System.out.println(args[0]);
+        	System.out.println(args[1]);
+//        	System.out.println(args[2]);
+//        	System.out.println(args[0]);
+          String instructionFileName = new String();
+          instructionFileName = args[0];
+          /*
+          if (args[0] == null)
+        	  instructionFileName = "jump_instructions.txt";
+          else instructionFileName = args[0];
+          */
+          // output file
+          String resultFileName = new String();
+          resultFileName = args[1];
+          /*
+          if (args[1] == null)
+        	  resultFileName = "jump_instructions.txt";
+          else resultFileName = args[1];
+          */
+          /*
+          if (args[2] == "bin" || args[2] == null)
+          	useBinNotHex = true;
+          else if (args[2] == "hex")
+          	useBinNotHex = false;
+          else {
+          	System.err.println("for hex use -hex & for binary use -bin");
+          	return;
+          }
+          */
           
-            // output file
-//            File outputFile = new File("jump_results.txt");
-            File outputFile = new File(args[1]);
-            FileWriter fw = new FileWriter(outputFile);
+          
+          Scanner sc = new Scanner (new File (instructionFileName));
+
+          File outputFile = new File(resultFileName);
+          FileWriter fw = new FileWriter(outputFile);
             
             boolean blockCommented = false;         //for detecting block comments
-            int instructionAddress = 0;             //store the instruction address to be performed
-            
-            
             
       //Start line scanning
             while (sc.hasNextLine()){	            //scan all of the file
@@ -84,126 +108,108 @@ public class TranslatorMain {
                 else data = tmp.trim();		//take away spaces at the beginning and ending
                 	
                 String [] storedCode = data.split(" "); //split at spaces
-                
-                // System.out.println ("Length is " + storedCode.length);  
-                
-                String valueToSend = new String();  //value to be written to file
-                int instructionLengthInBytes = 0;   //instructions have different lengths, update that
                
                 switch (storedCode[0].toUpperCase()){   //allow both upper and lower cases
                 	//load a 43
                 	//load b 33
                     case "LOAD":
                         checkNumberOfOperands (storedCode.length, 3);                  //check that only 3 arguments entered
-                    	valueToSend = checkWhichOperand (storedCode[1], "00000000", "00000001");    //check if reg A or reg B is used 
-                    	valueToSend += hexToBi(storedCode[2]) + "\n";                   //address to hex value
-                        instructionLengthInBytes = 2;                                   //update instruc length
+                        
+                    	storedValues.add (checkWhichOperand (storedCode[1], useBinOrHex("00"), useBinOrHex("01")));
+                    	storedValues.add(useBinOrHex(storedCode[2]));                                  //update instruc length
                     break;
                     
                     //store 32 a
                     //store 52 b
                     case "STORE":
                         checkNumberOfOperands (storedCode.length, 3);
-                    	valueToSend =  checkWhichOperand (storedCode[2], "00000010", "00000011");
-                    	valueToSend += hexToBi(storedCode[1]) + "\n";
-                        instructionLengthInBytes = 2;
+                        storedValues.add(checkWhichOperand (storedCode[2], "00000010", "00000011"));
+                    	storedValues.add(useBinOrHex(storedCode[1]));
                     break;
+                    
+                    
                     
                     //breq 52
                     case "BREQ":
                         checkNumberOfOperands (storedCode.length, 2);
-                    	valueToSend = ("10010110" + '\n' + hexToBi(storedCode[1]) + '\n');
-                        instructionLengthInBytes = 2;
+                        checkJumpOperation (storedCode[1], useBinOrHex("96"));	//"10010110"
                     break;
                     
                     //bgtq 35
                     case "BGTQ":
                         checkNumberOfOperands (storedCode.length, 2);
-                    	valueToSend = ("10100110" + '\n' + hexToBi(storedCode[1]) + '\n');
-                        instructionLengthInBytes = 2;
+                        checkJumpOperation (storedCode[1], useBinOrHex("A6"));	//10100110
                     break;
                     
                     //bltq 45
                     case "BLTQ":
                         checkNumberOfOperands (storedCode.length, 2);
-                    	valueToSend = ("10110110" + '\n' + hexToBi(storedCode[1]) + '\n');
-                        instructionLengthInBytes = 2;
+                        checkJumpOperation (storedCode[1], useBinOrHex("B6"));	//"10110110"
                     break;  
                      
                     //goto_idle
                     case "GOTO_IDLE":
                         checkNumberOfOperands (storedCode.length, 1);
-                    	valueToSend = ("00001000" + '\n');
-                        instructionLengthInBytes = 1;
+                    	storedValues.add("00001000");
                     break;
                     
                     //goto 43
                     case "GOTO":
                         checkNumberOfOperands (storedCode.length, 2);
-                    	valueToSend = ("00000111" + '\n' + hexToBi(storedCode[1]) + '\n');
-                        instructionLengthInBytes = 2;
+                        checkJumpOperation (storedCode[1], "00000111");
                     break;
                     
                     //call 35
                     case "CALL":
                         checkNumberOfOperands (storedCode.length, 2);
-                    	valueToSend = ("00001001" + '\n' + hexToBi(storedCode[1]) + '\n');
-                        instructionLengthInBytes = 2;
+                        checkJumpOperation (storedCode[1], "00001001");
                     break;
                     
                     //return
                     case "RETURN":
                         checkNumberOfOperands (storedCode.length, 1);
-                    	valueToSend = ("00001010" + '\n');
-                        instructionLengthInBytes = 1;
+                    	storedValues.add("00001010");
                     break; 
                     
                     //deref a
                     //deref b
                     case "DEREF":
                         checkNumberOfOperands (storedCode.length, 2);
-                    	valueToSend = checkWhichOperand (storedCode[1], "00001011", "00001100");
-                        instructionLengthInBytes = 1;
+                        storedValues.add(checkWhichOperand (storedCode[1], "00001011", "00001100"));
                     break;
                     
                     //add a b	//adds both and stores in a...
                     //add b a
                     case "ADD":
                         checkNumberOfOperands (storedCode.length, 3);   //check where the result will go to
-                    	valueToSend = checkOperandOrder (storedCode[1], storedCode[2], "00000100", "00000101");
-                        instructionLengthInBytes = 1;
-                    break;
+                        storedValues.add(checkOperandOrder (storedCode[1], storedCode[2], "00000100", "00000101"));                    break;
                     
                     //sub a b
                     //sub b a
                     case "SUB":
                         checkNumberOfOperands (storedCode.length, 3);
-                    	valueToSend = checkOperandOrder (storedCode[1], storedCode[2], "00010100", "00010101");
-                        instructionLengthInBytes = 1;
+                        storedValues.add(checkOperandOrder (storedCode[1], storedCode[2], "00010100", "00010101"));
                     break; 
                     
                     //mult a b
                     //mult b a
                     case "MULT":
                         checkNumberOfOperands (storedCode.length, 3);
-                    	valueToSend = checkOperandOrder (storedCode[1], storedCode[2], "00100100", "00100101");
-                        instructionLengthInBytes = 1;
+                        storedValues.add(checkOperandOrder (storedCode[1], storedCode[2], "00100100", "00100101"));
                     break;
                     
                     //s_l a
                     //s_l b
                     case "S_L":
                         checkNumberOfOperands (storedCode.length, 2);
-                    	valueToSend = checkWhichOperand (storedCode[1], "00110100", "00110101");
-                        instructionLengthInBytes = 1;
+                        storedValues.add(checkWhichOperand (storedCode[1], "00110100", "00110101"));
                     break;
                     
                     //s_r a
                     //s_r b
                     case "S_R":
                         checkNumberOfOperands (storedCode.length, 2);
-                    	valueToSend = checkWhichOperand (storedCode[1], "01000100", "01000101");
-                        instructionLengthInBytes = 1;
+                        storedValues.add(checkWhichOperand (storedCode[1], "01000100", "01000101"));
                     break;
                     
                     //incr a a	//incremends a and stores in a
@@ -211,11 +217,10 @@ public class TranslatorMain {
                     case "INCR":
                         checkNumberOfOperands (storedCode.length, 3);
                     	if (storedCode[1].equalsIgnoreCase("A"))
-                    		valueToSend = checkWhichOperand (storedCode[2], "01010100", "01100100");
+                    		storedValues.add(checkWhichOperand (storedCode[2], "01010100", "01100100"));
                     	else if (storedCode[1].equalsIgnoreCase("B"))
-                    		valueToSend = checkWhichOperand (storedCode[2], "01010101", "01100101");
+                    		storedValues.add(checkWhichOperand (storedCode[2], "01010101", "01100101"));
                     	else printErrorLine();
-                        instructionLengthInBytes = 1;
                     break; 
                     
                     //decr a b
@@ -223,34 +228,30 @@ public class TranslatorMain {
                     case "DECR":
                         checkNumberOfOperands (storedCode.length, 3);
                     	if (storedCode[1].equalsIgnoreCase("A"))
-                    		valueToSend = checkWhichOperand (storedCode[2], "01110100", "10000100");
+                    		storedValues.add(checkWhichOperand (storedCode[2], "01110100", "10000100"));
                     	else if (storedCode[1].equalsIgnoreCase("B"))
-                    		valueToSend = checkWhichOperand (storedCode[2], "01110101", "10000101");
+                    		storedValues.add(checkWhichOperand (storedCode[2], "01110101", "10000101"));
                     	else printErrorLine();
-                        instructionLengthInBytes = 1;
                     break;
                     
                     //equals a b
                     //equals b a
                     case "EQUALS":
                         checkNumberOfOperands (storedCode.length, 3);
-                    	valueToSend = checkOperandOrder (storedCode[1], storedCode[2], "10010100", "10010101");
-                        instructionLengthInBytes = 1;
+                        storedValues.add(checkOperandOrder (storedCode[1], storedCode[2], "10010100", "10010101"));
                     break;
                     //greater a b
                     //greater b a
                     case "GREATER":
                         checkNumberOfOperands (storedCode.length, 3);
-                    	valueToSend = checkOperandOrder (storedCode[1], storedCode[2], "10100100", "10100101");
-                        instructionLengthInBytes = 1;
+                        storedValues.add(checkOperandOrder (storedCode[1], storedCode[2], "10100100", "10100101"));
                     break;
                     
                     //less a b
                     //less b a
                     case "LESS":
                         checkNumberOfOperands (storedCode.length, 3);
-                    	valueToSend = checkOperandOrder (storedCode[1], storedCode[2], "10110100", "10110101");
-                        instructionLengthInBytes = 1;
+                        storedValues.add(checkOperandOrder (storedCode[1], storedCode[2], "10110100", "10110101"));
                     break;
                     
                     //load_val a 32
@@ -258,45 +259,41 @@ public class TranslatorMain {
                     //it is in the form of: to load into A reg - (xxxx1101 + value[7:0]), to B reg - (xxxx1101 + value[7:0])
                     case "LOAD_VAL":
                         checkNumberOfOperands (storedCode.length, 3);
-                        valueToSend = checkWhichOperand (storedCode[1], "00001101", "00001110");
-                        valueToSend += hexToBi(storedCode[2]) + "\n";
-                        instructionLengthInBytes = 2;
+                        storedValues.add(checkWhichOperand (storedCode[1], "00001101", "00001110"));
+                        storedValues.add(hexToBi(storedCode[2]));
                     break;
                     
                     default:  {
-                        instructionLengthInBytes = 0;
                         checkNumberOfOperands (storedCode.length, 1);
                         if (containsErrors || !addFunctionToMap(storedCode[0])){
                         	printErrorLine();
-                        	System.err.println("hint: use single word as a function name AND define functions only once");
+                        	System.err.println("hint: use single word for function names, define functions only once, i.e. START:");
                         }
 //                    return;
                     }
                     break;
                 }
                 
-                
-                instructionAddress += instructionLengthInBytes; //gets the address
-                if (instructionAddress > 253){  //make sure there is enough memory left for instructions
+                if (storedValues.size() > 253){  //make sure there is enough memory left for instructions
                     printErrorLine();
                     System.err.print("hint: you used more than allowed 253 Bytes of program ROM (254 is timer & 255 is mouse interrupt addr).\n");
                 }
                 
                 if (containsErrors){    //if contains errors, end program
-                	fw.write("Please fix your errors firstly.");
                 	fw.close();
                 	sc.close();
                 	return;
                 }
                 
-                fw.write(valueToSend);  //else print binary value to file
-                
-                instructionAddressInHex = Integer.toHexString( instructionAddress );    //good to know hex value
+                instructionAddressInHex = Integer.toHexString( storedValues.size() );    //good to know hex value
                 if (instructionAddressInHex.length() == 1){                             //but need to make sure that it has two values as hex, i.e. C -> 0C
                     instructionAddressInHex = "0" + instructionAddressInHex;
                 }
                 
-                System.out.print( "\n" + valueToSend + "XXXXXXXX <- This Instruction address is " + instructionAddressInHex + "\n\n");//tells the location of instruction
+                if (storedValues.size() > 0) 
+                	System.out.print( "\n" + storedValues.get(storedValues.size()-1) + "\n" + "XXXXXXXX <- This Instruction address is " + instructionAddressInHex + "\n\n");//tells the location of instruction
+                else
+                	System.out.println("ADDR: 00");
             }
             
             if (addressOfTimerISR == "11111110"){ //0xFE
@@ -305,22 +302,20 @@ public class TranslatorMain {
             	fw.close();
             	sc.close();
                 return;
-            }   
+            }  
             
+            while (storedValues.size() < 254) {
+            	storedValues.add("00000000");
+            }
+            storedValues.add(addressOfTimerISR);
+            storedValues.add(addressOfMouseISR);
             
-            if (instructionAddress < 254){  //fill in with zeroes places where no data exists
-                while (instructionAddress < 254) {
-                	instructionAddress ++;  
-                    fw.write("00000000\n");
-                }
-                fw.write (addressOfTimerISR);   //specify timer & mouse ISR addresses
-                fw.write (addressOfMouseISR);
-            } else {
-                printErrorLine();
-                System.err.print("hint: you used more than allowed 253 Bytes of program ROM.\n");
-            	fw.close();
-            	sc.close();
-                return;
+            for (String tmp : storedValues){
+            	if (functionTag.containsKey(tmp))
+            		tmp = functionTag.get(tmp);
+            	
+            	fw.write(tmp);
+            	fw.write("\n");
             }
             
 //     close stuff
@@ -340,9 +335,9 @@ public class TranslatorMain {
     //to check which operand, regA or regB stores the resultant value 
     public static String checkOperandOrder (String op_1, String op_2, String code_1, String code_2){
     	if (op_1.equalsIgnoreCase("A") && op_2.equalsIgnoreCase("B"))
-    		return code_1 + "\n";
+    		return code_1;
     	else if (op_1.equalsIgnoreCase("B") && op_2.equalsIgnoreCase("A")){
-    		return code_2 + "\n";
+    		return code_2;
     	} else {
     		printErrorLine();
     		System.err.print ("hint: cannot find A or B.\n");
@@ -353,9 +348,9 @@ public class TranslatorMain {
     //to check if regA or regB is used to storing & loading values
     public static String checkWhichOperand (String op, String code_1, String code_2){
     	if (op.equalsIgnoreCase("A"))
-    		return code_1 + "\n";
+    		return code_1;
     	else if (op.equalsIgnoreCase("B")){
-    		return code_2 + "\n";
+    		return code_2;
     	} else {
     		printErrorLine();
     		System.err.print ("hint: cannot find A or B.\n");
@@ -401,10 +396,25 @@ public class TranslatorMain {
         return bin;
      }
      
+     public static String useBinOrHex (String hexVal){
+    	 if (useBinNotHex)
+    		 return hexToBi(hexVal);
+    	 else	
+    		 return hexVal;
+     }
+     
+     //
+     public static void checkJumpOperation (String AddrOrVal, String instruction){
+         storedValues.add(instruction);
+         if (AddrOrVal.length() > 2){
+         	storedValues.add(AddrOrVal);
+         } else {
+         	storedValues.add(hexToBi(AddrOrVal));
+         }
+     }
+     
      public static boolean addFunctionToMap (String functionName){
          if ( functionName.endsWith(":")) {
-                 //String str = storedCode[0];
-                 //str = str.substring(0, str.length()-1);
                  functionName = functionName.substring (0, functionName.length()-1);    
                     
                  switch (functionName.toUpperCase()) { 
@@ -416,7 +426,7 @@ public class TranslatorMain {
                                 System.err.print ("hint: You can't you timer interrupts at multiple places");
                             }
                             // System.out.print ("\n" + instructionAddressInHex + "\n");
-                            addressOfTimerISR = hexToBi( instructionAddressInHex ) + "\n";
+                            addressOfTimerISR = hexToBi( instructionAddressInHex );
                             timerIntUsed = true;
                         break;
                     
@@ -426,7 +436,7 @@ public class TranslatorMain {
                                 printErrorLine();
                                 System.err.print ("hint: You can't you mouse interrupts at multiple places");
                             }
-                            addressOfMouseISR = hexToBi( instructionAddressInHex ) + "\n";
+                            addressOfMouseISR = hexToBi( instructionAddressInHex );
                             mouseIntUsed = true;
                         break;
                     
@@ -438,7 +448,7 @@ public class TranslatorMain {
                             	return false;
                         }
                     }
-        }
+        } else return false;
          return true;
      }
 }
