@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2015.2 (lin64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date             : Wed Mar 23 15:06:26 2016
+| Date             : Wed Mar 23 16:35:30 2016
 | Host             : tlf30.see.ed.ac.uk running 64-bit Scientific Linux release 7.1 (Nitrogen)
 | Command          : report_power -file WrapperMouseAndProcessor_power_routed.rpt -pb WrapperMouseAndProcessor_power_summary_routed.pb
 | Design           : WrapperMouseAndProcessor
@@ -50,16 +50,16 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |    <0.001 |        4 |       --- |             --- |
-| Slice Logic              |     0.002 |     4703 |       --- |             --- |
-|   LUT as Logic           |     0.001 |     1631 |     20800 |            7.84 |
-|   Register               |    <0.001 |     2149 |     41600 |            5.17 |
+| Slice Logic              |     0.002 |     4713 |       --- |             --- |
+|   LUT as Logic           |     0.001 |     1641 |     20800 |            7.89 |
+|   Register               |    <0.001 |     2150 |     41600 |            5.17 |
 |   CARRY4                 |    <0.001 |      112 |      8150 |            1.37 |
 |   BUFG                   |    <0.001 |        3 |        32 |            9.38 |
 |   LUT as Shift Register  |    <0.001 |      104 |      9600 |            1.08 |
 |   LUT as Distributed RAM |    <0.001 |       24 |      9600 |            0.25 |
 |   F7/F8 Muxes            |    <0.001 |       32 |     32600 |            0.10 |
 |   Others                 |     0.000 |      271 |       --- |             --- |
-| Signals                  |     0.002 |     3479 |       --- |             --- |
+| Signals                  |     0.002 |     3483 |       --- |             --- |
 | Block RAM                |    <0.001 |      5.5 |        50 |           11.00 |
 | I/O                      |     0.003 |       48 |       106 |           45.28 |
 | Static Power             |     0.072 |          |           |                 |
@@ -261,8 +261,8 @@ Table of Contents
 |                   ramloop[3].ram.r                                    |    <0.001 |
 |                     prim_noinit.ram                                   |    <0.001 |
 |         u_ila_cap_ctrl                                                |    <0.001 |
-|           U_CDONE                                                     |     0.000 |
-|           U_NS0                                                       |     0.000 |
+|           U_CDONE                                                     |    <0.001 |
+|           U_NS0                                                       |    <0.001 |
 |           U_NS1                                                       |    <0.001 |
 |           u_cap_addrgen                                               |    <0.001 |
 |             U_CMPRESET                                                |     0.000 |
@@ -313,7 +313,7 @@ Table of Contents
 |                       u_srlB                                          |     0.000 |
 |                       u_srlC                                          |     0.000 |
 |                       u_srlD                                          |     0.000 |
-|         u_ila_regs                                                    |     0.001 |
+|         u_ila_regs                                                    |    <0.001 |
 |           MU_SRL[0].mu_srl_reg                                        |    <0.001 |
 |           MU_SRL[1].mu_srl_reg                                        |    <0.001 |
 |           MU_SRL[2].mu_srl_reg                                        |    <0.001 |

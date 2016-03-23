@@ -70,7 +70,7 @@ module Timer(
         if(RESET)
             DownCounter <= 0;
         else begin
-            if(DownCounter == 32'd99999)
+            if(DownCounter == 32'd199999)
                 DownCounter <= 0;
             else
                 DownCounter <= DownCounter + 1'b1;

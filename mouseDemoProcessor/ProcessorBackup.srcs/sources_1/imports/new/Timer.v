@@ -32,7 +32,7 @@ module Timer(
         input BUS_INTERRUPT_ACK
         );
     parameter [7:0] TimerBaseAddr = 8'hF0; // Timer Base Address in the Memory Map
-    parameter InitialIterruptRate = 1000; // Default interrupt rate leading to 1 interrupt every 100 ms
+    parameter InitialIterruptRate = 100; // Default interrupt rate leading to 1 interrupt every 100 ms
     parameter InitialIterruptEnable = 1'b1; // By default the Interrupt is Enabled
     //////////////////////
     //BaseAddr + 0 -> reports current timer value

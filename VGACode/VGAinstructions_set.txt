@@ -1,18 +1,31 @@
+	load_val a 01
+	store F1 a
+	
+	load_val a 10
+	load_val b 01
+	
+	store B0 a	
+	store B1 a
+	store B2 b
+	
+	load_val a 20
+	store 02 a
+	store 03 a 
+goto_idle
+
+
 timer_isr:
 //first to clear the last position of mouse 
-	load_val b 01   //vga background
-	store B2 b		
-	
 	load a 08		//memory vga X
 	store B0 a
 	
 	load a 09		//memory vga Y
 	store B1 a
 	
+	load_val a 00   //vga background
+	store B2 a		
+	
 //set new address	
-	load_val a 00	//vga foreground
-	store B2 a  	 
-
 	load a 02   	//mouse X address	
 	store B0 a		//vga X
 	store 08 a		//memory vga X
@@ -22,6 +35,9 @@ timer_isr:
 	store B1 a		//vga Y
 	store 09 a		//memory vga Y	
 	store D0 a		//7seg
+	
+	load_val a 01	//vga foreground
+	store B2 a  
 goto_idle	
 
 mouse_isr:
@@ -31,3 +47,4 @@ mouse_isr:
 	load a A2	//Y location
 	store 03 a
 goto_idle
+

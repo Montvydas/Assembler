@@ -118,12 +118,14 @@ module DSL_VGA(
                 Fresh_X <= BusData;  
             else
                 Fresh_X <= Fresh_X;
+                
             if( (DataAddr==8'hB1) )
-                Fresh_Y <= BusData[6:0];
+                Fresh_Y <= 8'd119 - BusData[6:0];
             else 
                 Fresh_Y <= Fresh_Y;
+                
             if( (DataAddr==8'hB2) ) begin
-                BackOrFore <= BusData[0];
+                BackOrFore <= -BusData[0];
                 W_EN <= 1'b1;
             end
             else begin
@@ -131,10 +133,12 @@ module DSL_VGA(
                 W_EN <= 1'b0;
             end    
         end
+        
     
             
          //assign region1=( VGA_ADDR[0]==0  && VGA_ADDR[8]==0);
-         assign ColorConnect=16'h03F0;
+//         assign ColorConnect=16'h03F0;
+		assign ColorConnect=16'h77DD;
 //         assign region2=(VGA_ADDR[7:0]<=7 && VGA_ADDR[0]==1 && VGA_ADDR[14:8]>=113 && VGA_ADDR[8]==1);
 //         assign region3=(VGA_ADDR[7:0]>=153 && VGA_ADDR[0]==1 && VGA_ADDR[14:8]<=7 && VGA_ADDR[8]==1);
 //         assign region4=(VGA_ADDR[7:0]>=153 && VGA_ADDR[0]==1 && VGA_ADDR[14:8]>=113 && VGA_ADDR[8]==1);
