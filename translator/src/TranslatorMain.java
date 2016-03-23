@@ -7,17 +7,73 @@ import java.io.*;
 import java.util.*;
 
 public class TranslatorMain {
+	
+	//constants defyning operations for machine code
+    static final String LOAD_A_CODE 	= "00";
+	static final String LOAD_B_CODE 	= "01";
+	
+	static final String STORE_A_CODE 	= "02";
+	static final String STORE_B_CODE 	= "03";
+	
+    static final String BREQ_CODE 		= "96";
+    static final String BGTQ_CODE 		= "A6";
+    static final String BLTQ_CODE 		= "B6";
+    static final String GOTO_IDLE_CODE 	= "08"; 
+    static final String GOTO_CODE 		= "07";
+    static final String CALL_CODE 		= "09";
+    static final String RETURN_CODE 	= "0A";
+    
+	static final String DEREF_A_CODE 	= "0B";                    
+    static final String DEREF_B_CODE 	= "0C";
+    
+    static final String ADD_A_CODE 		= "04";
+    static final String ADD_B_CODE 		= "05";
+    
+    static final String SUB_A_CODE 		= "14";
+    static final String SUB_B_CODE 		= "15";		
 
+    
+    static final String MULT_A_CODE 	= "24";
+    static final String MULT_B_CODE 	= "25";
+    
+    static final String S_L_A_CODE 		= "34";
+    static final String S_L_B_CODE 		= "35";
+    
+    static final String S_R_A_CODE 		= "44";  
+    static final String S_R_B_CODE 		= "45";    
+     
+    static final String EQUALS_A_CODE 	= "94";  
+    static final String EQUALS_B_CODE 	= "95";
+    
+    static final String GREATER_A_CODE 	= "A4";  
+    static final String GREATER_B_CODE 	= "A5";     
+    
+    static final String LESS_A_CODE 	= "B4";  
+    static final String LESS_B_CODE 	= "B5";
+    
+    static final String LOAD_VAL_A_CODE = "0D";
+    static final String LOAD_VAL_B_CODE = "0E";
+    		
+	static final String INCR_A_A_CODE 	= "54";
+    static final String INCR_A_B_CODE 	= "64";
+    static final String INCR_B_B_CODE 	= "55";
+    static final String INCR_B_A_CODE 	= "65";
+    
+    static final String DECR_A_A_CODE 	= "74";
+    static final String DECR_A_B_CODE	= "84";
+    static final String DECR_B_B_CODE 	= "75";
+    static final String DECR_B_A_CODE 	= "85";
+		
 	static int lineNr = 0;                  
 	static String data = new String ();     //data line to be read from the file
 	static boolean containsErrors = false;  //error flag
     
-    static String addressOfTimerISR = "11111110";
-    static String addressOfMouseISR = "11111111";
+    static String addressOfTimerISR = "FE";
+    static String addressOfMouseISR = "FF";
     
     static boolean timerIntUsed = false;
     static boolean mouseIntUsed = false;   //to make sure they were only used once
-    static boolean useBinNotHex = true;
+    static boolean useBinNotHex = false;
     
     static String instructionAddressInHex = "00";  //instruction addr in hex
     
@@ -26,45 +82,35 @@ public class TranslatorMain {
     
     public static void main(String args[]) {
         try {
-        
-        	System.out.println(args[0]);
-        	System.out.println(args[1]);
-//        	System.out.println(args[2]);
-//        	System.out.println(args[0]);
           String instructionFileName = new String();
-          instructionFileName = args[0];
-          /*
-          if (args[0] == null)
-        	  instructionFileName = "jump_instructions.txt";
-          else instructionFileName = args[0];
-          */
-          // output file
           String resultFileName = new String();
-          resultFileName = args[1];
-          /*
-          if (args[1] == null)
-        	  resultFileName = "jump_instructions.txt";
-          else resultFileName = args[1];
-          */
-          /*
-          if (args[2] == "bin" || args[2] == null)
-          	useBinNotHex = true;
-          else if (args[2] == "hex")
-          	useBinNotHex = false;
-          else {
-          	System.err.println("for hex use -hex & for binary use -bin");
-          	return;
-          }
-          */
           
+          	if (args.length == 2) {				//check if enough arguments given
+          		instructionFileName = args[0];
+          		resultFileName = args[1];
+          	} else if (args.length == 3) {		//check which format to give out. default is hex
+          		instructionFileName = args[0];
+          		resultFileName = args[1];
+          		if (args[2].equals("bin") )
+          			useBinNotHex = true;
+          		else if (args[2].equals("hex") )
+          			useBinNotHex = false;
+          		else {
+          			System.err.println("for hex use hex & for binary use bin");
+          			return;
+          		}
+          	} else {
+          		System.err.println("You didn't specify instructions.txt and results.txt");
+          		return;	
+          	}
           
-          Scanner sc = new Scanner (new File (instructionFileName));
+          	Scanner sc = new Scanner (new File (instructionFileName));
 
-          File outputFile = new File(resultFileName);
-          FileWriter fw = new FileWriter(outputFile);
+          	File outputFile = new File(resultFileName);
+          	FileWriter fw = new FileWriter(outputFile);
             
             boolean blockCommented = false;         //for detecting block comments
-            
+            int previousStoredValueSize = 0; 
       //Start line scanning
             while (sc.hasNextLine()){	            //scan all of the file
             	lineNr++;
@@ -108,118 +154,119 @@ public class TranslatorMain {
                 else data = tmp.trim();		//take away spaces at the beginning and ending
                 	
                 String [] storedCode = data.split(" "); //split at spaces
-               
+
                 switch (storedCode[0].toUpperCase()){   //allow both upper and lower cases
                 	//load a 43
                 	//load b 33
                     case "LOAD":
                         checkNumberOfOperands (storedCode.length, 3);                  //check that only 3 arguments entered
                         
-                    	storedValues.add (checkWhichOperand (storedCode[1], useBinOrHex("00"), useBinOrHex("01")));
-                    	storedValues.add(useBinOrHex(storedCode[2]));                                  //update instruc length
+                    	storedValues.add (checkWhichOperand (storedCode[1], LOAD_A_CODE, LOAD_B_CODE));
+                    	storedValues.add(storedCode[2]);                                  //update instruc length
                     break;
                     
                     //store 32 a
                     //store 52 b
                     case "STORE":
                         checkNumberOfOperands (storedCode.length, 3);
-                        storedValues.add(checkWhichOperand (storedCode[2], "00000010", "00000011"));
-                    	storedValues.add(useBinOrHex(storedCode[1]));
+                        storedValues.add(checkWhichOperand (storedCode[2], STORE_A_CODE, STORE_B_CODE )); // "00000010", "00000011"));
+                    	storedValues.add(storedCode[1]);
                     break;
                     
-                    
-                    
+
+                 
                     //breq 52
                     case "BREQ":
                         checkNumberOfOperands (storedCode.length, 2);
-                        checkJumpOperation (storedCode[1], useBinOrHex("96"));	//"10010110"
+                        checkJumpOperation (storedCode[1], BREQ_CODE);	//"10010110"
                     break;
                     
                     //bgtq 35
                     case "BGTQ":
                         checkNumberOfOperands (storedCode.length, 2);
-                        checkJumpOperation (storedCode[1], useBinOrHex("A6"));	//10100110
+                        checkJumpOperation (storedCode[1], BGTQ_CODE);	//10100110
                     break;
                     
                     //bltq 45
                     case "BLTQ":
                         checkNumberOfOperands (storedCode.length, 2);
-                        checkJumpOperation (storedCode[1], useBinOrHex("B6"));	//"10110110"
+                        checkJumpOperation (storedCode[1], BLTQ_CODE);	//"10110110"
                     break;  
                      
                     //goto_idle
                     case "GOTO_IDLE":
                         checkNumberOfOperands (storedCode.length, 1);
-                    	storedValues.add("00001000");
+                    	storedValues.add(GOTO_IDLE_CODE);//("00001000");
                     break;
                     
                     //goto 43
                     case "GOTO":
                         checkNumberOfOperands (storedCode.length, 2);
-                        checkJumpOperation (storedCode[1], "00000111");
+                        checkJumpOperation (storedCode[1], GOTO_CODE );// "00000111");
                     break;
                     
                     //call 35
                     case "CALL":
                         checkNumberOfOperands (storedCode.length, 2);
-                        checkJumpOperation (storedCode[1], "00001001");
+                        checkJumpOperation (storedCode[1], CALL_CODE );//"00001001");
                     break;
                     
                     //return
                     case "RETURN":
                         checkNumberOfOperands (storedCode.length, 1);
-                    	storedValues.add("00001010");
+                    	storedValues.add(RETURN_CODE );//"00001010");
                     break; 
-                    
+                                     
                     //deref a
                     //deref b
                     case "DEREF":
                         checkNumberOfOperands (storedCode.length, 2);
-                        storedValues.add(checkWhichOperand (storedCode[1], "00001011", "00001100"));
+                        storedValues.add(checkWhichOperand (storedCode[1], DEREF_A_CODE, DEREF_B_CODE));//"00001011", "00001100"));
                     break;
                     
                     //add a b	//adds both and stores in a...
                     //add b a
                     case "ADD":
                         checkNumberOfOperands (storedCode.length, 3);   //check where the result will go to
-                        storedValues.add(checkOperandOrder (storedCode[1], storedCode[2], "00000100", "00000101"));                    break;
+                        storedValues.add(checkOperandOrder (storedCode[1], storedCode[2], ADD_A_CODE, ADD_B_CODE ));//"00000100", "00000101"));                    
+                    break;
                     
                     //sub a b
                     //sub b a
                     case "SUB":
                         checkNumberOfOperands (storedCode.length, 3);
-                        storedValues.add(checkOperandOrder (storedCode[1], storedCode[2], "00010100", "00010101"));
+                        storedValues.add(checkOperandOrder (storedCode[1], storedCode[2], SUB_A_CODE, SUB_B_CODE));//"00010100", "00010101"));
                     break; 
                     
                     //mult a b
                     //mult b a
                     case "MULT":
                         checkNumberOfOperands (storedCode.length, 3);
-                        storedValues.add(checkOperandOrder (storedCode[1], storedCode[2], "00100100", "00100101"));
+                        storedValues.add(checkOperandOrder (storedCode[1], storedCode[2], MULT_A_CODE, MULT_B_CODE));//"00100100", "00100101"));
                     break;
                     
                     //s_l a
                     //s_l b
                     case "S_L":
                         checkNumberOfOperands (storedCode.length, 2);
-                        storedValues.add(checkWhichOperand (storedCode[1], "00110100", "00110101"));
+                        storedValues.add(checkWhichOperand (storedCode[1], S_L_A_CODE, S_L_B_CODE));//"00110100", "00110101"));
                     break;
                     
                     //s_r a
                     //s_r b
                     case "S_R":
                         checkNumberOfOperands (storedCode.length, 2);
-                        storedValues.add(checkWhichOperand (storedCode[1], "01000100", "01000101"));
+                        storedValues.add(checkWhichOperand (storedCode[1], S_R_A_CODE, S_R_B_CODE));//"01000100", "01000101"));
                     break;
-                    
+    
                     //incr a a	//incremends a and stores in a
                     //incr b a
                     case "INCR":
                         checkNumberOfOperands (storedCode.length, 3);
                     	if (storedCode[1].equalsIgnoreCase("A"))
-                    		storedValues.add(checkWhichOperand (storedCode[2], "01010100", "01100100"));
+                    		storedValues.add(checkWhichOperand (storedCode[2], INCR_A_A_CODE, INCR_A_B_CODE)); //"01010100", "01100100"));
                     	else if (storedCode[1].equalsIgnoreCase("B"))
-                    		storedValues.add(checkWhichOperand (storedCode[2], "01010101", "01100101"));
+                    		storedValues.add(checkWhichOperand (storedCode[2], INCR_B_A_CODE, INCR_B_B_CODE ));//"01010101", "01100101"));
                     	else printErrorLine();
                     break; 
                     
@@ -228,9 +275,9 @@ public class TranslatorMain {
                     case "DECR":
                         checkNumberOfOperands (storedCode.length, 3);
                     	if (storedCode[1].equalsIgnoreCase("A"))
-                    		storedValues.add(checkWhichOperand (storedCode[2], "01110100", "10000100"));
+                    		storedValues.add(checkWhichOperand (storedCode[2], DECR_A_A_CODE, DECR_A_B_CODE ));// "01110100", "10000100"));
                     	else if (storedCode[1].equalsIgnoreCase("B"))
-                    		storedValues.add(checkWhichOperand (storedCode[2], "01110101", "10000101"));
+                    		storedValues.add(checkWhichOperand (storedCode[2], DECR_B_A_CODE, DECR_B_B_CODE )); //"01110101", "10000101"));
                     	else printErrorLine();
                     break;
                     
@@ -238,20 +285,20 @@ public class TranslatorMain {
                     //equals b a
                     case "EQUALS":
                         checkNumberOfOperands (storedCode.length, 3);
-                        storedValues.add(checkOperandOrder (storedCode[1], storedCode[2], "10010100", "10010101"));
+                        storedValues.add(checkOperandOrder (storedCode[1], storedCode[2], EQUALS_A_CODE, EQUALS_B_CODE ));//"10010100", "10010101"));
                     break;
                     //greater a b
                     //greater b a
                     case "GREATER":
                         checkNumberOfOperands (storedCode.length, 3);
-                        storedValues.add(checkOperandOrder (storedCode[1], storedCode[2], "10100100", "10100101"));
+                        storedValues.add(checkOperandOrder (storedCode[1], storedCode[2], GREATER_A_CODE, GREATER_B_CODE ));//"10100100", "10100101"));
                     break;
                     
                     //less a b
                     //less b a
                     case "LESS":
                         checkNumberOfOperands (storedCode.length, 3);
-                        storedValues.add(checkOperandOrder (storedCode[1], storedCode[2], "10110100", "10110101"));
+                        storedValues.add(checkOperandOrder (storedCode[1], storedCode[2], LESS_A_CODE, LESS_B_CODE ));//"10110100", "10110101"));
                     break;
                     
                     //load_val a 32
@@ -259,8 +306,8 @@ public class TranslatorMain {
                     //it is in the form of: to load into A reg - (xxxx1101 + value[7:0]), to B reg - (xxxx1101 + value[7:0])
                     case "LOAD_VAL":
                         checkNumberOfOperands (storedCode.length, 3);
-                        storedValues.add(checkWhichOperand (storedCode[1], "00001101", "00001110"));
-                        storedValues.add(hexToBi(storedCode[2]));
+                        storedValues.add(checkWhichOperand (storedCode[1], LOAD_VAL_A_CODE, LOAD_VAL_B_CODE ));//"00001101", "00001110"));
+                        storedValues.add(storedCode[2]);
                     break;
                     
                     default:  {
@@ -285,18 +332,37 @@ public class TranslatorMain {
                 	return;
                 }
                 
+                
                 instructionAddressInHex = Integer.toHexString( storedValues.size() );    //good to know hex value
                 if (instructionAddressInHex.length() == 1){                             //but need to make sure that it has two values as hex, i.e. C -> 0C
                     instructionAddressInHex = "0" + instructionAddressInHex;
                 }
                 
-                if (storedValues.size() > 0) 
-                	System.out.print( "\n" + storedValues.get(storedValues.size()-1) + "\n" + "XXXXXXXX <- This Instruction address is " + instructionAddressInHex + "\n\n");//tells the location of instruction
+                // print out values for your own good - debugging
+                if (storedValues.size() > 0){              	
+                	if (storedValues.size() == previousStoredValueSize + 1)
+                		if (storedValues.get(storedValues.size()-1).length() == 2)	//hex values have length of 2
+                			System.out.print ("\n" + useBinOrHex(storedValues.get(storedValues.size()-1)) );
+                		else 
+                			System.out.print ("\n" + storedValues.get(storedValues.size()-1) );
+                	else if (storedValues.size() == previousStoredValueSize + 2){
+                		if (storedValues.get(storedValues.size()-1).length() == 2){
+                			System.out.print ("\n" + useBinOrHex(storedValues.get(storedValues.size()-2)) );
+                			System.out.print ("\n" + useBinOrHex(storedValues.get(storedValues.size()-1)) );
+                		} else {
+                			System.out.print ("\n" + storedValues.get(storedValues.size()-2) );
+                			System.out.print ("\n" + storedValues.get(storedValues.size()-1) );
+                		}
+             		}
+                	System.out.print("\n" + "XX <- This Instruction address is " + instructionAddressInHex + "\n\n");//tells the location of instruction
+                }
                 else
                 	System.out.println("ADDR: 00");
+                	
+               	previousStoredValueSize = storedValues.size();
             }
             
-            if (addressOfTimerISR == "11111110"){ //0xFE
+            if (addressOfTimerISR == "FE"){ //0xFE
                 // printErrorLine();
                 System.err.print ("Error: You didn't specify where your timer interrupt begins.\n");
             	fw.close();
@@ -305,7 +371,7 @@ public class TranslatorMain {
             }  
             
             while (storedValues.size() < 254) {
-            	storedValues.add("00000000");
+            	storedValues.add("00");
             }
             storedValues.add(addressOfTimerISR);
             storedValues.add(addressOfMouseISR);
@@ -314,7 +380,7 @@ public class TranslatorMain {
             	if (functionTag.containsKey(tmp))
             		tmp = functionTag.get(tmp);
             	
-            	fw.write(tmp);
+            	fw.write(useBinOrHex(tmp));
             	fw.write("\n");
             }
             
@@ -325,7 +391,7 @@ public class TranslatorMain {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        if (addressOfMouseISR == "11111111")
+        if (addressOfMouseISR == "FF")
             System.out.println ("Warning: You didn't use mouse interrupt anywhere.\n");
             
         System.out.println("Finished without errors!");
@@ -343,7 +409,6 @@ public class TranslatorMain {
     		System.err.print ("hint: cannot find A or B.\n");
             return "";
     	}
-    	
     }
     //to check if regA or regB is used to storing & loading values
     public static String checkWhichOperand (String op, String code_1, String code_2){
@@ -356,7 +421,6 @@ public class TranslatorMain {
     		System.err.print ("hint: cannot find A or B.\n");
             return "";
     	}
-    	
     }
     
     //prints error if one exists
@@ -390,9 +454,7 @@ public class TranslatorMain {
         if (bin.length() < 8)
             bin = String.format("%0" + (8-bin.length()) + "d", 0).replace("0", "0") + bin; //add zeroes at the begining
         
-        // System.out.print ("In hexToBi: hex=" + hex + " bin=" + bin + "\n");
-        
-        checkLengthOfHexAndBin(bin.length(), hex.length());
+        checkLengthOfHexAndBin(bin.length(), hex.length());	//for error detection
         return bin;
      }
      
@@ -409,7 +471,7 @@ public class TranslatorMain {
          if (AddrOrVal.length() > 2){
          	storedValues.add(AddrOrVal);
          } else {
-         	storedValues.add(hexToBi(AddrOrVal));
+         	storedValues.add(AddrOrVal);
          }
      }
      
@@ -426,7 +488,7 @@ public class TranslatorMain {
                                 System.err.print ("hint: You can't you timer interrupts at multiple places");
                             }
                             // System.out.print ("\n" + instructionAddressInHex + "\n");
-                            addressOfTimerISR = hexToBi( instructionAddressInHex );
+                            addressOfTimerISR = instructionAddressInHex;
                             timerIntUsed = true;
                         break;
                     
@@ -436,14 +498,14 @@ public class TranslatorMain {
                                 printErrorLine();
                                 System.err.print ("hint: You can't you mouse interrupts at multiple places");
                             }
-                            addressOfMouseISR = hexToBi( instructionAddressInHex );
+                            addressOfMouseISR = instructionAddressInHex;
                             mouseIntUsed = true;
                         break;
                     
                         default: {
                         	System.out.println("Found: " + functionName + " at addr: " + instructionAddressInHex);
                             if (!functionTag.containsKey(functionName))
-                        		functionTag.put( functionName, hexToBi(instructionAddressInHex) );
+                        		functionTag.put( functionName, instructionAddressInHex );
                             else
                             	return false;
                         }

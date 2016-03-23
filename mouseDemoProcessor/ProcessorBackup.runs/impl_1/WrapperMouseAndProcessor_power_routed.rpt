@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2015.2 (lin64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date             : Wed Mar 23 16:35:30 2016
+| Date             : Wed Mar 23 17:01:57 2016
 | Host             : tlf30.see.ed.ac.uk running 64-bit Scientific Linux release 7.1 (Nitrogen)
 | Command          : report_power -file WrapperMouseAndProcessor_power_routed.rpt -pb WrapperMouseAndProcessor_power_summary_routed.pb
 | Design           : WrapperMouseAndProcessor
@@ -50,8 +50,8 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |    <0.001 |        4 |       --- |             --- |
-| Slice Logic              |     0.002 |     4713 |       --- |             --- |
-|   LUT as Logic           |     0.001 |     1641 |     20800 |            7.89 |
+| Slice Logic              |     0.001 |     4715 |       --- |             --- |
+|   LUT as Logic           |     0.001 |     1646 |     20800 |            7.91 |
 |   Register               |    <0.001 |     2150 |     41600 |            5.17 |
 |   CARRY4                 |    <0.001 |      112 |      8150 |            1.37 |
 |   BUFG                   |    <0.001 |        3 |        32 |            9.38 |
@@ -59,7 +59,7 @@ Table of Contents
 |   LUT as Distributed RAM |    <0.001 |       24 |      9600 |            0.25 |
 |   F7/F8 Muxes            |    <0.001 |       32 |     32600 |            0.10 |
 |   Others                 |     0.000 |      271 |       --- |             --- |
-| Signals                  |     0.002 |     3483 |       --- |             --- |
+| Signals                  |     0.002 |     3482 |       --- |             --- |
 | Block RAM                |    <0.001 |      5.5 |        50 |           11.00 |
 | I/O                      |     0.003 |       48 |       106 |           45.28 |
 | Static Power             |     0.072 |          |           |                 |

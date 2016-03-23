@@ -37,7 +37,7 @@ EAStep()
 }
 
 # pre-commands:
-/bin/touch .init_design.begin.rst
+/bin/touch .write_bitstream.begin.rst
 EAStep vivado -log WrapperMouseAndProcessor.vdi -applog -m64 -messageDb vivado.pb -mode batch -source WrapperMouseAndProcessor.tcl -notrace
 
 

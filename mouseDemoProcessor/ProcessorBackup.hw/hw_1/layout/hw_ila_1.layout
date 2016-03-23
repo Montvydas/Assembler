@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LayoutPersistence>
-    <DockingManager activeFrame="ILA_WAVE_1" frameState="6" version="7">
+    <DockingManager frameState="6" version="7">
         <Bounds height="1062" width="1651" x="0" y="0"/>
         <DockContext autohideHeight="200" autohideWidth="200"
             available="1" canMode="15" currentDockSide="8"
