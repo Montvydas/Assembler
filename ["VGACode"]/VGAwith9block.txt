@@ -1,0 +1,112 @@
+timer_isr:
+//RAM allocation,no need to initialise the RAM
+//00-store the information whether this is the first time to fresh the frame buffer
+//01-current pixel address x
+//02-current pixel address y
+//03-which part call the judge function
+
+BEGIN:
+	load a 00			//check whether it’s the first time
+	load_val b 01
+	BREQ MOUSE_CLEAR 		//if not the first time, do the counter
+
+//LOOP to RETURN is the region judge, no matter the region construction
+//or to judge the color of the mouse position should use this function or loop
+LOOP:
+	load a 01		
+	store B0 a
+	load a 02	//y’s range
+	store B1 a
+	load_val b 28	
+	BLTQ REGION1
+	load_val b 50
+	BLTQ REGION2
+	GOTO REGION3
+
+REGION1:		// x’s range
+	load a 01
+	load_val b 36
+	BLTQ RETURN0
+	load_val b 6C
+	BLTQ RETURN1
+	GOTO RETURN0
+
+REGION2:
+	load a 01
+	load_val b 36
+	BLTQ RETURN1
+	load_val b 6C
+	BLTQ RETURN0
+	GOTO RETURN1
+
+REGION3:
+	load a 01
+	load_val b 36
+	BLTQ RETURN0
+	load_val b 6C
+	BLTQ RETURN1
+	GOTO RETURN0
+
+RETURN0:
+	load_val a 00
+	load b 03		//0F to store who call this function
+	add a b			
+	store B2 a
+	load_val a 00
+	BREQ CREATNEXT
+	load_val a 01
+	BREQ IDLE
+	GOTO MOUSE_SET
+	
+RETURN1:
+	load_val a 01
+	load b 03
+	add a b
+	store B2 a
+	load_val a 00
+	BREQ CREATNEXT
+	load_val a 01
+	BREQ IDLE
+	GOTO MOUSE_SET
+
+//CREATNEXT is with 2 counters that counts from 0 to 160 and 0 to 120 respectively
+CREATNEXT:
+	load a 01
+	load_val b 9F
+	BREQ ADDY
+	incr a a
+	store 01 a
+	GOTO LOOP
+
+ADDY:
+	load a 02
+	load_val b 77
+	BREQ FINISH
+	incr a a
+	store 02 a
+	load_val a 00
+	store 01 a
+	GOTO LOOP
+	
+FINISH:
+	load_val a 01
+	store 00 a
+
+
+
+MOUSE_CLEAR:	
+	//first to clear the last position of mouse 
+	load_val a 02 	//02 means in check region,it should clear the former position
+	store 03 a   
+	GOTO LOOP 	 
+
+MOUSE_SET:	//then set the current mouse address to foreground
+	load_val a 1A   	//mouse X address	
+	store 01 a
+	load_val a 1A    	//mouse Y address		
+	store 02 a		
+	load_val a 01	//01 means in loop, it should set the specific position
+	store 03 a
+	GOTO LOOP
+IDLE:	
+	GOTO_IDLE	
