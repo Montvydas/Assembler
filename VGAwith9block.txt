@@ -8,6 +8,8 @@ timer_isr:
 //03-which part call the judge function
 //04-color
 //05-IR command
+//06-Mouse status
+//07-Mouse right click state
 
 BEGIN:
 	load a 00			//check whether it’s the first time
@@ -144,9 +146,13 @@ MOUSE_CLEAR:
 
 MOUSE_SET:	//then set the current mouse address to foreground
 	load a A0		//mouse click information
+	store 06 a
 	load_val b 02
 	and a b
-	load_val b 00
+	load b 07
+	store 07 a
+	BLTQ NOCLICK
+//load_val b 00 
 	BREQ NOCLICK		//if clicked, generate a new color
 	load a 04
 	load_val b 05
@@ -168,10 +174,9 @@ CARCONTROL:
 	and a b
 	load_val b 01
 	BREQ SKIP_LEFT_CLICK_RESET
-	load_val a 00	//reset IR command
+	load_val a 05	//reset IR command
 	store 05 a
-	GOTO_IDLE
 SKIP_LEFT_CLICK_RESET:
 	load a 05		//05 to store the command of car
-	store C0 a	
+	store C0 a		//send to IR
 	GOTO_IDLE
