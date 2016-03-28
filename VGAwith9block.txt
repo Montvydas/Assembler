@@ -16,6 +16,7 @@ BEGIN:
 
 //LOOP to RETURN is the region judge, no matter the region construction
 //or to judge the color of the mouse position should use this function or loop
+
 LOOP:
 	load a 01		
 	store B0 a
@@ -50,6 +51,7 @@ REGION3:
 	load_val b 6C
 	BLTQ BLOCK8
 	GOTO BLOCK9
+
 BLOCK1:
 	load_val a 01		//command of the car
 	store 05 a
@@ -86,7 +88,6 @@ BLOCK9:
 	load_val a 09		//command of the car
 	store 05 a
 	GOTO RETURN0
-
 
 RETURN0:
 	load_val a 00
@@ -133,8 +134,6 @@ FINISH:
 	load_val a 01
 	store 00 a
 
-
-
 MOUSE_ISR:
 
 MOUSE_CLEAR:	
@@ -145,7 +144,7 @@ MOUSE_CLEAR:
 
 MOUSE_SET:	//then set the current mouse address to foreground
 	load a A0		//mouse click information
-	load_val b 01
+	load_val b 02
 	and a b
 	load_val b 00
 	BREQ NOCLICK		//if clicked, generate a new color
@@ -164,7 +163,15 @@ NOCLICK:			//just show the position
 	store 03 a
 	GOTO LOOP
 CARCONTROL:
+	load a 06	//before everything starts, check if mouse is left clicked
+	load_val b 01
+	and a b
+	load_val b 01
+	BREQ SKIP_LEFT_CLICK_RESET
+	load_val a 00	//reset IR command
+	store 05 a
+	GOTO_IDLE
+SKIP_LEFT_CLICK_RESET:
 	load a 05		//05 to store the command of car
-	store 90 a	
-	GOTO_IDLE	
-
+	store C0 a	
+	GOTO_IDLE
