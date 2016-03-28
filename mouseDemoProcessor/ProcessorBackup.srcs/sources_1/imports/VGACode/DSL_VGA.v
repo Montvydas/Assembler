@@ -27,9 +27,9 @@ module DSL_VGA(
         input BUS_WE,
        // input [1:0] Msm_State,            //receive the state from master state machine
        // input [7:0] ColorIn,              //receive the value of color from the snake control
-        output [7:0] ColorOut,            //cout the color. Connect to the VGA part
-        output HS,                        //syn signal,connect to VGA HS
-        output VS,                        //syn signal,connect to VGA VS
+        output [7:0] ColorOut,              //cout the color. Connect to the VGA part
+        output HS,                          //syn signal,connect to VGA HS
+        output VS,                          //syn signal,connect to VGA VS
         inout [7:0] BusData,
         input [7:0] DataAddr,
         //input Bus_WE,
@@ -50,21 +50,21 @@ module DSL_VGA(
          reg BackOrFore;
          wire DATA_A;
          wire DATA_B;
-         //reg [15:0] ColorConnect;           //reg between outport and VGA module
          wire DPR_CLK;
          reg W_EN;
-         //reg Bus_WE;
          reg [7:0] BusBuffer;
          reg [7:0] Fresh_X=0;
          reg [6:0] Fresh_Y=0;
-         wire [15:0] MEMIN;
+         wire [14:0] MEMIN;
+         reg [7:0] ReceivedColor;
+
          
          
        //  reg WriteX;
        //  reg WriteY;
          
         assign MEMIN={Fresh_Y,Fresh_X};
-        
+        assign ColorConnect={ReceivedColor,~ReceivedColor};
         //assign BusData=(WriteX) ? Fresh_X : 8'hZZ;
         //assign BusData=(WriteY) ? {1'b0,Fresh_Y} : 8'hZZ;
 
@@ -114,31 +114,34 @@ module DSL_VGA(
         end*/
         
         always@(posedge CLK)begin
-            if( (DataAddr==8'hB0)  )
+        
+            if(DataAddr==8'hB0 && BUS_WE)
                 Fresh_X <= BusData;  
             else
                 Fresh_X <= Fresh_X;
-                
-            if( (DataAddr==8'hB1) )
-                Fresh_Y <= 8'd119 - BusData[6:0];
+            if(DataAddr==8'hB1 && BUS_WE)
+                Fresh_Y <= BusData[6:0];
             else 
                 Fresh_Y <= Fresh_Y;
-                
-            if( (DataAddr==8'hB2) ) begin
-                BackOrFore <= -BusData[0];
+            if(DataAddr==8'hB2 && BUS_WE ) begin
+                BackOrFore <= BusData[0];
                 W_EN <= 1'b1;
             end
             else begin
                 BackOrFore <= BackOrFore;
                 W_EN <= 1'b0;
-            end    
+            end
+            if(DataAddr==8'hB3 && BUS_WE) 
+                ReceivedColor <= BusData;
+            else
+                ReceivedColor <= ReceivedColor;
+            
+                
         end
-        
-    
+                
+                
             
          //assign region1=( VGA_ADDR[0]==0  && VGA_ADDR[8]==0);
-//         assign ColorConnect=16'h03F0;
-		assign ColorConnect=16'h77DD;
 //         assign region2=(VGA_ADDR[7:0]<=7 && VGA_ADDR[0]==1 && VGA_ADDR[14:8]>=113 && VGA_ADDR[8]==1);
 //         assign region3=(VGA_ADDR[7:0]>=153 && VGA_ADDR[0]==1 && VGA_ADDR[14:8]<=7 && VGA_ADDR[8]==1);
 //         assign region4=(VGA_ADDR[7:0]>=153 && VGA_ADDR[0]==1 && VGA_ADDR[14:8]>=113 && VGA_ADDR[8]==1);
@@ -151,6 +154,10 @@ module DSL_VGA(
                 BackOrFore<=0;
          end*/
 
+    
+    
+
+    
            Frame_Buffer
                MyFrame (
                             
@@ -159,34 +166,27 @@ module DSL_VGA(
                              .A_DATA_IN(BackOrFore),
                              .A_DATA_OUT(DATA_A),
                              .A_WE(W_EN),
-                             .B_CLK(DPR_CLK),
+                             .B_CLK(CLK),
                              .B_ADDR(VGA_ADDR),
                              .B_DATA(DATA_B)
                                   );
                                   
                                   
-                                 GenericCounter #(
-                                        .COUNTER_WIDTH(2),              
-                                        .COUNTER_MAX(3)               
-                                        )
-                                DownCounter (			//This module is acted as a downcounter to decrease the frequence from 100MHz to 25Mhz
-                                        .CLK(CLK),                           //Clock input
-                                        .RESET(Reset),                          
-                                        .ENABLE_IN(1'b1),                       //Always Enable
-                                        .TRIGG_OUT(TrigOut25M)                     
-                                        );
-                                        
-/*                                     
-           GenericCounter #( 	.Counter_Width(2),
+                                  
+                                          
+           CounterModule #( .Counter_Width(2),
                                  .Counter_Max(3)
                           )
-              DownCounter(                     //This module is acted as a downcounter to decrease the frequence from 100MHz to 25Mhz
+              DownCounter(                     //This module is acted as a downcounter to decrease the frequence from 50MHz to 25Mhz
                                 .CLK(CLK),
                                 .Reset(Reset),
                                 .Enable_In(1'b1),
                                 .Trig_Out(TrigOut25M)
                                );
-*/
+                            
+            
+         
+
            VGA_Sig_Gen
                 VGA (                            //The core module of this project,return the address of pixel and let the corresponding color in
                         .CLK(TrigOut25M),
@@ -200,5 +200,12 @@ module DSL_VGA(
                         .TrigToShift(TrigToShift),
                         .DPR_CLK(DPR_CLK)
                         );
+    
+           
+                          
+    
+    
+    
+    
     
 endmodule
