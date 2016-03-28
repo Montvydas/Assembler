@@ -47,7 +47,7 @@ module IRTransmitterWrapper(
             CAR_SELECT <= 4'b0000;
         end
         else if(BUS_ADDR == BASE_ADDR) begin
-            CAR_SELECT <= 4'b0001; //hard code to BLU car for now
+            CAR_SELECT <= 4'b0010; //hard code to BLU car for now
             COMMAND <= {BUS_DATA[0],BUS_DATA[1],BUS_DATA[2],BUS_DATA[3]}; //need to reverse command digits
         end
     end
