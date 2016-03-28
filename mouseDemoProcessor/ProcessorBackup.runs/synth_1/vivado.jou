@@ -2,9 +2,9 @@
 # Vivado v2015.2 (64-bit)
 # SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
 # IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
-# Start of session at: Mon Mar 28 22:32:11 2016
-# Process ID: 28967
-# Log file: /home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.runs/synth_1/WrapperMouseAndProcessor.vds
-# Journal file: /home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.runs/synth_1/vivado.jou
+# Start of session at: Mon Mar 28 22:57:02 2016
+# Process ID: 2738
+# Log file: /afs/inf.ed.ac.uk/user/s12/s1231174/Documents/Assembler/mouseDemoProcessor/ProcessorBackup.runs/synth_1/WrapperMouseAndProcessor.vds
+# Journal file: /afs/inf.ed.ac.uk/user/s12/s1231174/Documents/Assembler/mouseDemoProcessor/ProcessorBackup.runs/synth_1/vivado.jou
 #-----------------------------------------------------------
 source WrapperMouseAndProcessor.tcl -notrace
