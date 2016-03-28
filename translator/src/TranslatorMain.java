@@ -51,6 +51,18 @@ public class TranslatorMain {
     static final String LESS_A_CODE 	= "B4";  
     static final String LESS_B_CODE 	= "B5";
     
+    static final String AND_A_CODE = "C4";
+    static final String AND_B_CODE = "C5";
+    
+    static final String OR_A_CODE = "D4";
+    static final String OR_B_CODE = "D5";    
+    
+    static final String XOR_A_CODE = "E4";
+    static final String XOR_B_CODE = "E5";    
+
+    static final String NOT_A_CODE = "F4";
+    static final String NOT_B_CODE = "F5";
+    
     static final String LOAD_VAL_A_CODE = "0D";
     static final String LOAD_VAL_B_CODE = "0E";
     		
@@ -96,11 +108,11 @@ public class TranslatorMain {
           		else if (args[2].equals("hex") )
           			useBinNotHex = false;
           		else {
-          			System.err.println("for hex use hex & for binary use bin");
+          			System.err.println("for hex use 'hex' & for binary use 'bin' as the third argument.");
           			return;
           		}
           	} else {
-          		System.err.println("You didn't specify instructions.txt and results.txt");
+          		System.err.println("You didn't specify instructions.txt and/or results.txt!");
           		return;	
           	}
           
@@ -173,8 +185,6 @@ public class TranslatorMain {
                     	storedValues.add(storedCode[1]);
                     break;
                     
-
-                 
                     //breq 52
                     case "BREQ":
                         checkNumberOfOperands (storedCode.length, 2);
@@ -309,6 +319,33 @@ public class TranslatorMain {
                         storedValues.add(checkWhichOperand (storedCode[1], LOAD_VAL_A_CODE, LOAD_VAL_B_CODE ));//"00001101", "00001110"));
                         storedValues.add(storedCode[2]);
                     break;
+                    //and a b
+                    //and b a
+                    case "AND":
+                        checkNumberOfOperands (storedCode.length, 3);
+                        storedValues.add(checkWhichOperand (storedCode[1], AND_A_CODE, AND_B_CODE));
+                    break;
+                    
+                    //or a b
+                    //or b a
+                    case "OR":
+                        checkNumberOfOperands (storedCode.length, 3);
+                        storedValues.add(checkWhichOperand (storedCode[1], OR_A_CODE, OR_B_CODE));
+                    break;
+                    
+                    //xor a b
+                    //xor b a
+                    case "XOR":
+                        checkNumberOfOperands (storedCode.length, 3);
+                        storedValues.add(checkWhichOperand (storedCode[1], XOR_A_CODE, XOR_B_CODE));
+                    break;
+                    
+                    //not a
+                    //not b
+                    case "NOT":
+                        checkNumberOfOperands (storedCode.length, 2);
+                        storedValues.add(checkWhichOperand (storedCode[1], NOT_A_CODE, NOT_B_CODE));
+                    break;                    
                     
                     default:  {
                         checkNumberOfOperands (storedCode.length, 1);
