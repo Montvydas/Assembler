@@ -70,6 +70,8 @@ module ALU(
                     4'hD: Out <= IN_A | IN_B;
                     //XOR
                     4'hE: Out <= IN_A ^ IN_B; 
+                    //NOT 
+                    4'hF: Out <= ~IN_A;
                     //Default A
                     default: Out <= IN_A;
                   endcase
