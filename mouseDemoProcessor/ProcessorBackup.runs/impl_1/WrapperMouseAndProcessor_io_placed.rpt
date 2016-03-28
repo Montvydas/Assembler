@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2015.2 (lin64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date         : Mon Mar 28 18:23:52 2016
+| Date         : Mon Mar 28 22:09:05 2016
 | Host         : tlf53.see.ed.ac.uk running 64-bit Scientific Linux release 7.1 (Nitrogen)
 | Command      : report_io -file WrapperMouseAndProcessor_io_placed.rpt
 | Design       : WrapperMouseAndProcessor
@@ -23,7 +23,7 @@ Table of Contents
 +---------------+
 | Total User IO |
 +---------------+
-|            48 |
+|            49 |
 +---------------+
 
 
@@ -200,7 +200,7 @@ Table of Contents
 | P2         |                   |            | GND                          | GND           |             |         |            |      |                     |                      |     0.0 |            |           |      |                  |
 | P3         |                   | High Range | IO_L12N_T1_MRCC_35           | User IO       |             |      35 |            |      |                     |                      |         |            |           |      |                  |
 | P17        |                   | High Range | IO_L13N_T2_MRCC_14           | User IO       |             |      14 |            |      |                     |                      |         |            |           |      |                  |
-| P18        |                   | High Range | IO_L14P_T2_SRCC_14           | User IO       |             |      14 |            |      |                     |                      |         |            |           |      |                  |
+| P18        | IR_LED            | High Range | IO_L14P_T2_SRCC_14           | OUTPUT        | LVCMOS33    |      14 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |      | NONE             |
 | P19        | HS                | High Range | IO_L10P_T1_D14_14            | OUTPUT        | LVCMOS33    |      14 |         12 | SLOW |                     |            FP_VTT_50 |         | FIXED      |           |      | NONE             |
 | R1         |                   | High Range | VCCO_34                      | VCCO          |             |      34 |            |      |                     |                      |    3.30 |            |           |      |                  |
 | R2         | SLIDE_TEST        | High Range | IO_L1P_T0_34                 | INPUT         | LVCMOS33    |      34 |            |      |                     |                 NONE |         | FIXED      |           |      | NONE             |

@@ -117,3 +117,6 @@ set_property PACKAGE_PIN N18 [get_ports ColorOut[6]]
 set_property PACKAGE_PIN L18 [get_ports ColorOut[7]]
         set_property IOSTANDARD LVCMOS33 [get_ports ColorOut[7]]    
 
+#VGA part
+set_property PACKAGE_PIN P18 [get_ports IR_LED]
+        set_property IOSTANDARD LVCMOS33 [get_ports IR_LED]

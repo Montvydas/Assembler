@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2015.2 (lin64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date             : Mon Mar 28 18:24:11 2016
+| Date             : Mon Mar 28 22:09:25 2016
 | Host             : tlf53.see.ed.ac.uk running 64-bit Scientific Linux release 7.1 (Nitrogen)
 | Command          : report_power -file WrapperMouseAndProcessor_power_routed.rpt -pb WrapperMouseAndProcessor_power_summary_routed.pb
 | Design           : WrapperMouseAndProcessor
@@ -30,8 +30,8 @@ Table of Contents
 ----------
 
 +--------------------------+-------+
-| Total On-Chip Power (W)  | 0.080 |
-| Dynamic (W)              | 0.008 |
+| Total On-Chip Power (W)  | 0.081 |
+| Dynamic (W)              | 0.009 |
 | Device Static (W)        | 0.072 |
 | Effective TJA (C/W)      | 5.0   |
 | Max Ambient (C)          | 84.6  |
@@ -50,20 +50,20 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |    <0.001 |        4 |       --- |             --- |
-| Slice Logic              |     0.002 |     4658 |       --- |             --- |
-|   LUT as Logic           |     0.002 |     1619 |     20800 |            7.78 |
-|   Register               |    <0.001 |     2123 |     41600 |            5.10 |
-|   CARRY4                 |    <0.001 |      112 |      8150 |            1.37 |
+| Slice Logic              |     0.002 |     4890 |       --- |             --- |
+|   LUT as Logic           |     0.002 |     1707 |     20800 |            8.21 |
+|   Register               |    <0.001 |     2223 |     41600 |            5.34 |
+|   CARRY4                 |    <0.001 |      121 |      8150 |            1.48 |
 |   BUFG                   |    <0.001 |        3 |        32 |            9.38 |
 |   LUT as Shift Register  |    <0.001 |      104 |      9600 |            1.08 |
 |   LUT as Distributed RAM |    <0.001 |       24 |      9600 |            0.25 |
-|   F7/F8 Muxes            |    <0.001 |       39 |     32600 |            0.12 |
-|   Others                 |     0.000 |      270 |       --- |             --- |
-| Signals                  |     0.002 |     3438 |       --- |             --- |
+|   F7/F8 Muxes            |    <0.001 |       41 |     32600 |            0.13 |
+|   Others                 |     0.000 |      282 |       --- |             --- |
+| Signals                  |     0.002 |     3623 |       --- |             --- |
 | Block RAM                |    <0.001 |        6 |        50 |           12.00 |
-| I/O                      |     0.003 |       48 |       106 |           45.28 |
+| I/O                      |     0.004 |       49 |       106 |           46.23 |
 | Static Power             |     0.072 |          |           |                 |
-| Total                    |     0.080 |          |           |                 |
+| Total                    |     0.081 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -73,7 +73,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.014 |       0.005 |      0.010 |
+| Vccint    |       1.000 |     0.015 |       0.005 |      0.010 |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |
 | Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -143,7 +143,7 @@ Table of Contents
 +-----------------------------------------------------------------------+-----------+
 | Name                                                                  | Power (W) |
 +-----------------------------------------------------------------------+-----------+
-| WrapperMouseAndProcessor                                              |     0.008 |
+| WrapperMouseAndProcessor                                              |     0.009 |
 |   CLK_MOUSE_IOBUF_inst                                                |     0.000 |
 |   DATA_MOUSE_IOBUF_inst                                               |    <0.001 |
 |   dbg_hub                                                             |     0.001 |
@@ -217,6 +217,12 @@ Table of Contents
 |         U_STAT                                                        |    <0.001 |
 |         U_SYNC                                                        |    <0.001 |
 |       N_EXT_BSCAN.bscan_inst                                          |    <0.001 |
+|   myIR                                                                |    <0.001 |
+|     TEN_CLK_COUNT_YEL                                                 |    <0.001 |
+|     YellowCar                                                         |    <0.001 |
+|       PACKET_SM                                                       |    <0.001 |
+|         PACKET_COUNT                                                  |    <0.001 |
+|       PULSE_CLK_COUNT                                                 |    <0.001 |
 |   myLED                                                               |    <0.001 |
 |   myMicroProcessor                                                    |    <0.001 |
 |     ALU0                                                              |    <0.001 |

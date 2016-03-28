@@ -124,7 +124,7 @@ module DSL_VGA(
             else 
                 Fresh_Y <= Fresh_Y;
             if(DataAddr==8'hB2 ) begin
-                BackOrFore <= BusData[0];
+                Fresh_Y <= 8'd119 - BusData[6:0]; 
                 W_EN <= 1'b1;
             end
             else begin

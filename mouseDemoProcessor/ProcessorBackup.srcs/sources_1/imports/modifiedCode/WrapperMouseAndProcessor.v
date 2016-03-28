@@ -28,7 +28,7 @@ module WrapperMouseAndProcessor(
 
               output [3:0] SEG_SELECT_OUT,
               output [7:0] DEC_OUT,
-              output reg IR_LED,
+              output IR_LED,
   			//slide switches
               input [7:0] SLIDE_SWITCHES,
               //digital led
