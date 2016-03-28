@@ -28,7 +28,7 @@ module WrapperMouseAndProcessor(
 
               output [3:0] SEG_SELECT_OUT,
               output [7:0] DEC_OUT,
-         //     output reg IR_LED,
+              output reg IR_LED,
   			//slide switches
               input [7:0] SLIDE_SWITCHES,
               //digital led
@@ -137,6 +137,16 @@ module WrapperMouseAndProcessor(
                         .HS(HS),
                         .VS(VS),
                         .ColorOut(ColorOut)
+                        
+                        );
+                        
+        IRTransmitterWrapper myIR (
+						.CLK(CLK),
+                        .RESET(Reset),
+                        .BUS_DATA(DataBus),
+                        .BUS_ADDR(DataAddress),
+                        .BUS_WE(BUS_WE),
+                        .IR_LED(IR_LED)
                         
                         );
                        
