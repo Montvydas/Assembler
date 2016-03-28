@@ -51,39 +51,39 @@ REGION3:
 	BLTQ BLOCK8
 	GOTO BLOCK9
 BLOCK1:
-	load_val a 00		//command of the car
+	load_val a 01		//command of the car
 	store 05 a
 	GOTO RETURN0
 BLOCK2:
-	load_val a 00		//command of the car
+	load_val a 02		//command of the car
 	store 05 a
 	GOTO RETURN1
 BLOCK3:
-	load_val a 00		//command of the car
+	load_val a 03		//command of the car
 	store 05 a
 	GOTO RETURN0
 BLOCK4:
-	load_val a 00		//command of the car
+	load_val a 04		//command of the car
 	store 05 a
 	GOTO RETURN1
 BLOCK5:
-	load_val a 00		//command of the car
+	load_val a 05		//command of the car
 	store 05 a
 	GOTO RETURN0
 BLOCK6:
-	load_val a 00		//command of the car
+	load_val a 06		//command of the car
 	store 05 a
 	GOTO RETURN1
 BLOCK7:
-	load_val a 00		//command of the car
+	load_val a 07		//command of the car
 	store 05 a
 	GOTO RETURN0
 BLOCK8:
-	load_val a 00		//command of the car
+	load_val a 08		//command of the car
 	store 05 a
 	GOTO RETURN1
 BLOCK9:
-	load_val a 00		//command of the car
+	load_val a 09		//command of the car
 	store 05 a
 	GOTO RETURN0
 
@@ -135,6 +135,8 @@ FINISH:
 
 
 
+MOUSE_ISR:
+
 MOUSE_CLEAR:	
 	//first to clear the last position of mouse 
 	load_val a 02 	//02 means in check region,it should clear the former position
@@ -142,7 +144,9 @@ MOUSE_CLEAR:
 	GOTO LOOP 	 
 
 MOUSE_SET:	//then set the current mouse address to foreground
-	load_val a 01		//mouse click information
+	load a A0		//mouse click information
+	load_val b 01
+	and a b
 	load_val b 00
 	BREQ NOCLICK		//if clicked, generate a new color
 	load a 04
@@ -152,9 +156,9 @@ MOUSE_SET:	//then set the current mouse address to foreground
 	store 04 a
 
 NOCLICK:			//just show the position
-	load_val a 1A   	//mouse X address	
+	load a A1   	//mouse X address	
 	store 01 a
-	load_val a 1A    	//mouse Y address		
+	load a A2    	//mouse Y address		
 	store 02 a		
 	load_val a 01	   //01 means in loop, it should set the specific position
 	store 03 a
@@ -163,3 +167,4 @@ CARCONTROL:
 	load a 05		//05 to store the command of car
 	store 90 a	
 	GOTO_IDLE	
+
