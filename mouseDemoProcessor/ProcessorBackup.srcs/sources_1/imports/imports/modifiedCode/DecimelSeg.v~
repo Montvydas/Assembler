@@ -18,8 +18,6 @@
 // Additional Comments:
 // 
 //////////////////////////////////////////////////////////////////////////////////
-
-
 module DecimalSeg(
     input CLK,						//Internal Clock Signal
     input RESET,					//Button that resets values

@@ -149,6 +149,10 @@ MOUSE_SET:	//then set the current mouse address to foreground
 	BLTQ NOCLICK
 	BREQ NOCLICK		//if clicked, generate a new color
 	
+	load_val a 00	//00 car
+	GOTO NOCLICK
+	
+	
 //car counter in here
 	load a 0C
 	load_val b 04
@@ -158,12 +162,13 @@ MOUSE_SET:	//then set the current mouse address to foreground
 SELECT_ZERO_CAR:	//also clears colour
 	load_val a 00
 	
-NOCLICK:	
+	
 	store 0C a		//select car in here directly
 	load_val b 08
 	add a b
 	deref a
 	store B3 a
+NOCLICK:	
 			//just show the position
 	load a A1   	//mouse X address	
 	store 01 a
