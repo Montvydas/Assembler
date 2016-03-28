@@ -115,28 +115,27 @@ module DSL_VGA(
         
         always@(posedge CLK)begin
         
-            if(DataAddr==8'hB0 )
+            if(DataAddr==8'hB0)
                 Fresh_X <= BusData;  
             else
                 Fresh_X <= Fresh_X;
-            if(DataAddr==8'hB1 )
-                Fresh_Y <= BusData[6:0];
+            if(DataAddr==8'hB1)
+                Fresh_Y <= 8'd119 - BusData[6:0];
             else 
                 Fresh_Y <= Fresh_Y;
             if(DataAddr==8'hB2 ) begin
                 BackOrFore <= BusData[0];
                 W_EN <= 1'b1;
             end
-            else begin
+          	else begin
                 BackOrFore <= BackOrFore;
                 W_EN <= 1'b0;
             end
+            
             if(DataAddr==8'hB3 ) 
                 ReceivedColor <= BusData;
             else
                 ReceivedColor <= ReceivedColor;
-            
-                
         end
                 
                 
@@ -171,29 +170,21 @@ module DSL_VGA(
                              .B_DATA(DATA_B)
                                   );
                                   
-                                 GenericCounter #(
-                                        .COUNTER_WIDTH(2),              //10bits of width
-                                        .COUNTER_MAX(3)               //Counts to max value of 499 starting from 0
-                                        )
-                                BisicHCounter (			//this counter is triggered by 25MHZ to count the row
-                                        .CLK(CLK),                           //Clock input
-                                        .RESET(Reset),                           //the aim of reset is to give the initial number
-                                        .ENABLE_IN(1'b1),                       //Always Enable
-                                        .TRIGG_OUT(TrigOut25M)                    
-                                        );                                  
                                   
-     /*                                     
-           CounterModule #( .Counter_Width(2),
-                                 .Counter_Max(3)
-                          )
-              DownCounter(                     //This module is acted as a downcounter to decrease the frequence from 50MHz to 25Mhz
-                                .CLK(CLK),
-                                .Reset(Reset),
-                                .Enable_In(1'b1),
-                                .Trig_Out(TrigOut25M)
-                               );
+                                  
+                                          
+                                 GenericCounter #(
+                                        .COUNTER_WIDTH(2),              
+                                        .COUNTER_MAX(3)               
+                                        )
+                                DownCounter (			//This module is acted as a downcounter to decrease the frequence from 100MHz to 25Mhz
+                                        .CLK(CLK),                           //Clock input
+                                        .RESET(Reset),                          
+                                        .ENABLE_IN(1'b1),                       //Always Enable
+                                        .TRIGG_OUT(TrigOut25M)                     
+                                        );
                             
-      */      
+            
          
 
            VGA_Sig_Gen

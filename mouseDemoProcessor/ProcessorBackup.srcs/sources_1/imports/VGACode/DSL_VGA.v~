@@ -171,9 +171,18 @@ module DSL_VGA(
                              .B_DATA(DATA_B)
                                   );
                                   
+                                 GenericCounter #(
+                                        .COUNTER_WIDTH(2),              //10bits of width
+                                        .COUNTER_MAX(3)               //Counts to max value of 499 starting from 0
+                                        )
+                                BisicHCounter (			//this counter is triggered by 25MHZ to count the row
+                                        .CLK(CLK),                           //Clock input
+                                        .RESET(Reset),                           //the aim of reset is to give the initial number
+                                        .ENABLE_IN(1'b1),                       //Always Enable
+                                        .TRIGG_OUT(TrigOut25M)                    
+                                        );                                  
                                   
-                                  
-                                          
+     /*                                     
            CounterModule #( .Counter_Width(2),
                                  .Counter_Max(3)
                           )
@@ -184,7 +193,7 @@ module DSL_VGA(
                                 .Trig_Out(TrigOut25M)
                                );
                             
-            
+      */      
          
 
            VGA_Sig_Gen
