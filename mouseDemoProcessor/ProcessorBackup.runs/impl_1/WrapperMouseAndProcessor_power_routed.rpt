@@ -1,7 +1,7 @@
 Copyright 1986-2015 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2015.2 (lin64) Build 1266856 Fri Jun 26 16:35:25 MDT 2015
-| Date             : Mon Mar 28 16:46:45 2016
+| Date             : Mon Mar 28 18:24:11 2016
 | Host             : tlf53.see.ed.ac.uk running 64-bit Scientific Linux release 7.1 (Nitrogen)
 | Command          : report_power -file WrapperMouseAndProcessor_power_routed.rpt -pb WrapperMouseAndProcessor_power_summary_routed.pb
 | Design           : WrapperMouseAndProcessor
@@ -50,17 +50,17 @@ Table of Contents
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
 | Clocks                   |    <0.001 |        4 |       --- |             --- |
-| Slice Logic              |     0.002 |     4705 |       --- |             --- |
-|   LUT as Logic           |     0.001 |     1634 |     20800 |            7.86 |
-|   Register               |    <0.001 |     2150 |     41600 |            5.17 |
+| Slice Logic              |     0.002 |     4658 |       --- |             --- |
+|   LUT as Logic           |     0.002 |     1619 |     20800 |            7.78 |
+|   Register               |    <0.001 |     2123 |     41600 |            5.10 |
 |   CARRY4                 |    <0.001 |      112 |      8150 |            1.37 |
 |   BUFG                   |    <0.001 |        3 |        32 |            9.38 |
 |   LUT as Shift Register  |    <0.001 |      104 |      9600 |            1.08 |
 |   LUT as Distributed RAM |    <0.001 |       24 |      9600 |            0.25 |
-|   F7/F8 Muxes            |    <0.001 |       32 |     32600 |            0.10 |
-|   Others                 |     0.000 |      271 |       --- |             --- |
-| Signals                  |     0.002 |     3475 |       --- |             --- |
-| Block RAM                |    <0.001 |      5.5 |        50 |           11.00 |
+|   F7/F8 Muxes            |    <0.001 |       39 |     32600 |            0.12 |
+|   Others                 |     0.000 |      270 |       --- |             --- |
+| Signals                  |     0.002 |     3438 |       --- |             --- |
+| Block RAM                |    <0.001 |        6 |        50 |           12.00 |
 | I/O                      |     0.003 |       48 |       106 |           45.28 |
 | Static Power             |     0.072 |          |           |                 |
 | Total                    |     0.080 |          |           |                 |
@@ -73,7 +73,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) |
 +-----------+-------------+-----------+-------------+------------+
-| Vccint    |       1.000 |     0.014 |       0.004 |      0.010 |
+| Vccint    |       1.000 |     0.014 |       0.005 |      0.010 |
 | Vccaux    |       1.800 |     0.013 |       0.000 |      0.013 |
 | Vcco33    |       3.300 |     0.002 |       0.001 |      0.001 |
 | Vcco25    |       2.500 |     0.000 |       0.000 |      0.000 |
@@ -233,7 +233,7 @@ Table of Contents
 |   mySlideSwitches                                                     |    <0.001 |
 |   myTimer                                                             |    <0.001 |
 |   myVGA                                                               |    <0.001 |
-|     DownCounter                                                       |    <0.001 |
+|     BisicHCounter                                                     |    <0.001 |
 |     MyFrame                                                           |    <0.001 |
 |     VGA                                                               |    <0.001 |
 |       BisicHCounter                                                   |    <0.001 |

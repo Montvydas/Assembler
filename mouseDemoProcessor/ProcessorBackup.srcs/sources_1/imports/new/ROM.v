@@ -1,7 +1,7 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: Univerisyt of Edinburgh
+// Engineer: Montvydas Klumbys
 // 
 // Create Date: 23.02.2016 09:30:29
 // Design Name: 

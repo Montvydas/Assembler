@@ -2,8 +2,8 @@
 # Vivado v2015.2 (64-bit)
 # SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
 # IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
-# Start of session at: Mon Mar 28 16:45:06 2016
-# Process ID: 4221
+# Start of session at: Mon Mar 28 18:22:33 2016
+# Process ID: 15802
 # Log file: /home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.runs/synth_1/WrapperMouseAndProcessor.vds
 # Journal file: /home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.runs/synth_1/vivado.jou
 #-----------------------------------------------------------
@@ -14,7 +14,7 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-1223] The version limit for your license is '2015.12' and will expire in -88 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:07 . Memory (MB): peak = 1058.879 ; gain = 154.520 ; free physical = 1503 ; free virtual = 90273
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1058.883 ; gain = 154.520 ; free physical = 1497 ; free virtual = 90126
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'WrapperMouseAndProcessor' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/WrapperMouseAndProcessor.v:23]
 INFO: [Synth 8-638] synthesizing module 'ROM' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/ROM.v:23]
@@ -84,18 +84,18 @@ INFO: [Synth 8-638] synthesizing module 'MicroProcessor' [/home/s1349598/DSL4/Mi
 	Parameter LOAD_VAL_B_0 bound to: 8'b10110011 
 	Parameter LOAD_VAL_FINAL bound to: 8'b10110100 
 INFO: [Synth 8-638] synthesizing module 'ALU' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/ALU.v:23]
+INFO: [Synth 8-226] default block is never used [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/ALU.v:40]
 INFO: [Synth 8-256] done synthesizing module 'ALU' (9#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/ALU.v:23]
 WARNING: [Synth 8-151] case item 8'b10000000 is unreachable [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/Processor.v:223]
 INFO: [Synth 8-256] done synthesizing module 'MicroProcessor' (10#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/Processor.v:21]
 INFO: [Synth 8-638] synthesizing module 'DSL_VGA' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/VGACode/DSL_VGA.v:23]
 INFO: [Synth 8-638] synthesizing module 'Frame_Buffer' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/VGACode/Frame_Buffer.v:23]
 INFO: [Synth 8-256] done synthesizing module 'Frame_Buffer' (11#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/VGACode/Frame_Buffer.v:23]
-WARNING: [Synth 8-689] width (16) of port connection 'A_ADDR' does not match port width (15) of module 'Frame_Buffer' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/VGACode/DSL_VGA.v:158]
 INFO: [Synth 8-638] synthesizing module 'GenericCounter' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
 	Parameter COUNTER_WIDTH bound to: 2 - type: integer 
 	Parameter COUNTER_MAX bound to: 3 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'GenericCounter' (12#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
-WARNING: [Synth 8-350] instance 'DownCounter' of module 'GenericCounter' requires 5 connections, but only 4 given [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/VGACode/DSL_VGA.v:172]
+WARNING: [Synth 8-350] instance 'BisicHCounter' of module 'GenericCounter' requires 5 connections, but only 4 given [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/VGACode/DSL_VGA.v:178]
 INFO: [Synth 8-638] synthesizing module 'VGA_Sig_Gen' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/VGACode/VGA_Sig_Gen.v:23]
 	Parameter ToDefineHs bound to: 10'b0001100000 
 	Parameter RangeHBegin bound to: 10'b0010010000 
@@ -117,8 +117,8 @@ INFO: [Synth 8-256] done synthesizing module 'VGA_Sig_Gen' (13#1) [/home/s134959
 INFO: [Synth 8-256] done synthesizing module 'DSL_VGA' (14#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/VGACode/DSL_VGA.v:23]
 WARNING: [Synth 8-350] instance 'myVGA' of module 'DSL_VGA' requires 9 connections, but only 8 given [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/WrapperMouseAndProcessor.v:131]
 WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/WrapperMouseAndProcessor.v:173]
-INFO: [Synth 8-638] synthesizing module 'ila_2' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.runs/synth_1/.Xil/Vivado-4221-tlf53.see.ed.ac.uk/realtime/ila_2_stub.v:7]
-INFO: [Synth 8-256] done synthesizing module 'ila_2' (15#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.runs/synth_1/.Xil/Vivado-4221-tlf53.see.ed.ac.uk/realtime/ila_2_stub.v:7]
+INFO: [Synth 8-638] synthesizing module 'ila_2' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.runs/synth_1/.Xil/Vivado-15802-tlf53.see.ed.ac.uk/realtime/ila_2_stub.v:7]
+INFO: [Synth 8-256] done synthesizing module 'ila_2' (15#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.runs/synth_1/.Xil/Vivado-15802-tlf53.see.ed.ac.uk/realtime/ila_2_stub.v:7]
 INFO: [Synth 8-638] synthesizing module 'LED' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/LED.v:21]
 	Parameter LEDBaseAddr bound to: 8'b11000000 
 INFO: [Synth 8-256] done synthesizing module 'LED' (16#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/LED.v:21]
@@ -158,7 +158,7 @@ INFO: [Synth 8-256] done synthesizing module 'PWM_Wrapper' (23#1) [/home/s134959
 WARNING: [Synth 8-3848] Net BUS_WE in module/entity WrapperMouseAndProcessor does not have driver. [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/WrapperMouseAndProcessor.v:136]
 INFO: [Synth 8-256] done synthesizing module 'WrapperMouseAndProcessor' (24#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/WrapperMouseAndProcessor.v:23]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 1099.160 ; gain = 194.801 ; free physical = 1461 ; free virtual = 90231
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1099.164 ; gain = 194.801 ; free physical = 1457 ; free virtual = 90086
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -173,7 +173,7 @@ WARNING: [Synth 8-3295] tying undriven pin Mux4:IN3[1] to constant 0 [/home/s134
 WARNING: [Synth 8-3295] tying undriven pin Mux4:IN3[0] to constant 0 [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:109]
 WARNING: [Synth 8-3295] tying undriven pin myVGA:BUS_WE to constant 0 [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/WrapperMouseAndProcessor.v:131]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:08 . Memory (MB): peak = 1099.160 ; gain = 194.801 ; free physical = 1461 ; free virtual = 90231
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1099.164 ; gain = 194.801 ; free physical = 1457 ; free virtual = 90086
 ---------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -187,24 +187,23 @@ Completed Processing XDC Constraints
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1424.223 ; gain = 0.000 ; free physical = 1200 ; free virtual = 89970
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 1424.219 ; gain = 0.000 ; free physical = 1287 ; free virtual = 89916
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:15 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1199 ; free virtual = 89969
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1286 ; free virtual = 89915
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:15 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1199 ; free virtual = 89969
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1286 ; free virtual = 89915
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:15 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1199 ; free virtual = 89969
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:13 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1286 ; free virtual = 89915
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-5546] ROM "ROM" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "DownCounter" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
 INFO: [Synth 8-5545] ROM "Timer" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
 INFO: [Synth 8-5546] ROM "TransmitTimerValue" won't be mapped to RAM because it is too sparse
@@ -246,9 +245,7 @@ INFO: [Synth 8-5546] ROM "NextBusDataOut" won't be mapped to RAM because it is t
 INFO: [Synth 8-5546] ROM "NextProgCounterOffset" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5544] ROM "NextState" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "NextState" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
-INFO: [Synth 8-5546] ROM "Fresh_X" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "Fresh_Y" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "BackOrFore" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5562] The signal DATA_reg is implemented as block RAM but is better mapped onto distributed LUT RAM for the following reason(s): The *depth (8 address bits)* is shallow. Please use attribute (* ram_style = "distributed" *) to instruct Vivado to infer distributed LUT RAM.
 INFO: [Synth 8-5562] The signal Mem_reg is implemented as block RAM but is better mapped onto distributed LUT RAM for the following reason(s): The *depth (7 address bits)* is shallow. Please use attribute (* ram_style = "distributed" *) to instruct Vivado to infer distributed LUT RAM.
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                     Old Encoding 
@@ -337,7 +334,7 @@ IF_A_EQUALITY_B_GOTO_FINAL |                           001110 |                 
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'CurrState_reg' using encoding 'sequential' in module 'MicroProcessor'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:16 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1199 ; free virtual = 89970
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1276 ; free virtual = 89905
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -359,9 +356,10 @@ Detailed RTL Component Info :
 	   3 Input      9 Bit       Adders := 2     
 	   2 Input      8 Bit       Adders := 9     
 	   3 Input      8 Bit       Adders := 1     
-	   2 Input      7 Bit       Adders := 1     
 	   2 Input      4 Bit       Adders := 13    
 	   2 Input      2 Bit       Adders := 2     
++---XORs : 
+	   2 Input      8 Bit         XORs := 1     
 +---XORs : 
 	                8 Bit    Wide XORs := 2     
 +---Registers : 
@@ -371,7 +369,7 @@ Detailed RTL Component Info :
 	               13 Bit    Registers := 1     
 	               10 Bit    Registers := 3     
 	                9 Bit    Registers := 4     
-	                8 Bit    Registers := 31    
+	                8 Bit    Registers := 32    
 	                7 Bit    Registers := 1     
 	                4 Bit    Registers := 3     
 	                2 Bit    Registers := 5     
@@ -379,18 +377,19 @@ Detailed RTL Component Info :
 +---RAMs : 
 	              32K Bit         RAMs := 1     
 	             1024 Bit         RAMs := 1     
++---ROMs : 
+	                              ROMs := 1     
 +---Muxes : 
 	  13 Input     23 Bit        Muxes := 1     
 	   2 Input     16 Bit        Muxes := 2     
 	   6 Input     16 Bit        Muxes := 1     
 	  10 Input     13 Bit        Muxes := 1     
 	   2 Input      9 Bit        Muxes := 8     
-	 257 Input      8 Bit        Muxes := 1     
 	   6 Input      8 Bit        Muxes := 1     
-	  13 Input      8 Bit        Muxes := 7     
+	  13 Input      8 Bit        Muxes := 4     
 	   5 Input      8 Bit        Muxes := 2     
 	   2 Input      8 Bit        Muxes := 5     
-	   8 Input      8 Bit        Muxes := 1     
+	  16 Input      8 Bit        Muxes := 3     
 	   3 Input      8 Bit        Muxes := 1     
 	  37 Input      8 Bit        Muxes := 6     
 	  16 Input      7 Bit        Muxes := 1     
@@ -404,7 +403,6 @@ Detailed RTL Component Info :
 	   4 Input      4 Bit        Muxes := 1     
 	   6 Input      3 Bit        Muxes := 1     
 	   9 Input      3 Bit        Muxes := 1     
-	  13 Input      3 Bit        Muxes := 1     
 	   6 Input      2 Bit        Muxes := 2     
 	   3 Input      2 Bit        Muxes := 1     
 	  37 Input      2 Bit        Muxes := 1     
@@ -425,8 +423,8 @@ Module ROM
 Detailed RTL Component Info : 
 +---Registers : 
 	                8 Bit    Registers := 1     
-+---Muxes : 
-	 257 Input      8 Bit        Muxes := 1     
++---ROMs : 
+	                              ROMs := 1     
 Module RAM 
 Detailed RTL Component Info : 
 +---Registers : 
@@ -523,12 +521,12 @@ Module ALU
 Detailed RTL Component Info : 
 +---Adders : 
 	   3 Input      8 Bit       Adders := 1     
++---XORs : 
+	   2 Input      8 Bit         XORs := 1     
 +---Registers : 
 	                8 Bit    Registers := 1     
 +---Muxes : 
-	  13 Input      8 Bit        Muxes := 3     
-	   8 Input      8 Bit        Muxes := 1     
-	  13 Input      3 Bit        Muxes := 1     
+	  16 Input      8 Bit        Muxes := 3     
 Module MicroProcessor 
 Detailed RTL Component Info : 
 +---Adders : 
@@ -588,10 +586,8 @@ Detailed RTL Component Info :
 	   2 Input      8 Bit        Muxes := 2     
 Module DSL_VGA 
 Detailed RTL Component Info : 
-+---Adders : 
-	   2 Input      7 Bit       Adders := 1     
 +---Registers : 
-	                8 Bit    Registers := 1     
+	                8 Bit    Registers := 2     
 	                7 Bit    Registers := 1     
 	                1 Bit    Registers := 2     
 Module LED 
@@ -660,7 +656,7 @@ BRAMs: 150 (col length: RAMB18 60 RAMB36 30)
 ---------------------------------------------------------------------------------
 Finished Part Resource Summary
 ---------------------------------------------------------------------------------
-Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:11 ; elapsed = 00:00:16 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1199 ; free virtual = 89970
+Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:11 ; elapsed = 00:00:14 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1276 ; free virtual = 89905
 ---------------------------------------------------------------------------------
 Start Cross Boundary Optimization
 ---------------------------------------------------------------------------------
@@ -671,13 +667,11 @@ INFO: [Synth 8-5546] ROM "Next_State" won't be mapped to RAM because it is too s
 INFO: [Synth 8-5546] ROM "Next_State" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "Next_State" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5545] ROM "Next_State" won't be mapped to RAM because address size (23) is larger than maximum supported(18)
-INFO: [Synth 8-5546] ROM "Fresh_X" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "Fresh_Y" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "BackOrFore" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5562] The signal myROM/DATA_reg is implemented as block RAM but is better mapped onto distributed LUT RAM for the following reason(s): The *depth (8 address bits)* is shallow. Please use attribute (* ram_style = "distributed" *) to instruct Vivado to infer distributed LUT RAM.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1199 ; free virtual = 89970
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1276 ; free virtual = 89905
 ---------------------------------------------------------------------------------
-Finished Parallel Reinference  : Time (s): cpu = 00:00:12 ; elapsed = 00:00:17 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1199 ; free virtual = 89970
+Finished Parallel Reinference  : Time (s): cpu = 00:00:12 ; elapsed = 00:00:15 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1276 ; free virtual = 89905
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
@@ -689,12 +683,21 @@ INFO: [Synth 8-5562] The signal myRAM/Mem_reg is implemented as block RAM but is
 Start ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
 
+ROM:
++-------------------------+------------+---------------+----------------+
+|Module Name              | RTL Object | Depth x Width | Implemented As | 
++-------------------------+------------+---------------+----------------+
+|ROM                      | extrom     | 256x8         | Block RAM      | 
+|WrapperMouseAndProcessor | extrom     | 256x8         | Block RAM      | 
++-------------------------+------------+---------------+----------------+
+
+
 Block RAM:
 +-------------------------+-----------------+------------------------+---+---+------------------------+---+---+--------------+--------+--------+--------------------------------------------+
 |Module Name              | RTL Object      | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | OUT_REG      | RAMB18 | RAMB36 | Hierarchical Name                          | 
 +-------------------------+-----------------+------------------------+---+---+------------------------+---+---+--------------+--------+--------+--------------------------------------------+
 |WrapperMouseAndProcessor | myRAM/Mem_reg   | 128 x 8(READ_FIRST)    | W | R |                        |   |   | Port A       | 1      | 0      | WrapperMouseAndProcessor/extram__3         | 
-|WrapperMouseAndProcessor | MyFrame/Mem_reg | 32 K x 1               | W |   | 32 K x 1(WRITE_FIRST)  |   | R | Port A and B | 0      | 1      | WrapperMouseAndProcessor/DSL_VGA/extram__5 | 
+|WrapperMouseAndProcessor | MyFrame/Mem_reg | 32 K x 1(READ_FIRST)   | W |   | 32 K x 1(WRITE_FIRST)  |   | R | Port A and B | 0      | 1      | WrapperMouseAndProcessor/DSL_VGA/extram__5 | 
 +-------------------------+-----------------+------------------------+---+---+------------------------+---+---+--------------+--------+--------+--------------------------------------------+
 
 Note: The table shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. "Hierarchical Name" reflects the Block RAM name as it appears in the hierarchical module and only part of it is displayed.
@@ -702,6 +705,23 @@ Note: The table shows the Block RAMs at the current stage of the synthesis flow.
 Finished ROM, RAM, DSP and Shift Register Reporting
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (myMicroProcessor/\CurrProgCounterOffset_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (myVGA/\Fresh_X_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (myVGA/\Fresh_Y_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (myVGA/\Fresh_Y_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (myVGA/\Fresh_Y_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (myVGA/\Fresh_Y_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (myVGA/\Fresh_Y_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (myVGA/\Fresh_Y_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (myVGA/\Fresh_Y_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (myVGA/W_EN_reg)
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (myVGA/\ReceivedColor_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (myVGA/\ReceivedColor_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (myVGA/\ReceivedColor_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (myVGA/\ReceivedColor_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (myVGA/\ReceivedColor_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (myVGA/\ReceivedColor_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (myVGA/\ReceivedColor_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (myVGA/\ReceivedColor_reg[7] )
 WARNING: [Synth 8-3332] Sequential element (\usb_mouse/T/Curr_ByteToSend_reg[7] ) is unused and will be removed from module MouseWrapper.
 WARNING: [Synth 8-3332] Sequential element (\usb_mouse/T/Curr_ByteToSend_reg[6] ) is unused and will be removed from module MouseWrapper.
 WARNING: [Synth 8-3332] Sequential element (\usb_mouse/T/Curr_ByteToSend_reg[5] ) is unused and will be removed from module MouseWrapper.
@@ -716,6 +736,15 @@ WARNING: [Synth 8-3332] Sequential element (\usb_mouse/MSM/Curr_ByteToSend_reg[3
 WARNING: [Synth 8-3332] Sequential element (\usb_mouse/MSM/Curr_ByteToSend_reg[1] ) is unused and will be removed from module MouseWrapper.
 WARNING: [Synth 8-3332] Sequential element (\usb_mouse/R/ClkMouseInDly_reg ) is unused and will be removed from module MouseWrapper.
 WARNING: [Synth 8-3332] Sequential element (\CurrProgCounterOffset_reg[1] ) is unused and will be removed from module MicroProcessor.
+WARNING: [Synth 8-3332] Sequential element (\ReceivedColor_reg[7] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\ReceivedColor_reg[6] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\ReceivedColor_reg[5] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\ReceivedColor_reg[4] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\ReceivedColor_reg[3] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\ReceivedColor_reg[2] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\ReceivedColor_reg[1] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\VGA/ColorOut_reg[6] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\VGA/ColorOut_reg[5] ) is unused and will be removed from module DSL_VGA.
 WARNING: [Synth 8-3332] Sequential element (\VGA/ColorOut_reg[4] ) is unused and will be removed from module DSL_VGA.
 WARNING: [Synth 8-3332] Sequential element (\VGA/ColorOut_reg[3] ) is unused and will be removed from module DSL_VGA.
 WARNING: [Synth 8-3332] Sequential element (\VGA/ColorOut_reg[2] ) is unused and will be removed from module DSL_VGA.
@@ -725,20 +754,38 @@ WARNING: [Synth 8-3332] Sequential element (\VGA/AddressHer_reg[1] ) is unused a
 WARNING: [Synth 8-3332] Sequential element (\VGA/AddressHer_reg[0] ) is unused and will be removed from module DSL_VGA.
 WARNING: [Synth 8-3332] Sequential element (\VGA/AddressVer_reg[1] ) is unused and will be removed from module DSL_VGA.
 WARNING: [Synth 8-3332] Sequential element (\VGA/AddressVer_reg[0] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\Fresh_X_reg[7] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (BackOrFore_reg) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (W_EN_reg) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\ReceivedColor_reg[0] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\Fresh_Y_reg[0] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\Fresh_X_reg[0] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\Fresh_Y_reg[1] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\Fresh_X_reg[1] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\Fresh_Y_reg[2] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\Fresh_X_reg[2] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\Fresh_Y_reg[3] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\Fresh_X_reg[3] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\Fresh_Y_reg[4] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\Fresh_X_reg[4] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\Fresh_Y_reg[5] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\Fresh_X_reg[5] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\Fresh_Y_reg[6] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\Fresh_X_reg[6] ) is unused and will be removed from module DSL_VGA.
 ---------------------------------------------------------------------------------
 Start Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:20 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1200 ; free virtual = 89970
+Finished Area Optimization : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1260 ; free virtual = 89889
 ---------------------------------------------------------------------------------
-Finished Parallel Area Optimization  : Time (s): cpu = 00:00:15 ; elapsed = 00:00:20 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1200 ; free virtual = 89970
+Finished Parallel Area Optimization  : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1260 ; free virtual = 89889
 
 Report RTL Partitions: 
 +-+--------------+------------+----------+
 | |RTL Partition |Replication |Instances |
 +-+--------------+------------+----------+
 +-+--------------+------------+----------+
-Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:15 ; elapsed = 00:00:20 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1200 ; free virtual = 89970
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:15 ; elapsed = 00:00:18 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1260 ; free virtual = 89889
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
@@ -746,10 +793,10 @@ Start Timing Optimization
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:26 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1197 ; free virtual = 89968
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1199 ; free virtual = 89828
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:26 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1197 ; free virtual = 89968
+Finished Timing Optimization : Time (s): cpu = 00:00:21 ; elapsed = 00:00:25 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1198 ; free virtual = 89827
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -763,8 +810,9 @@ Start Technology Mapping
 WARNING: [Synth 8-3332] Sequential element (\myMouse/usb_mouse/MouseY_reg[7] ) is unused and will be removed from module WrapperMouseAndProcessor.
 INFO: [Synth 8-4480] The timing for the instance \myRAM/Mem_reg  (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
 INFO: [Synth 8-4480] The timing for the instance \myVGA/MyFrame/Mem_reg  (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance \myROM/DATA_reg  (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:21 ; elapsed = 00:00:26 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1171 ; free virtual = 89942
+Finished Technology Mapping : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1169 ; free virtual = 89799
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -782,7 +830,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:21 ; elapsed = 00:00:26 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1171 ; free virtual = 89941
+Finished IO Insertion : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1169 ; free virtual = 89798
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -795,7 +843,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:21 ; elapsed = 00:00:26 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1171 ; free virtual = 89941
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1169 ; free virtual = 89798
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -807,13 +855,13 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:22 ; elapsed = 00:00:27 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1171 ; free virtual = 89941
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1169 ; free virtual = 89798
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Start Renaming Generated Ports : Time (s): cpu = 00:00:22 ; elapsed = 00:00:27 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1171 ; free virtual = 89941
+Start Renaming Generated Ports : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1169 ; free virtual = 89798
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:22 ; elapsed = 00:00:27 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1171 ; free virtual = 89941
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1169 ; free virtual = 89798
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -827,39 +875,40 @@ Report BlackBoxes:
 +------+--------------+----------+
 
 Report Cell Usage: 
-+------+---------+------+
-|      |Cell     |Count |
-+------+---------+------+
-|1     |ila_2    |     1|
-|2     |BUFG     |     3|
-|3     |CARRY4   |    70|
-|4     |LUT1     |   176|
-|5     |LUT2     |    86|
-|6     |LUT3     |   115|
-|7     |LUT4     |   153|
-|8     |LUT5     |   113|
-|9     |LUT6     |   346|
-|10    |MUXF7    |     1|
-|11    |RAMB18E1 |     1|
-|12    |RAMB36E1 |     1|
-|13    |FDCE     |    26|
-|14    |FDRE     |   467|
-|15    |FDSE     |    14|
-|16    |IBUF     |    11|
-|17    |IOBUF    |     2|
-|18    |OBUF     |    35|
-+------+---------+------+
++------+-----------+------+
+|      |Cell       |Count |
++------+-----------+------+
+|1     |ila_2      |     1|
+|2     |BUFG       |     3|
+|3     |CARRY4     |    70|
+|4     |LUT1       |   172|
+|5     |LUT2       |    80|
+|6     |LUT3       |   114|
+|7     |LUT4       |   155|
+|8     |LUT5       |   108|
+|9     |LUT6       |   334|
+|10    |MUXF7      |     8|
+|11    |RAMB18E1   |     1|
+|12    |RAMB18E1_1 |     1|
+|13    |RAMB36E1   |     1|
+|14    |FDCE       |    26|
+|15    |FDRE       |   440|
+|16    |FDSE       |    14|
+|17    |IBUF       |    11|
+|18    |IOBUF      |     2|
+|19    |OBUF       |    35|
++------+-----------+------+
 
 Report Instance Areas: 
 +------+------------------------+-------------------------------+------+
 |      |Instance                |Module                         |Cells |
 +------+------------------------+-------------------------------+------+
-|1     |top                     |                               |  1620|
+|1     |top                     |                               |  1575|
 |2     |  myLED                 |LED                            |     8|
-|3     |  myMicroProcessor      |MicroProcessor                 |   286|
-|4     |    ALU0                |ALU                            |    59|
-|5     |  myMouse               |MouseWrapper                   |   580|
-|6     |    usb_mouse           |MouseTransceiver               |   558|
+|3     |  myMicroProcessor      |MicroProcessor                 |   268|
+|4     |    ALU0                |ALU                            |    57|
+|5     |  myMouse               |MouseWrapper                   |   574|
+|6     |    usb_mouse           |MouseTransceiver               |   552|
 |7     |      MSM               |MouseMasterSM                  |   188|
 |8     |      R                 |MouseReceiver                  |   150|
 |9     |      T                 |MouseTransmitter               |    88|
@@ -870,12 +919,12 @@ Report Instance Areas:
 |14    |    Bit2DownCounter     |GenericCounter_3               |    21|
 |15    |  mySlideSwitches       |SlideSwitches                  |     1|
 |16    |  myTimer               |Timer                          |   288|
-|17    |  myVGA                 |DSL_VGA                        |   116|
-|18    |    DownCounter         |GenericCounter                 |     6|
+|17    |  myVGA                 |DSL_VGA                        |    95|
+|18    |    BisicHCounter       |GenericCounter                 |     6|
 |19    |    MyFrame             |Frame_Buffer                   |     2|
-|20    |    VGA                 |VGA_Sig_Gen                    |    91|
+|20    |    VGA                 |VGA_Sig_Gen                    |    87|
 |21    |      BisicHCounter     |GenericCounter__parameterized0 |    33|
-|22    |      BisicVCounter     |GenericCounter__parameterized1 |    38|
+|22    |      BisicVCounter     |GenericCounter__parameterized1 |    36|
 |23    |  pwm_module_for_4_LEDs |PWM_Wrapper                    |   117|
 |24    |    pwm_clk_counter     |GenericCounter__parameterized3 |    26|
 |25    |    pwm_led_0           |PWM                            |    54|
@@ -884,13 +933,13 @@ Report Instance Areas:
 |28    |    pwm_led_3           |PWM_2                          |     1|
 +------+------------------------+-------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:22 ; elapsed = 00:00:27 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1171 ; free virtual = 89941
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:22 ; elapsed = 00:00:25 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1169 ; free virtual = 89798
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 24 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:16 ; elapsed = 00:00:18 . Memory (MB): peak = 1424.223 ; gain = 77.281 ; free physical = 1171 ; free virtual = 89941
-Synthesis Optimization Complete : Time (s): cpu = 00:00:22 ; elapsed = 00:00:27 . Memory (MB): peak = 1424.223 ; gain = 519.863 ; free physical = 1171 ; free virtual = 89941
+Synthesis finished with 0 errors, 0 critical warnings and 51 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1424.219 ; gain = 77.281 ; free physical = 1169 ; free virtual = 89798
+Synthesis Optimization Complete : Time (s): cpu = 00:00:22 ; elapsed = 00:00:26 . Memory (MB): peak = 1424.219 ; gain = 519.855 ; free physical = 1169 ; free virtual = 89798
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 85 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 86 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
@@ -899,8 +948,8 @@ INFO: [Project 1-111] Unisim Transformation Summary:
   IOBUF => IOBUF (IBUF, OBUFT): 2 instances
 
 INFO: [Common 17-83] Releasing license: Synthesis
-137 Infos, 38 Warnings, 0 Critical Warnings and 0 Errors encountered.
+151 Infos, 64 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:20 ; elapsed = 00:00:24 . Memory (MB): peak = 1451.238 ; gain = 437.363 ; free physical = 1171 ; free virtual = 89942
-report_utilization: Time (s): cpu = 00:00:00.69 ; elapsed = 00:00:00.73 . Memory (MB): peak = 1484.254 ; gain = 0.000 ; free physical = 1169 ; free virtual = 89940
-INFO: [Common 17-206] Exiting Vivado at Mon Mar 28 16:45:38 2016...
+synth_design: Time (s): cpu = 00:00:21 ; elapsed = 00:00:24 . Memory (MB): peak = 1450.234 ; gain = 436.355 ; free physical = 1167 ; free virtual = 89797
+report_utilization: Time (s): cpu = 00:00:00.68 ; elapsed = 00:00:00.72 . Memory (MB): peak = 1483.250 ; gain = 0.000 ; free physical = 1166 ; free virtual = 89795
+INFO: [Common 17-206] Exiting Vivado at Mon Mar 28 18:23:04 2016...

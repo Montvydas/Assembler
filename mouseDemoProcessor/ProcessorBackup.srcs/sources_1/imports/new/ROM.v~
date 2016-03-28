@@ -33,7 +33,7 @@ module ROM(
         //Memory
         reg [7:0] ROM [2**RAMAddrWidth-1:0];
         
-        initial $readmemb("/home/s1349598/DSL4/MicroProcessor/Assembler/translator/results_rom.txt", ROM); 
+        initial $readmemh("/home/s1349598/DSL4/MicroProcessor/Assembler/translator/results_rom.txt", ROM); 
         // Load program
         
         
