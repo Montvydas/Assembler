@@ -1,0 +1,177 @@
+GOTO_IDLE
+
+timer_isr:
+//RAM allocation,no need to initialise the RAM
+//00-store the information whether this is the first time to fresh the frame buffer
+//01-current pixel address x
+//02-current pixel address y
+//03-which part call the judge function
+//04-color
+//05-IR command
+
+BEGIN:
+	load a 00			//check whether it’s the first time
+	load_val b 01
+	BREQ MOUSE_CLEAR 		//if not the first time, do the counter
+
+//LOOP to RETURN is the region judge, no matter the region construction
+//or to judge the color of the mouse position should use this function or loop
+
+LOOP:
+	load a 01		
+	store B0 a
+	load a 02	//y’s range
+	store B1 a
+	load_val b 28	
+	BLTQ REGION1
+	load_val b 50
+	BLTQ REGION2
+	GOTO REGION3
+
+REGION1:		// x’s range
+	load a 01
+	load_val b 36
+	BLTQ BLOCK1
+	load_val b 6C
+	BLTQ BLOCK2
+	GOTO BLOCK3
+
+REGION2:
+	load a 01
+	load_val b 36
+	BLTQ BLOCK4
+	load_val b 6C
+	BLTQ BLOCK5
+	GOTO BLOCK6
+
+REGION3:
+	load a 01
+	load_val b 36
+	BLTQ BLOCK7
+	load_val b 6C
+	BLTQ BLOCK8
+	GOTO BLOCK9
+
+BLOCK1:
+	load_val a 01		//command of the car
+	store 05 a
+	GOTO RETURN0
+BLOCK2:
+	load_val a 02		//command of the car
+	store 05 a
+	GOTO RETURN1
+BLOCK3:
+	load_val a 03		//command of the car
+	store 05 a
+	GOTO RETURN0
+BLOCK4:
+	load_val a 04		//command of the car
+	store 05 a
+	GOTO RETURN1
+BLOCK5:
+	load_val a 05		//command of the car
+	store 05 a
+	GOTO RETURN0
+BLOCK6:
+	load_val a 06		//command of the car
+	store 05 a
+	GOTO RETURN1
+BLOCK7:
+	load_val a 07		//command of the car
+	store 05 a
+	GOTO RETURN0
+BLOCK8:
+	load_val a 08		//command of the car
+	store 05 a
+	GOTO RETURN1
+BLOCK9:
+	load_val a 09		//command of the car
+	store 05 a
+	GOTO RETURN0
+
+RETURN0:
+	load_val a 00
+	load b 03		//0F to store who call this function
+	add a b			
+	store B2 a
+	load_val a 00
+	BREQ CREATNEXT
+	load_val a 01
+	BREQ CARCONTROL
+	GOTO MOUSE_SET
+	
+RETURN1:
+	load_val a 01
+	load b 03
+	add a b
+	store B2 a
+	load_val a 00
+	BREQ CREATNEXT
+	load_val a 01
+	BREQ CARCONTROL
+	GOTO MOUSE_SET
+
+//CREATNEXT is with 2 counters that counts from 0 to 160 and 0 to 120 respectively
+CREATNEXT:
+	load a 01
+	load_val b 9F
+	BREQ ADDY
+	incr a a
+	store 01 a
+	GOTO LOOP
+
+ADDY:
+	load a 02
+	load_val b 77
+	BREQ FINISH
+	incr a a
+	store 02 a
+	load_val a 00
+	store 01 a
+	GOTO LOOP
+	
+FINISH:
+	load_val a 01
+	store 00 a
+
+MOUSE_ISR:
+
+MOUSE_CLEAR:	
+	//first to clear the last position of mouse 
+	load_val a 02 	//02 means in check region,it should clear the former position
+	store 03 a   
+	GOTO LOOP 	 
+
+MOUSE_SET:	//then set the current mouse address to foreground
+	load a A0		//mouse click information
+	load_val b 02
+	and a b
+	load_val b 00
+	BREQ NOCLICK		//if clicked, generate a new color
+	load a 04
+	load_val b 05
+	add a b
+	store B3 a
+	store 04 a
+
+NOCLICK:			//just show the position
+	load a A1   	//mouse X address	
+	store 01 a
+	load a A2    	//mouse Y address		
+	store 02 a		
+	load_val a 01	   //01 means in loop, it should set the specific position
+	store 03 a
+	GOTO LOOP
+CARCONTROL:
+	load a 06	//before everything starts, check if mouse is left clicked
+	load_val b 01
+	and a b
+	load_val b 01
+	BREQ SKIP_LEFT_CLICK_RESET
+	load_val a 00	//reset IR command
+	store 05 a
+	GOTO_IDLE
+SKIP_LEFT_CLICK_RESET:
+	load a 05		//05 to store the command of car
+	store C0 a	
+	GOTO_IDLE
