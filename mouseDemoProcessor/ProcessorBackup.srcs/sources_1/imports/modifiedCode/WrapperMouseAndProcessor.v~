@@ -44,7 +44,7 @@ module WrapperMouseAndProcessor(
             
             output HS,
             output VS,
-            output ColorOut
+            output [7:0] ColorOut
     );
     
     assign LED_TEST = SLIDE_TEST;
@@ -93,7 +93,7 @@ module WrapperMouseAndProcessor(
                           .BUS_INTERRUPT_ACK(Interrept_ACK[1])
                          );
                                      
-             
+           
         MouseWrapper
             myMouse(
                           .RESET(Reset),

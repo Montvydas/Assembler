@@ -1,15 +1,11 @@
 	load_val a 00	//reset Mem[0]
 	store 00 a
-	store 01 a
 goto_idle
 
 //do updates in here
 UPDATE:
 	load a 00
 	store D0 a
-	
-	load a 01
-	store C0 a
 goto_idle
 
 timer_isr:

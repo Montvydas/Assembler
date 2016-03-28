@@ -1,19 +1,12 @@
 	load_val b 00
-	store 00 b
-	store 01 b
 goto_idle
 
 timer_isr:
-	load b 00
 	incr b b
-	store 00 b
 	store D0 b
-	
-	load b 01
-	store C0 b
 goto_idle
 
 mouse_isr:
 	load a A0
-	store 01 a
+	store C0 a
 goto_idle

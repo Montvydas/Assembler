@@ -33,7 +33,7 @@ module ROM(
         //Memory
         reg [7:0] ROM [2**RAMAddrWidth-1:0];
         
-//        initial $readmemb("/home/s1349598/DSL4/MicroProcessor/Assembler/translator/results_rom.txt", ROM); 
+        initial $readmemb("/home/s1349598/DSL4/MicroProcessor/Assembler/translator/results_rom.txt", ROM); 
         // Load program
         
         
@@ -58,7 +58,11 @@ module ROM(
                 
 //                ROM[2]=8'h02;//store D0 a
 //                ROM[3]=8'hD0;   
-                
+
+
+
+
+/*                
                 ROM[0]=8'h00;//load a 00
                 ROM[1]=8'h00;              
                 
@@ -99,7 +103,7 @@ module ROM(
                 ROM[14]=8'h02;//store 01 a
                 ROM[15]=8'hD0;            
                 	ROM[8'h0F]=8'h08;//goto_idle 
-                	
+ */               	
                
                // ROM[10]=8'h02;//store F0 a
                 
