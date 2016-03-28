@@ -1,0 +1,12 @@
+	load_val b 00
+goto_idle
+
+timer_isr:
+	incr b b
+	store D0 b
+goto_idle
+
+mouse_isr:
+	load a A0
+	store C0 a
+goto_idle
