@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<wave_config>
+	<wave_state>
+	</wave_state>
+	<db_ref_list>
+		<db_ref path="/home/s1349598/DSL4/ProcessorBackup/ProcessorBackup.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wdb" id="1" type="auto">
+			<top_modules>
+				<top_module name="top">
+				</top_module>
+			</top_modules>
+		</db_ref>
+	</db_ref_list>
+	<WVObjectSize size="3">
+	</WVObjectSize>
+	<wvobject fp_name="myTimer_n_1" type="logic" db_ref_id="1">
+		<obj_property name="ElementShortName">myTimer_n_1</obj_property>
+		<obj_property name="ObjectShortName">myTimer_n_1</obj_property>
+		<obj_property name="Radix">HEXRADIX</obj_property>
+	</wvobject>
+	<wvobject fp_name="myMicroProcessor_n_6" type="logic" db_ref_id="1">
+		<obj_property name="ElementShortName">myMicroProcessor_n_6</obj_property>
+		<obj_property name="ObjectShortName">myMicroProcessor_n_6</obj_property>
+		<obj_property name="Radix">HEXRADIX</obj_property>
+	</wvobject>
+	<wvobject fp_name="DataBus" type="array" db_ref_id="1">
+		<obj_property name="ElementShortName">DataBus[7:0]</obj_property>
+		<obj_property name="ObjectShortName">DataBus[7:0]</obj_property>
+		<obj_property name="Radix">HEXRADIX</obj_property>
+	</wvobject>
+</wave_config>
+

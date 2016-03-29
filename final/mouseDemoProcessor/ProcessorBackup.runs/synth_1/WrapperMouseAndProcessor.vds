@@ -1,0 +1,1357 @@
+#-----------------------------------------------------------
+# Vivado v2015.2 (64-bit)
+# SW Build 1266856 on Fri Jun 26 16:35:25 MDT 2015
+# IP Build 1264090 on Wed Jun 24 14:22:01 MDT 2015
+# Start of session at: Tue Mar 29 01:39:49 2016
+# Process ID: 7172
+# Log file: /home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.runs/synth_1/WrapperMouseAndProcessor.vds
+# Journal file: /home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source WrapperMouseAndProcessor.tcl -notrace
+Command: synth_design -top WrapperMouseAndProcessor -part xc7a35tcpg236-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-1223] The version limit for your license is '2015.12' and will expire in -89 days. A version limit expiration means that, although you may be able to continue to use the current version of tools or IP with this license, you will not be eligible for any updates or new releases.
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1058.875 ; gain = 154.520 ; free physical = 1549 ; free virtual = 89730
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'WrapperMouseAndProcessor' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/WrapperMouseAndProcessor.v:23]
+INFO: [Synth 8-638] synthesizing module 'ROM' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/ROM.v:23]
+	Parameter RAMAddrWidth bound to: 8 - type: integer 
+INFO: [Synth 8-3876] $readmem data file '/home/s1349598/DSL4/MicroProcessor/Assembler/translator/results_rom.txt' is read successfully [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/ROM.v:36]
+INFO: [Synth 8-256] done synthesizing module 'ROM' (1#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/ROM.v:23]
+INFO: [Synth 8-638] synthesizing module 'RAM' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/RAM.v:23]
+	Parameter RAMBaseAddr bound to: 0 - type: integer 
+	Parameter RAMAddrWidth bound to: 7 - type: integer 
+INFO: [Synth 8-3876] $readmem data file '/home/s1349598/DSL4/MicroProcessor/Assembler/translator/results_ram.txt' is read successfully [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/RAM.v:56]
+INFO: [Synth 8-256] done synthesizing module 'RAM' (2#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/RAM.v:23]
+INFO: [Synth 8-638] synthesizing module 'Timer' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/Timer.v:23]
+	Parameter TimerBaseAddr bound to: 8'b11110000 
+	Parameter InitialIterruptRate bound to: 100 - type: integer 
+	Parameter InitialIterruptEnable bound to: 1'b1 
+INFO: [Synth 8-256] done synthesizing module 'Timer' (3#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/Timer.v:23]
+INFO: [Synth 8-638] synthesizing module 'MouseWrapper' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/MouseWrapper.v:24]
+	Parameter MouseBaseAddr bound to: 8'b10100000 
+INFO: [Synth 8-638] synthesizing module 'MouseTransceiver' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseTransceiver.v:22]
+	Parameter MouseLimitX bound to: 8'b10100000 
+	Parameter MouseLimitY bound to: 8'b01111000 
+INFO: [Synth 8-638] synthesizing module 'MouseTransmitter' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseTransmitter.v:23]
+INFO: [Synth 8-256] done synthesizing module 'MouseTransmitter' (4#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseTransmitter.v:23]
+INFO: [Synth 8-638] synthesizing module 'MouseReceiver' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseReceiver.v:23]
+INFO: [Synth 8-256] done synthesizing module 'MouseReceiver' (5#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseReceiver.v:23]
+INFO: [Synth 8-638] synthesizing module 'MouseMasterSM' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseMasterSM.v:24]
+INFO: [Synth 8-256] done synthesizing module 'MouseMasterSM' (6#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseMasterSM.v:24]
+INFO: [Synth 8-256] done synthesizing module 'MouseTransceiver' (7#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseTransceiver.v:22]
+INFO: [Synth 8-256] done synthesizing module 'MouseWrapper' (8#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/MouseWrapper.v:24]
+INFO: [Synth 8-638] synthesizing module 'MicroProcessor' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/Processor.v:21]
+	Parameter IDLE bound to: 8'b11110000 
+	Parameter GET_THREAD_START_ADDR_0 bound to: 8'b11110001 
+	Parameter GET_THREAD_START_ADDR_1 bound to: 8'b11110010 
+	Parameter GET_THREAD_START_ADDR_2 bound to: 8'b11110011 
+	Parameter CHOOSE_OPP bound to: 8'b00000000 
+	Parameter READ_FROM_MEM_TO_A bound to: 8'b00010000 
+	Parameter READ_FROM_MEM_TO_B bound to: 8'b00010001 
+	Parameter READ_FROM_MEM_0 bound to: 8'b00010010 
+	Parameter READ_FROM_MEM_1 bound to: 8'b00010011 
+	Parameter READ_FROM_MEM_2 bound to: 8'b00010100 
+	Parameter WRITE_TO_MEM_FROM_A bound to: 8'b00100000 
+	Parameter WRITE_TO_MEM_FROM_B bound to: 8'b00100001 
+	Parameter WRITE_TO_MEM_0 bound to: 8'b00100010 
+	Parameter DO_MATHS_OPP_SAVE_IN_A bound to: 8'b00110000 
+	Parameter DO_MATHS_OPP_SAVE_IN_B bound to: 8'b00110001 
+	Parameter DO_MATHS_OPP_0 bound to: 8'b00110010 
+	Parameter IF_A_EQUALITY_B_GOTO bound to: 8'b01000000 
+	Parameter IF_A_EQUALITY_B_GOTO_0 bound to: 8'b01000001 
+	Parameter IF_A_EQUALITY_B_GOTO_FINAL bound to: 8'b01000100 
+	Parameter GOTO_ADDR bound to: 8'b01010000 
+	Parameter GOTO_ADDR_0 bound to: 8'b01010001 
+	Parameter GOTO_ADDR_FINAL bound to: 8'b01010010 
+	Parameter GOTO_IDLE bound to: 8'b01100000 
+	Parameter FUNCTION_START bound to: 8'b01110000 
+	Parameter FUNCTION_START_0 bound to: 8'b01110001 
+	Parameter FUNCTION_START_FINAL bound to: 8'b01110010 
+	Parameter RETURN bound to: 8'b10000000 
+	Parameter RETURN_FINAL bound to: 8'b10000000 
+	Parameter DE_REFERENCE_A bound to: 8'b10010000 
+	Parameter DE_REFERENCE_B bound to: 8'b10010001 
+	Parameter DE_REFERENCE_0 bound to: 8'b10010010 
+	Parameter DE_REFERENCE_1 bound to: 8'b10010011 
+	Parameter DE_REFERENCE_2 bound to: 8'b10010100 
+	Parameter LOAD_VAL_A bound to: 8'b10110000 
+	Parameter LOAD_VAL_A_0 bound to: 8'b10110001 
+	Parameter LOAD_VAL_B bound to: 8'b10110010 
+	Parameter LOAD_VAL_B_0 bound to: 8'b10110011 
+	Parameter LOAD_VAL_FINAL bound to: 8'b10110100 
+INFO: [Synth 8-638] synthesizing module 'ALU' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/ALU.v:23]
+INFO: [Synth 8-226] default block is never used [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/ALU.v:40]
+INFO: [Synth 8-256] done synthesizing module 'ALU' (9#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/ALU.v:23]
+WARNING: [Synth 8-151] case item 8'b10000000 is unreachable [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/Processor.v:223]
+INFO: [Synth 8-256] done synthesizing module 'MicroProcessor' (10#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/Processor.v:21]
+INFO: [Synth 8-638] synthesizing module 'DSL_VGA' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/VGACode/DSL_VGA.v:23]
+INFO: [Synth 8-638] synthesizing module 'Frame_Buffer' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/VGACode/Frame_Buffer.v:23]
+INFO: [Synth 8-256] done synthesizing module 'Frame_Buffer' (11#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/VGACode/Frame_Buffer.v:23]
+INFO: [Synth 8-638] synthesizing module 'GenericCounter' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+	Parameter COUNTER_WIDTH bound to: 2 - type: integer 
+	Parameter COUNTER_MAX bound to: 3 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter' (12#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+WARNING: [Synth 8-350] instance 'BisicHCounter' of module 'GenericCounter' requires 5 connections, but only 4 given [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/VGACode/DSL_VGA.v:178]
+INFO: [Synth 8-638] synthesizing module 'VGA_Sig_Gen' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/VGACode/VGA_Sig_Gen.v:23]
+	Parameter ToDefineHs bound to: 10'b0001100000 
+	Parameter RangeHBegin bound to: 10'b0010010000 
+	Parameter RangeHEnd bound to: 10'b1100010000 
+	Parameter CounterHMax bound to: 10'b1100100000 
+	Parameter ToDefineVs bound to: 10'b0000000010 
+	Parameter RangeVBegin bound to: 10'b0000011111 
+	Parameter RangeVEnd bound to: 10'b0111111111 
+	Parameter CounterVMax bound to: 10'b1000001001 
+INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized0' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+	Parameter COUNTER_WIDTH bound to: 10 - type: integer 
+	Parameter COUNTER_MAX bound to: 799 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized0' (12#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized1' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+	Parameter COUNTER_WIDTH bound to: 10 - type: integer 
+	Parameter COUNTER_MAX bound to: 520 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized1' (12#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+INFO: [Synth 8-256] done synthesizing module 'VGA_Sig_Gen' (13#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/VGACode/VGA_Sig_Gen.v:23]
+INFO: [Synth 8-256] done synthesizing module 'DSL_VGA' (14#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/VGACode/DSL_VGA.v:23]
+WARNING: [Synth 8-350] instance 'myVGA' of module 'DSL_VGA' requires 9 connections, but only 8 given [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/WrapperMouseAndProcessor.v:131]
+INFO: [Synth 8-638] synthesizing module 'IRTransmitterWrapper' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/IRTransmitterWrapper.v:26]
+	Parameter BASE_ADDR bound to: 8'b10010000 
+INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized2' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+	Parameter COUNTER_WIDTH bound to: 24 - type: integer 
+	Parameter COUNTER_MAX bound to: 10000000 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized2' (14#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized3' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+	Parameter COUNTER_WIDTH bound to: 24 - type: integer 
+	Parameter COUNTER_MAX bound to: 10000000 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized3' (14#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized4' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+	Parameter COUNTER_WIDTH bound to: 24 - type: integer 
+	Parameter COUNTER_MAX bound to: 10000000 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized4' (14#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized5' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+	Parameter COUNTER_WIDTH bound to: 24 - type: integer 
+	Parameter COUNTER_MAX bound to: 10000000 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized5' (14#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+INFO: [Synth 8-638] synthesizing module 'IRTransmitterSM' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/IRTransmitterSM.v:26]
+	Parameter StartBurstSize bound to: 191 - type: integer 
+	Parameter GapSize bound to: 25 - type: integer 
+	Parameter CarSelectBurstSize bound to: 47 - type: integer 
+	Parameter AssertBurstSize bound to: 47 - type: integer 
+	Parameter DeassertBurstSize bound to: 22 - type: integer 
+	Parameter MaxCount bound to: 1389 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized6' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+	Parameter COUNTER_WIDTH bound to: 12 - type: integer 
+	Parameter COUNTER_MAX bound to: 1389 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized6' (14#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+INFO: [Synth 8-638] synthesizing module 'BasicStateMachine' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/BasicStateMachine.v:23]
+	Parameter StartBurstSize bound to: 191 - type: integer 
+	Parameter GapSize bound to: 25 - type: integer 
+	Parameter CarSelectBurstSize bound to: 47 - type: integer 
+	Parameter AssertBurstSize bound to: 47 - type: integer 
+	Parameter DeassertBurstSize bound to: 22 - type: integer 
+	Parameter MaxCount bound to: 1389 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized7' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+	Parameter COUNTER_WIDTH bound to: 8 - type: integer 
+	Parameter COUNTER_MAX bound to: 192 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized7' (14#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+WARNING: [Synth 8-3848] Net STATE_OUT in module/entity BasicStateMachine does not have driver. [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/BasicStateMachine.v:28]
+INFO: [Synth 8-256] done synthesizing module 'BasicStateMachine' (15#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/BasicStateMachine.v:23]
+INFO: [Synth 8-256] done synthesizing module 'IRTransmitterSM' (16#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/IRTransmitterSM.v:26]
+INFO: [Synth 8-638] synthesizing module 'IRTransmitterSM__parameterized0' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/IRTransmitterSM.v:26]
+	Parameter StartBurstSize bound to: 88 - type: integer 
+	Parameter GapSize bound to: 40 - type: integer 
+	Parameter CarSelectBurstSize bound to: 22 - type: integer 
+	Parameter AssertBurstSize bound to: 44 - type: integer 
+	Parameter DeassertBurstSize bound to: 22 - type: integer 
+	Parameter MaxCount bound to: 1250 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized8' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+	Parameter COUNTER_WIDTH bound to: 12 - type: integer 
+	Parameter COUNTER_MAX bound to: 1250 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized8' (16#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+INFO: [Synth 8-638] synthesizing module 'BasicStateMachine__parameterized0' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/BasicStateMachine.v:23]
+	Parameter StartBurstSize bound to: 88 - type: integer 
+	Parameter GapSize bound to: 40 - type: integer 
+	Parameter CarSelectBurstSize bound to: 22 - type: integer 
+	Parameter AssertBurstSize bound to: 44 - type: integer 
+	Parameter DeassertBurstSize bound to: 22 - type: integer 
+	Parameter MaxCount bound to: 1250 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized9' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+	Parameter COUNTER_WIDTH bound to: 8 - type: integer 
+	Parameter COUNTER_MAX bound to: 192 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized9' (16#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+WARNING: [Synth 8-3848] Net STATE_OUT in module/entity BasicStateMachine__parameterized0 does not have driver. [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/BasicStateMachine.v:28]
+INFO: [Synth 8-256] done synthesizing module 'BasicStateMachine__parameterized0' (16#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/BasicStateMachine.v:23]
+INFO: [Synth 8-256] done synthesizing module 'IRTransmitterSM__parameterized0' (16#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/IRTransmitterSM.v:26]
+INFO: [Synth 8-638] synthesizing module 'IRTransmitterSM__parameterized1' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/IRTransmitterSM.v:26]
+	Parameter StartBurstSize bound to: 88 - type: integer 
+	Parameter GapSize bound to: 40 - type: integer 
+	Parameter CarSelectBurstSize bound to: 44 - type: integer 
+	Parameter AssertBurstSize bound to: 44 - type: integer 
+	Parameter DeassertBurstSize bound to: 22 - type: integer 
+	Parameter MaxCount bound to: 1333 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized10' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+	Parameter COUNTER_WIDTH bound to: 12 - type: integer 
+	Parameter COUNTER_MAX bound to: 1333 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized10' (16#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+INFO: [Synth 8-638] synthesizing module 'BasicStateMachine__parameterized1' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/BasicStateMachine.v:23]
+	Parameter StartBurstSize bound to: 88 - type: integer 
+	Parameter GapSize bound to: 40 - type: integer 
+	Parameter CarSelectBurstSize bound to: 44 - type: integer 
+	Parameter AssertBurstSize bound to: 44 - type: integer 
+	Parameter DeassertBurstSize bound to: 22 - type: integer 
+	Parameter MaxCount bound to: 1333 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized11' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+	Parameter COUNTER_WIDTH bound to: 8 - type: integer 
+	Parameter COUNTER_MAX bound to: 192 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized11' (16#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+WARNING: [Synth 8-3848] Net STATE_OUT in module/entity BasicStateMachine__parameterized1 does not have driver. [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/BasicStateMachine.v:28]
+INFO: [Synth 8-256] done synthesizing module 'BasicStateMachine__parameterized1' (16#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/BasicStateMachine.v:23]
+INFO: [Synth 8-256] done synthesizing module 'IRTransmitterSM__parameterized1' (16#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/IRTransmitterSM.v:26]
+INFO: [Synth 8-638] synthesizing module 'IRTransmitterSM__parameterized2' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/IRTransmitterSM.v:26]
+	Parameter StartBurstSize bound to: 192 - type: integer 
+	Parameter GapSize bound to: 24 - type: integer 
+	Parameter CarSelectBurstSize bound to: 24 - type: integer 
+	Parameter AssertBurstSize bound to: 48 - type: integer 
+	Parameter DeassertBurstSize bound to: 24 - type: integer 
+	Parameter MaxCount bound to: 1389 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized12' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+	Parameter COUNTER_WIDTH bound to: 12 - type: integer 
+	Parameter COUNTER_MAX bound to: 1389 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized12' (16#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+INFO: [Synth 8-638] synthesizing module 'BasicStateMachine__parameterized2' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/BasicStateMachine.v:23]
+	Parameter StartBurstSize bound to: 192 - type: integer 
+	Parameter GapSize bound to: 24 - type: integer 
+	Parameter CarSelectBurstSize bound to: 24 - type: integer 
+	Parameter AssertBurstSize bound to: 48 - type: integer 
+	Parameter DeassertBurstSize bound to: 24 - type: integer 
+	Parameter MaxCount bound to: 1389 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized13' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+	Parameter COUNTER_WIDTH bound to: 8 - type: integer 
+	Parameter COUNTER_MAX bound to: 192 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized13' (16#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+WARNING: [Synth 8-3848] Net STATE_OUT in module/entity BasicStateMachine__parameterized2 does not have driver. [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/BasicStateMachine.v:28]
+INFO: [Synth 8-256] done synthesizing module 'BasicStateMachine__parameterized2' (16#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/BasicStateMachine.v:23]
+INFO: [Synth 8-256] done synthesizing module 'IRTransmitterSM__parameterized2' (16#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/IRTransmitterSM.v:26]
+WARNING: [Synth 8-567] referenced signal 'CAR_SELECT' should be on the sensitivity list [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/IRTransmitterWrapper.v:107]
+WARNING: [Synth 8-567] referenced signal 'IR_LED_BLU' should be on the sensitivity list [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/IRTransmitterWrapper.v:107]
+WARNING: [Synth 8-567] referenced signal 'IR_LED_YEL' should be on the sensitivity list [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/IRTransmitterWrapper.v:107]
+WARNING: [Synth 8-567] referenced signal 'IR_LED_GRN' should be on the sensitivity list [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/IRTransmitterWrapper.v:107]
+WARNING: [Synth 8-567] referenced signal 'IR_LED_RED' should be on the sensitivity list [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/IRTransmitterWrapper.v:107]
+INFO: [Synth 8-256] done synthesizing module 'IRTransmitterWrapper' (17#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/DSL4/IRTransmitterWrapper.v:26]
+WARNING: [Synth 8-4446] all outputs are unconnected for this instance and logic may be removed [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/WrapperMouseAndProcessor.v:183]
+INFO: [Synth 8-638] synthesizing module 'ila_2' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.runs/synth_1/.Xil/Vivado-7172-tlf53.see.ed.ac.uk/realtime/ila_2_stub.v:7]
+INFO: [Synth 8-256] done synthesizing module 'ila_2' (18#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.runs/synth_1/.Xil/Vivado-7172-tlf53.see.ed.ac.uk/realtime/ila_2_stub.v:7]
+INFO: [Synth 8-638] synthesizing module 'LED' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/LED.v:21]
+	Parameter LEDBaseAddr bound to: 8'b11000000 
+INFO: [Synth 8-256] done synthesizing module 'LED' (19#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/LED.v:21]
+INFO: [Synth 8-638] synthesizing module 'SlideSwitches' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/SlideSwitches.v:21]
+	Parameter SlideSwitchesBaseAddr bound to: 8'b11100000 
+INFO: [Synth 8-256] done synthesizing module 'SlideSwitches' (20#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/SlideSwitches.v:21]
+INFO: [Synth 8-638] synthesizing module 'DecimalSeg' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:23]
+	Parameter SevenSegBaseAddr bound to: 8'b11010000 
+INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized14' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+	Parameter COUNTER_WIDTH bound to: 16 - type: integer 
+	Parameter COUNTER_MAX bound to: 49999 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized14' (20#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+WARNING: [Synth 8-350] instance 'Bit16DownCounter' of module 'GenericCounter' requires 5 connections, but only 4 given [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:74]
+WARNING: [Synth 8-350] instance 'Bit2DownCounter' of module 'GenericCounter' requires 5 connections, but only 4 given [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:87]
+INFO: [Synth 8-638] synthesizing module 'BinaryToBCD' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/BinaryToBCD.v:23]
+INFO: [Synth 8-256] done synthesizing module 'BinaryToBCD' (21#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/BinaryToBCD.v:23]
+INFO: [Synth 8-638] synthesizing module 'Multiplexer' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/Multiplexer.v:21]
+INFO: [Synth 8-226] default block is never used [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/Multiplexer.v:31]
+INFO: [Synth 8-256] done synthesizing module 'Multiplexer' (22#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/Multiplexer.v:21]
+INFO: [Synth 8-638] synthesizing module 'EasyDecode7Seg' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/EasyDecode7Seg.v:21]
+INFO: [Synth 8-226] default block is never used [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/EasyDecode7Seg.v:30]
+INFO: [Synth 8-226] default block is never used [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/EasyDecode7Seg.v:43]
+INFO: [Synth 8-256] done synthesizing module 'EasyDecode7Seg' (23#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/EasyDecode7Seg.v:21]
+INFO: [Synth 8-256] done synthesizing module 'DecimalSeg' (24#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:23]
+INFO: [Synth 8-638] synthesizing module 'PWM_Wrapper' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/PWM_Wrapper.v:23]
+	Parameter PWM_BASE_ADDR bound to: 8'b11000001 
+	Parameter COUNTER_LEN bound to: 8 - type: integer 
+INFO: [Synth 8-638] synthesizing module 'GenericCounter__parameterized15' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+	Parameter COUNTER_WIDTH bound to: 9 - type: integer 
+	Parameter COUNTER_MAX bound to: 499 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'GenericCounter__parameterized15' (24#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/GenericCounter.v:21]
+WARNING: [Synth 8-350] instance 'pwm_clk_counter' of module 'GenericCounter' requires 5 connections, but only 4 given [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/PWM_Wrapper.v:65]
+INFO: [Synth 8-638] synthesizing module 'PWM' [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/PWM.v:23]
+	Parameter COUNTER_LEN bound to: 8 - type: integer 
+INFO: [Synth 8-256] done synthesizing module 'PWM' (25#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/mouseCode/PWM.v:23]
+INFO: [Synth 8-256] done synthesizing module 'PWM_Wrapper' (26#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/PWM_Wrapper.v:23]
+WARNING: [Synth 8-3848] Net BUS_WE in module/entity WrapperMouseAndProcessor does not have driver. [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/WrapperMouseAndProcessor.v:136]
+INFO: [Synth 8-256] done synthesizing module 'WrapperMouseAndProcessor' (27#1) [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/WrapperMouseAndProcessor.v:23]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1105.156 ; gain = 200.801 ; free physical = 1503 ; free virtual = 89685
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+WARNING: [Synth 8-3295] tying undriven pin Mux4:IN3[3] to constant 0 [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:109]
+WARNING: [Synth 8-3295] tying undriven pin Mux4:IN3[2] to constant 0 [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:109]
+WARNING: [Synth 8-3295] tying undriven pin Mux4:IN3[1] to constant 0 [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:109]
+WARNING: [Synth 8-3295] tying undriven pin Mux4:IN3[0] to constant 0 [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/imports/modifiedCode/DecimelSeg.v:109]
+WARNING: [Synth 8-3295] tying undriven pin myVGA:BUS_WE to constant 0 [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/WrapperMouseAndProcessor.v:131]
+WARNING: [Synth 8-3295] tying undriven pin myIR:BUS_WE to constant 0 [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/modifiedCode/WrapperMouseAndProcessor.v:143]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:07 . Memory (MB): peak = 1105.156 ; gain = 200.801 ; free physical = 1503 ; free virtual = 89686
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/constrs_1/new/ProcessorConstrains.xdc]
+Finished Parsing XDC File [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/constrs_1/new/ProcessorConstrains.xdc]
+Completed Processing XDC Constraints
+
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1429.211 ; gain = 0.000 ; free physical = 1331 ; free virtual = 89513
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1429.211 ; gain = 524.855 ; free physical = 1329 ; free virtual = 89512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tcpg236-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1429.211 ; gain = 524.855 ; free physical = 1329 ; free virtual = 89512
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1429.211 ; gain = 524.855 ; free physical = 1330 ; free virtual = 89512
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5545] ROM "DownCounter" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "Timer" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5546] ROM "TransmitTimerValue" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-802] inferred FSM for state register 'Curr_State_reg' in module 'MouseTransmitter'
+INFO: [Synth 8-5546] ROM "Next_State" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "Next_State" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "Next_State" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "Next_MouseDataOutWE" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "Next_MouseClkOutWE" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "Next_State" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'Curr_State_reg' in module 'MouseReceiver'
+INFO: [Synth 8-5544] ROM "Next_State" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "Next_State" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "Next_State" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "Next_State" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-802] inferred FSM for state register 'Curr_State_reg' in module 'MouseMasterSM'
+INFO: [Synth 8-5545] ROM "Next_State" won't be mapped to RAM because address size (23) is larger than maximum supported(18)
+INFO: [Synth 8-5544] ROM "Next_Status" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "Next_SendInterrupt" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "Next_ReadEnable" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "Next_ByteToSend" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "Next_SendByte" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "Next_Counter" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "Next_State" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "Next_State" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "Next_State" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "Next_State" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "Next_State" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "Next_State" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "Next_State" won't be mapped to Block RAM because address size (2) smaller than threshold (5)
+INFO: [Synth 8-3537] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the inputs of the operator [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseTransceiver.v:241]
+INFO: [Synth 8-3537] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the inputs of the operator [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/mouseCode/MouseTransceiver.v:245]
+INFO: [Synth 8-3537] HDL ADVISOR - The operator resource <adder> is shared. To prevent sharing consider applying a KEEP on the inputs of the operator [/home/s1349598/DSL4/MicroProcessor/Assembler/mouseDemoProcessor/ProcessorBackup.srcs/sources_1/imports/new/ALU.v:40]
+INFO: [Synth 8-802] inferred FSM for state register 'CurrState_reg' in module 'MicroProcessor'
+INFO: [Synth 8-5546] ROM "NextProgContext" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "NextRegSelect" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "NextBusDataOutWE" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "NextBusDataOut" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "NextProgCounterOffset" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "NextState" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "NextState" won't be mapped to Block RAM because address size (1) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "Fresh_X" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "Fresh_Y" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "BackOrFore" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "ReceivedColor" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-802] inferred FSM for state register 'CurrState_reg' in module 'BasicStateMachine'
+INFO: [Synth 8-5546] ROM "CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "OUT" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "PACKET_COUNT_RST" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'CurrState_reg' in module 'BasicStateMachine__parameterized0'
+INFO: [Synth 8-5546] ROM "CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "OUT" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "PACKET_COUNT_RST" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'CurrState_reg' in module 'BasicStateMachine__parameterized1'
+INFO: [Synth 8-5546] ROM "CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "OUT" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "PACKET_COUNT_RST" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-802] inferred FSM for state register 'CurrState_reg' in module 'BasicStateMachine__parameterized2'
+INFO: [Synth 8-5546] ROM "CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5544] ROM "OUT" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5544] ROM "PACKET_COUNT_RST" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
+INFO: [Synth 8-5546] ROM "COMMAND" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5562] The signal DATA_reg is implemented as block RAM but is better mapped onto distributed LUT RAM for the following reason(s): The *depth (8 address bits)* is shallow. Please use attribute (* ram_style = "distributed" *) to instruct Vivado to infer distributed LUT RAM.
+INFO: [Synth 8-5562] The signal Mem_reg is implemented as block RAM but is better mapped onto distributed LUT RAM for the following reason(s): The *depth (7 address bits)* is shallow. Please use attribute (* ram_style = "distributed" *) to instruct Vivado to infer distributed LUT RAM.
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                     Old Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                             0000 |                             0000
+                 iSTATE0 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                 iSTATE2 |                             0011 |                             0011
+                 iSTATE3 |                             0100 |                             0100
+                 iSTATE4 |                             0101 |                             0101
+                 iSTATE5 |                             0110 |                             0110
+                 iSTATE6 |                             0111 |                             0111
+                 iSTATE7 |                             1000 |                             1000
+                 iSTATE8 |                             1001 |                             1001
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'Curr_State_reg' using encoding 'sequential' in module 'MouseTransmitter'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                     Old Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                              000 |                              000
+                 iSTATE0 |                              001 |                              001
+                 iSTATE1 |                              010 |                              010
+                 iSTATE2 |                              011 |                              011
+                 iSTATE3 |                              100 |                              100
+                 iSTATE4 |                              101 |                              101
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'Curr_State_reg' using encoding 'sequential' in module 'MouseReceiver'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                     Old Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                             0000 |                             0000
+                 iSTATE0 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                 iSTATE2 |                             0011 |                             0011
+                 iSTATE3 |                             0100 |                             0100
+                 iSTATE4 |                             0101 |                             0101
+                 iSTATE5 |                             0110 |                             0110
+                 iSTATE6 |                             0111 |                             0111
+                 iSTATE7 |                             1000 |                             1000
+                 iSTATE8 |                             1001 |                             1001
+                 iSTATE9 |                             1010 |                             1010
+                iSTATE10 |                             1011 |                             1011
+                iSTATE11 |                             1100 |                             1100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'Curr_State_reg' using encoding 'sequential' in module 'MouseMasterSM'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                     Old Encoding 
+---------------------------------------------------------------------------------------------------
+              CHOOSE_OPP |                           000000 |                         00000000
+      READ_FROM_MEM_TO_A |                           000001 |                         00010000
+      READ_FROM_MEM_TO_B |                           000010 |                         00010001
+         READ_FROM_MEM_0 |                           000011 |                         00010010
+         READ_FROM_MEM_1 |                           000100 |                         00010011
+         READ_FROM_MEM_2 |                           000101 |                         00010100
+     WRITE_TO_MEM_FROM_A |                           000110 |                         00100000
+     WRITE_TO_MEM_FROM_B |                           000111 |                         00100001
+          WRITE_TO_MEM_0 |                           001000 |                         00100010
+  DO_MATHS_OPP_SAVE_IN_A |                           001001 |                         00110000
+  DO_MATHS_OPP_SAVE_IN_B |                           001010 |                         00110001
+          DO_MATHS_OPP_0 |                           001011 |                         00110010
+    IF_A_EQUALITY_B_GOTO |                           001100 |                         01000000
+  IF_A_EQUALITY_B_GOTO_0 |                           001101 |                         01000001
+IF_A_EQUALITY_B_GOTO_FINAL |                           001110 |                         01000100
+               GOTO_ADDR |                           001111 |                         01010000
+             GOTO_ADDR_0 |                           010000 |                         01010001
+         GOTO_ADDR_FINAL |                           010001 |                         01010010
+               GOTO_IDLE |                           010010 |                         01100000
+                    IDLE |                           010011 |                         11110000
+ GET_THREAD_START_ADDR_0 |                           010100 |                         11110001
+ GET_THREAD_START_ADDR_1 |                           010101 |                         11110010
+ GET_THREAD_START_ADDR_2 |                           010110 |                         11110011
+          FUNCTION_START |                           010111 |                         01110000
+        FUNCTION_START_0 |                           011000 |                         01110001
+    FUNCTION_START_FINAL |                           011001 |                         01110010
+                  RETURN |                           011010 |                         10000000
+          DE_REFERENCE_A |                           011011 |                         10010000
+          DE_REFERENCE_B |                           011100 |                         10010001
+          DE_REFERENCE_0 |                           011101 |                         10010010
+          DE_REFERENCE_1 |                           011110 |                         10010011
+          DE_REFERENCE_2 |                           011111 |                         10010100
+              LOAD_VAL_A |                           100000 |                         10110000
+            LOAD_VAL_A_0 |                           100001 |                         10110001
+              LOAD_VAL_B |                           100010 |                         10110010
+            LOAD_VAL_B_0 |                           100011 |                         10110011
+          LOAD_VAL_FINAL |                           100100 |                         10110100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'CurrState_reg' using encoding 'sequential' in module 'MicroProcessor'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                     Old Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                             0000 |                             0000
+                 iSTATE0 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                 iSTATE2 |                             0011 |                             0011
+                 iSTATE3 |                             0100 |                             0100
+                 iSTATE4 |                             0101 |                             0101
+                 iSTATE5 |                             0110 |                             0110
+                 iSTATE6 |                             0111 |                             0111
+                 iSTATE7 |                             1000 |                             1000
+                 iSTATE8 |                             1001 |                             1001
+                 iSTATE9 |                             1010 |                             1010
+                iSTATE10 |                             1011 |                             1011
+                iSTATE11 |                             1100 |                             1100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'CurrState_reg' using encoding 'sequential' in module 'BasicStateMachine'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                     Old Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                             0000 |                             0000
+                 iSTATE0 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                 iSTATE2 |                             0011 |                             0011
+                 iSTATE3 |                             0100 |                             0100
+                 iSTATE4 |                             0101 |                             0101
+                 iSTATE5 |                             0110 |                             0110
+                 iSTATE6 |                             0111 |                             0111
+                 iSTATE7 |                             1000 |                             1000
+                 iSTATE8 |                             1001 |                             1001
+                 iSTATE9 |                             1010 |                             1010
+                iSTATE10 |                             1011 |                             1011
+                iSTATE11 |                             1100 |                             1100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'CurrState_reg' using encoding 'sequential' in module 'BasicStateMachine__parameterized0'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                     Old Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                             0000 |                             0000
+                 iSTATE0 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                 iSTATE2 |                             0011 |                             0011
+                 iSTATE3 |                             0100 |                             0100
+                 iSTATE4 |                             0101 |                             0101
+                 iSTATE5 |                             0110 |                             0110
+                 iSTATE6 |                             0111 |                             0111
+                 iSTATE7 |                             1000 |                             1000
+                 iSTATE8 |                             1001 |                             1001
+                 iSTATE9 |                             1010 |                             1010
+                iSTATE10 |                             1011 |                             1011
+                iSTATE11 |                             1100 |                             1100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'CurrState_reg' using encoding 'sequential' in module 'BasicStateMachine__parameterized1'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                     Old Encoding 
+---------------------------------------------------------------------------------------------------
+                  iSTATE |                             0000 |                             0000
+                 iSTATE0 |                             0001 |                             0001
+                 iSTATE1 |                             0010 |                             0010
+                 iSTATE2 |                             0011 |                             0011
+                 iSTATE3 |                             0100 |                             0100
+                 iSTATE4 |                             0101 |                             0101
+                 iSTATE5 |                             0110 |                             0110
+                 iSTATE6 |                             0111 |                             0111
+                 iSTATE7 |                             1000 |                             1000
+                 iSTATE8 |                             1001 |                             1001
+                 iSTATE9 |                             1010 |                             1010
+                iSTATE10 |                             1011 |                             1011
+                iSTATE11 |                             1100 |                             1100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'CurrState_reg' using encoding 'sequential' in module 'BasicStateMachine__parameterized2'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:12 ; elapsed = 00:00:18 . Memory (MB): peak = 1429.211 ; gain = 524.855 ; free physical = 1321 ; free virtual = 89503
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
+	   2 Input     24 Bit       Adders := 4     
+	   2 Input     23 Bit       Adders := 1     
+	   2 Input     16 Bit       Adders := 2     
+	   2 Input     13 Bit       Adders := 1     
+	   2 Input     12 Bit       Adders := 4     
+	   2 Input     10 Bit       Adders := 3     
+	   2 Input      9 Bit       Adders := 4     
+	   3 Input      9 Bit       Adders := 2     
+	   2 Input      8 Bit       Adders := 13    
+	   3 Input      8 Bit       Adders := 1     
+	   2 Input      7 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 13    
+	   2 Input      2 Bit       Adders := 2     
++---XORs : 
+	   2 Input      8 Bit         XORs := 1     
++---XORs : 
+	                8 Bit    Wide XORs := 2     
++---Registers : 
+	               32 Bit    Registers := 2     
+	               24 Bit    Registers := 4     
+	               23 Bit    Registers := 1     
+	               16 Bit    Registers := 2     
+	               13 Bit    Registers := 1     
+	               12 Bit    Registers := 4     
+	               10 Bit    Registers := 3     
+	                9 Bit    Registers := 4     
+	                8 Bit    Registers := 36    
+	                7 Bit    Registers := 1     
+	                4 Bit    Registers := 9     
+	                2 Bit    Registers := 5     
+	                1 Bit    Registers := 67    
++---RAMs : 
+	              32K Bit         RAMs := 1     
+	             1024 Bit         RAMs := 1     
++---ROMs : 
+	                              ROMs := 1     
++---Muxes : 
+	  13 Input     23 Bit        Muxes := 1     
+	   2 Input     16 Bit        Muxes := 2     
+	   6 Input     16 Bit        Muxes := 1     
+	  10 Input     13 Bit        Muxes := 1     
+	   2 Input      9 Bit        Muxes := 8     
+	   6 Input      8 Bit        Muxes := 1     
+	  13 Input      8 Bit        Muxes := 4     
+	   5 Input      8 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 5     
+	  16 Input      8 Bit        Muxes := 3     
+	   3 Input      8 Bit        Muxes := 1     
+	  37 Input      8 Bit        Muxes := 6     
+	  16 Input      7 Bit        Muxes := 1     
+	  54 Input      6 Bit        Muxes := 1     
+	   4 Input      5 Bit        Muxes := 1     
+	  10 Input      4 Bit        Muxes := 2     
+	   2 Input      4 Bit        Muxes := 16    
+	   6 Input      4 Bit        Muxes := 1     
+	  13 Input      4 Bit        Muxes := 5     
+	  20 Input      4 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 1     
+	   6 Input      3 Bit        Muxes := 1     
+	   9 Input      3 Bit        Muxes := 1     
+	   6 Input      2 Bit        Muxes := 2     
+	   3 Input      2 Bit        Muxes := 1     
+	  37 Input      2 Bit        Muxes := 1     
+	   2 Input      2 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 65    
+	  10 Input      1 Bit        Muxes := 8     
+	   6 Input      1 Bit        Muxes := 4     
+	  13 Input      1 Bit        Muxes := 29    
+	  37 Input      1 Bit        Muxes := 9     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Hierarchical Component Statistics 
+---------------------------------------------------------------------------------
+Hierarchical RTL Component report 
+Module ROM 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 1     
++---ROMs : 
+	                              ROMs := 1     
+Module RAM 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---RAMs : 
+	             1024 Bit         RAMs := 1     
+Module Timer 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     32 Bit       Adders := 2     
++---Registers : 
+	               32 Bit    Registers := 2     
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 4     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 4     
+Module MouseTransmitter 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     13 Bit       Adders := 1     
++---XORs : 
+	                8 Bit    Wide XORs := 1     
++---Registers : 
+	               13 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 5     
++---Muxes : 
+	  10 Input     13 Bit        Muxes := 1     
+	  10 Input      4 Bit        Muxes := 2     
+	  10 Input      1 Bit        Muxes := 8     
+Module MouseReceiver 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
+	   2 Input      4 Bit       Adders := 1     
++---XORs : 
+	                8 Bit    Wide XORs := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input     16 Bit        Muxes := 2     
+	   6 Input     16 Bit        Muxes := 1     
+	   6 Input      8 Bit        Muxes := 1     
+	   2 Input      4 Bit        Muxes := 1     
+	   6 Input      4 Bit        Muxes := 1     
+	   6 Input      3 Bit        Muxes := 1     
+	   9 Input      3 Bit        Muxes := 1     
+	   6 Input      2 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 3     
+	   6 Input      1 Bit        Muxes := 4     
+Module MouseMasterSM 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     23 Bit       Adders := 1     
++---Registers : 
+	               23 Bit    Registers := 1     
+	                8 Bit    Registers := 4     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	  13 Input     23 Bit        Muxes := 1     
+	  13 Input      8 Bit        Muxes := 4     
+	  13 Input      4 Bit        Muxes := 1     
+	  20 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 1     
+	  13 Input      1 Bit        Muxes := 9     
+Module MouseTransceiver 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      9 Bit       Adders := 2     
+	   3 Input      9 Bit       Adders := 2     
+	   2 Input      8 Bit       Adders := 2     
++---Registers : 
+	                9 Bit    Registers := 2     
+	                8 Bit    Registers := 3     
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 3     
++---Muxes : 
+	   2 Input      9 Bit        Muxes := 8     
+	   5 Input      8 Bit        Muxes := 2     
+	   2 Input      8 Bit        Muxes := 2     
+	   2 Input      1 Bit        Muxes := 2     
+Module MouseWrapper 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 5     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 2     
+Module ALU 
+Detailed RTL Component Info : 
++---Adders : 
+	   3 Input      8 Bit       Adders := 1     
++---XORs : 
+	   2 Input      8 Bit         XORs := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
++---Muxes : 
+	  16 Input      8 Bit        Muxes := 3     
+Module MicroProcessor 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 3     
++---Registers : 
+	                8 Bit    Registers := 6     
+	                2 Bit    Registers := 2     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 1     
+	   3 Input      8 Bit        Muxes := 1     
+	  37 Input      8 Bit        Muxes := 6     
+	  54 Input      6 Bit        Muxes := 1     
+	   3 Input      2 Bit        Muxes := 1     
+	  37 Input      2 Bit        Muxes := 1     
+	  37 Input      1 Bit        Muxes := 9     
+Module Frame_Buffer 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 2     
++---RAMs : 
+	              32K Bit         RAMs := 1     
+Module GenericCounter 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      2 Bit       Adders := 1     
++---Registers : 
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
++---Muxes : 
+	   2 Input      2 Bit        Muxes := 1     
+Module GenericCounter__parameterized0 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 1     
++---Registers : 
+	               10 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module GenericCounter__parameterized1 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 1     
++---Registers : 
+	               10 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module VGA_Sig_Gen 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     10 Bit       Adders := 1     
+	   2 Input      9 Bit       Adders := 1     
++---Registers : 
+	               10 Bit    Registers := 1     
+	                9 Bit    Registers := 1     
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input      8 Bit        Muxes := 2     
+Module DSL_VGA 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      7 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 2     
+	                7 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
+Module GenericCounter__parameterized2 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     24 Bit       Adders := 1     
++---Registers : 
+	               24 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module GenericCounter__parameterized3 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     24 Bit       Adders := 1     
++---Registers : 
+	               24 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module GenericCounter__parameterized4 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     24 Bit       Adders := 1     
++---Registers : 
+	               24 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module GenericCounter__parameterized5 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     24 Bit       Adders := 1     
++---Registers : 
+	               24 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module GenericCounter__parameterized6 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     12 Bit       Adders := 1     
++---Registers : 
+	               12 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module GenericCounter__parameterized7 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module BasicStateMachine 
+Detailed RTL Component Info : 
++---Registers : 
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 2     
+	  13 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 12    
+	  13 Input      1 Bit        Muxes := 5     
+Module IRTransmitterSM 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+Module GenericCounter__parameterized8 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     12 Bit       Adders := 1     
++---Registers : 
+	               12 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module GenericCounter__parameterized9 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module BasicStateMachine__parameterized0 
+Detailed RTL Component Info : 
++---Registers : 
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 2     
+	  13 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 12    
+	  13 Input      1 Bit        Muxes := 5     
+Module IRTransmitterSM__parameterized0 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+Module GenericCounter__parameterized10 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     12 Bit       Adders := 1     
++---Registers : 
+	               12 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module GenericCounter__parameterized11 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module BasicStateMachine__parameterized1 
+Detailed RTL Component Info : 
++---Registers : 
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 2     
+	  13 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 12    
+	  13 Input      1 Bit        Muxes := 5     
+Module IRTransmitterSM__parameterized1 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+Module GenericCounter__parameterized12 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     12 Bit       Adders := 1     
++---Registers : 
+	               12 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module GenericCounter__parameterized13 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module BasicStateMachine__parameterized2 
+Detailed RTL Component Info : 
++---Registers : 
+	                4 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 2     
+	  13 Input      4 Bit        Muxes := 1     
+	   2 Input      1 Bit        Muxes := 12    
+	  13 Input      1 Bit        Muxes := 5     
+Module IRTransmitterSM__parameterized2 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+Module IRTransmitterWrapper 
+Detailed RTL Component Info : 
++---Registers : 
+	                4 Bit    Registers := 2     
++---Muxes : 
+	   2 Input      1 Bit        Muxes := 5     
+Module LED 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 1     
+Module SlideSwitches 
+Detailed RTL Component Info : 
++---Registers : 
+	                1 Bit    Registers := 1     
+Module GenericCounter__parameterized14 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input     16 Bit       Adders := 1     
++---Registers : 
+	               16 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module BinaryToBCD 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      4 Bit       Adders := 12    
++---Muxes : 
+	   2 Input      4 Bit        Muxes := 7     
+Module Multiplexer 
+Detailed RTL Component Info : 
++---Muxes : 
+	   4 Input      5 Bit        Muxes := 1     
+Module EasyDecode7Seg 
+Detailed RTL Component Info : 
++---Muxes : 
+	  16 Input      7 Bit        Muxes := 1     
+	   4 Input      4 Bit        Muxes := 1     
+Module DecimalSeg 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+Module GenericCounter__parameterized15 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      9 Bit       Adders := 1     
++---Registers : 
+	                9 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module PWM 
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input      8 Bit       Adders := 1     
++---Registers : 
+	                8 Bit    Registers := 1     
+	                1 Bit    Registers := 1     
+Module PWM_Wrapper 
+Detailed RTL Component Info : 
++---Registers : 
+	                8 Bit    Registers := 4     
+	                1 Bit    Registers := 1     
+---------------------------------------------------------------------------------
+Finished RTL Hierarchical Component Statistics
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 120 (col length:60)
+BRAMs: 150 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+Start Parallel Synthesis Optimization  : Time (s): cpu = 00:00:12 ; elapsed = 00:00:18 . Memory (MB): peak = 1429.211 ; gain = 524.855 ; free physical = 1320 ; free virtual = 89503
+---------------------------------------------------------------------------------
+Start Cross Boundary Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-5545] ROM "DownCounter" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5545] ROM "Timer" won't be mapped to RAM because address size (32) is larger than maximum supported(18)
+INFO: [Synth 8-5546] ROM "TransmitTimerValue" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "Next_State" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "Next_State" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "Next_State" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5545] ROM "Next_State" won't be mapped to RAM because address size (23) is larger than maximum supported(18)
+INFO: [Synth 8-5546] ROM "ReceivedColor" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "Fresh_X" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "Fresh_Y" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "BackOrFore" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/OUT" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "PACKET_SM/CurrState" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5546] ROM "COMMAND" won't be mapped to RAM because it is too sparse
+INFO: [Synth 8-5562] The signal myROM/DATA_reg is implemented as block RAM but is better mapped onto distributed LUT RAM for the following reason(s): The *depth (8 address bits)* is shallow. Please use attribute (* ram_style = "distributed" *) to instruct Vivado to infer distributed LUT RAM.
+---------------------------------------------------------------------------------
+Finished Cross Boundary Optimization : Time (s): cpu = 00:00:14 ; elapsed = 00:00:19 . Memory (MB): peak = 1429.211 ; gain = 524.855 ; free physical = 1316 ; free virtual = 89499
+---------------------------------------------------------------------------------
+Finished Parallel Reinference  : Time (s): cpu = 00:00:14 ; elapsed = 00:00:19 . Memory (MB): peak = 1429.211 ; gain = 524.855 ; free physical = 1316 ; free virtual = 89499
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+INFO: [Synth 8-5562] The signal myRAM/Mem_reg is implemented as block RAM but is better mapped onto distributed LUT RAM for the following reason(s): The *depth (7 address bits)* is shallow. Please use attribute (* ram_style = "distributed" *) to instruct Vivado to infer distributed LUT RAM.
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+ROM:
++-------------------------+------------+---------------+----------------+
+|Module Name              | RTL Object | Depth x Width | Implemented As | 
++-------------------------+------------+---------------+----------------+
+|ROM                      | extrom     | 256x8         | Block RAM      | 
+|WrapperMouseAndProcessor | extrom     | 256x8         | Block RAM      | 
++-------------------------+------------+---------------+----------------+
+
+
+Block RAM:
++-------------------------+-----------------+------------------------+---+---+------------------------+---+---+--------------+--------+--------+--------------------------------------------+
+|Module Name              | RTL Object      | PORT A (Depth x Width) | W | R | PORT B (Depth x Width) | W | R | OUT_REG      | RAMB18 | RAMB36 | Hierarchical Name                          | 
++-------------------------+-----------------+------------------------+---+---+------------------------+---+---+--------------+--------+--------+--------------------------------------------+
+|WrapperMouseAndProcessor | myRAM/Mem_reg   | 128 x 8(READ_FIRST)    | W | R |                        |   |   | Port A       | 1      | 0      | WrapperMouseAndProcessor/extram__3         | 
+|WrapperMouseAndProcessor | MyFrame/Mem_reg | 32 K x 1(READ_FIRST)   | W |   | 32 K x 1(WRITE_FIRST)  |   | R | Port A and B | 0      | 1      | WrapperMouseAndProcessor/DSL_VGA/extram__5 | 
++-------------------------+-----------------+------------------------+---+---+------------------------+---+---+--------------+--------+--------+--------------------------------------------+
+
+Note: The table shows the Block RAMs at the current stage of the synthesis flow. Some Block RAMs may be reimplemented as non Block RAM primitives later in the synthesis flow. Multiple instantiated Block RAMs are reported only once. "Hierarchical Name" reflects the Block RAM name as it appears in the hierarchical module and only part of it is displayed.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (myMicroProcessor/\CurrProgCounterOffset_reg[1] )
+WARNING: [Synth 8-3332] Sequential element (\usb_mouse/T/Curr_ByteToSend_reg[7] ) is unused and will be removed from module MouseWrapper.
+WARNING: [Synth 8-3332] Sequential element (\usb_mouse/T/Curr_ByteToSend_reg[6] ) is unused and will be removed from module MouseWrapper.
+WARNING: [Synth 8-3332] Sequential element (\usb_mouse/T/Curr_ByteToSend_reg[5] ) is unused and will be removed from module MouseWrapper.
+WARNING: [Synth 8-3332] Sequential element (\usb_mouse/T/Curr_ByteToSend_reg[4] ) is unused and will be removed from module MouseWrapper.
+WARNING: [Synth 8-3332] Sequential element (\usb_mouse/T/Curr_ByteToSend_reg[3] ) is unused and will be removed from module MouseWrapper.
+WARNING: [Synth 8-3332] Sequential element (\usb_mouse/T/Curr_ByteToSend_reg[1] ) is unused and will be removed from module MouseWrapper.
+WARNING: [Synth 8-3332] Sequential element (\usb_mouse/MSM/Curr_ByteToSend_reg[7] ) is unused and will be removed from module MouseWrapper.
+WARNING: [Synth 8-3332] Sequential element (\usb_mouse/MSM/Curr_ByteToSend_reg[6] ) is unused and will be removed from module MouseWrapper.
+WARNING: [Synth 8-3332] Sequential element (\usb_mouse/MSM/Curr_ByteToSend_reg[5] ) is unused and will be removed from module MouseWrapper.
+WARNING: [Synth 8-3332] Sequential element (\usb_mouse/MSM/Curr_ByteToSend_reg[4] ) is unused and will be removed from module MouseWrapper.
+WARNING: [Synth 8-3332] Sequential element (\usb_mouse/MSM/Curr_ByteToSend_reg[3] ) is unused and will be removed from module MouseWrapper.
+WARNING: [Synth 8-3332] Sequential element (\usb_mouse/MSM/Curr_ByteToSend_reg[1] ) is unused and will be removed from module MouseWrapper.
+WARNING: [Synth 8-3332] Sequential element (\usb_mouse/R/ClkMouseInDly_reg ) is unused and will be removed from module MouseWrapper.
+WARNING: [Synth 8-3332] Sequential element (\CurrProgCounterOffset_reg[1] ) is unused and will be removed from module MicroProcessor.
+WARNING: [Synth 8-3332] Sequential element (\VGA/AddressHer_reg[1] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\VGA/AddressHer_reg[0] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\VGA/AddressVer_reg[1] ) is unused and will be removed from module DSL_VGA.
+WARNING: [Synth 8-3332] Sequential element (\VGA/AddressVer_reg[0] ) is unused and will be removed from module DSL_VGA.
+---------------------------------------------------------------------------------
+Start Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Area Optimization : Time (s): cpu = 00:00:19 ; elapsed = 00:00:24 . Memory (MB): peak = 1429.211 ; gain = 524.855 ; free physical = 1276 ; free virtual = 89459
+---------------------------------------------------------------------------------
+Finished Parallel Area Optimization  : Time (s): cpu = 00:00:19 ; elapsed = 00:00:24 . Memory (MB): peak = 1429.211 ; gain = 524.855 ; free physical = 1276 ; free virtual = 89459
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+Finished Parallel Synthesis Optimization  : Time (s): cpu = 00:00:19 ; elapsed = 00:00:24 . Memory (MB): peak = 1429.211 ; gain = 524.855 ; free physical = 1276 ; free virtual = 89459
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:25 ; elapsed = 00:00:31 . Memory (MB): peak = 1429.211 ; gain = 524.855 ; free physical = 1232 ; free virtual = 89415
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:25 ; elapsed = 00:00:31 . Memory (MB): peak = 1429.211 ; gain = 524.855 ; free physical = 1231 ; free virtual = 89414
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3332] Sequential element (\myMouse/usb_mouse/MouseY_reg[7] ) is unused and will be removed from module WrapperMouseAndProcessor.
+INFO: [Synth 8-4480] The timing for the instance \myRAM/Mem_reg  (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance \myVGA/MyFrame/Mem_reg  (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+INFO: [Synth 8-4480] The timing for the instance \myROM/DATA_reg  (implemented as a block RAM) might be sub-optimal as no optional output register could be merged into the block ram. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:26 ; elapsed = 00:00:32 . Memory (MB): peak = 1438.680 ; gain = 534.324 ; free physical = 1198 ; free virtual = 89380
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:27 ; elapsed = 00:00:32 . Memory (MB): peak = 1438.680 ; gain = 534.324 ; free physical = 1198 ; free virtual = 89380
+---------------------------------------------------------------------------------
+
+Report Check Netlist: 
++------+------------------+-------+---------+-------+------------------+
+|      |Item              |Errors |Warnings |Status |Description       |
++------+------------------+-------+---------+-------+------------------+
+|1     |multi_driven_nets |      0|        0|Passed |Multi driven nets |
++------+------------------+-------+---------+-------+------------------+
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:27 ; elapsed = 00:00:32 . Memory (MB): peak = 1438.680 ; gain = 534.324 ; free physical = 1198 ; free virtual = 89380
+---------------------------------------------------------------------------------
+
+Report RTL Partitions: 
++-+--------------+------------+----------+
+| |RTL Partition |Replication |Instances |
++-+--------------+------------+----------+
++-+--------------+------------+----------+
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:27 ; elapsed = 00:00:32 . Memory (MB): peak = 1438.680 ; gain = 534.324 ; free physical = 1198 ; free virtual = 89380
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports : Time (s): cpu = 00:00:27 ; elapsed = 00:00:32 . Memory (MB): peak = 1438.680 ; gain = 534.324 ; free physical = 1198 ; free virtual = 89380
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:27 ; elapsed = 00:00:32 . Memory (MB): peak = 1438.680 ; gain = 534.324 ; free physical = 1198 ; free virtual = 89380
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |ila_2         |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+-----------+------+
+|      |Cell       |Count |
++------+-----------+------+
+|1     |ila_2      |     1|
+|2     |BUFG       |     3|
+|3     |CARRY4     |   106|
+|4     |LUT1       |   318|
+|5     |LUT2       |   103|
+|6     |LUT3       |   234|
+|7     |LUT4       |   176|
+|8     |LUT5       |   136|
+|9     |LUT6       |   530|
+|10    |MUXF7      |    16|
+|11    |MUXF8      |     2|
+|12    |RAMB18E1   |     1|
+|13    |RAMB18E1_1 |     1|
+|14    |RAMB36E1   |     1|
+|15    |FDCE       |   242|
+|16    |FDPE       |    20|
+|17    |FDRE       |   488|
+|18    |FDSE       |    14|
+|19    |LDC        |    16|
+|20    |IBUF       |    11|
+|21    |IOBUF      |     2|
+|22    |OBUF       |    36|
++------+-----------+------+
+
+Report Instance Areas: 
++------+------------------------+----------------------------------+------+
+|      |Instance                |Module                            |Cells |
++------+------------------------+----------------------------------+------+
+|1     |top                     |                                  |  2456|
+|2     |  myIR                  |IRTransmitterWrapper              |   833|
+|3     |    BlueCar             |IRTransmitterSM                   |   117|
+|4     |      PACKET_SM         |BasicStateMachine                 |    73|
+|5     |        PACKET_COUNT    |GenericCounter__parameterized7    |    44|
+|6     |      PULSE_CLK_COUNT   |GenericCounter__parameterized6    |    42|
+|7     |    GreenCar            |IRTransmitterSM__parameterized1   |   114|
+|8     |      PACKET_SM         |BasicStateMachine__parameterized1 |    70|
+|9     |        PACKET_COUNT    |GenericCounter__parameterized11   |    41|
+|10    |      PULSE_CLK_COUNT   |GenericCounter__parameterized10   |    42|
+|11    |    RedCar              |IRTransmitterSM__parameterized2   |   113|
+|12    |      PACKET_SM         |BasicStateMachine__parameterized2 |    69|
+|13    |        PACKET_COUNT    |GenericCounter__parameterized13   |    40|
+|14    |      PULSE_CLK_COUNT   |GenericCounter__parameterized12   |    42|
+|15    |    TEN_CLK_COUNT_BLU   |GenericCounter__parameterized2    |    92|
+|16    |    TEN_CLK_COUNT_GRN   |GenericCounter__parameterized4    |    92|
+|17    |    TEN_CLK_COUNT_RED   |GenericCounter__parameterized5    |    92|
+|18    |    TEN_CLK_COUNT_YEL   |GenericCounter__parameterized3    |    92|
+|19    |    YellowCar           |IRTransmitterSM__parameterized0   |   113|
+|20    |      PACKET_SM         |BasicStateMachine__parameterized0 |    69|
+|21    |        PACKET_COUNT    |GenericCounter__parameterized9    |    41|
+|22    |      PULSE_CLK_COUNT   |GenericCounter__parameterized8    |    42|
+|23    |  myLED                 |LED                               |     8|
+|24    |  myMicroProcessor      |MicroProcessor                    |   275|
+|25    |    ALU0                |ALU                               |    57|
+|26    |  myMouse               |MouseWrapper                      |   575|
+|27    |    usb_mouse           |MouseTransceiver                  |   552|
+|28    |      MSM               |MouseMasterSM                     |   189|
+|29    |      R                 |MouseReceiver                     |   146|
+|30    |      T                 |MouseTransmitter                  |    85|
+|31    |  myRAM                 |RAM                               |    18|
+|32    |  myROM                 |ROM                               |    66|
+|33    |  mySevenSeg            |DecimalSeg                        |    85|
+|34    |    Bit16DownCounter    |GenericCounter__parameterized14   |    40|
+|35    |    Bit2DownCounter     |GenericCounter_3                  |    21|
+|36    |  mySlideSwitches       |SlideSwitches                     |     1|
+|37    |  myTimer               |Timer                             |   288|
+|38    |  myVGA                 |DSL_VGA                           |   133|
+|39    |    BisicHCounter       |GenericCounter                    |     6|
+|40    |    MyFrame             |Frame_Buffer                      |     9|
+|41    |    VGA                 |VGA_Sig_Gen                       |    93|
+|42    |      BisicHCounter     |GenericCounter__parameterized0    |    33|
+|43    |      BisicVCounter     |GenericCounter__parameterized1    |    35|
+|44    |  pwm_module_for_4_LEDs |PWM_Wrapper                       |   117|
+|45    |    pwm_clk_counter     |GenericCounter__parameterized15   |    26|
+|46    |    pwm_led_0           |PWM                               |    54|
+|47    |    pwm_led_1           |PWM_0                             |     1|
+|48    |    pwm_led_2           |PWM_1                             |     1|
+|49    |    pwm_led_3           |PWM_2                             |     1|
++------+------------------------+----------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:27 ; elapsed = 00:00:32 . Memory (MB): peak = 1438.680 ; gain = 534.324 ; free physical = 1185 ; free virtual = 89367
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 19 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 1438.680 ; gain = 92.750 ; free physical = 1186 ; free virtual = 89369
+Synthesis Optimization Complete : Time (s): cpu = 00:00:27 ; elapsed = 00:00:32 . Memory (MB): peak = 1438.680 ; gain = 534.324 ; free physical = 1186 ; free virtual = 89369
+INFO: [Project 1-571] Translating synthesized netlist
+INFO: [Netlist 29-17] Analyzing 138 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 18 instances were transformed.
+  IOBUF => IOBUF (IBUF, OBUFT): 2 instances
+  LDC => LDCE: 16 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+256 Infos, 42 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:26 ; elapsed = 00:00:31 . Memory (MB): peak = 1470.695 ; gain = 456.824 ; free physical = 1197 ; free virtual = 89380
+report_utilization: Time (s): cpu = 00:00:00.70 ; elapsed = 00:00:00.75 . Memory (MB): peak = 1503.711 ; gain = 0.000 ; free physical = 1195 ; free virtual = 89378
+INFO: [Common 17-206] Exiting Vivado at Tue Mar 29 01:40:27 2016...
